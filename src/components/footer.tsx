@@ -20,7 +20,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-muted/30">
       <div className="container mx-auto px-4 py-12">
-        <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <Link href="/" className="mb-4 flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded bg-foreground">
@@ -95,7 +95,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-8 lg:flex-row">
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
             <Link
               href="/terms"

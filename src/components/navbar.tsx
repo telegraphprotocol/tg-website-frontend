@@ -34,7 +34,7 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
-        <div className="flex flex-1 items-center justify-end gap-8 pr-8 md:flex hidden">
+        <div className="flex flex-1 items-center justify-end gap-8 pr-8 lg:flex hidden">
           {leftLinks.map((link) => (
             <Link
               key={link.href}
@@ -62,7 +62,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <div className="flex flex-1 items-center justify-start gap-8 pl-8 md:flex hidden">
+        <div className="flex flex-1 items-center justify-start gap-8 pl-8 lg:flex hidden">
           {rightLinks.map((link) => (
             <Link
               key={link.href}
@@ -78,10 +78,10 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center md:hidden">
+        <div className="flex items-center lg:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="md:hidden">
+              <Button variant="outline" size="icon" className="lg:hidden">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>

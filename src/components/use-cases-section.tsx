@@ -6,6 +6,7 @@ import { CloudLightning, TrendingUp, Brain, Coins } from "lucide-react"
 import { Badge } from "./ui/badge"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import { AnimateOnScroll } from "@/components/animate-on-scroll"
 
 export function UseCasesSection() {
   const [activeTab, setActiveTab] = useState(0)
@@ -48,21 +49,24 @@ export function UseCasesSection() {
   return (
     <section id="use-cases" className="px-4 py-20">
       <div className="container mx-auto max-w-7xl">
-        <div className="mb-12 text-center max-w-3xl mx-auto">
-         <Badge variant="topTitle" className="mb-4 w-fit">
-            <Brain className="h-4 w-4 text-primary flex-shrink-0" />
-            <span>Use Cases</span>
-          </Badge>
-          <h2 className="mb-6 text-4xl text-foreground md:text-5xl lg:text-5xl font-space-grotesk font-normal leading-[1.2]">
-            Use cases.
-          </h2>
-          <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
-            Verified, time-stamped intelligence signals from competitive miner
-            models—ready to plug into any market or app.
-          </p>
-        </div>
+        <AnimateOnScroll direction="up" delay={0.1}>
+          <div className="mb-12 text-center max-w-3xl mx-auto">
+           <Badge variant="topTitle" className="mb-4 w-fit">
+              <Brain className="h-4 w-4 text-primary flex-shrink-0" />
+              <span>Use Cases</span>
+            </Badge>
+            <h2 className="mb-6 text-4xl text-foreground lg:text-5xl lg:text-5xl font-space-grotesk font-normal leading-[1.2]">
+              Use cases.
+            </h2>
+            <p className="mb-4 lg:text-lg text-base leading-relaxed text-muted-foreground">
+              Verified, time-stamped intelligence signals from competitive miner
+              models—ready to plug into any market or app.
+            </p>
+          </div>
+        </AnimateOnScroll>
 
-        <div className="relative overflow-hidden rounded-3xl bg-muted relative overflow-hidden group border border-border/50 transition-all duration-300 min-h-[400px]">
+        <AnimateOnScroll direction="fade" delay={0.2}>
+          <div className="relative overflow-hidden rounded-3xl bg-muted relative overflow-hidden group border border-border/50 transition-all duration-300 min-h-[400px]">
         {/*
           <div className="absolute inset-0 opacity-70 scale-100">
             <Image
@@ -73,7 +77,7 @@ export function UseCasesSection() {
             />
           </div>
           */}
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 p-8">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 p-8">
           <div className="flex items-center justify-center">
             <div className="w-full rounded-lg bg-muted p-8 text-center relative overflow-hidden">
               <Image
@@ -103,7 +107,9 @@ export function UseCasesSection() {
           </div>
         </div>
         </div>
-        <div className="grid grid-cols-4 mt-8">
+        </AnimateOnScroll>
+        <AnimateOnScroll direction="up" delay={0.3}>
+          <div className="grid lg:grid-cols-4 grid-cols-1 mt-8 items-start justify-start">
           {useCases.map((useCase, index) => {
             return (
               <button
@@ -112,15 +118,15 @@ export function UseCasesSection() {
                 className="relative text-left group"
               >
                 <div
-                  className={`h-[2px] w-full mb-2 transition-all duration-300 ${
+                  className={`h-[2px] w-full lg:mb-2 transition-all duration-300 ${
                     activeTab === index ? "bg-primary" : "bg-muted group-hover:bg-foreground/10"
                   }`}
                 />
-                <div className="flex flex-col gap-1 py-2">
-                  <span className={cn("text-sm font-semibold", activeTab === index ? "text-foreground" : "text-foreground/70 group-hover:text-foreground/90 transition-all duration-300")}>
+                <div className={cn("flex flex-col gap-1 lg:py-2 py-4 lg:px-0 px-2", activeTab === index ? "lg:bg-transparent bg-primary/5" : "lg:bg-transparent")}>
+                  <span className={cn("text-sm lg:font-semibold font-medium", activeTab === index ? "text-foreground" : "text-foreground/70 group-hover:text-foreground/90 transition-all duration-300")}>
                     {useCase.title}
                   </span>
-                  <span className="text-sm text-muted-foreground  line-clamp-1">
+                  <span className="text-sm text-muted-foreground line-clamp-1 lg:block hidden">
                     {useCase.subtitle}
                   </span>
                  
@@ -128,7 +134,8 @@ export function UseCasesSection() {
               </button>
             )
           })}
-        </div>
+          </div>
+        </AnimateOnScroll>
       </div>
     </section>
   )

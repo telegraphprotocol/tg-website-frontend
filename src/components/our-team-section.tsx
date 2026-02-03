@@ -1,6 +1,7 @@
 import { Users } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
+import { AnimateOnScroll } from "@/components/animate-on-scroll"
 
 export function OurTeamSection() {
   const teamMembers = [
@@ -28,23 +29,26 @@ export function OurTeamSection() {
   return (
     <section id="our-team" className="px-4 py-20">
       <div className="container mx-auto max-w-7xl">
-      <div className="mb-12 text-center max-w-3xl mx-auto">
-         <Badge variant="topTitle" className="mb-4 w-fit">
-            <Users className="h-4 w-4 text-primary flex-shrink-0" />
-            <span>Our Team</span>
-          </Badge>
-          <h2 className="mb-6 text-4xl text-foreground md:text-5xl lg:text-5xl font-space-grotesk font-normal leading-[1.2]">
-            Our team.
-          </h2>
-          <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
-            We're global team of early blockchain, PR, and business experts,
-            that are building the rails for the signal economy.
-          </p>
-        </div>
+      <AnimateOnScroll direction="up" delay={0.1}>
+        <div className="mb-12 text-center max-w-3xl mx-auto">
+           <Badge variant="topTitle" className="mb-4 w-fit">
+              <Users className="h-4 w-4 text-primary flex-shrink-0" />
+              <span>Our Team</span>
+            </Badge>
+            <h2 className="mb-6 text-4xl text-foreground lg:text-5xl lg:text-5xl font-space-grotesk font-normal leading-[1.2]">
+              Our team.
+            </h2>
+            <p className="mb-4 lg:text-lg text-base leading-relaxed text-muted-foreground">
+              We're global team of early blockchain, PR, and business experts,
+              that are building the rails for the signal economy.
+            </p>
+          </div>
+        </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {teamMembers.map((member, index) => (
-            <Card key={index} className="hover:translate-y-[-4px] transition-all duration-300">
+            <AnimateOnScroll key={index} direction="up" delay={0.1 + index * 0.1}>
+              <Card className="hover:translate-y-[-4px] transition-all duration-300">
               <div className="mb-4 aspect-[4/3] w-full rounded-lg bg-muted"></div>
               <h3 className="mb-1 text-lg font-medium text-foreground">
                 {member.name}
@@ -55,10 +59,11 @@ export function OurTeamSection() {
                   </span>
                 )}
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground lg:min-h-[42px]">
                 {member.description}
               </p>
             </Card>
+            </AnimateOnScroll>
           ))}
         </div>
       </div>
