@@ -34,7 +34,7 @@ export function NodesSection() {
   ]
 
   return (
-    <section id="nodes" className="relative overflow-hidden px-4 py-20">
+    <section id="nodes" className="relative overflow-hidden px-4 lg:py-24 py-20">
       <div className="container mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <AnimateOnScroll direction="up" delay={0.1}>

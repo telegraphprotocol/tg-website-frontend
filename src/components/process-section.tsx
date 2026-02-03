@@ -36,7 +36,7 @@ export function ProcessSection() {
   ]
 
   return (
-    <section id="how-it-works" className="px-4 py-20">
+    <section id="how-it-works" className="px-4 lg:py-24 py-20">
       <div className="container mx-auto max-w-7xl">
         <AnimateOnScroll direction="up" delay={0.1}>
           <div className="mb-12 text-center max-w-3xl mx-auto">

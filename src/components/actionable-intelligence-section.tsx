@@ -12,7 +12,7 @@ import { AnimateOnScroll } from "@/components/animate-on-scroll"
 
 export function ActionableIntelligenceSection() {
   return (
-    <section id="actionable-intelligence" className="px-4 py-20">
+    <section id="actionable-intelligence" className="px-4 lg:py-24 py-20">
       <div className="container mx-auto max-w-7xl">
         <AnimateOnScroll direction="up" delay={0.1}>
           <div className="mb-12 text-center">
