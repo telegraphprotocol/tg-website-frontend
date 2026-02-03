@@ -94,8 +94,30 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   --radius: var(--radius);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-instrument-sans);
+  --font-space-grotesk: var(--font-space-grotesk);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+}
+
+@layer utilities {
+  .font-space-grotesk {
+    font-family: var(--font-space-grotesk), sans-serif;
+  }
+  .drop-shadow-sm {
+    filter: drop-shadow(0 5px 4px rgb(0 0 0 / 0.03));
+  }
+  .drop-shadow-md {
+    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.05)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.05));
+  }
+  .drop-shadow-lg {
+    filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.05)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.05));
+  }
+  .drop-shadow-xl {
+    filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.05)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.05));
+  }
 }
 
 @layer base {
@@ -104,6 +126,5 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: Arial, Helvetica, sans-serif;
   }
 }

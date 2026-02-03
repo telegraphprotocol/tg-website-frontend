@@ -32,14 +32,14 @@ export function Navbar() {
   const allLinks = [...leftLinks, ...rightLinks]
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+    <nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <div className="flex flex-1 items-center justify-end gap-8 pr-8 md:flex hidden">
           {leftLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground px-2"
             >
               {link.label}
             </Link>
@@ -48,14 +48,14 @@ export function Navbar() {
 
         <Link
           href="/"
-          className="flex items-center gap-2 cursor-pointer group transition-all duration-200"
+          className="flex items-center gap-2 cursor-pointer group hover:scale-105 transition-all duration-200 px-2"
         >
           <Image
             src="/logo.png"
             alt="Telegraph Logo"
             width={24}
             height={24}
-            className="h-6 w-6 group-hover:scale-110 transition-all duration-200"
+            className="h-6 w-6"
           />
           <span className="text-base font-semibold text-foreground">
             Telegraph
@@ -67,10 +67,10 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors ${
+              className={`text-sm font-medium transition-colors px-2 ${
                 pathname === link.href
-                  ? "text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "text-foreground/80"
+                  : "text-foreground/80 hover:text-foreground"
               }`}
             >
               {link.label}
