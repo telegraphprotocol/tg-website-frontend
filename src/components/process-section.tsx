@@ -1,4 +1,4 @@
-import { Zap, Plug, Route, Brain, FileText, ArrowRight } from "lucide-react"
+import { Zap, Plug, Route, Brain, FileText, ArrowRight, Activity } from "lucide-react"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
@@ -31,7 +31,7 @@ export function ProcessSection() {
     {
       title: "Act",
       description: "Callback triggers market logic",
-      icon: <ArrowRight className="h-6 w-6 text-primary" />
+      icon: <Activity className="h-6 w-6 text-primary" />
     },
   ]
 

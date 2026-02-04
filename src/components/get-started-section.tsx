@@ -74,7 +74,7 @@ export function GetStartedSection() {
                   <p className="mb-4 text-base text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300 lg:max-w-sm">{item.description}</p>
                 </div>
                 <Button variant="secondary" size="section-secondary" className="w-fit group" asChild>
-                  <Link href={item.link}>
+                  <Link href={item.link} target="_blank">
                     {item.linkText}
                     <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
                   </Link>
