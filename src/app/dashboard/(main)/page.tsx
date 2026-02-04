@@ -39,7 +39,7 @@ export default function AdminPage() {
     if (typeof window !== "undefined") {
       const token = localStorage.getItem("admin_token")
       if (!token) {
-        router.push("/admin/login")
+        router.push("/dashboard/login")
       } else {
         setIsCheckingAuth(false)
       }

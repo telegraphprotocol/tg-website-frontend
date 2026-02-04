@@ -30,7 +30,7 @@ export default function LoginPage() {
 
       if (response.data.access_token) {
         localStorage.setItem("admin_token", response.data.access_token)
-        router.push("/admin")
+        router.push("/dashboard")
       }
     } catch (err: any) {
       setError(err.response?.data?.message || "Invalid credentials")

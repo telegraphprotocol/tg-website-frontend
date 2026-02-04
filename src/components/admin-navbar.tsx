@@ -25,13 +25,13 @@ export function AdminNavbar() {
 
         <div className="flex items-center lg:gap-8 gap-4">
           <Link
-            href="/admin"
+            href="/dashboard"
             className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
           >
             Subnets
           </Link>
           <Link
-            href="/admin/login"
+            href="/dashboard/login"
             onClick={() => {
               localStorage.removeItem("admin_token")
             }}
