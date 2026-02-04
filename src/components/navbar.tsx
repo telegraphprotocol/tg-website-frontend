@@ -3,7 +3,7 @@
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Menu, Plug, ArrowRight, ChevronDown, Settings, Brain, Users, Book, BookOpen, ScrollText, Hand, Zap, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -28,6 +28,7 @@ import { SiX } from "react-icons/si"
 
 export function Navbar() {
   const pathname = usePathname()
+  const router = useRouter()
   const [open, setOpen] = React.useState(false)
   const [aboutOpen, setAboutOpen] = React.useState(false)
   const [docsOpen, setDocsOpen] = React.useState(false)
@@ -54,13 +55,27 @@ export function Navbar() {
     if (href.startsWith("/#")) {
       e.preventDefault()
       const id = href.replace("/#", "")
-      const element = document.getElementById(id)
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        })
-        window.history.pushState(null, "", href)
+      
+      if (pathname !== "/") {
+        router.push(href)
+        setTimeout(() => {
+          const element = document.getElementById(id)
+          if (element) {
+            element.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            })
+          }
+        }, 100)
+      } else {
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          })
+          window.history.pushState(null, "", href)
+        }
       }
     }
   }
