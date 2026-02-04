@@ -113,7 +113,7 @@ export function UseCasesSection() {
 
         <AnimateOnScroll direction="fade" delay={0.2}>
           <div className="relative overflow-hidden rounded-3xl bg-muted relative overflow-hidden group border border-border/50 transition-all duration-300 min-h-[400px]">
-          <div className="absolute inset-0 opacity-40 scale-100">
+          <div className="absolute inset-0 opacity-30 scale-100">
             <Image
               src="/section/vector.svg"
               alt="Vector pattern"

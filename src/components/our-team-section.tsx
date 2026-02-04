@@ -2,6 +2,7 @@ import { Users } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
 import { AnimateOnScroll } from "@/components/animate-on-scroll"
+import Image from "next/image"
 
 export function OurTeamSection() {
   const teamMembers = [
@@ -9,14 +10,14 @@ export function OurTeamSection() {
       name: "Mark Basa",
       role: "Founder & CEO",
       description: "TBA",
-      image: null,
+      image: "/team/mark.jpg",
     },
     {
       name: "Ahmed Ali",
       role: "Co-founder & CTO",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-      image: null,
+      image: "/team/ahmed.jpg",
     },
   ]
 
@@ -43,7 +44,9 @@ export function OurTeamSection() {
           {teamMembers.map((member, index) => (
             <AnimateOnScroll key={index} direction="up" delay={0.1 + index * 0.1}>
               <Card className="hover:translate-y-[-4px] transition-all duration-300 h-full items-start justify-start">
-              <div className="mb-4 aspect-[4/3] w-full rounded-lg bg-muted"></div>
+              <div className="mb-4 aspect-[4/3] w-full rounded-lg bg-muted relative">
+                <Image src={member.image} alt={member.name} fill className="object-cover rounded-xl" draggable={false} loading="lazy" />
+              </div>
               <h3 className="mb-1 text-lg font-medium text-foreground">
                 {member.name}
                 {member.role && (
