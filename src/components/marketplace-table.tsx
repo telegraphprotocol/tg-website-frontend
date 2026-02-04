@@ -235,19 +235,21 @@ export function MarketplaceTable() {
                 <>
                   <TableRow key={row.id} className="hover:bg-muted/50">
                     <TableCell className="font-medium">
-                      <div>
-                        <div>{row.subnetName}</div>
-                        <div className="text-sm text-muted-foreground">
-                          UID: {row.uid}
-                        </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium">{row.subnetName}{" "}
+                          <span className="text-xs text-muted-foreground border border-border/50 rounded-full py-0 px-2 w-fit">
+                          {row.uid}
+                        </span>
+                        </span>
+                        
                       </div>
                     </TableCell>
-                    <TableCell>{row.tradingVol24h}</TableCell>
-                    <TableCell>{row.signal}</TableCell>
-                    <TableCell>{row.signalVolume}</TableCell>
-                    <TableCell>{row.apiAvailability}</TableCell>
-                    <TableCell>{row.paymentMethod}</TableCell>
-                    <TableCell>{row.integrationStatus}</TableCell>
+                    <TableCell><span className="text-sm text-muted-foreground">{row.tradingVol24h}</span></TableCell>
+                    <TableCell><span className="text-sm text-muted-foreground">{row.signal}</span></TableCell>
+                    <TableCell><span className="text-sm text-muted-foreground">{row.signalVolume}</span></TableCell>
+                    <TableCell><span className="text-sm text-muted-foreground">{row.apiAvailability}</span></TableCell>
+                    <TableCell><span className="text-sm text-muted-foreground">{row.paymentMethod}</span></TableCell>
+                    <TableCell><span className="text-sm text-muted-foreground">{row.integrationStatus}</span></TableCell>
                     <TableCell>
                       <button
                         onClick={() => toggleRow(row.id)}
