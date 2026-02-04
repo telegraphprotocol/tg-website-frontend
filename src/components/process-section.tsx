@@ -78,7 +78,7 @@ export function ProcessSection() {
 
           <AnimateOnScroll direction="right" delay={0.3}>
             <div className="relative overflow-hidden rounded-lg bg-muted relative overflow-hidden group border border-border/50">
-            <div className="absolute inset-0 opacity-70 scale-120">
+            <div className="absolute inset-0 opacity-40 scale-[1.7]">
               <Image
                 src="/section/vector.svg"
                 alt="Vector pattern"
