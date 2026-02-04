@@ -306,7 +306,7 @@ export function Navbar() {
             className="bg-primary hover:bg-primary/90 group hidden lg:flex rounded-full pr-3 pl-5"
             asChild
           >
-            <Link href="/marketplace">
+            <Link href="/">
               Marketplace
               <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
             </Link>
@@ -451,7 +451,7 @@ export function Navbar() {
                     asChild
                   >
                     <Link
-                      href="/marketplace"
+                      href="/"
                       onClick={() => setOpen(false)}
                     >
                       <Plug className="h-4 w-4" />
