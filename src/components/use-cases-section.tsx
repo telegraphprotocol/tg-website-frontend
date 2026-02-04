@@ -18,28 +18,28 @@ export function UseCasesSection() {
       subtitle: "Predictive weather risk automation.",
       description:
         "A gold mine faces extreme weather that can shut down operations and delay shipments. Zeus is a decentralized weather forecasting network built for low-latency, production-grade delivery. Telegraph connects this intelligence to the mine, allowing operators to buy current signals (e.g., “flood risk,” “hail probability”) or commission Forecast Subnet miners to predict specific site risks. A miner doesn't just “report the weather”; they ingest Zeus data to output a specific “Shutdown Probability” for that mine's exact coordinates. Telegraph verifies this prediction, stamps it with an on-chain receipt (confidence, cost, timestamp), and delivers it via Port contracts. This feeds the mine’s automation systems, allowing operators to reposition equipment and reroute logistics before the weather becomes a shutdown event.",
-      image: "/section/globe.png",
+      image: "/use-cases/1.png",
     },
     {
       icon: TrendingUp,
       title: "Predict the Value with Score",
       subtitle: "Verifiable asset valuation growth",
       description: "A football club trying to sell media rights has a problem: it invests heavily in talent and brand, but it’s hard to prove that value before it shows up in the financial results. Score is a computer-vision network that turns match footage into structured performance data. Telegraph delivers these live signals, but more importantly, allows the club to query Forecast miners for verifiable projections like “Audience Growth Probability,” “Media-Rights Uplift,” or “Valuation Delta.” Instead of vague “brand” claims, miners compete to predict quantifiable metrics (e.g., “Probability of 20% viewership growth next quarter”). Telegraph publishes these verified forecasts on-chain, giving the club auditable, time-stamped evidence of asset growth to justify higher pricing for IP rights and sponsorship inventory.",
-      image: "/section/score.png",
+      image: "/use-cases/2.png",
     },
     {
       icon: Brain,
       title: "Predict the Headlines with Bitmind",
       subtitle: "Real-time truth signal hedging",
       description: "A hedge fund faces massive drawdown risk when synthetic war footage or political deepfakes go viral. Bitmind is a synthetic media detection network that identifies AI-generated content. Telegraph allows the fund to instantly consume these “Truth Signals.” When a suspicious video hits the market, the fund doesn't just guess; they query the network for a “Deepfake Probability Score.” Miners run targeted verification models on the specific clip, and Telegraph delivers the signed, verified result (e.g., “99.8% Artificial”) to the fund’s trading desk in real-time. This allows the algorithm to hedge positions or take the counter-trade against the panic while the market is still reacting to the noise.",
-      image: "/section/bitmind.png",
+      image: "/use-cases/3.png",
     },
     {
       icon: Coins,
       title: "Signal-Backed Stablecoin",
       subtitle: "Predictive stablecoin risk management",
       description: "A stablecoin issuer’s biggest threat is market panic that moves faster than price oracles. With Telegraph, the protocol moves from reactive to predictive. The issuer commissions Forecast miners to produce a live “Depeg Risk Probability” signal. Miners aggregate data from multiple subnets—liquidity shifts, social sentiment (FUD), and collateral volatility—to predict stress events before they break the peg. Telegraph delivers this verified probability on-chain, allowing the stablecoin’s smart contracts to automatically adjust risk controls—tightening collateral ratios, raising fees, or rebalancing reserves—based on verified intelligence rather than lagging price moves.",
-      image: "/section/stablecoin.png",
+      image: "/use-cases/4.png",
     },
   ]
 
@@ -77,15 +77,14 @@ export function UseCasesSection() {
             />
           </div>
           */}
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 p-8">
+        <div className="grid grid-cols-1 lg:gap-12 gap-6 lg:grid-cols-2 lg:p-8 p-0 items-start justify-center">
           <div className="flex items-center justify-center">
-            <div className="w-full rounded-lg bg-muted p-8 text-center relative overflow-hidden">
+            <div className="w-full max-w-xs rounded-lg bg-muted p-4 sm:p-8 text-center relative overflow-hidden aspect-square">
               <Image
                 src={activeCase.image}
                 alt={activeCase.title}
-                width={800}
-                height={800}
-                className="object-cover absolute inset-0"
+                fill
+                className="object-contain"
               />
             </div>
           </div>
