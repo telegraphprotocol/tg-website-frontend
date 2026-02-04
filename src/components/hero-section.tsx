@@ -35,7 +35,7 @@ export function HeroSection() {
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
               size="hero-primary"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 group"
+              className="bg-primary hover:bg-primary/90 group"
               asChild
             >
               <Link href="/#integrate">

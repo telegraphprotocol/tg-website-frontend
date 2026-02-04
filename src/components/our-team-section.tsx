@@ -18,12 +18,6 @@ export function OurTeamSection() {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
       image: null,
     },
-    {
-      name: "Coming Soon",
-      role: "TBA",
-      description: "TBA",
-      image: null,
-    },
   ]
 
   return (
@@ -45,10 +39,10 @@ export function OurTeamSection() {
           </div>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 max-w-2xl mx-auto">
           {teamMembers.map((member, index) => (
             <AnimateOnScroll key={index} direction="up" delay={0.1 + index * 0.1}>
-              <Card className="hover:translate-y-[-4px] transition-all duration-300">
+              <Card className="hover:translate-y-[-4px] transition-all duration-300 h-full items-start justify-start">
               <div className="mb-4 aspect-[4/3] w-full rounded-lg bg-muted"></div>
               <h3 className="mb-1 text-lg font-medium text-foreground">
                 {member.name}
