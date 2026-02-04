@@ -24,6 +24,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { SiX } from "react-icons/si"
 
 export function Navbar() {
   const pathname = usePathname()
@@ -231,7 +232,7 @@ export function Navbar() {
                 asChild
               >
                 <button type="button">
-                  Docs & Socials
+                   Socials
                   <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${docsOpen ? 'rotate-180' : ''}`} />
                 </button>
               </DropdownMenuTrigger>
@@ -255,41 +256,12 @@ export function Navbar() {
             >
               <DropdownMenuItem asChild>
                 <Link 
-                  href="/#docs" 
-                  onClick={(e) => {
-                    handleSmoothScroll(e, "/#docs")
-                    setDocsOpen(false)
-                  }}
+                  href="https://x.com/Telegraphprotoc" 
+                  target="_blank"
                   className="cursor-pointer"
                 >
-                  <BookOpen className="h-4 w-4 text-primary" />
-                  Guide
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link 
-                  href="/#docs" 
-                  onClick={(e) => {
-                    handleSmoothScroll(e, "/#docs")
-                    setDocsOpen(false)
-                  }}
-                  className="cursor-pointer"
-                >
-                  <ScrollText className="h-4 w-4 text-primary" />
-                  Whitepaper
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link 
-                  href="/#docs" 
-                  onClick={(e) => {
-                    handleSmoothScroll(e, "/#docs")
-                    setDocsOpen(false)
-                  }}
-                  className="cursor-pointer"
-                >
-                  <Book className="h-4 w-4 text-primary" />
-                  Document 3
+                  <SiX className="h-3 w-3 text-primary" />
+                  Twitter/X
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -297,7 +269,7 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4 z-10">
-          <Link href="/contact" className="hidden lg:flex">
+          <Link href="mailto:info@telegraphprotocop.com" className="hidden lg:flex">
             <div className="flex items-center gap-2 text-[15px] font-medium text-foreground hover:text-foreground/80 transition-colors px-2">
               Contact
             </div>
@@ -306,7 +278,7 @@ export function Navbar() {
             className="bg-primary hover:bg-primary/90 group hidden lg:flex rounded-full pr-3 pl-5"
             asChild
           >
-            <Link href="/">
+            <Link href="/marketplace">
               Marketplace
               <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
             </Link>
@@ -345,7 +317,7 @@ export function Navbar() {
                       About
                     </AccordionTrigger>
                     <AccordionContent className="pb-0">
-                      <div className="flex flex-col gap-1 pl-4">
+                      <div className="flex flex-col gap-1 pl-4 text-muted-foreground">
                         <SheetClose asChild>
                           <Link
                             href="/#home"
@@ -400,44 +372,18 @@ export function Navbar() {
                   
                   <AccordionItem value="docs" className="border-none mt-3.5">
                     <AccordionTrigger className="py-2 px-4 hover:no-underline">
-                      Docs & Socials
+                       Socials
                     </AccordionTrigger>
                     <AccordionContent className="pb-0">
-                      <div className="flex flex-col gap-1 pl-4">
+                      <div className="flex flex-col gap-1 pl-4 text-muted-foreground">
                         <SheetClose asChild>
                           <Link
-                            href="/#docs"
-                            onClick={(e) => {
-                              handleSmoothScroll(e, "/#docs")
-                              setOpen(false)
-                            }}
+                            href="https://x.com/Telegraphprotoc"
+                            target="_blank"
+                           
                             className="flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
                           >
-                            Document 1
-                          </Link>
-                        </SheetClose>
-                        <SheetClose asChild>
-                          <Link
-                            href="/#docs"
-                            onClick={(e) => {
-                              handleSmoothScroll(e, "/#docs")
-                              setOpen(false)
-                            }}
-                            className="flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
-                          >
-                            Document 2
-                          </Link>
-                        </SheetClose>
-                        <SheetClose asChild>
-                          <Link
-                            href="/#docs"
-                            onClick={(e) => {
-                              handleSmoothScroll(e, "/#docs")
-                              setOpen(false)
-                            }}
-                            className="flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
-                          >
-                            Document 3
+                            Twitter/X
                           </Link>
                         </SheetClose>
                       </div>
@@ -451,7 +397,7 @@ export function Navbar() {
                     asChild
                   >
                     <Link
-                      href="/"
+                      href="/marketplace"
                       onClick={() => setOpen(false)}
                     >
                       <Plug className="h-4 w-4" />

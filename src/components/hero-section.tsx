@@ -38,7 +38,7 @@ export function HeroSection() {
               className="bg-primary hover:bg-primary/90 group"
               asChild
             >
-              <Link href="/#integrate">
+              <Link href="/marketplace">
               <Plug className="h-4 w-4" />
                 Integrate Signals
                 <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
@@ -50,7 +50,7 @@ export function HeroSection() {
               asChild
               className="group"
             >
-              <Link href="/">
+              <Link href="https://telegraph-2.gitbook.io/telegraph" target="_blank">
                 <Radio className="h-4 w-4" />
                 Explore Signal Directory
                 <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
@@ -63,7 +63,7 @@ export function HeroSection() {
               asChild
               className="group"
             >
-              <Link href="/#nodes">
+              <Link href="https://telegraph-2.gitbook.io/telegraph/node-overview/registering-a-telegraph-node" target="_blank">
                 <Settings className="h-4 w-4" />
                 Run a Node
                 <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />

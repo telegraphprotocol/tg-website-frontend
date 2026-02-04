@@ -66,7 +66,7 @@ export function SignalsSection() {
               </p>
            
               <Button variant="secondary" size="section-secondary" className="w-fit lg:mt-2 mt-4 group" asChild>
-                <Link href="/#contact">
+                <Link href="mailto:info@telegraphprotocop.com">
                   Contact us
                   <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
                 </Link>

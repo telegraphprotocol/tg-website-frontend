@@ -112,7 +112,7 @@ export function UseCasesSection() {
         </AnimateOnScroll>
 
         <AnimateOnScroll direction="fade" delay={0.2}>
-          <div className="relative overflow-hidden rounded-3xl bg-muted relative overflow-hidden group border border-border/50 transition-all duration-300 min-h-[400px]">
+          <div className="relative overflow-hidden rounded-3xl bg-muted relative overflow-hidden group lg:border lg:border-border/50 transition-all duration-300 min-h-[400px]">
           <div className="absolute inset-0 opacity-30 scale-100">
             <Image
               src="/section/vector.svg"
@@ -167,12 +167,12 @@ export function UseCasesSection() {
                 className="relative text-left group cursor-pointer"
               >
                 <div
-                  className={`h-[2px] w-full lg:mb-2 transition-all duration-300 ${
-                    activeTab === index ? "bg-primary" : "bg-muted group-hover:bg-foreground/10"
+                  className={`lg:h-[2px] h-[0px] w-full lg:mb-2 transition-all duration-300 rounded-full${
+                    activeTab === index ? "lg:bg-transparent bg-primary" : "lg:bg-transparent bg-muted lg:group-hover:bg-foreground/10"
                   }`}
                 />
-                <div className={cn("flex flex-col gap-1 lg:py-2 py-4 lg:px-0 px-2", activeTab === index ? "lg:bg-transparent bg-primary/5" : "lg:bg-transparent")}>
-                  <span className={cn("text-sm lg:font-semibold font-medium", activeTab === index ? "text-foreground" : "text-foreground/70 group-hover:text-foreground/90 transition-all duration-300")}>
+                <div className={cn("flex flex-col gap-1 lg:py-2 py-4 lg:px-0 px-2 lg:rounded-none rounded-full", activeTab === index ? "lg:bg-transparent bg-primary/10" : "lg:bg-transparent")}>
+                  <span className={cn("text-sm lg:font-semibold font-medium lg:text-left text-center", activeTab === index ? "text-foreground" : "text-foreground/70 group-hover:text-foreground/90 transition-all duration-300")}>
                     {useCase.title}
                   </span>
                   <span className="text-sm text-muted-foreground line-clamp-1 lg:block hidden">

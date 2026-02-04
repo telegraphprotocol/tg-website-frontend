@@ -48,7 +48,7 @@ export function ActionableIntelligenceSection() {
         <div className="grid grid-cols-1 lg:gap-12 gap-6 lg:grid-cols-2">
           <AnimateOnScroll direction="left" delay={0.2}>
             <div>
-              <h3 className="mb-8 lg:text-xl text-lg font-medium text-foreground">
+              <h3 className="mb-8 lg:text-xl text-lg font-medium text-foreground lg:text-left text-center">
                 A signal is a verified unit of intelligence:
               </h3>
               <div className="grid grid-cols-2 gap-6">
@@ -115,7 +115,7 @@ export function ActionableIntelligenceSection() {
 
           <AnimateOnScroll direction="right" delay={0.2}>
             <div>
-              <h3 className="mb-8 lg:text-xl text-lg font-medium text-foreground">
+              <h3 className="mb-8 lg:text-xl text-lg font-medium text-foreground lg:text-left text-center">
                 Signals are:
               </h3>
               <div className="grid grid-cols-2 gap-6">
@@ -150,7 +150,7 @@ export function ActionableIntelligenceSection() {
                   </div>
                 </AnimateOnScroll>
 
-                <AnimateOnScroll direction="up" delay={0.5} className="lg:col-span-2">
+                <AnimateOnScroll direction="up" delay={0.5} className="col-span-2">
                   <div className="flex flex-row gap-4 items-center hover:translate-y-[-3px] transition-all duration-200">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-card border drop-shadow-sm flex-shrink-0">
                       <FileText className="h-6 w-6 text-primary flex-shrink-0" />

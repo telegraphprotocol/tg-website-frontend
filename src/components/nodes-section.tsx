@@ -54,7 +54,7 @@ export function NodesSection() {
           </AnimateOnScroll>
 
           <AnimateOnScroll direction="up" delay={0.2}>
-            <div className="flex flex-col gap-1 lg:max-w-md lg:text-right text-left justify-end items-center lg:items-end">
+            <div className="flex flex-col gap-1 lg:max-w-md lg:text-right text-center justify-end items-center lg:items-end">
               <p className="text-muted-foreground">
                 Our open-source nodes power the Telegraph protocol.
               </p>
@@ -66,7 +66,7 @@ export function NodesSection() {
                 Want to buy and run a node?
               </p>
               <Button variant="secondary" size="section-secondary" className="w-fit lg:mt-2 mt-4 group" asChild>
-                <Link href="/#contact">
+                <Link href="mailto:info@telegraphprotocop.com">
                   Contact us
                   <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
                 </Link>

@@ -110,7 +110,7 @@ export function Footer() {
               Privacy Policy
             </Link>
             <Link
-              href="/contact"
+              href="mailto:info@telegraphprotocop.com"
               className="transition-colors hover:text-foreground"
             >
               Contact

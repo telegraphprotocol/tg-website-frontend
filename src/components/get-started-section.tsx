@@ -12,21 +12,24 @@ export function GetStartedSection() {
       title: "Guide",
       description:
         "Start building in minutes. Simple steps to launch your project smoothly.",
-        link: "/guide",
+      linkText: "Read the documents",
+      link: "https://telegraph-2.gitbook.io/telegraph",
     },
     {
       icon: Network,
       title: "Node",
       description:
         "Run your own node. No signup needed — earn rewards, support the network.",
-        link: "/node",
+      linkText: "Run a Node",
+      link: "https://telegraph-2.gitbook.io/telegraph/node-overview/registering-a-telegraph-node",
     },
     {
       icon: Users,
       title: "Community",
       description:
         "Join the network today. Build, connect, and grow with a global community.",
-        link: "/community",
+      linkText: "Join the community",
+      link: "https://x.com/Telegraphprotoc",
     },
   ]
 
@@ -72,7 +75,7 @@ export function GetStartedSection() {
                 </div>
                 <Button variant="secondary" size="section-secondary" className="w-fit group" asChild>
                   <Link href={item.link}>
-                    {item.title}
+                    {item.linkText}
                     <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
                   </Link>
                 </Button>

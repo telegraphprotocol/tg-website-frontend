@@ -1,8 +1,12 @@
 import { Users } from "lucide-react"
+import { SiX } from "react-icons/si"
+import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { LuGithub } from "react-icons/lu";
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
 import { AnimateOnScroll } from "@/components/animate-on-scroll"
 import Image from "next/image"
+import Link from "next/link"
 
 export function OurTeamSection() {
   const teamMembers = [
@@ -11,6 +15,7 @@ export function OurTeamSection() {
       role: "Founder & CEO",
       description: "TBA",
       image: "/team/mark.jpg",
+      xLink: "https://x.com/subnetai",
     },
     {
       name: "Ahmed Ali",
@@ -18,6 +23,9 @@ export function OurTeamSection() {
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
       image: "/team/ahmed.jpg",
+      xLink: "https://x.com/1xahmedali",
+      githubLink: "https://github.com/1xahmed",
+      linkedinLink: "https://www.linkedin.com/in/1xahmed/",
     },
   ]
 
@@ -56,9 +64,26 @@ export function OurTeamSection() {
                   </span>
                 )}
               </h3>
-              <p className="text-sm text-muted-foreground lg:min-h-[42px]">
+              <p className="text-sm text-muted-foreground lg:min-h-[42px] h-full">
                 {member.description}
               </p>
+              <div className="flex items-center gap-2 justify-end w-full">
+                {member.xLink && (
+                <Link href={member.xLink} target="_blank" className="text-muted-foreground/50 hover:text-primary transition-colors duration-300">
+                  <SiX className="h-3.5 w-3.5" />
+                </Link>
+                )}
+                {member.githubLink && (
+                  <Link href={member.githubLink} target="_blank" className="text-muted-foreground/50 hover:text-primary transition-colors duration-300">
+                    <LuGithub className="h-4 w-4" />
+                  </Link>
+                )}
+                {member.linkedinLink && (
+                  <Link href={member.linkedinLink} target="_blank" className="text-muted-foreground/50 hover:text-primary transition-colors duration-300">
+                    <FiLinkedin className="h-4 w-4" />
+                  </Link>
+                )}
+              </div>
             </Card>
             </AnimateOnScroll>
           ))}
