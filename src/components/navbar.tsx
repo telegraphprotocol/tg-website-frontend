@@ -4,7 +4,7 @@ import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { Menu, Plug, ArrowRight, ChevronDown } from "lucide-react"
+import { Menu, Plug, ArrowRight, ChevronDown, Settings, Brain, Users, Book, BookOpen, ScrollText, Hand, Zap, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -91,8 +91,8 @@ export function Navbar() {
               onClick={(e) => handleSmoothScroll(e, link.href)}
               className={`text-[15px] font-medium transition-colors px-2 ${
                 pathname === link.href
-                  ? "text-foreground/80"
-                  : "text-foreground/80 hover:text-foreground"
+                  ? "text-foreground"
+                  : "text-foreground hover:text-foreground/80"
               }`}
             >
               {link.label}
@@ -116,7 +116,7 @@ export function Navbar() {
               }}
             >
               <DropdownMenuTrigger 
-                className="text-[15px] font-medium text-foreground/80 hover:text-foreground transition-colors px-2 flex items-center gap-1 outline-none"
+                className="text-[15px] font-medium text-foreground hover:text-foreground/80 transition-colors px-2 flex items-center gap-1 outline-none"
                 asChild
               >
                 <button type="button">
@@ -126,7 +126,7 @@ export function Navbar() {
               </DropdownMenuTrigger>
             </div>
             <DropdownMenuContent 
-              className="mt-1"
+              className="mt-3"
               align="center"
               onMouseEnter={() => {
                 if (aboutTimeoutRef.current) {
@@ -144,26 +144,28 @@ export function Navbar() {
             >
               <DropdownMenuItem asChild>
                 <Link
-                  href="/#home"
+                  href="/#actionable-intelligence"
                   onClick={(e) => {
-                    handleSmoothScroll(e, "/#home")
+                    handleSmoothScroll(e, "/#actionable-intelligence")
                     setAboutOpen(false)
                   }}
                   className="cursor-pointer"
                 >
-                  About
+                  <Zap className="h-4 w-4 text-primary" />
+                  Actionable Intelligence
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
-                  href="/#our-team"
+                  href="/#the-process"
                   onClick={(e) => {
-                    handleSmoothScroll(e, "/#our-team")
+                    handleSmoothScroll(e, "/#how-it-works")
                     setAboutOpen(false)
                   }}
                   className="cursor-pointer"
                 >
-                  Our Team
+                  <Settings className="h-4 w-4 text-primary" />
+                  The Process
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
@@ -175,19 +177,34 @@ export function Navbar() {
                   }}
                   className="cursor-pointer"
                 >
+                  <Brain className="h-4 w-4 text-primary" />
                   Use Cases
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
-                  href="/#how-it-works"
+                  href="/#our-team"
                   onClick={(e) => {
-                    handleSmoothScroll(e, "/#how-it-works")
+                    handleSmoothScroll(e, "/#our-team")
                     setAboutOpen(false)
                   }}
                   className="cursor-pointer"
                 >
-                  How it Works
+                  <Users className="h-4 w-4 text-primary" />
+                  Our Team
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/#get-started"
+                  onClick={(e) => {
+                    handleSmoothScroll(e, "/#get-started")
+                    setAboutOpen(false)
+                  }}
+                  className="cursor-pointer"
+                >
+                  <Hand className="h-4 w-4 text-primary" />
+                  Get Started
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -210,7 +227,7 @@ export function Navbar() {
               }}
             >
               <DropdownMenuTrigger 
-                className="text-[15px] font-medium text-foreground/80 hover:text-foreground transition-colors px-2 flex items-center gap-1 outline-none"
+                className="text-[15px] font-medium text-foreground hover:text-foreground/80 transition-colors px-2 flex items-center gap-1 outline-none"
                 asChild
               >
                 <button type="button">
@@ -220,7 +237,7 @@ export function Navbar() {
               </DropdownMenuTrigger>
             </div>
             <DropdownMenuContent 
-            className="mt-1"
+            className="mt-3"
               align="center"
               onMouseEnter={() => {
                 if (docsTimeoutRef.current) {
@@ -245,6 +262,7 @@ export function Navbar() {
                   }}
                   className="cursor-pointer"
                 >
+                  <BookOpen className="h-4 w-4 text-primary" />
                   Guide
                 </Link>
               </DropdownMenuItem>
@@ -257,7 +275,8 @@ export function Navbar() {
                   }}
                   className="cursor-pointer"
                 >
-                 Whitepaper
+                  <ScrollText className="h-4 w-4 text-primary" />
+                  Whitepaper
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
@@ -269,6 +288,7 @@ export function Navbar() {
                   }}
                   className="cursor-pointer"
                 >
+                  <Book className="h-4 w-4 text-primary" />
                   Document 3
                 </Link>
               </DropdownMenuItem>
@@ -277,6 +297,11 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4 z-10">
+          <Link href="/contact" className="hidden lg:flex">
+            <div className="flex items-center gap-2 text-[15px] font-medium text-foreground hover:text-foreground/80 transition-colors px-2">
+              Contact
+            </div>
+          </Link>
           <Button
             className="bg-primary hover:bg-primary/90 group hidden lg:flex rounded-full pr-3 pl-5"
             asChild
@@ -373,7 +398,7 @@ export function Navbar() {
                     </AccordionContent>
                   </AccordionItem>
                   
-                  <AccordionItem value="docs" className="border-none">
+                  <AccordionItem value="docs" className="border-none mt-3.5">
                     <AccordionTrigger className="py-2 px-4 hover:no-underline">
                       Docs & Socials
                     </AccordionTrigger>
@@ -426,11 +451,11 @@ export function Navbar() {
                     asChild
                   >
                     <Link
-                      href="/#integrate"
+                      href="/marketplace"
                       onClick={() => setOpen(false)}
                     >
                       <Plug className="h-4 w-4" />
-                      Integrate Signals
+                      Marketplace
                       <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
                     </Link>
                   </Button>

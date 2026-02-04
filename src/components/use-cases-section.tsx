@@ -63,7 +63,7 @@ export function UseCasesSection() {
           setTimeout(() => {
             setActiveTab((prev) => (prev + 1) % useCases.length)
             setOpacity(1)
-          }, 500)
+          }, 300)
         }, 4000)
       }
     }
@@ -89,7 +89,7 @@ export function UseCasesSection() {
     setTimeout(() => {
       setActiveTab(index)
       setOpacity(1)
-    }, 500)
+    }, 300)
   }
 
   return (
@@ -124,7 +124,7 @@ export function UseCasesSection() {
         <div className="grid grid-cols-1 lg:gap-12 gap-6 lg:grid-cols-2 lg:p-8 p-0 items-start justify-center relative z-10">
           <div className="flex items-center justify-center">
             <div className="w-full max-w-xs p-4 sm:p-8 text-center relative overflow-hidden aspect-square">
-              <div className=" transition-opacity duration-500">
+              <div className=" transition-opacity duration-300">
                 <Image
                   src={activeCase.image}
                   alt={activeCase.title}
@@ -136,7 +136,7 @@ export function UseCasesSection() {
           </div>
 
           <div className="space-y-6">
-            <div className="transition-opacity duration-500" style={{ opacity }}>
+            <div className="transition-opacity duration-300" style={{ opacity }}>
               <Card>
                 <div className="mb-1 flex items-start gap-4">
                   <div className="flex flex-col gap-2">

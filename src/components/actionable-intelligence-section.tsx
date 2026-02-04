@@ -150,8 +150,8 @@ export function ActionableIntelligenceSection() {
                   </div>
                 </AnimateOnScroll>
 
-                <AnimateOnScroll direction="up" delay={0.5}>
-                  <div className="flex flex-row gap-4 items-center col-span-2 hover:translate-y-[-3px] transition-all duration-200">
+                <AnimateOnScroll direction="up" delay={0.5} className="lg:col-span-2">
+                  <div className="flex flex-row gap-4 items-center hover:translate-y-[-3px] transition-all duration-200">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-card border drop-shadow-sm flex-shrink-0">
                       <FileText className="h-6 w-6 text-primary flex-shrink-0" />
                     </div>

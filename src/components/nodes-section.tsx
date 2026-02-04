@@ -1,11 +1,15 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Network, ArrowRight } from "lucide-react"
 import { AnimateOnScroll } from "@/components/animate-on-scroll"
 
 export function NodesSection() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(0)
   const nodeRunners = [
     {
       name: "Tao.com",
@@ -88,25 +92,42 @@ export function NodesSection() {
         </AnimateOnScroll>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:grid-cols-4 relative z-20">
-          {nodeRunners.map((runner, index) => (
-            <AnimateOnScroll key={index} direction="up" delay={0.1 + index * 0.1}>
-              <div className="flex flex-col gap-4 group relative z-20">
-                <div className="flex flex-col items-center lg:items-start gap-4 lg:text-left text-center">
-                  <div
-                    className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full ${runner.logoBg} text-background drop-shadow-md group-hover:bg-primary transition-all duration-300`}
-                  >
-                    <span className="text-lg font-semibold">{runner.logoText}</span>
+          {nodeRunners.map((runner, index) => {
+            const isHovered = hoveredIndex === index
+            return (
+              <AnimateOnScroll key={index} direction="up" delay={0.1 + index * 0.1}>
+                <div
+                  className="flex flex-col gap-4 group relative z-20"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(0)}
+                >
+                  <div className="flex flex-col items-center lg:items-start gap-4 lg:text-left text-center">
+                    <div
+                      className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full ${runner.logoBg} text-background drop-shadow-md transition-all duration-300 ${
+                        isHovered ? "bg-primary" : ""
+                      }`}
+                    >
+                      <span className="text-lg font-semibold">{runner.logoText}</span>
+                    </div>
+                    <h3
+                      className={`text-xl font-medium transition-colors duration-300 ${
+                        isHovered ? "text-primary" : "text-foreground"
+                      }`}
+                    >
+                      {runner.name}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-medium text-foreground group-hover:text-primary transition-colors duration-300">
-                    {runner.name}
-                  </h3>
+                  <p
+                    className={`mb-4 text-base transition-colors duration-300 text-center lg:text-left ${
+                      isHovered ? "text-foreground/80" : "text-muted-foreground"
+                    }`}
+                  >
+                    {runner.description}
+                  </p>
                 </div>
-                <p className="mb-4 text-base text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300 text-center lg:text-left">
-                  {runner.description}
-                </p>
-              </div>
-            </AnimateOnScroll>
-          ))}
+              </AnimateOnScroll>
+            )
+          })}
         </div>
       </div>
     </section>

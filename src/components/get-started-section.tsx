@@ -1,7 +1,9 @@
 
 import { Badge } from "@/components/ui/badge"
-import {  BookOpen, Network, Users, Hand } from "lucide-react"
+import {  BookOpen, Network, Users, Hand, ArrowRight } from "lucide-react"
 import { AnimateOnScroll } from "@/components/animate-on-scroll"
+import { Button } from "./ui/button"
+import Link from "next/link"
 
 export function GetStartedSection() {
   const items = [
@@ -10,18 +12,21 @@ export function GetStartedSection() {
       title: "Guide",
       description:
         "Start building in minutes. Simple steps to launch your project smoothly.",
+        link: "/guide",
     },
     {
       icon: Network,
       title: "Node",
       description:
         "Run your own node. No signup needed — earn rewards, support the network.",
+        link: "/node",
     },
     {
       icon: Users,
       title: "Community",
       description:
         "Join the network today. Build, connect, and grow with a global community.",
+        link: "/community",
     },
   ]
 
@@ -65,6 +70,12 @@ export function GetStartedSection() {
                   </h3>
                   <p className="mb-4 text-base text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300 lg:max-w-sm">{item.description}</p>
                 </div>
+                <Button variant="secondary" size="section-secondary" className="w-fit group" asChild>
+                  <Link href={item.link}>
+                    {item.title}
+                    <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
+                  </Link>
+                </Button>
               </div>
               </AnimateOnScroll>
             )
