@@ -164,7 +164,7 @@ export function UseCasesSection() {
                 onClick={() => handleTabChange(index)}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                className="relative text-left group"
+                className="relative text-left group cursor-pointer"
               >
                 <div
                   className={`h-[2px] w-full lg:mb-2 transition-all duration-300 ${
