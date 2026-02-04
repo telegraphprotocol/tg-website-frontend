@@ -4,7 +4,7 @@ import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
-import { Menu, Plug, ArrowRight, ChevronDown, Settings, Brain, Users, Book, BookOpen, ScrollText, Hand, Zap, Mail } from "lucide-react"
+import { Menu, ArrowRight, ChevronDown, Settings, Brain, Users, Hand, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -415,8 +415,7 @@ export function Navbar() {
                       href="/marketplace"
                       onClick={() => setOpen(false)}
                     >
-                      <Plug className="h-4 w-4" />
-                      Marketplace
+                       Marketplace
                       <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
                     </Link>
                   </Button>

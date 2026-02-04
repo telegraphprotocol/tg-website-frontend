@@ -76,7 +76,7 @@ export function NodesSection() {
         </div>
 
         <AnimateOnScroll direction="fade" delay={0.3}>
-          <div className="relative my-20 flex items-center justify-center -bottom-28 pointer-events-none lg:block hidden">
+          <div className="relative my-24 flex items-center justify-center -bottom-24 pointer-events-none lg:block hidden">
             <div className="absolute inset-0 flex items-center justify-center">
               <Image
                 src="/section/globe.png"
