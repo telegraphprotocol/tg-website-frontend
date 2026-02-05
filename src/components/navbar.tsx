@@ -26,6 +26,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { SiX } from "react-icons/si"
+import { ModeToggle } from "./mode-toggle"
 
 export function Navbar() {
   const pathname = usePathname()
@@ -299,11 +300,16 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4 z-10">
+          {/*
           <Link href="mailto:info@telegraphprotocop.com" className="hidden lg:flex">
             <div className="flex items-center gap-2 text-[15px] font-medium text-foreground hover:text-foreground/80 transition-colors px-2">
               Contact
             </div>
           </Link>
+          */}
+          <div className="hidden lg:flex">
+            <ModeToggle/>
+          </div>
           <Button
             className="bg-primary hover:bg-primary/90 group hidden lg:flex rounded-full pr-3 pl-5"
             asChild
@@ -316,7 +322,7 @@ export function Navbar() {
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="lg:hidden">
+              <Button variant="outline" size="icon" className="lg:hidden w-8 h-8">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
@@ -419,19 +425,24 @@ export function Navbar() {
                   </AccordionItem>
                 </Accordion>
                 <SheetClose asChild>
-                  <Button
-                    size="hero-primary"
-                    className="bg-primary hover:bg-primary/90 group mt-4 h-11 text-base mx-2"
-                    asChild
-                  >
-                    <Link
-                      href="/marketplace"
-                      onClick={() => setOpen(false)}
+                  <div className="flex flex-col lg:hidden">
+                    <Button
+                      size="hero-primary"
+                      className="bg-primary hover:bg-primary/90 group mt-4 h-11 text-base mx-2"
+                      asChild
                     >
-                       Marketplace
-                      <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
-                    </Link>
-                  </Button>
+                      <Link
+                        href="/marketplace"
+                        onClick={() => setOpen(false)}
+                      >
+                        Marketplace
+                        <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
+                      </Link>
+                    </Button>
+                    <div className="flex lg:hidden mt-4 justify-center">
+                      <ModeToggle/>
+                    </div>
+                  </div>
                 </SheetClose>
               </div>
             </SheetContent>
