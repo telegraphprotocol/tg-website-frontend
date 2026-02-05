@@ -55,11 +55,11 @@ export function ProcessSection() {
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 overflow-hidden">
           <AnimateOnScroll direction="left" delay={0.2}>
-            <div className="space-y-8">
+            <div className="lg:space-y-8 space-y-6">
               {steps.map((step, index) => (
                 <AnimateOnScroll key={index} direction="up" delay={0.1 + index * 0.1}>
                   <div className="flex gap-4 w-full group">
-                <div className={cn("flex flex-row gap-4 items-center w-full", index !== steps.length - 1 && "border-b border-border/50 pb-8")}>
+                <div className={cn("flex flex-row gap-4 items-center w-full", index !== steps.length - 1 && "lg:border-b lg:border-border/50 lg:pb-8")}>
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-card border drop-shadow-sm group-hover:-translate-x-[-6px] transition-all duration-200">
                     {step.icon}
                   </div>

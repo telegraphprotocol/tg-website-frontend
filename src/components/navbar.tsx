@@ -11,6 +11,7 @@ import {
   SheetContent,
   SheetTrigger,
   SheetClose,
+  SheetTitle,
 } from "@/components/ui/sheet"
 import {
   DropdownMenu,
@@ -306,6 +307,7 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="mt-8 flex flex-col gap-4">
                 {regularLinks.map((link) => (
                   <SheetClose key={link.href} asChild>
@@ -408,7 +410,7 @@ export function Navbar() {
                 <SheetClose asChild>
                   <Button
                     size="hero-primary"
-                    className="bg-primary hover:bg-primary/90 group mt-4"
+                    className="bg-primary hover:bg-primary/90 group mt-4 h-11 text-base mx-2"
                     asChild
                   >
                     <Link
