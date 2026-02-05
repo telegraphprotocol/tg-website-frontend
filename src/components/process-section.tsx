@@ -53,7 +53,7 @@ export function ProcessSection() {
           </div>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 overflow-hidden">
           <AnimateOnScroll direction="left" delay={0.2}>
             <div className="space-y-8">
               {steps.map((step, index) => (

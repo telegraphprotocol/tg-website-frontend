@@ -45,13 +45,13 @@ export function ActionableIntelligenceSection() {
           </div>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 lg:gap-12 gap-6 lg:grid-cols-2">
+        <div className="grid grid-cols-1 lg:gap-12 gap-6 lg:grid-cols-2 overflow-hidden">
           <AnimateOnScroll direction="left" delay={0.2}>
             <div>
-              <h3 className="mb-8 lg:text-xl text-lg font-medium text-foreground lg:text-left text-center">
+              <h3 className="lg:mb-8 mb-5 lg:text-xl text-lg font-medium text-foreground text-left">
                 A signal is a verified unit of intelligence:
               </h3>
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid lg:grid-cols-2 grid-cols-1 gap-6">
                 <AnimateOnScroll direction="up" delay={0.3}>
                   <div className="flex flex-row gap-4 items-center hover:translate-y-[-3px] transition-all duration-200">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-card border drop-shadow-sm flex-shrink-0">
@@ -115,10 +115,10 @@ export function ActionableIntelligenceSection() {
 
           <AnimateOnScroll direction="right" delay={0.2}>
             <div>
-              <h3 className="mb-8 lg:text-xl text-lg font-medium text-foreground lg:text-left text-center">
+              <h3 className="mt-3 lg:mb-8 mb-5 lg:text-xl text-lg font-medium text-foreground text-left">
                 Signals are:
               </h3>
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid lg:grid-cols-2 grid-cols-1 gap-6">
                 <AnimateOnScroll direction="up" delay={0.3}>
                   <div className="flex flex-row gap-4 items-center hover:translate-y-[-3px] transition-all duration-200">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-card border drop-shadow-sm flex-shrink-0">
@@ -150,7 +150,7 @@ export function ActionableIntelligenceSection() {
                   </div>
                 </AnimateOnScroll>
 
-                <AnimateOnScroll direction="up" delay={0.5} className="col-span-2">
+                <AnimateOnScroll direction="up" delay={0.5} className="lg:col-span-2 col-span-1">
                   <div className="flex flex-row gap-4 items-center hover:translate-y-[-3px] transition-all duration-200">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-card border drop-shadow-sm flex-shrink-0">
                       <FileText className="h-6 w-6 text-primary flex-shrink-0" />

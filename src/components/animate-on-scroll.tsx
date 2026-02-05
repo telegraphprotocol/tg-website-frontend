@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 
 interface AnimateOnScrollProps {
@@ -11,6 +11,7 @@ interface AnimateOnScrollProps {
   delay?: number
   duration?: number
   direction?: "up" | "down" | "left" | "right" | "fade"
+  mobileDirection?: "up" | "down" | "left" | "right" | "fade"
   distance?: number
 }
 
@@ -20,10 +21,24 @@ export function AnimateOnScroll({
   delay = 0,
   duration = 0.6,
   direction = "up",
+  mobileDirection,
   distance = 30,
 }: AnimateOnScrollProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024)
+    }
+    
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
+  const effectiveDirection = mobileDirection && isMobile ? mobileDirection : direction
 
   const variants = {
     up: {
@@ -48,7 +63,7 @@ export function AnimateOnScroll({
     },
   }
 
-  const selectedVariant = variants[direction]
+  const selectedVariant = variants[effectiveDirection]
 
   return (
     <motion.div

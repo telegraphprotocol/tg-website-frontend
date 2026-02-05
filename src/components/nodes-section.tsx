@@ -21,7 +21,7 @@ export function NodesSection() {
       name: "WildSage Labs",
       description: "The seventh largest validator on the Bittensor network.",
       logoBg: "bg-foreground",
-      logoText: "S",
+      logoText: "W",
     },
     {
       name: "Rizzo",
