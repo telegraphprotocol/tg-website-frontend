@@ -331,11 +331,8 @@ export function Navbar() {
                         handleSmoothScroll(e, link.href)
                         setOpen(false)
                       }}
-                      className={`flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors ${
-                        pathname === link.href
-                          ? "bg-accent text-accent-foreground"
-                          : "hover:bg-accent hover:text-accent-foreground"
-                      }`}
+                      className="flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors"
+                        
                     >
                       {link.label}
                     </Link>
