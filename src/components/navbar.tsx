@@ -48,6 +48,7 @@ export function Navbar() {
   }, [])
 
   const regularLinks = [
+    { href: "/", label: "Home" },
     { href: "/#signals", label: "Signals" },
     { href: "/#nodes", label: "Node Runners" },
   ]
