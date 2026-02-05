@@ -98,8 +98,8 @@ export function OurTeamSection() {
                   </Link>
                 )}
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-card to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"></div>
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-translate-y-[5px] translate-y-0 transition-all duration-400 z-10">
+              <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-card to-transparent opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"></div>
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 opacity-100 -translate-y-[5px] lg:opacity-0 lg:translate-y-0 lg:group-hover:opacity-100 lg:group-hover:-translate-y-[5px] transition-all duration-400 z-10">
                 <Button
                   onClick={() => setOpenDialog(index)}
                   className="rounded-full font-medium"

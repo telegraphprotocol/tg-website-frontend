@@ -1,9 +1,21 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Plug, Radio, Settings } from "lucide-react"
 import { AnimateOnScroll } from "@/components/animate-on-scroll"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 
 export function HeroSection() {
+  const [openDialog, setOpenDialog] = useState(false)
+
   return (
     <section
       id="home"
@@ -36,13 +48,11 @@ export function HeroSection() {
             <Button
               size="hero-primary"
               className="bg-primary hover:bg-primary/90 group"
-              asChild
+              onClick={() => setOpenDialog(true)}
             >
-              <Link href="https://telegraph-2.gitbook.io/telegraph" target="_blank">
               <Plug className="h-4 w-4" />
-                Start Building
-                <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
-              </Link>
+              Launch Terminal
+              <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
             </Button>
             <Button
               variant="secondary"
@@ -62,15 +72,28 @@ export function HeroSection() {
               asChild
               className="group"
             >
-              <Link href="https://telegraph-2.gitbook.io/telegraph/node-overview/registering-a-telegraph-node" target="_blank">
+              <Link href="https://telegraph-2.gitbook.io/telegraph" target="_blank">
                 <Settings className="h-4 w-4" />
-                Run a Node
+                Start Building
                 <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
               </Link>
             </Button>
           </div>
         </AnimateOnScroll>
       </div>
+
+      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold">
+              Coming Soon
+            </DialogTitle>
+          </DialogHeader>
+          <DialogDescription className="text-muted-foreground text-[15px]">
+            Launch Terminal will be available soon. Stay tuned!
+          </DialogDescription>
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }
