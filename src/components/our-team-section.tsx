@@ -25,8 +25,8 @@ export function OurTeamSection() {
     {
       name: "Mark Basa",
       role: "CEO & Co-Founder",
-      description: "Mark leads Telegraph's commercial and business strategy. He is the founder of PRvalidator, the only public relations validator on Bittensor, and has secured hundreds of pieces of earned coverage for the network.",
-      description2: "He has worked with companies backed by Coinbase Ventures and Uniswap Labs, resulting in articles in tier-one publications, and previously served as Brand Director for a layer-1 project. He also co-founded a Web3 game studio that raised capital from Japan's largest VCs. From 2011 to 2013, he graduated from an early Microsoft incubator, where he built a Bitcoin-enabled loyalty points app.",
+      description: "Mark leads Telegraph’s commercial and business strategy. He is the founder of PRvalidator, the only public relations validator on Bittensor, and has secured hundreds of pieces of earned coverage for the network.",
+      description2: "Mark is also the founder of Subnet.ai and has advised companies backed by Coinbase Ventures and Uniswap Labs on public relations strategies. He previously served as brand director for a layer-1 blockchain and co-founded a Web3 game studio that raised capital from Japan’s largest venture capital firms. From 2011 to 2013, he participated in an early Microsoft incubator program, where he built a Bitcoin-enabled loyalty points app.",
       image: "/team/mark.jpg",
       linkedinLink: "https://www.linkedin.com/in/mark-basa/",
     },

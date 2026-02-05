@@ -151,7 +151,7 @@ export function MarketplaceTable() {
         </div>
       </div>
 
-      <div className="rounded-lg border border-border">
+      <div className="rounded-lg border border-border overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
@@ -233,33 +233,38 @@ export function MarketplaceTable() {
               const isExpanded = expandedRows.has(row.id)
               return (
                 <>
-                  <TableRow key={row.id} className="hover:bg-muted/50">
+                  <TableRow 
+                    key={row.id} 
+                    className="hover:bg-muted/50 cursor-pointer"
+                    onClick={() => toggleRow(row.id)}
+                  >
                     <TableCell className="font-medium">
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium">{row.subnetName}{" "}
-                          <span className="text-xs text-muted-foreground border border-border/50 rounded-full py-0 px-2 w-fit">
+                      <div className="flex flex-col items-start gap-2">
+                        <span className="text-sm font-medium">{row.subnetName}
+                        </span>
+                        <span className="text-xs text-foreground border border-border/50 rounded-full py-0 px-1.5 w-fit">
                           {row.uid}
                         </span>
-                        </span>
-                        
                       </div>
                     </TableCell>
-                    <TableCell><span className="text-sm text-muted-foreground">{row.tradingVol24h}</span></TableCell>
-                    <TableCell><span className="text-sm text-muted-foreground">{row.signal}</span></TableCell>
-                    <TableCell><span className="text-sm text-muted-foreground">{row.signalVolume}</span></TableCell>
-                    <TableCell><span className="text-sm text-muted-foreground">{row.apiAvailability}</span></TableCell>
-                    <TableCell><span className="text-sm text-muted-foreground">{row.paymentMethod}</span></TableCell>
-                    <TableCell><span className="text-sm text-muted-foreground">{row.integrationStatus}</span></TableCell>
-                    <TableCell>
+                    <TableCell><span className="text-sm font-medium text-muted-foreground">{row.tradingVol24h}</span></TableCell>
+                    <TableCell><span className="text-sm font-medium text-muted-foreground">{row.signal}</span></TableCell>
+                    <TableCell><span className="text-sm font-medium text-muted-foreground">{row.signalVolume}</span></TableCell>
+                    <TableCell><span className="text-sm font-medium text-muted-foreground">{row.apiAvailability}</span></TableCell>
+                    <TableCell><span className="text-sm font-medium text-muted-foreground">{row.paymentMethod}</span></TableCell>
+                    <TableCell><span className="text-sm font-medium text-muted-foreground">{row.integrationStatus}</span></TableCell>
+                    <TableCell className="sticky right-0 z-10 bg-gradient-to-r from-transparent lg:to-transparent to-muted md:static md:bg-transparent md:z-auto">
                       <button
-                        onClick={() => toggleRow(row.id)}
-                        className="flex h-8 w-8 items-center justify-center rounded-md hover:bg-muted transition-colors border"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          toggleRow(row.id)
+                        }}
+                        className="flex lg:h-7 h-7 lg:w-7 w-7 items-center justify-center rounded-full transition-all duration-200 border bg-card"
                       >
-                        {isExpanded ? (
-                          <ChevronUp className="h-4 w-4" />
-                        ) : (
-                          <ChevronDown className="h-4 w-4" />
-                        )}
+                
+                          <ChevronUp className="h-4 w-4 transition-transform duration-200" style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }} />
+                      
+                     
                       </button>
                     </TableCell>
                   </TableRow>
