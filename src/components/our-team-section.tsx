@@ -1,19 +1,32 @@
+"use client"
+
+import { useState } from "react"
 import { Users } from "lucide-react"
 import { SiX } from "react-icons/si"
 import { FiLinkedin } from "react-icons/fi";
 import { LuGithub } from "react-icons/lu";
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { AnimateOnScroll } from "@/components/animate-on-scroll"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import Link from "next/link"
 
 export function OurTeamSection() {
+  const [openDialog, setOpenDialog] = useState<number | null>(null)
+
   const teamMembers = [
     {
       name: "Mark Basa",
       role: "CEO & Co-Founder",
-      description: "Mark leads Telegraph’s commercial and business strategy. He is the founder of PRvalidator, the only public relations validator on Bittensor, and has secured hundreds of pieces of earned coverage for the network.",
-      description2: "He has worked with companies backed by Coinbase Ventures and Uniswap Labs, resulting in articles in tier-one publications, and previously served as Brand Director for a layer-1 project. He also co-founded a Web3 game studio that raised capital from Japan’s largest VCs. From 2011 to 2013, he graduated from an early Microsoft incubator, where he built a Bitcoin-enabled loyalty points app.",
+      description: "Mark leads Telegraph's commercial and business strategy. He is the founder of PRvalidator, the only public relations validator on Bittensor, and has secured hundreds of pieces of earned coverage for the network.",
+      description2: "He has worked with companies backed by Coinbase Ventures and Uniswap Labs, resulting in articles in tier-one publications, and previously served as Brand Director for a layer-1 project. He also co-founded a Web3 game studio that raised capital from Japan's largest VCs. From 2011 to 2013, he graduated from an early Microsoft incubator, where he built a Bitcoin-enabled loyalty points app.",
       image: "/team/mark.jpg",
       linkedinLink: "https://www.linkedin.com/in/mark-basa/",
     },
@@ -52,7 +65,7 @@ export function OurTeamSection() {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 max-w-2xl mx-auto">
           {teamMembers.map((member, index) => (
             <AnimateOnScroll key={index} direction="up" delay={0.1 + index * 0.1}>
-              <Card className="hover:translate-y-[-4px] transition-all duration-300 h-full items-start justify-start">
+              <Card className="group hover:translate-y-[-4px] transition-all duration-300 h-full items-start justify-start relative overflow-hidden">
               <div className="mb-4 aspect-[4/3] w-full rounded-lg bg-muted relative">
                 {/*<Image src={member.image} alt={member.name} fill className="object-cover rounded-xl" draggable={false} loading="lazy" />*/}
               </div>
@@ -68,7 +81,7 @@ export function OurTeamSection() {
               <p className="text-sm text-muted-foreground lg:min-h-[42px] h-full">
                 {member.description}
               </p>
-              <div className="flex items-center gap-2 justify-end w-full">
+              <div className="flex items-center gap-2 justify-end w-full mb-2">
                 {member.xLink && (
                 <Link href={member.xLink} target="_blank" className="text-muted-foreground/50 hover:text-primary transition-colors duration-300">
                   <SiX className="h-3.5 w-3.5" />
@@ -85,10 +98,65 @@ export function OurTeamSection() {
                   </Link>
                 )}
               </div>
+              <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-card to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"></div>
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-translate-y-[5px] translate-y-0 transition-all duration-400 z-10">
+                <Button
+                  onClick={() => setOpenDialog(index)}
+                  className="rounded-full font-medium"
+                  variant="outline"
+                  size="sm"
+                >
+                  Read More
+                </Button>
+              </div>
             </Card>
             </AnimateOnScroll>
           ))}
         </div>
+
+        {teamMembers.map((member, index) => (
+          <Dialog key={index} open={openDialog === index} onOpenChange={(open) => setOpenDialog(open ? index : null)}>
+            <DialogContent className="max-w-2xl">
+              <DialogHeader>
+                <DialogTitle className="text-xl font-semibold">
+                  {member.name}
+                  {member.role && (
+                    <span className="font-normal text-muted-foreground/70 text-lg ml-2">
+                      {member.role}
+                    </span>
+                  )}
+                </DialogTitle>
+              </DialogHeader>
+              <DialogDescription className="space-y-4 text-muted-foreground text-[15px]">
+                <p>
+                  {member.description}
+                </p>
+                {member.description2 && (
+                  <p>
+                    {member.description2}
+                  </p>
+                )}
+                <div className="flex items-center gap-3 pt-0">
+                  {member.xLink && (
+                    <Link href={member.xLink} target="_blank" className="text-muted-foreground/70 hover:text-primary transition-colors duration-300">
+                      <SiX className="h-4.5 w-4.5" />
+                    </Link>
+                  )}
+                  {member.githubLink && (
+                    <Link href={member.githubLink} target="_blank" className="text-muted-foreground/70 hover:text-primary transition-colors duration-300">
+                      <LuGithub className="h-5 w-5" />
+                    </Link>
+                  )}
+                  {member.linkedinLink && (
+                    <Link href={member.linkedinLink} target="_blank" className="text-muted-foreground/70   hover:text-primary transition-colors duration-300">
+                      <FiLinkedin className="h-5 w-5" />
+                    </Link>
+                  )}
+                </div>
+              </DialogDescription>
+            </DialogContent>
+          </Dialog>
+        ))}
       </div>
     </section>
   )
