@@ -18,30 +18,30 @@ export function UseCasesSection() {
     {
       icon: CloudLightning,
       title: "Predict the Weather with Zeus",
-      subtitle: "Predictive weather risk automation.",
+      subtitle: "Gold Mine Disruption",
       description:
-        "A gold mine faces extreme weather that can shut down operations and delay shipments. Zeus is a decentralized weather forecasting network built for low-latency, production-grade delivery. Telegraph connects this intelligence to the mine, allowing operators to buy current signals (e.g., “flood risk,” “hail probability”) or commission Forecast Subnet miners to predict specific site risks. A miner doesn't just “report the weather”; they ingest Zeus data to output a specific “Shutdown Probability” for that mine's exact coordinates. Telegraph verifies this prediction, stamps it with an on-chain receipt (confidence, cost, timestamp), and delivers it via Port contracts. This feeds the mine’s automation systems, allowing operators to reposition equipment and reroute logistics before the weather becomes a shutdown event.",
+"A gold mine faces extreme weather that can shut down operations. Telegraph connects intelligence from Zeus (a decentralized weather network) directly to the mine's systems. Operators can buy real-time site risk alerts (e.g., “Shutdown Probability > 80%”) and we verify this signal, stamp it with an on-chain receipt, and deliver it via Port contracts to trigger automated hedging before the storm hits.",
       image: "/use-cases/1a.png",
     },
     {
       icon: TrendingUp,
       title: "Predict the Value with Score",
-      subtitle: "Verifiable asset valuation growth",
-      description: "A football club trying to sell media rights has a problem: it invests heavily in talent and brand, but it’s hard to prove that value before it shows up in the financial results. Score is a computer-vision network that turns match footage into structured performance data. Telegraph delivers these live signals, but more importantly, allows the club to query Forecast miners for verifiable projections like “Audience Growth Probability,” “Media-Rights Uplift,” or “Valuation Delta.” Instead of vague “brand” claims, miners compete to predict quantifiable metrics (e.g., “Probability of 20% viewership growth next quarter”). Telegraph publishes these verified forecasts on-chain, giving the club auditable, time-stamped evidence of asset growth to justify higher pricing for IP rights and sponsorship inventory.",
+      subtitle: "Football Club Valuation",
+      description: "A football club trying to sell media rights needs to prove its value. Telegraph delivers computer-vision analytics from Score to provide verifiable projections like “Audience Growth Probability“ or “Media-Rights Uplift.” Instead of vague marketing claims, the club gets auditable, time-stamped evidence of asset growth to justify higher pricing.",
       image: "/use-cases/2a.png",
     },
     {
       icon: Brain,
       title: "Predict the Headlines with Bitmind",
-      subtitle: "Real-time truth signal hedging",
-      description: "A hedge fund faces massive drawdown risk when synthetic war footage or political deepfakes go viral. Bitmind is a synthetic media detection network that identifies AI-generated content. Telegraph allows the fund to instantly consume these “Truth Signals.” When a suspicious video hits the market, the fund doesn't just guess; they query the network for a “Deepfake Probability Score.” Miners run targeted verification models on the specific clip, and Telegraph delivers the signed, verified result (e.g., “99.8% Artificial”) to the fund’s trading desk in real-time. This allows the algorithm to hedge positions or take the counter-trade against the panic while the market is still reacting to the noise.",
+      subtitle: "Hedge Fund Risk",
+      description: "A hedge fund faces drawdown risk when synthetic war footage goes viral. Telegraph allows the fund to instantly consume “Truth Signals“ from Bitmind. When a suspicious video hits the market, the desk pulls a “Deepfake Probability Score” via the protocol. We deliver the signed, verified result (e.g., “99.8% Artificial”) in real-time, allowing the algorithm to hedge positions while others panic. ",
       image: "/use-cases/3a.png",
     },
     {
       icon: Coins,
       title: "Signal-Backed Stablecoin",
-      subtitle: "Predictive stablecoin risk management",
-      description: "A stablecoin issuer’s biggest threat is market panic that moves faster than price oracles. With Telegraph, the protocol moves from reactive to predictive. The issuer commissions Forecast miners to produce a live “Depeg Risk Probability” signal. Miners aggregate data from multiple subnets—liquidity shifts, social sentiment (FUD), and collateral volatility—to predict stress events before they break the peg. Telegraph delivers this verified probability on-chain, allowing the stablecoin’s smart contracts to automatically adjust risk controls—tightening collateral ratios, raising fees, or rebalancing reserves—based on verified intelligence rather than lagging price moves.",
+      subtitle: "Adaptive Peg Management",
+      description: "A stablecoin issuer’s biggest threat is panic that moves faster than price oracles. With Telegraph, the protocol moves from reactive to predictive. The issuer accesses a live “Depeg Risk Probability“ signal that aggregates liquidity shifts and social sentiment (FUD). This predicts stress events before they break the peg, allowing smart contracts to automatically adjust risk controls.",
       image: "/use-cases/4a.png",
     },
   ]
@@ -99,7 +99,7 @@ export function UseCasesSection() {
           <div className="mb-12 text-center max-w-3xl mx-auto">
            <Badge variant="topTitle" className="mb-4 w-fit">
               <Brain className="h-4 w-4 text-primary flex-shrink-0" />
-              <span>Use Cases</span>
+              <span>Business</span>
             </Badge>
             <h2 className="mb-6 text-4xl text-foreground lg:text-5xl lg:text-5xl font-space-grotesk font-normal leading-[1.2]">
               Use cases.

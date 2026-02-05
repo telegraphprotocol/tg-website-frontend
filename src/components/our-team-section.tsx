@@ -1,27 +1,28 @@
 import { Users } from "lucide-react"
 import { SiX } from "react-icons/si"
-import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { FiLinkedin } from "react-icons/fi";
 import { LuGithub } from "react-icons/lu";
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
 import { AnimateOnScroll } from "@/components/animate-on-scroll"
-import Image from "next/image"
 import Link from "next/link"
 
 export function OurTeamSection() {
   const teamMembers = [
     {
       name: "Mark Basa",
-      role: "Founder & CEO",
-      description: "TBA",
+      role: "CEO & Co-Founder",
+      description: "Mark leads Telegraph’s commercial and business strategy. He is the founder of PRvalidator, the only public relations validator on Bittensor, and has secured hundreds of pieces of earned coverage for the network.",
+      description2: "He has worked with companies backed by Coinbase Ventures and Uniswap Labs, resulting in articles in tier-one publications, and previously served as Brand Director for a layer-1 project. He also co-founded a Web3 game studio that raised capital from Japan’s largest VCs. From 2011 to 2013, he graduated from an early Microsoft incubator, where he built a Bitcoin-enabled loyalty points app.",
       image: "/team/mark.jpg",
-      xLink: "https://x.com/subnetai",
+      linkedinLink: "https://www.linkedin.com/in/mark-basa/",
     },
     {
       name: "Ahmed Ali",
-      role: "Co-founder & CTO",
+      role: "CTO & Co-Founder",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+        "Ahmed is a Lead Protocol Architect building high-frequency blockchain infrastructure. He leads engineering at Telegraph, where he built the cross-chain messaging layer that integrates Bittensor intelligence into EVM networks.",
+      description2: "Previously at RYT Chain, Ahmed designed the 'Proof of Majority' consensus, optimizing the engine to reduce transaction pipeline latency from 3 seconds to 75 microseconds. He also engineered Optimism Layer-2 scaling infrastructure for Epic Chain and implemented Zero-Knowledge Proofs (ZKPs) for institutional privacy. Ahmed turns complex distributed systems into production-grade rails.",
       image: "/team/ahmed.jpg",
       xLink: "https://x.com/1xahmedali",
       githubLink: "https://github.com/1xahmed",
@@ -36,7 +37,7 @@ export function OurTeamSection() {
         <div className="mb-12 text-center max-w-3xl mx-auto">
            <Badge variant="topTitle" className="mb-4 w-fit">
               <Users className="h-4 w-4 text-primary flex-shrink-0" />
-              <span>Our Team</span>
+              <span>People</span>
             </Badge>
             <h2 className="mb-6 text-4xl text-foreground lg:text-5xl lg:text-5xl font-space-grotesk font-normal leading-[1.2]">
               Our team.
@@ -53,7 +54,7 @@ export function OurTeamSection() {
             <AnimateOnScroll key={index} direction="up" delay={0.1 + index * 0.1}>
               <Card className="hover:translate-y-[-4px] transition-all duration-300 h-full items-start justify-start">
               <div className="mb-4 aspect-[4/3] w-full rounded-lg bg-muted relative">
-                <Image src={member.image} alt={member.name} fill className="object-cover rounded-xl" draggable={false} loading="lazy" />
+                {/*<Image src={member.image} alt={member.name} fill className="object-cover rounded-xl" draggable={false} loading="lazy" />*/}
               </div>
               <h3 className="mb-1 text-lg font-medium text-foreground">
                 {member.name}

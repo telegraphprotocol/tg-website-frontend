@@ -52,7 +52,7 @@ export function GetStartedSection() {
           <AnimateOnScroll direction="up" delay={0.2}>
             <div className="flex flex-col gap-1 lg:text-right text-center justify-end items-center lg:items-end lg:max-w-sm">
               <p className="text-muted-foreground">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis orci sit amet lobortis tristique. Aliquam euismod lacinia tortor.
+                Stop building prediction models from scratch. Integrate verified, decentralized intelligence into your dApp or enterprise workflow in minutes.
               </p>
            </div>
           </AnimateOnScroll>

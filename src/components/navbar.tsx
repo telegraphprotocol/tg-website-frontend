@@ -4,7 +4,7 @@ import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
-import { Menu, ArrowRight, ChevronDown, Settings, Brain, Users, Hand, Zap } from "lucide-react"
+import { Menu, ArrowRight, ChevronDown, Settings, Brain, Users, Hand, Zap, SquaresSubtract } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -222,6 +222,19 @@ export function Navbar() {
                 >
                   <Hand className="h-4 w-4 text-primary" />
                   Get Started
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  href="#"
+                  onClick={(e) => {
+                    handleSmoothScroll(e, "/#get-started")
+                    setAboutOpen(false)
+                  }}
+                  className="cursor-not-allowed"
+                >
+                  <SquaresSubtract className="h-4 w-4 text-primary" />
+                  Forecast Subnet <span className="text-xs text-muted-foreground">coming soon</span>
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
