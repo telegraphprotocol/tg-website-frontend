@@ -119,6 +119,7 @@ export function UseCasesSection() {
               alt="Vector pattern"
               fill
               className="object-cover"
+              aria-hidden="true"
             />
           </div>
         <div className="grid grid-cols-1 lg:gap-12 gap-6 lg:grid-cols-2 lg:p-8 p-0 items-start justify-center relative z-10">
@@ -127,7 +128,7 @@ export function UseCasesSection() {
               <div className=" transition-opacity duration-300">
                 <Image
                   src={activeCase.image}
-                  alt={activeCase.title}
+                  alt={`${activeCase.title} use case visualization for Telegraph Protocol`}
                   fill
                   className="object-contain"
                 />

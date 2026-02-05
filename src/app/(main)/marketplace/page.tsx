@@ -1,4 +1,35 @@
+import type { Metadata } from "next";
 import { MarketplaceTable } from "@/components/marketplace-table"
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://telegraphprotocol.com'
+
+export const metadata: Metadata = {
+  title: "Marketplace - Buy & Trade AI Signals",
+  description: "Browse and purchase verified AI signals from Bittensor subnets. Turn subnet inference into tradeable commodities—buy and trade on-chain signals across supported chains. Real-time pricing, availability, and integration status.",
+  openGraph: {
+    title: "Telegraph Marketplace - Buy & Trade AI Signals",
+    description: "Browse and purchase verified AI signals from Bittensor subnets. Turn subnet inference into tradeable commodities.",
+    url: `${baseUrl}/marketplace`,
+    type: "website",
+    images: [
+      {
+        url: `${baseUrl}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Telegraph Marketplace",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Telegraph Marketplace - Buy & Trade AI Signals",
+    description: "Browse and purchase verified AI signals from Bittensor subnets. Turn subnet inference into tradeable commodities.",
+    images: [`${baseUrl}/og-image.png`],
+  },
+  alternates: {
+    canonical: `${baseUrl}/marketplace`,
+  },
+};
 
 export default function MarketplacePage() {
   return (

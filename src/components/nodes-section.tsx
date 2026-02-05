@@ -80,7 +80,7 @@ export function NodesSection() {
             <div className="absolute inset-0 flex items-center justify-center">
               <Image
                 src="/section/globe.png"
-                alt="Globe"
+                alt="Telegraph Protocol decentralized network visualization"
                 width={800}
                 height={800}
                 className="mx-auto opacity-60 w-full"

@@ -1,8 +1,28 @@
 import type { Metadata } from "next";
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://telegraphprotocol.com'
+
 export const metadata: Metadata = {
-  title: "Terms and Conditions - Telegraph",
-  description: "Terms and Conditions for Telegraph Protocol",
+  title: "Terms and Conditions",
+  description: "Read the terms and conditions for using Telegraph Protocol. Learn about service usage, user responsibilities, intellectual property, risk disclosure, and legal information for our AI on-chain platform.",
+  openGraph: {
+    title: "Terms and Conditions | Telegraph Protocol",
+    description: "Read the terms and conditions for using Telegraph Protocol. Service usage, user responsibilities, and legal information.",
+    url: `${baseUrl}/terms`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms and Conditions | Telegraph Protocol",
+    description: "Read the terms and conditions for using Telegraph Protocol.",
+  },
+  alternates: {
+    canonical: `${baseUrl}/terms`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function TermsPage() {

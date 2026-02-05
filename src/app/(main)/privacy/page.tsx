@@ -1,8 +1,28 @@
 import type { Metadata } from "next";
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://telegraphprotocol.com'
+
 export const metadata: Metadata = {
-  title: "Privacy Policy - Telegraph",
-  description: "Privacy Policy for Telegraph Protocol",
+  title: "Privacy Policy",
+  description: "Learn how Telegraph Protocol collects, uses, and protects your information. Our comprehensive privacy policy covers data collection, blockchain interactions, security measures, and your privacy rights.",
+  openGraph: {
+    title: "Privacy Policy | Telegraph Protocol",
+    description: "Learn how Telegraph Protocol collects, uses, and protects your information. Comprehensive privacy policy covering data collection and security measures.",
+    url: `${baseUrl}/privacy`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy | Telegraph Protocol",
+    description: "Learn how Telegraph Protocol collects, uses, and protects your information.",
+  },
+  alternates: {
+    canonical: `${baseUrl}/privacy`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function PrivacyPage() {

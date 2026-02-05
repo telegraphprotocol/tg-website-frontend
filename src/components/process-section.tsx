@@ -84,12 +84,13 @@ export function ProcessSection() {
                 alt="Vector pattern"
                 fill
                 className="object-cover"
+                aria-hidden="true"
               />
             </div>
             <div className="relative z-10 flex h-full min-h-[400px] items-center justify-center -bottom-16 -right-16 p-8 group-hover:-bottom-12 group-hover:-right-12 transition-all duration-400 drop-shadow-md">
               <Image
                 src="/section/process.png"
-                alt="Process"
+                alt="Telegraph Protocol signal processing and verification workflow"
                 width={800}
                 height={800}
                 className="object-cover"

@@ -1,0 +1,12 @@
+# robots.txt for Telegraph Protocol
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /api/
+
+# Sitemap location
+# Note: Update this URL with your actual domain
+Sitemap: https://telegraphprotocol.com/sitemap.xml
+
