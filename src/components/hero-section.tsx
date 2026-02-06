@@ -26,7 +26,7 @@ export function HeroSection() {
         <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-0">
           <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
         <AnimateOnScroll direction="up" delay={0.1}>
-          <h1 className="mb-6 font-space-grotesk leading-tight tracking-tight text-foreground text-5xl">
+          <h1 className="mb-6 font-space-grotesk leading-tight tracking-tight text-foreground lg:text-5xl text-4xl">
             Know the truth before it happens.
           </h1>
         </AnimateOnScroll>

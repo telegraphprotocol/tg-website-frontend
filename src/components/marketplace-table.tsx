@@ -28,7 +28,7 @@ type SortDirection = "asc" | "desc" | null
 
 export function MarketplaceTable() {
   const { data, isLoading } = useMarketplaceData()
-  const [currency, setCurrency] = useState<"TAO" | "USD">("TAO")
+  const [currency, setCurrency] = useState<"USD">("USD")
   const [searchQuery, setSearchQuery] = useState("")
   const [sortField, setSortField] = useState<SortField | null>(null)
   const [sortDirection, setSortDirection] = useState<SortDirection>(null)
@@ -135,9 +135,8 @@ export function MarketplaceTable() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <Tabs value={currency} onValueChange={(v) => setCurrency(v as "TAO" | "USD")}>
+        <Tabs className="hidden lg:block" value={currency} onValueChange={(v) => setCurrency(v as "USD")}>
           <TabsList>
-            <TabsTrigger value="TAO">TAO</TabsTrigger>
             <TabsTrigger value="USD">USD</TabsTrigger>
           </TabsList>
         </Tabs>
