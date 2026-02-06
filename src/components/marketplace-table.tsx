@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { ChevronDown, ChevronUp, Search, Loader2 } from "lucide-react"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
@@ -32,6 +33,7 @@ export function MarketplaceTable() {
   const [sortField, setSortField] = useState<SortField | null>(null)
   const [sortDirection, setSortDirection] = useState<SortDirection>(null)
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set())
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set())
 
   const handleSort = (field: SortField) => {
     if (sortField === field) {
@@ -156,7 +158,7 @@ export function MarketplaceTable() {
           <TableHeader>
             <TableRow>
               <TableHead
-                className="cursor-pointer select-none"
+                className="cursor-pointer select-none min-w-36"
                 onClick={() => handleSort("subnetName")}
               >
                 <div className="flex items-center gap-2">
@@ -165,7 +167,7 @@ export function MarketplaceTable() {
                 </div>
               </TableHead>
               <TableHead
-                className="cursor-pointer select-none"
+                className="cursor-pointer select-none min-w-36"
                 onClick={() => handleSort("tradingVol")}
               >
                 <div className="flex items-center gap-2">
@@ -231,6 +233,7 @@ export function MarketplaceTable() {
             ) : (
               sortedData.map((row) => {
               const isExpanded = expandedRows.has(row.id)
+              const cleanUid = row.uid.replace(/#/g, '')
               return (
                 <>
                   <TableRow 
@@ -239,20 +242,35 @@ export function MarketplaceTable() {
                     onClick={() => toggleRow(row.id)}
                   >
                     <TableCell className="font-medium">
-                      <div className="flex flex-col items-start gap-2">
-                        <span className="text-sm font-medium">{row.subnetName}
-                        </span>
-                        <span className="text-xs text-foreground border border-border/50 rounded-full py-0 px-1.5 w-fit">
-                          {row.uid}
-                        </span>
+                      <div className="flex items-center gap-3">
+                        <div className="relative h-6 w-6 bg-muted rounded-full overflow-hidden border border-border/50">
+                          <Image
+                            src={imageErrors.has(cleanUid) ? "/subnet-icon/default.png" : `/subnet-icon/${cleanUid}.png`}
+                            alt={row.subnetName}
+                            fill
+                            className="object-cover"
+                            unoptimized
+                            onError={() => {
+                              if (!imageErrors.has(cleanUid)) {
+                                setImageErrors((prev) => new Set(prev).add(cleanUid))
+                              }
+                            }}
+                          />
+                        </div>
+                        <div className="flex flex-col gap-0">
+                          <span className="text-sm font-medium">{row.subnetName}</span>
+                          <span className="text-sm text-muted-foreground/70">
+                            {row.uid}
+                          </span>
+                        </div>
                       </div>
                     </TableCell>
-                    <TableCell><span className="text-sm font-medium text-muted-foreground">{row.tradingVol24h}</span></TableCell>
-                    <TableCell><span className="text-sm font-medium text-muted-foreground">{row.signal}</span></TableCell>
-                    <TableCell><span className="text-sm font-medium text-muted-foreground">{row.signalVolume}</span></TableCell>
-                    <TableCell><span className="text-sm font-medium text-muted-foreground">{row.apiAvailability}</span></TableCell>
-                    <TableCell><span className="text-sm font-medium text-muted-foreground">{row.paymentMethod}</span></TableCell>
-                    <TableCell><span className="text-sm font-medium text-muted-foreground">{row.integrationStatus}</span></TableCell>
+                    <TableCell><span className="text-sm font-medium text-foreground">{row.tradingVol24h}</span></TableCell>
+                    <TableCell><span className="text-sm text-foreground">{row.signal}</span></TableCell>
+                    <TableCell><span className="text-sm text-foreground">{row.signalVolume}</span></TableCell>
+                    <TableCell><span className="text-sm text-foreground">{row.apiAvailability}</span></TableCell>
+                    <TableCell><span className="text-sm text-foreground">{row.paymentMethod}</span></TableCell>
+                    <TableCell><span className="text-sm text-foreground">{row.integrationStatus}</span></TableCell>
                     <TableCell className="sticky right-0 z-10 bg-gradient-to-r from-transparent lg:to-transparent to-muted md:static md:bg-transparent md:z-auto">
                       <button
                         onClick={(e) => {
