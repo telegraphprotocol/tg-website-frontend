@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Plug, Radio, Settings } from "lucide-react"
 import { AnimateOnScroll } from "@/components/animate-on-scroll"
@@ -21,14 +22,16 @@ export function HeroSection() {
       id="home"
       className="flex min-h-72 items-center justify-center px-4 lg:py-32 py-20"
     >
-      <div className="container mx-auto max-w-4xl text-center">
+      <div className="container mx-auto max-w-7xl">
+        <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-0">
+          <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
         <AnimateOnScroll direction="up" delay={0.1}>
           <h1 className="mb-6 font-space-grotesk leading-tight tracking-tight text-foreground text-5xl">
             Know the truth before it happens.
           </h1>
         </AnimateOnScroll>
         <AnimateOnScroll direction="up" delay={0.2}>
-          <p className="mb-6 text-base leading-relaxed text-muted-foreground lg:text-xl">
+          <p className="mb-6 text-base leading-relaxed text-muted-foreground lg:text-lg">
             Telegraph turns real-world intelligence into market-ready <span className="font-semibold">signals</span>.<br/> AI
             workers develop models that produce probabilities, scores, alerts, and
             classifications for what's happening now and what's likely next.
@@ -39,12 +42,12 @@ export function HeroSection() {
           </p>
         </AnimateOnScroll>
         <AnimateOnScroll direction="up" delay={0.3}>
-          <p className="mb-12 lg:text-xl text-base text-muted-foreground font-space-grotesk font-medium">
+          <p className="mb-12 lg:text-lg text-base text-muted-foreground font-space-grotesk font-medium">
             Signals move faster than headlines.
           </p>
         </AnimateOnScroll>
         <AnimateOnScroll direction="up" delay={0.4}>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
             <Button
               size="hero-primary"
               className="bg-primary hover:bg-primary/90 group"
@@ -80,6 +83,23 @@ export function HeroSection() {
             </Button>
           </div>
         </AnimateOnScroll>
+          </div>
+
+          <div className="flex-1 flex justify-center lg:justify-end order-1 lg:order-2">
+            <AnimateOnScroll direction="left" delay={0.4}>
+              <div className="relative w-full max-w-md lg:max-w-xl">
+                <Image
+                  src="/hero/signal.svg"
+                  alt="Market-ready Signal"
+                  width={600}
+                  height={600}
+                  className="w-full h-auto"
+                  priority
+                />
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </div>
       </div>
 
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
