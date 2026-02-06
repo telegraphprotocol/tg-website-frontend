@@ -242,8 +242,8 @@ export function MarketplaceTable() {
                     onClick={() => toggleRow(row.id)}
                   >
                     <TableCell className="font-medium">
-                      <div className="flex items-center gap-3">
-                        <div className="relative h-6 w-6 bg-muted rounded-full overflow-hidden border border-border/50">
+                      <div className="flex items-center gap-2.5">
+                        <div className="relative h-6 w-6 bg-muted rounded-full overflow-hidden border border-border/50 flex-shrink-0">
                           <Image
                             src={imageErrors.has(cleanUid) ? "/subnet-icon/default.png" : `/subnet-icon/${cleanUid}.png`}
                             alt={row.subnetName}
