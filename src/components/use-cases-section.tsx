@@ -16,30 +16,30 @@ export function UseCasesSection() {
     {
       icon: CloudLightning,
       title: "Predict the Weather with Zeus",
-      subtitle: "Gold mine disruption signals",
+      subtitle: "Gold Mine Disruption",
       description:
-"A gold mine faces extreme weather that can shut down operations and delay shipments. Zeus is a decentralized weather forecasting network built for low-latency, production-grade delivery. Telegraph connects this intelligence to the mine, allowing operators to buy current signals (e.g., 'flood risk,' 'hail probability') or commission Forecast Subnet miners to predict specific site risks. A miner doesn't just 'report the weather'; they ingest Zeus data to output a specific 'Shutdown Probability' for that mine's exact coordinates. Telegraph verifies this prediction, stamps it with an on-chain receipt (confidence, cost, timestamp), and delivers it via Port contracts. This feeds the mine's automation systems, allowing operators to reposition equipment and reroute logistics before the weather becomes a shutdown event.",
+"A gold mine faces extreme weather that can shut down operations. Telegraph connects intelligence from Zeus—an open-source weather network—directly to the mine’s systems. Operators can buy real-time site-risk alerts (e.g., “Shutdown Probability > 80%”). We verify the signal, stamp it with an on-chain receipt, and deliver it via Port contracts to trigger automated hedging before the storm hits.",
       image: "/use-cases/1a.png",
     },
     {
       icon: TrendingUp,
       title: "Predict the Value with Score",
-      subtitle: "Football club brand, IP rights, and club valuation signals",
-      description: "A football club trying to sell media rights has a problem: it invests heavily in talent and brand, but it's hard to prove that value before it shows up in the financial results. Score is a computer-vision network that turns match footage into structured performance data. Telegraph delivers these live signals, but more importantly, allows the club to query Forecast miners for verifiable projections like 'Audience Growth Probability,' 'Media-Rights Uplift,' or 'Valuation Delta.' Instead of vague 'brand' claims, miners compete to predict quantifiable metrics (e.g., 'Probability of 20% viewership growth next quarter'). Telegraph publishes these verified forecasts on-chain, giving the club auditable, time-stamped evidence of asset growth to justify higher pricing for IP rights and sponsorship inventory.",
+      subtitle: "Football Club Valuation",
+      description: "A football club trying to sell media rights needs to prove its value. Telegraph delivers computer-vision analytics from' Score, an open-source computer-vision company, to provide verifiable projections like “Audience Growth Probability” or “Media-Rights Uplift.” Instead of vague marketing claims, the club gets auditable, time-stamped evidence of asset growth to justify higher pricing.",
       image: "/use-cases/2a.png",
     },
     {
       icon: Brain,
       title: "Predict the Headlines with Bitmind",
-      subtitle: "Hedge fund deepfake risk signals",
-      description: "A hedge fund faces massive drawdown risk when synthetic war footage or political deepfakes go viral. Bitmind is a synthetic media detection network that identifies AI-generated content. Telegraph allows the fund to instantly consume these 'Truth Signals.' When a suspicious video hits the market, the fund doesn't just guess; they query the network for a 'Deepfake Probability Score.' Miners run targeted verification models on the specific clip, and Telegraph delivers the signed, verified result (e.g., '99.8% Artificial') to the fund's trading desk in real-time. This allows the algorithm to hedge positions or take the counter-trade against the panic while the market is still reacting to the noise.",
+      subtitle: "Hedge Fund Risk",
+      description: "A hedge fund faces drawdown risk when synthetic war footage goes viral. Telegraph allows the fund to instantly consume “Truth Signals” from Bitmind, a competitive deepfake-detection company. When a suspicious video hits the market, the desk pulls a “Deepfake Probability Score” via the protocol. We deliver the signed, verified result (e.g., “99.8% Artificial”) in real time, allowing the algorithm to hedge positions while others panic.",
       image: "/use-cases/3a.png",
     },
     {
       icon: Coins,
       title: "Signal-Backed Stablecoin",
-      subtitle: "Adaptive peg management using verified intelligence signals",
-      description: "A stablecoin issuer's biggest threat is market panic that moves faster than price oracles. With Telegraph, the protocol moves from reactive to predictive. The issuer commissions Forecast miners to produce a live 'Depeg Risk Probability' signal. Miners aggregate data from multiple subnets—liquidity shifts, social sentiment (FUD), and collateral volatility—to predict stress events before they break the peg. Telegraph delivers this verified probability on-chain, allowing the stablecoin's smart contracts to automatically adjust risk controls—tightening collateral ratios, raising fees, or rebalancing reserves—based on verified intelligence rather than lagging price moves.",
+      subtitle: "Depeg Risk Management",
+      description: "A stablecoin issuer’s biggest threat is panic that moves faster than price oracles. With Telegraph, the protocol moves from reactive to predictive. The issuer accesses a live “Depeg Risk Probability” signal that aggregates liquidity shifts and social sentiment (FUD). This predicts stress events before they break the peg, allowing smart contracts to automatically adjust risk controls",
       image: "/use-cases/4a.png",
     },
   ]
@@ -74,7 +74,8 @@ export function UseCasesSection() {
           </div>
         </AnimateOnScroll>
 
-        <AnimateOnScroll direction="fade" delay={0.2}>
+        <div className="grid grid-cols-1 gap-8">
+        <AnimateOnScroll direction="fade" delay={0.2} className="lg:order-1 order-2">
           <div className="relative overflow-hidden rounded-3xl bg-muted relative overflow-hidden group lg:border lg:border-border/50 transition-all duration-300 min-h-[400px]">
           <div className="absolute inset-0 opacity-30 scale-100">
             <Image
@@ -99,9 +100,9 @@ export function UseCasesSection() {
             </div>
           </div>
 
-          <div className="space-y-6">
-            <div className="transition-opacity duration-300" style={{ opacity }}>
-              <Card>
+          <div className="space-y-6 h-full">
+            <div className="transition-opacity duration-300 h-full" style={{ opacity }}>
+              <Card className="h-full items-start justify-start lg:p-5">
                 <div className="mb-1 flex items-start gap-4">
                   <div className="flex flex-col gap-2">
                     <Icon className="h-6 w-6 text-primary" />
@@ -110,7 +111,7 @@ export function UseCasesSection() {
                     </h3>
                   </div>
                 </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-sm leading-relaxed text-muted-foreground lg:mt-1">
                   {activeCase.description}
                 </p>
               </Card>
@@ -119,8 +120,8 @@ export function UseCasesSection() {
         </div>
         </div>
         </AnimateOnScroll>
-        <AnimateOnScroll direction="up" delay={0.3}>
-          <div className="grid lg:grid-cols-4 grid-cols-1 mt-8 items-start justify-start">
+        <AnimateOnScroll direction="up" delay={0.3} className="lg:order-2 order-1">
+          <div className="grid lg:grid-cols-4 grid-cols-1 items-start justify-start">
           {useCases.map((useCase, index) => {
             return (
               <button
@@ -147,6 +148,7 @@ export function UseCasesSection() {
           })}
           </div>
         </AnimateOnScroll>
+        </div>
       </div>
     </section>
   )
