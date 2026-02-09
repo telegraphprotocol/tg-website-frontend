@@ -94,7 +94,7 @@ export function HeroSection() {
             <AnimateOnScroll direction="left" delay={0.4}>
               <div className="relative w-full max-w-md lg:max-w-xl group-hover:scale-[1.02] transition-all duration-700">
                 <Image
-                  src="/hero/signal.svg"
+                  src="/hero/hero-signal.svg"
                   alt="Market-ready Signal"
                   width={600}
                   height={600}
