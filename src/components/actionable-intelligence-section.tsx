@@ -6,9 +6,9 @@ import {
   List,
   Network,
   FileText,
-} from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { AnimateOnScroll } from "@/components/animate-on-scroll"
+} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { AnimateOnScroll } from "@/components/animate-on-scroll";
 
 export function ActionableIntelligenceSection() {
   return (
@@ -23,24 +23,25 @@ export function ActionableIntelligenceSection() {
             <h2 className="mb-6 text-4xl text-foreground lg:text-5xl lg:text-5xl font-space-grotesk font-normal max-w-3xl mx-auto leading-[1.2]">
               We are the signal layer for global markets.
             </h2>
-            <p className="mb-4 lg:text-lg text-base leading-relaxed text-muted-foreground">
-              Telegraph turns real-world intelligence into market-ready signals. AI
-              workers develop models that produce probabilities, scores, alerts,
-              and classifications for what's happening now and what's likely next.
-              Telegraph fetches and verifies those outputs, then publishes a
-              time-stamped on-chain receipt with who, when, confidence, and cost.
-              Any market or app can pay per verified inference and plug these
-              standardized signals into pricing, risk, and automated decisions.
+            <p className="mb-4 lg:text-lg text-base leading-relaxed text-muted-foreground max-w-6xl mx-auto">
+              Telegraph turns real-world intelligence into tradeable on-chain
+              commodities. AI workers develop models that produce probabilities,
+              scores, alerts, and classifications. Telegraph fetches these
+              outputs and verifies them, turning raw compute into transferable
+              Inference Credits. This means you aren't just paying for an API
+              call; you are buying a digital asset—access to intelligence—that
+              you can use instantly or resell on a secondary market as demand
+              for that model grows.
             </p>
-            <p className="lg:text-lg text-base leading-relaxed text-muted-foreground">
-              A Signal is verified intelligence your apps or agents can act on—a
-              probability, score, alert, or classification—produced by AI workers
-              and published on-chain with a receipt: who produced it, when, with
-              what confidence, and at what cost. Because signals are standardized
-              and auditable, any market—especially prediction markets—can ingest
-              open inference as a composable input for pricing, risk, and UX, so
-              you don't just react to outcomes—you can position for them before
-              they happen.
+            <p className="lg:text-lg text-base leading-relaxed text-muted-foreground max-w-6xl mx-auto">
+              A Signal is verified intelligence your apps or agents can act
+              on—produced by AI workers and published on-chain with a receipt:
+              who produced it, when, with what confidence, and at what cost.
+              Because signals are commoditized and auditable, any
+              market—especially prediction markets—can ingest open inference as
+              a composable input for pricing, risk, and UX. This creates a
+              liquid market for truth where you don't just react to outcomes—you
+              can position for them before they happen.
             </p>
           </div>
         </AnimateOnScroll>
@@ -58,7 +59,9 @@ export function ActionableIntelligenceSection() {
                       <Percent className="h-6 w-6 text-primary flex-shrink-0" />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <h4 className="font-medium text-foreground">Probability</h4>
+                      <h4 className="font-medium text-foreground">
+                        Probability
+                      </h4>
                       <p className="text-sm text-muted-foreground">
                         Likelihood of events.
                       </p>
@@ -150,7 +153,11 @@ export function ActionableIntelligenceSection() {
                   </div>
                 </AnimateOnScroll>
 
-                <AnimateOnScroll direction="up" delay={0.5} className="lg:col-span-2 col-span-1">
+                <AnimateOnScroll
+                  direction="up"
+                  delay={0.5}
+                  className="lg:col-span-2 col-span-1"
+                >
                   <div className="flex flex-row gap-4 items-center hover:translate-y-[-3px] transition-all duration-200">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-card border drop-shadow-sm flex-shrink-0">
                       <FileText className="h-6 w-6 text-primary flex-shrink-0" />
@@ -165,12 +172,11 @@ export function ActionableIntelligenceSection() {
                     </div>
                   </div>
                 </AnimateOnScroll>
-            </div>
+              </div>
             </div>
           </AnimateOnScroll>
         </div>
       </div>
     </section>
-  )
+  );
 }
-
