@@ -59,7 +59,7 @@ export function ToolLayerSection() {
   const theme = useTheme();
   const isDark = theme.theme === "dark";
   return (
-    <section id="tool-layer" className="px-4 lg:py-24 py-20">
+    <section id="tool-layer" className="px-4 lg:py-24 py-20 overflow-hidden">
       <div className="container mx-auto max-w-7xl">
         <AnimateOnScroll direction="up" delay={0.1}>
           <Card className="group relative overflow-hidden rounded-4xl border bg-card">
@@ -88,43 +88,54 @@ export function ToolLayerSection() {
             )}
 
             {floatingIcons.map(({ Icon, position, rotate, hoverRotate }, i) => (
-              <div
+              <AnimateOnScroll
                 key={i}
-                className={`absolute ${position} ${rotate} ${hoverRotate} transition-transform duration-500 hidden lg:flex items-center justify-center w-12 h-12 rounded-lg bg-background/80 border border-border/50 text-primary`}
-                aria-hidden
+                direction="up"
+                delay={0.95}
+                className={`absolute ${position} hidden lg:flex`}
               >
-                <Icon className="h-6 w-6" />
-              </div>
+                <div
+                  className={`${rotate} ${hoverRotate} transition-transform duration-500 flex items-center justify-center w-12 h-12 rounded-lg bg-background/80 border border-border/50 text-primary`}
+                  aria-hidden
+                >
+                  <Icon className="h-6 w-6" />
+                </div>
+              </AnimateOnScroll>
             ))}
 
             <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-12 lg:py-20 lg:px-16">
-              <h2 className="mb-6 text-4xl text-foreground lg:text-5xl font-space-grotesk font-normal max-w-3xl mx-auto leading-[1.2]">
-                The Tool Layer for{" "}
-                <span className="font-semibold">AI Agents</span>.
-              </h2>
-              <p className="mb-8 lg:text-lg text-base leading-relaxed text-muted-foreground max-w-3xl mx-auto">
-                Telegraph wraps complex Bittensor subnets into simple
-                &apos;Tools&apos; for your AI Agents. Whether you are building
-                on OpenClaw, Eliza, or custom bots, you can request verifiable
-                intelligence (like get_deepfake_score or get_market_signal) via
-                a simple API call. You handle the logic; we handle the
-                infrastructure and verification.
-              </p>
-
-              <Button
-                size="hero-primary"
-                className="bg-primary hover:bg-primary/90 group"
-                asChild
-              >
-                <Link
-                  href="https://telegraph-2.gitbook.io/telegraph"
-                  target="_blank"
+              <AnimateOnScroll direction="up" delay={0.15}>
+                <h2 className="mb-6 text-4xl text-foreground lg:text-5xl font-space-grotesk font-normal max-w-3xl mx-auto leading-[1.2]">
+                  The Tool Layer for{" "}
+                  <span className="font-semibold">AI Agents</span>.
+                </h2>
+              </AnimateOnScroll>
+              <AnimateOnScroll direction="up" delay={0.25}>
+                <p className="mb-8 lg:text-lg text-base leading-relaxed text-muted-foreground max-w-3xl mx-auto">
+                  Telegraph wraps complex Bittensor subnets into simple
+                  &apos;Tools&apos; for your AI Agents. Whether you are building
+                  on OpenClaw, Eliza, or custom bots, you can request verifiable
+                  intelligence (like get_deepfake_score or get_market_signal)
+                  via a simple API call. You handle the logic; we handle the
+                  infrastructure and verification.
+                </p>
+              </AnimateOnScroll>
+              <AnimateOnScroll direction="up" delay={0.35}>
+                <Button
+                  size="hero-primary"
+                  className="bg-primary hover:bg-primary/90 group"
+                  asChild
                 >
-                  <Settings className="h-4 w-4" />
-                  Start Building
-                  <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
-                </Link>
-              </Button>
+                  <Link
+                    href="https://telegraph-2.gitbook.io/telegraph"
+                    target="_blank"
+                  >
+                    <Settings className="h-4 w-4" />
+                    Start Building
+                    <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
+                  </Link>
+                </Button>
+              </AnimateOnScroll>
             </div>
           </Card>
         </AnimateOnScroll>

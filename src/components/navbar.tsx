@@ -1,87 +1,101 @@
-"use client"
+"use client";
 
-import React from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname, useRouter } from "next/navigation"
-import { Menu, ArrowRight, ChevronDown, Settings, Brain, Users, Hand, Zap, SquaresSubtract } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+import {
+  Menu,
+  ArrowRight,
+  ChevronDown,
+  Settings,
+  Brain,
+  Users,
+  Hand,
+  Zap,
+  SquaresSubtract,
+  Wrench,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
   SheetClose,
   SheetTitle,
-} from "@/components/ui/sheet"
+} from "@/components/ui/sheet";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import { SiX } from "react-icons/si"
-import { ModeToggle } from "./mode-toggle"
+} from "@/components/ui/accordion";
+import { SiX } from "react-icons/si";
+import { ModeToggle } from "./mode-toggle";
 
 export function Navbar() {
-  const pathname = usePathname()
-  const router = useRouter()
-  const [open, setOpen] = React.useState(false)
-  const [aboutOpen, setAboutOpen] = React.useState(false)
-  const [docsOpen, setDocsOpen] = React.useState(false)
-  const aboutTimeoutRef = React.useRef<NodeJS.Timeout | null>(null)
-  const docsTimeoutRef = React.useRef<NodeJS.Timeout | null>(null)
+  const pathname = usePathname();
+  const router = useRouter();
+  const [open, setOpen] = React.useState(false);
+  const [aboutOpen, setAboutOpen] = React.useState(false);
+  const [docsOpen, setDocsOpen] = React.useState(false);
+  const aboutTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const docsTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   React.useEffect(() => {
     return () => {
       if (aboutTimeoutRef.current) {
-        clearTimeout(aboutTimeoutRef.current)
+        clearTimeout(aboutTimeoutRef.current);
       }
       if (docsTimeoutRef.current) {
-        clearTimeout(docsTimeoutRef.current)
+        clearTimeout(docsTimeoutRef.current);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   const regularLinks = [
     { href: "/", label: "Home" },
     { href: "/#signals", label: "Signals" },
     { href: "/#nodes", label: "Node Runners" },
-  ]
+  ];
 
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
     if (href.startsWith("/#")) {
-      e.preventDefault()
-      const id = href.replace("/#", "")
-      
+      e.preventDefault();
+      const id = href.replace("/#", "");
+
       if (pathname !== "/") {
-        router.push(href)
+        router.push(href);
         setTimeout(() => {
-          const element = document.getElementById(id)
+          const element = document.getElementById(id);
           if (element) {
             element.scrollIntoView({
               behavior: "smooth",
               block: "start",
-            })
+            });
           }
-        }, 100)
+        }, 100);
       } else {
-        const element = document.getElementById(id)
+        const element = document.getElementById(id);
         if (element) {
           element.scrollIntoView({
             behavior: "smooth",
             block: "start",
-          })
-          window.history.pushState(null, "", href)
+          });
+          window.history.pushState(null, "", href);
         }
       }
     }
-  }
+  };
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -117,56 +131,58 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          
+
           <DropdownMenu open={aboutOpen} modal={false}>
             <div
               onMouseEnter={() => {
                 if (aboutTimeoutRef.current) {
-                  clearTimeout(aboutTimeoutRef.current)
-                  aboutTimeoutRef.current = null
+                  clearTimeout(aboutTimeoutRef.current);
+                  aboutTimeoutRef.current = null;
                 }
-                setAboutOpen(true)
+                setAboutOpen(true);
               }}
               onMouseLeave={() => {
                 aboutTimeoutRef.current = setTimeout(() => {
-                  setAboutOpen(false)
-                  aboutTimeoutRef.current = null
-                }, 200)
+                  setAboutOpen(false);
+                  aboutTimeoutRef.current = null;
+                }, 200);
               }}
             >
-              <DropdownMenuTrigger 
+              <DropdownMenuTrigger
                 className="text-[15px] font-medium text-foreground hover:text-foreground/80 transition-colors px-2 flex items-center gap-1 outline-none"
                 asChild
               >
                 <button type="button">
                   About
-                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${aboutOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-200 ${aboutOpen ? "rotate-180" : ""}`}
+                  />
                 </button>
               </DropdownMenuTrigger>
             </div>
-            <DropdownMenuContent 
+            <DropdownMenuContent
               className="mt-3"
               align="center"
               onMouseEnter={() => {
                 if (aboutTimeoutRef.current) {
-                  clearTimeout(aboutTimeoutRef.current)
-                  aboutTimeoutRef.current = null
+                  clearTimeout(aboutTimeoutRef.current);
+                  aboutTimeoutRef.current = null;
                 }
-                setAboutOpen(true)
+                setAboutOpen(true);
               }}
               onMouseLeave={() => {
                 aboutTimeoutRef.current = setTimeout(() => {
-                  setAboutOpen(false)
-                  aboutTimeoutRef.current = null
-                }, 200)
+                  setAboutOpen(false);
+                  aboutTimeoutRef.current = null;
+                }, 200);
               }}
             >
               <DropdownMenuItem asChild>
                 <Link
                   href="/#actionable-intelligence"
                   onClick={(e) => {
-                    handleSmoothScroll(e, "/#actionable-intelligence")
-                    setAboutOpen(false)
+                    handleSmoothScroll(e, "/#actionable-intelligence");
+                    setAboutOpen(false);
                   }}
                   className="cursor-pointer"
                 >
@@ -178,8 +194,8 @@ export function Navbar() {
                 <Link
                   href="/#the-process"
                   onClick={(e) => {
-                    handleSmoothScroll(e, "/#how-it-works")
-                    setAboutOpen(false)
+                    handleSmoothScroll(e, "/#how-it-works");
+                    setAboutOpen(false);
                   }}
                   className="cursor-pointer"
                 >
@@ -191,8 +207,8 @@ export function Navbar() {
                 <Link
                   href="/#use-cases"
                   onClick={(e) => {
-                    handleSmoothScroll(e, "/#use-cases")
-                    setAboutOpen(false)
+                    handleSmoothScroll(e, "/#use-cases");
+                    setAboutOpen(false);
                   }}
                   className="cursor-pointer"
                 >
@@ -204,8 +220,8 @@ export function Navbar() {
                 <Link
                   href="/#our-team"
                   onClick={(e) => {
-                    handleSmoothScroll(e, "/#our-team")
-                    setAboutOpen(false)
+                    handleSmoothScroll(e, "/#our-team");
+                    setAboutOpen(false);
                   }}
                   className="cursor-pointer"
                 >
@@ -217,8 +233,8 @@ export function Navbar() {
                 <Link
                   href="/#get-started"
                   onClick={(e) => {
-                    handleSmoothScroll(e, "/#get-started")
-                    setAboutOpen(false)
+                    handleSmoothScroll(e, "/#get-started");
+                    setAboutOpen(false);
                   }}
                   className="cursor-pointer"
                 >
@@ -228,15 +244,31 @@ export function Navbar() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
+                  href="/#tool-layer"
+                  onClick={(e) => {
+                    handleSmoothScroll(e, "/#tool-layer");
+                    setAboutOpen(false);
+                  }}
+                  className="cursor-pointer"
+                >
+                  <Wrench className="h-4 w-4 text-primary" />
+                  Tool Layer
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
                   href="#"
                   onClick={(e) => {
-                    handleSmoothScroll(e, "/#get-started")
-                    setAboutOpen(false)
+                    handleSmoothScroll(e, "/#get-started");
+                    setAboutOpen(false);
                   }}
                   className="cursor-not-allowed"
                 >
                   <SquaresSubtract className="h-4 w-4 text-primary" />
-                  Forecast Subnet <span className="text-xs text-muted-foreground">coming soon</span>
+                  Forecast Subnet{" "}
+                  <span className="text-xs text-muted-foreground">
+                    coming soon
+                  </span>
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -246,48 +278,50 @@ export function Navbar() {
             <div
               onMouseEnter={() => {
                 if (docsTimeoutRef.current) {
-                  clearTimeout(docsTimeoutRef.current)
-                  docsTimeoutRef.current = null
+                  clearTimeout(docsTimeoutRef.current);
+                  docsTimeoutRef.current = null;
                 }
-                setDocsOpen(true)
+                setDocsOpen(true);
               }}
               onMouseLeave={() => {
                 docsTimeoutRef.current = setTimeout(() => {
-                  setDocsOpen(false)
-                  docsTimeoutRef.current = null
-                }, 200)
+                  setDocsOpen(false);
+                  docsTimeoutRef.current = null;
+                }, 200);
               }}
             >
-              <DropdownMenuTrigger 
+              <DropdownMenuTrigger
                 className="text-[15px] font-medium text-foreground hover:text-foreground/80 transition-colors px-2 flex items-center gap-1 outline-none"
                 asChild
               >
                 <button type="button">
-                   Socials
-                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${docsOpen ? 'rotate-180' : ''}`} />
+                  Socials
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-200 ${docsOpen ? "rotate-180" : ""}`}
+                  />
                 </button>
               </DropdownMenuTrigger>
             </div>
-            <DropdownMenuContent 
-            className="mt-3"
+            <DropdownMenuContent
+              className="mt-3"
               align="center"
               onMouseEnter={() => {
                 if (docsTimeoutRef.current) {
-                  clearTimeout(docsTimeoutRef.current)
-                  docsTimeoutRef.current = null
+                  clearTimeout(docsTimeoutRef.current);
+                  docsTimeoutRef.current = null;
                 }
-                setDocsOpen(true)
+                setDocsOpen(true);
               }}
               onMouseLeave={() => {
                 docsTimeoutRef.current = setTimeout(() => {
-                  setDocsOpen(false)
-                  docsTimeoutRef.current = null
-                }, 200)
+                  setDocsOpen(false);
+                  docsTimeoutRef.current = null;
+                }, 200);
               }}
             >
               <DropdownMenuItem asChild>
-                <Link 
-                  href="https://x.com/Telegraphprotoc" 
+                <Link
+                  href="https://x.com/Telegraphprotoc"
                   target="_blank"
                   className="cursor-pointer"
                 >
@@ -308,7 +342,7 @@ export function Navbar() {
           </Link>
           */}
           <div className="hidden lg:flex">
-            <ModeToggle/>
+            <ModeToggle />
           </div>
           <Button
             className="bg-primary hover:bg-primary/90 group hidden lg:flex rounded-full pr-3 pl-5"
@@ -322,7 +356,11 @@ export function Navbar() {
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="lg:hidden w-8 h-8">
+              <Button
+                variant="outline"
+                size="icon"
+                className="lg:hidden w-8 h-8"
+              >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
@@ -334,17 +372,16 @@ export function Navbar() {
                     <Link
                       href={link.href}
                       onClick={(e) => {
-                        handleSmoothScroll(e, link.href)
-                        setOpen(false)
+                        handleSmoothScroll(e, link.href);
+                        setOpen(false);
                       }}
                       className="flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors"
-                        
                     >
                       {link.label}
                     </Link>
                   </SheetClose>
                 ))}
-                
+
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="about" className="border-none">
                     <AccordionTrigger className="py-2 px-4 hover:no-underline">
@@ -354,34 +391,37 @@ export function Navbar() {
                       <div className="flex flex-col gap-1 pl-4 text-muted-foreground">
                         <SheetClose asChild>
                           <Link
-                            href="/#home"
+                            href="/#actionable-intelligence"
                             onClick={(e) => {
-                              handleSmoothScroll(e, "/#home")
-                              setOpen(false)
+                              handleSmoothScroll(
+                                e,
+                                "/#actionable-intelligence",
+                              );
+                              setOpen(false);
                             }}
                             className="flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
                           >
-                            About
+                            Actionable Intelligence
                           </Link>
                         </SheetClose>
                         <SheetClose asChild>
                           <Link
-                            href="/#our-team"
+                            href="/#how-it-works"
                             onClick={(e) => {
-                              handleSmoothScroll(e, "/#our-team")
-                              setOpen(false)
+                              handleSmoothScroll(e, "/#how-it-works");
+                              setOpen(false);
                             }}
                             className="flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
                           >
-                            Our Team
+                            The Process
                           </Link>
                         </SheetClose>
                         <SheetClose asChild>
                           <Link
                             href="/#use-cases"
                             onClick={(e) => {
-                              handleSmoothScroll(e, "/#use-cases")
-                              setOpen(false)
+                              handleSmoothScroll(e, "/#use-cases");
+                              setOpen(false);
                             }}
                             className="flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
                           >
@@ -390,23 +430,47 @@ export function Navbar() {
                         </SheetClose>
                         <SheetClose asChild>
                           <Link
-                            href="/#how-it-works"
+                            href="/#our-team"
                             onClick={(e) => {
-                              handleSmoothScroll(e, "/#how-it-works")
-                              setOpen(false)
+                              handleSmoothScroll(e, "/#our-team");
+                              setOpen(false);
                             }}
                             className="flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
                           >
-                            How it Works
+                            Our Team
+                          </Link>
+                        </SheetClose>
+                        <SheetClose asChild>
+                          <Link
+                            href="/#get-started"
+                            onClick={(e) => {
+                              handleSmoothScroll(e, "/#get-started");
+                              setOpen(false);
+                            }}
+                            className="flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
+                          >
+                            Get Started
+                          </Link>
+                        </SheetClose>
+                        <SheetClose asChild>
+                          <Link
+                            href="/#tool-layer"
+                            onClick={(e) => {
+                              handleSmoothScroll(e, "/#tool-layer");
+                              setOpen(false);
+                            }}
+                            className="flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
+                          >
+                            Tool Layer
                           </Link>
                         </SheetClose>
                       </div>
                     </AccordionContent>
                   </AccordionItem>
-                  
+
                   <AccordionItem value="docs" className="border-none mt-3.5">
                     <AccordionTrigger className="py-2 px-4 hover:no-underline">
-                       Socials
+                      Socials
                     </AccordionTrigger>
                     <AccordionContent className="pb-0">
                       <div className="flex flex-col gap-1 pl-4 text-muted-foreground">
@@ -414,7 +478,6 @@ export function Navbar() {
                           <Link
                             href="https://x.com/Telegraphprotoc"
                             target="_blank"
-                           
                             className="flex h-9 w-full items-center px-4 py-2 font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
                           >
                             Twitter/X
@@ -431,16 +494,13 @@ export function Navbar() {
                       className="bg-primary hover:bg-primary/90 group mt-4 h-11 text-base mx-2"
                       asChild
                     >
-                      <Link
-                        href="/marketplace"
-                        onClick={() => setOpen(false)}
-                      >
+                      <Link href="/marketplace" onClick={() => setOpen(false)}>
                         Marketplace
                         <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
                       </Link>
                     </Button>
                     <div className="flex lg:hidden mt-4 justify-center">
-                      <ModeToggle/>
+                      <ModeToggle />
                     </div>
                   </div>
                 </SheetClose>
@@ -450,6 +510,5 @@ export function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
-
