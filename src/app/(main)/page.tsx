@@ -6,6 +6,7 @@ import { ActionableIntelligenceSection } from "@/components/actionable-intellige
 import { UseCasesSection } from "@/components/use-cases-section"
 import { OurTeamSection } from "@/components/our-team-section"
 import { GetStartedSection } from "@/components/get-started-section"
+import { ToolLayerSection } from "@/components/tool-layer-section"
 import { StructuredData } from "@/components/structured-data"
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
         <UseCasesSection />
         <OurTeamSection />
         <GetStartedSection />
+        <ToolLayerSection />
       </main>
     </>
   )
