@@ -6,6 +6,7 @@ import {
   List,
   Network,
   FileText,
+  Coins,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
@@ -153,21 +154,32 @@ export function ActionableIntelligenceSection() {
                   </div>
                 </AnimateOnScroll>
 
-                <AnimateOnScroll
-                  direction="up"
-                  delay={0.5}
-                  className="lg:col-span-2 col-span-1"
-                >
+                <AnimateOnScroll direction="up" delay={0.5}>
                   <div className="flex flex-row gap-4 items-center hover:translate-y-[-3px] transition-all duration-200">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-card border drop-shadow-sm flex-shrink-0">
                       <FileText className="h-6 w-6 text-primary flex-shrink-0" />
                     </div>
                     <div className="flex flex-col gap-1">
                       <h4 className="font-medium text-foreground">
-                        Published On-Chain With A Receipt
+                        On-Chain & Verified
                       </h4>
                       <p className="text-sm text-muted-foreground">
                         Who • Confidence • Cost
+                      </p>
+                    </div>
+                  </div>
+                </AnimateOnScroll>
+                <AnimateOnScroll direction="up" delay={0.6}>
+                  <div className="flex flex-row gap-4 items-center hover:translate-y-[-3px] transition-all duration-200">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-card border drop-shadow-sm flex-shrink-0">
+                      <Coins className="h-6 w-6 text-primary flex-shrink-0" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <h4 className="font-medium text-foreground">
+                        Tradeable As Credits
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        Liquid access to compute.
                       </p>
                     </div>
                   </div>
