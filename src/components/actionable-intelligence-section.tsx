@@ -161,7 +161,7 @@ export function ActionableIntelligenceSection() {
                     </div>
                     <div className="flex flex-col gap-1">
                       <h4 className="font-medium text-foreground">
-                        On-Chain & Verified
+                        Published On-Chain
                       </h4>
                       <p className="text-sm text-muted-foreground">
                         Who • Confidence • Cost
