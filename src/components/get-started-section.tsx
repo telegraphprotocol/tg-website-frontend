@@ -1,9 +1,8 @@
-
-import { Badge } from "@/components/ui/badge"
-import {  BookOpen, Network, Users, Hand, ArrowRight } from "lucide-react"
-import { AnimateOnScroll } from "@/components/animate-on-scroll"
-import { Button } from "./ui/button"
-import Link from "next/link"
+import { Badge } from "@/components/ui/badge";
+import { BookOpen, Network, Users, Hand, ArrowRight } from "lucide-react";
+import { AnimateOnScroll } from "@/components/animate-on-scroll";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 export function GetStartedSection() {
   const items = [
@@ -31,12 +30,12 @@ export function GetStartedSection() {
       linkText: "Join the community",
       link: "https://x.com/Telegraphprotoc",
     },
-  ]
+  ];
 
   return (
     <section id="get-started" className="px-4 lg:py-24 py-20">
       <div className="container mx-auto max-w-7xl">
-      <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <AnimateOnScroll direction="up" delay={0.1}>
             <div className="flex flex-col gap-2 lg:items-start items-center lg:text-left text-center">
               <Badge variant="topTitle" className="mb-4 w-fit">
@@ -44,7 +43,7 @@ export function GetStartedSection() {
                 <span>Get Started</span>
               </Badge>
               <h2 className="text-4xl text-foreground lg:text-5xl font-space-grotesk max-w-3xl leading-[1.2]">
-              Get started now.
+                Get started now.
               </h2>
             </div>
           </AnimateOnScroll>
@@ -52,40 +51,52 @@ export function GetStartedSection() {
           <AnimateOnScroll direction="up" delay={0.2}>
             <div className="flex flex-col gap-1 lg:text-right text-center justify-end items-center lg:items-end lg:max-w-sm">
               <p className="text-muted-foreground">
-                Stop building prediction models from scratch. Integrate verified, decentralized intelligence into your dApp or enterprise workflow in minutes.
+                Instead of manually integrating dozens of fragmented AI networks
+                one by one, developer teams save millions in backend
+                infrastructure costs while unlocking massive alpha.
               </p>
-           </div>
+            </div>
           </AnimateOnScroll>
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {items.map((item, index) => {
-            const Icon = item.icon
+            const Icon = item.icon;
             return (
-              <AnimateOnScroll key={index} direction="up" delay={0.1 + index * 0.1}>
+              <AnimateOnScroll
+                key={index}
+                direction="up"
+                delay={0.1 + index * 0.1}
+              >
                 <div className="justify-center items-center flex flex-col gap-4 group">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-foreground drop-shadow-md group-hover:bg-primary transition-all duration-300">
-                  <Icon className="h-5 w-5 text-background" />
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-foreground drop-shadow-md group-hover:bg-primary transition-all duration-300">
+                    <Icon className="h-5 w-5 text-background" />
+                  </div>
+                  <div className="flex flex-col gap-2 text-center">
+                    <h3 className="text-xl font-medium text-foreground group-hover:text-primary transition-colors duration-300">
+                      {item.title}
+                    </h3>
+                    <p className="mb-4 text-base text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300 lg:max-w-sm">
+                      {item.description}
+                    </p>
+                  </div>
+                  <Button
+                    variant="secondary"
+                    size="section-secondary"
+                    className="w-fit group"
+                    asChild
+                  >
+                    <Link href={item.link} target="_blank">
+                      {item.linkText}
+                      <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
+                    </Link>
+                  </Button>
                 </div>
-                <div className="flex flex-col gap-2 text-center">
-                  <h3 className="text-xl font-medium text-foreground group-hover:text-primary transition-colors duration-300">
-                    {item.title}
-                  </h3>
-                  <p className="mb-4 text-base text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300 lg:max-w-sm">{item.description}</p>
-                </div>
-                <Button variant="secondary" size="section-secondary" className="w-fit group" asChild>
-                  <Link href={item.link} target="_blank">
-                    {item.linkText}
-                    <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
-                  </Link>
-                </Button>
-              </div>
               </AnimateOnScroll>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }
-

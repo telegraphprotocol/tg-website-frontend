@@ -21,8 +21,9 @@ export function ActionableIntelligenceSection() {
               <Zap className="h-4 w-4 text-primary flex-shrink-0" />
               <span>Actionable Intelligence</span>
             </Badge>
-            <h2 className="mb-6 text-4xl text-foreground lg:text-5xl lg:text-5xl font-space-grotesk font-normal max-w-3xl mx-auto leading-[1.2]">
-              We are the signal layer for global markets.
+            <h2 className="mb-6 text-4xl text-foreground lg:text-5xl lg:text-5xl font-space-grotesk font-normal max-w-4xl mx-auto leading-[1.2]">
+              We are the intelligence and payment layer for agents, robots, and
+              apps.
             </h2>
             <p className="mb-4 lg:text-lg text-base leading-relaxed text-muted-foreground max-w-6xl mx-auto">
               Telegraph turns real-world intelligence into tradeable on-chain

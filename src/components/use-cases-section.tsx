@@ -31,10 +31,10 @@ export function UseCasesSection() {
     },
     {
       icon: Brain,
-      title: "Predict the Headlines with Bitmind",
+      title: "Predict the Headlines with Deepfake Detection",
       subtitle: "Hedge Fund Risk",
       description:
-        "A hedge fund faces drawdown risk when synthetic war footage goes viral. Telegraph allows the fund to instantly consume “Truth Signals” from Bitmind, a competitive deepfake-detection company. When a suspicious video hits the market, the desk pulls a “Deepfake Probability Score” via the protocol. We deliver the signed, verified result (e.g., “99.8% Artificial”) in real time, allowing the algorithm to hedge positions while others panic.",
+        "We wrap raw inference from open-source deepfake detection models into verifiable on-chain signals. This allows autonomous trading agents used by hedge funds, brands, or public figures to react instantly without building custom crypto integrations.",
       image: "/use-cases/3a.png",
     },
     {

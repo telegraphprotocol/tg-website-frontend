@@ -1,31 +1,33 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Network, ArrowRight } from "lucide-react"
-import { AnimateOnScroll } from "@/components/animate-on-scroll"
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Network, ArrowRight } from "lucide-react";
+import { AnimateOnScroll } from "@/components/animate-on-scroll";
 
 export function NodesSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(0)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
   const nodeRunners = [
     {
       name: "Tao.com",
-      description: "The fifth largest validator on the Bittensor network.",
+      description: "The fifth largest validator for open-source AI protocols.",
       logoBg: "bg-foreground",
       logoText: "T",
     },
     {
       name: "WildSage Labs",
-      description: "The seventh largest validator on the Bittensor network.",
+      description:
+        "The seventh largest validator for open-source AI protocols.",
       logoBg: "bg-foreground",
       logoText: "W",
     },
     {
       name: "Rizzo",
-      description: "The fourteenth largest validator on the Bittensor network.",
+      description:
+        "The fourteenth largest validator for open-source AI protocols.",
       logoBg: "bg-foreground",
       logoText: "R",
     },
@@ -35,10 +37,13 @@ export function NodesSection() {
       logoBg: "bg-foreground",
       logoText: "?",
     },
-  ]
+  ];
 
   return (
-    <section id="nodes" className="relative overflow-hidden px-4 lg:py-24 py-20">
+    <section
+      id="nodes"
+      className="relative overflow-hidden px-4 lg:py-24 py-20"
+    >
       <div className="container mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <AnimateOnScroll direction="up" delay={0.1}>
@@ -65,7 +70,12 @@ export function NodesSection() {
               <p className="text-muted-foreground">
                 Want to buy and run a node?
               </p>
-              <Button variant="secondary" size="section-secondary" className="w-fit lg:mt-2 mt-4 group" asChild>
+              <Button
+                variant="secondary"
+                size="section-secondary"
+                className="w-fit lg:mt-2 mt-4 group"
+                asChild
+              >
                 <Link href="mailto:info@telegraphprotocop.com">
                   Contact us
                   <ArrowRight className="h-4 w-4 opacity-30 group-hover:translate-x-0 transition-all duration-200 group-hover:opacity-100 -translate-x-0.5" />
@@ -93,9 +103,13 @@ export function NodesSection() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:grid-cols-4 relative z-20">
           {nodeRunners.map((runner, index) => {
-            const isHovered = hoveredIndex === index
+            const isHovered = hoveredIndex === index;
             return (
-              <AnimateOnScroll key={index} direction="up" delay={0.1 + index * 0.1}>
+              <AnimateOnScroll
+                key={index}
+                direction="up"
+                delay={0.1 + index * 0.1}
+              >
                 <div
                   className="flex flex-col gap-4 group relative z-20"
                   onMouseEnter={() => setHoveredIndex(index)}
@@ -107,7 +121,9 @@ export function NodesSection() {
                         isHovered ? "bg-primary" : ""
                       }`}
                     >
-                      <span className="text-lg font-semibold">{runner.logoText}</span>
+                      <span className="text-lg font-semibold">
+                        {runner.logoText}
+                      </span>
                     </div>
                     <h3
                       className={`text-xl font-medium transition-colors duration-300 ${
@@ -126,11 +142,10 @@ export function NodesSection() {
                   </p>
                 </div>
               </AnimateOnScroll>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }
-

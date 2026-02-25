@@ -112,12 +112,11 @@ export function ToolLayerSection() {
               </AnimateOnScroll>
               <AnimateOnScroll direction="up" delay={0.25}>
                 <p className="mb-8 lg:text-lg text-base leading-relaxed text-muted-foreground max-w-3xl mx-auto">
-                  Telegraph wraps complex Bittensor subnets into simple
-                  &apos;Tools&apos; for your AI Agents. Whether you are building
-                  on OpenClaw, Eliza, or custom bots, you can request verifiable
-                  intelligence (like get_deepfake_score or get_market_signal)
-                  via a simple API call. You handle the logic; we handle the
-                  infrastructure and verification.
+                  Telegraph wraps complex open-source AI networks into simple
+                  'Tools' for your AI Agents. Because Telegraph removes all the
+                  blockchain complexity, the routing, the verification, and the
+                  micropayments, accessing this raw intelligence takes less than
+                  20 lines of code.
                 </p>
               </AnimateOnScroll>
               <AnimateOnScroll direction="up" delay={0.35}>

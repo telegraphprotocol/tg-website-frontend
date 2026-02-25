@@ -32,15 +32,20 @@ export function HeroSection() {
             </AnimateOnScroll>
             <AnimateOnScroll direction="up" delay={0.2}>
               <p className="mb-6 text-base leading-relaxed text-muted-foreground lg:text-lg">
-                Telegraph turns real-world intelligence into market-ready{" "}
-                <span className="font-semibold">signals</span>.<br /> AI workers
-                develop models that produce probabilities, scores, alerts, and
-                classifications for what's happening now and what's likely next.
-                Telegraph fetches and verifies those outputs, then publishes a
-                time-stamped on-chain receipt with who, when, confidence, and
-                cost. Any market or app can pay per verified inference and plug
-                these standardized signals into pricing, risk, and automated
-                decisions.
+                An intelligence and payment rail for agents to make decisions
+                based on results from the world’s most competitive open-source
+                models. Telegraph turns AI outputs into verified, on-chain
+                signals (scores, alerts, classifications) with a receipt.
+                Telegraph acts as the universal aggregator, turning raw
+                intelligence into a standardized commodities market for verified
+                truth. By plugging in the Telegraph skill (one skill to rule
+                them all), autonomous agents gain instant, programmatic access
+                to the world's best intelligence. Any agent, robot, or app can
+                pay per verified inference and plug these standardized signals
+                into pricing, risk, and automated decisions. They don't just get
+                data that is faster and cheaper; they get the truth that they
+                can execute on instantly, automatically settled in the
+                background via machine-to-machine micropayments.
               </p>
             </AnimateOnScroll>
             <AnimateOnScroll direction="up" delay={0.3}>
