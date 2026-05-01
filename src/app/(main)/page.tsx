@@ -16,11 +16,7 @@ export default function Home() {
   return (
     <>
       <StructuredData />
-      <LandingLoaderGate
-        imageSources={[
-          "/images/landing/hero-bg.png",
-        ]}
-      >
+      <LandingLoaderGate imageSources={["/images/landing/hero-bg.png"]}>
         <Hero />
         <Inspire />
         <Improve />

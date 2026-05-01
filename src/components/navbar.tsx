@@ -19,15 +19,17 @@ export function Navbar() {
             height={28}
             className="h-5 w-auto"
           />
-          <span className="font-medium">Telegraph</span>
+          <span className="font-medium hidden md:block">Telegraph</span>
         </Link>
 
         <div className="flex items-center gap-3">
           <CtaButton href="/marketplace" variant="dark" arrow={false}>
-            Marketplace
+            <span>Marketplace</span>
           </CtaButton>
           <CtaButton href="#launch" arrow={false}>
-            Launch Terminal
+            <span>
+              <span className="hidden md:inline">Launch</span> Terminal
+            </span>
           </CtaButton>
         </div>
       </div>
