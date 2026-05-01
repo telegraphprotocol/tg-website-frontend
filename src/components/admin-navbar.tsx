@@ -1,18 +1,15 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
+import Link from "next/link";
+import Image from "next/image";
 
 export function AdminNavbar() {
   return (
     <nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 max-w-7xl">
-        <Link
-          href="/"
-          className="flex items-center gap-2 cursor-pointer"
-        >
+        <Link href="/" className="flex items-center gap-2 cursor-pointer">
           <Image
-            src="/logo.png"
+            src="/t-logo.png"
             alt="Telegraph Logo"
             width={24}
             height={24}
@@ -33,16 +30,14 @@ export function AdminNavbar() {
           <Link
             href="/dashboard/login"
             onClick={() => {
-              localStorage.removeItem("admin_token")
+              localStorage.removeItem("admin_token");
             }}
             className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
           >
             Logout
           </Link>
         </div>
-
       </div>
     </nav>
-  )
+  );
 }
-

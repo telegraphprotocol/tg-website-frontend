@@ -13,7 +13,7 @@ export function Navbar() {
           className="flex items-center gap-2.5 text-[17px] font-medium text-[var(--tg-fg)] no-underline"
         >
           <Image
-            src="/logo.png"
+            src="/t-logo.png"
             alt="Telegraph"
             width={28}
             height={28}
