@@ -9,23 +9,30 @@ import { Access } from "@/components/landing/access";
 import { Power } from "@/components/landing/power";
 import { Path } from "@/components/landing/path";
 import { BuildCta } from "@/components/landing/build-cta";
+import { LandingLoaderGate } from "@/components/landing/landing-loader-gate";
 import { StructuredData } from "@/components/structured-data";
 
 export default function Home() {
   return (
     <>
       <StructuredData />
-      <Hero />
-      <Inspire />
-      <Improve />
-      <Liquidity />
-      <Buy />
-      <Marketplace />
-      <How />
-      <Access />
-      <Power />
-      <Path />
-      <BuildCta />
+      <LandingLoaderGate
+        imageSources={[
+          "/images/landing/hero-bg.png",
+        ]}
+      >
+        <Hero />
+        <Inspire />
+        <Improve />
+        <Liquidity />
+        <Buy />
+        <Marketplace />
+        <How />
+        <Access />
+        <Power />
+        <Path />
+        <BuildCta />
+      </LandingLoaderGate>
     </>
   );
 }
