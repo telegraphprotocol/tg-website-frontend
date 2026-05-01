@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { ChevronDown, ChevronUp, Search, Loader2 } from "lucide-react"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Input } from "@/components/ui/input"
+import { useState } from "react";
+import Image from "next/image";
+import { ChevronDown, ChevronUp, Search, Loader2 } from "lucide-react";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -12,8 +12,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { useMarketplaceData } from "@/hooks/use-marketplace"
+} from "@/components/ui/table";
+import { useMarketplaceData } from "@/hooks/use-marketplace";
 
 type SortField =
   | "subnetName"
@@ -22,122 +22,129 @@ type SortField =
   | "signalVolume"
   | "apiAvailability"
   | "paymentMethod"
-  | "integrationStatus"
+  | "integrationStatus";
 
-type SortDirection = "asc" | "desc" | null
+type SortDirection = "asc" | "desc" | null;
 
 export function MarketplaceTable() {
-  const { data, isLoading } = useMarketplaceData()
-  const [currency, setCurrency] = useState<"USD">("USD")
-  const [searchQuery, setSearchQuery] = useState("")
-  const [sortField, setSortField] = useState<SortField | null>(null)
-  const [sortDirection, setSortDirection] = useState<SortDirection>(null)
-  const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set())
-  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set())
+  const { data, isLoading } = useMarketplaceData();
+  const [currency, setCurrency] = useState<"USD">("USD");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortField, setSortField] = useState<SortField | null>(null);
+  const [sortDirection, setSortDirection] = useState<SortDirection>(null);
+  const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
 
   const handleSort = (field: SortField) => {
     if (sortField === field) {
       if (sortDirection === "asc") {
-        setSortDirection("desc")
+        setSortDirection("desc");
       } else if (sortDirection === "desc") {
-        setSortField(null)
-        setSortDirection(null)
+        setSortField(null);
+        setSortDirection(null);
       } else {
-        setSortDirection("asc")
+        setSortDirection("asc");
       }
     } else {
-      setSortField(field)
-      setSortDirection("asc")
+      setSortField(field);
+      setSortDirection("asc");
     }
-  }
+  };
 
   const toggleRow = (id: string) => {
-    const newExpanded = new Set(expandedRows)
+    const newExpanded = new Set(expandedRows);
     if (newExpanded.has(id)) {
-      newExpanded.delete(id)
+      newExpanded.delete(id);
     } else {
-      newExpanded.add(id)
+      newExpanded.add(id);
     }
-    setExpandedRows(newExpanded)
-  }
+    setExpandedRows(newExpanded);
+  };
 
   const getSortIcon = (field: SortField) => {
     if (sortField !== field) {
-      return <ChevronUp className="h-4 w-4 opacity-30" />
+      return <ChevronUp className="h-4 w-4 opacity-30" />;
     }
     if (sortDirection === "asc") {
-      return <ChevronUp className="h-4 w-4" />
+      return <ChevronUp className="h-4 w-4" />;
     }
     if (sortDirection === "desc") {
-      return <ChevronDown className="h-4 w-4" />
+      return <ChevronDown className="h-4 w-4" />;
     }
-    return <ChevronUp className="h-4 w-4 opacity-30" />
-  }
+    return <ChevronUp className="h-4 w-4 opacity-30" />;
+  };
 
-  const filteredData = (data || []).filter((item) =>
-    item.subnetName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.uid.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+  const filteredData = (data || []).filter(
+    (item) =>
+      item.subnetName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.uid.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
 
   const sortedData = [...filteredData].sort((a, b) => {
-    if (!sortField || !sortDirection) return 0
+    if (!sortField || !sortDirection) return 0;
 
-    let aValue: string | number = ""
-    let bValue: string | number = ""
+    let aValue: string | number = "";
+    let bValue: string | number = "";
 
     switch (sortField) {
       case "subnetName":
-        aValue = a.subnetName
-        bValue = b.subnetName
-        break
+        aValue = a.subnetName;
+        bValue = b.subnetName;
+        break;
       case "tradingVol":
-        aValue = parseFloat(a.tradingVol24h.replace(/[^0-9.]/g, ""))
-        bValue = parseFloat(b.tradingVol24h.replace(/[^0-9.]/g, ""))
-        break
+        aValue = parseFloat(a.tradingVol24h.replace(/[^0-9.]/g, ""));
+        bValue = parseFloat(b.tradingVol24h.replace(/[^0-9.]/g, ""));
+        break;
       case "signal":
-        aValue = a.signal
-        bValue = b.signal
-        break
+        aValue = a.signal;
+        bValue = b.signal;
+        break;
       case "signalVolume":
-        aValue = a.signalVolume
-        bValue = b.signalVolume
-        break
+        aValue = a.signalVolume;
+        bValue = b.signalVolume;
+        break;
       case "apiAvailability":
-        aValue = a.apiAvailability
-        bValue = b.apiAvailability
-        break
+        aValue = a.apiAvailability;
+        bValue = b.apiAvailability;
+        break;
       case "paymentMethod":
-        aValue = a.paymentMethod
-        bValue = b.paymentMethod
-        break
+        aValue = a.paymentMethod;
+        bValue = b.paymentMethod;
+        break;
       case "integrationStatus":
-        aValue = a.integrationStatus
-        bValue = b.integrationStatus
-        break
+        aValue = a.integrationStatus;
+        bValue = b.integrationStatus;
+        break;
     }
 
     if (typeof aValue === "number" && typeof bValue === "number") {
-      return sortDirection === "asc" ? aValue - bValue : bValue - aValue
+      return sortDirection === "asc" ? aValue - bValue : bValue - aValue;
     }
 
-    const comparison = String(aValue).localeCompare(String(bValue))
-    return sortDirection === "asc" ? comparison : -comparison
-  })
+    const comparison = String(aValue).localeCompare(String(bValue));
+    return sortDirection === "asc" ? comparison : -comparison;
+  });
 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
         <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
       </div>
-    )
+    );
   }
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <Tabs className="hidden lg:block" value={currency} onValueChange={(v) => setCurrency(v as "USD")}>
-          <TabsList>
-            <TabsTrigger value="USD">USD</TabsTrigger>
+        <Tabs
+          className="hidden lg:block rounded-sm"
+          value={currency}
+          onValueChange={(v) => setCurrency(v as "USD")}
+        >
+          <TabsList className="rounded-sm">
+            <TabsTrigger className="rounded-sm" value="USD">
+              USD
+            </TabsTrigger>
           </TabsList>
         </Tabs>
 
@@ -147,12 +154,12 @@ export function MarketplaceTable() {
             placeholder="Search subnet"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10"
+            className="pl-10 rounded-sm"
           />
         </div>
       </div>
 
-      <div className="rounded-lg border border-border overflow-x-auto">
+      <div className="rounded-sm border border-border overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
@@ -225,162 +232,200 @@ export function MarketplaceTable() {
           <TableBody>
             {sortedData.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
+                <TableCell
+                  colSpan={8}
+                  className="text-center py-8 text-muted-foreground"
+                >
                   No subnets found
                 </TableCell>
               </TableRow>
             ) : (
               sortedData.map((row) => {
-              const isExpanded = expandedRows.has(row.id)
-              const cleanUid = row.uid.replace(/#/g, '')
-              return (
-                <>
-                  <TableRow 
-                    key={row.id} 
-                    className="hover:bg-muted/50 cursor-pointer"
-                    onClick={() => toggleRow(row.id)}
-                  >
-                    <TableCell className="font-medium">
-                      <div className="flex items-center gap-2.5">
-                        <div className="relative h-6 w-6 bg-muted rounded-full overflow-hidden border border-border/50 flex-shrink-0">
-                          <Image
-                            src={imageErrors.has(cleanUid) ? "/subnet-icon/default.png" : `/subnet-icon/${cleanUid}.png`}
-                            alt={row.subnetName}
-                            fill
-                            className="object-cover"
-                            unoptimized
-                            onError={() => {
-                              if (!imageErrors.has(cleanUid)) {
-                                setImageErrors((prev) => new Set(prev).add(cleanUid))
+                const isExpanded = expandedRows.has(row.id);
+                const cleanUid = row.uid.replace(/#/g, "");
+                return (
+                  <>
+                    <TableRow
+                      key={row.id}
+                      className="hover:bg-muted/50 cursor-pointer"
+                      onClick={() => toggleRow(row.id)}
+                    >
+                      <TableCell className="font-medium">
+                        <div className="flex items-center gap-2.5">
+                          <div className="relative h-6 w-6 bg-muted rounded-full overflow-hidden border border-border/50 flex-shrink-0">
+                            <Image
+                              src={
+                                imageErrors.has(cleanUid)
+                                  ? "/subnet-icon/default.png"
+                                  : `/subnet-icon/${cleanUid}.png`
                               }
-                            }}
-                          />
-                        </div>
-                        <div className="flex flex-col gap-0">
-                          <span className="text-sm font-medium">{row.subnetName}</span>
-                          <span className="text-sm text-muted-foreground/70">
-                            {row.uid}
-                          </span>
-                        </div>
-                      </div>
-                    </TableCell>
-                    <TableCell><span className="text-sm font-medium text-foreground">{row.tradingVol24h}</span></TableCell>
-                    <TableCell><span className="text-sm text-foreground">{row.signal}</span></TableCell>
-                    <TableCell><span className="text-sm text-foreground">{row.signalVolume}</span></TableCell>
-                    <TableCell><span className="text-sm text-foreground">{row.apiAvailability}</span></TableCell>
-                    <TableCell><span className="text-sm text-foreground">{row.paymentMethod}</span></TableCell>
-                    <TableCell><span className="text-sm text-foreground">{row.integrationStatus}</span></TableCell>
-                    <TableCell className="sticky right-0 z-10 bg-gradient-to-r from-transparent lg:to-transparent to-muted md:static md:bg-transparent md:z-auto">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          toggleRow(row.id)
-                        }}
-                        className="flex lg:h-7 h-7 lg:w-7 w-7 items-center justify-center rounded-full transition-all duration-200 border bg-card"
-                      >
-                
-                          <ChevronUp className="h-4 w-4 transition-transform duration-200" style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }} />
-                      
-                     
-                      </button>
-                    </TableCell>
-                  </TableRow>
-                  {isExpanded && (
-                    <TableRow>
-                      <TableCell colSpan={8} className="bg-muted/30">
-                        <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-2">
-                          <div>
-                            <div className="mb-2 font-medium text-foreground">
-                              What They Sell:
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {row.details.whatTheySell}
-                            </div>
+                              alt={row.subnetName}
+                              fill
+                              className="object-cover"
+                              unoptimized
+                              onError={() => {
+                                if (!imageErrors.has(cleanUid)) {
+                                  setImageErrors((prev) =>
+                                    new Set(prev).add(cleanUid),
+                                  );
+                                }
+                              }}
+                            />
                           </div>
-                          <div>
-                            <div className="mb-2 font-medium text-foreground">
-                              Description:
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {row.details.description}
-                            </div>
-                          </div>
-                          <div>
-                            <div className="mb-2 font-medium text-foreground">
-                              Buyable Signals:
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {row.details.buyableSignals}
-                            </div>
-                          </div>
-                          <div>
-                            <div className="mb-2 font-medium text-foreground">
-                              Why It's Valuable:
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {row.details.whyValuable}
-                            </div>
-                          </div>
-                          <div>
-                            <div className="mb-2 font-medium text-foreground">
-                              Compute Type:
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {row.details.computeType}
-                            </div>
-                          </div>
-                          <div>
-                            <div className="mb-2 font-medium text-foreground">
-                              Price per Inference Call:
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {row.details.pricePerInferenceCall}
-                            </div>
-                          </div>
-                          <div>
-                            <div className="mb-2 font-medium text-foreground">
-                              Integration Ease:
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {row.details.integrationEase}
-                            </div>
-                          </div>
-                          <div>
-                            <div className="mb-2 font-medium text-foreground">
-                              Reliability Score:
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {row.details.reliabilityScore}
-                            </div>
-                          </div>
-                          <div>
-                            <div className="mb-2 font-medium text-foreground">
-                              Price per Cross-Chain Call:
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {row.details.pricePerCrossChainCall}
-                            </div>
-                          </div>
-                          <div>
-                            <div className="mb-2 font-medium text-foreground">
-                              Other Notes:
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {row.details.otherNotes}
-                            </div>
+                          <div className="flex flex-col gap-0">
+                            <span className="text-sm font-medium">
+                              {row.subnetName}
+                            </span>
+                            <span className="text-sm text-muted-foreground/70">
+                              {row.uid}
+                            </span>
                           </div>
                         </div>
                       </TableCell>
+                      <TableCell>
+                        <span className="text-sm font-medium text-foreground">
+                          {row.tradingVol24h}
+                        </span>
+                      </TableCell>
+                      <TableCell>
+                        <span className="text-sm text-foreground">
+                          {row.signal}
+                        </span>
+                      </TableCell>
+                      <TableCell>
+                        <span className="text-sm text-foreground">
+                          {row.signalVolume}
+                        </span>
+                      </TableCell>
+                      <TableCell>
+                        <span className="text-sm text-foreground">
+                          {row.apiAvailability}
+                        </span>
+                      </TableCell>
+                      <TableCell>
+                        <span className="text-sm text-foreground">
+                          {row.paymentMethod}
+                        </span>
+                      </TableCell>
+                      <TableCell>
+                        <span className="text-sm text-foreground">
+                          {row.integrationStatus}
+                        </span>
+                      </TableCell>
+                      <TableCell className="sticky right-0 z-10 bg-gradient-to-r from-transparent lg:to-transparent to-muted md:static md:bg-transparent md:z-auto">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleRow(row.id);
+                          }}
+                          className="flex lg:h-7 h-7 lg:w-7 w-7 items-center justify-center rounded-full transition-all duration-200 border bg-card"
+                        >
+                          <ChevronUp
+                            className="h-4 w-4 transition-transform duration-200"
+                            style={{
+                              transform: isExpanded
+                                ? "rotate(180deg)"
+                                : "rotate(0deg)",
+                            }}
+                          />
+                        </button>
+                      </TableCell>
                     </TableRow>
-                  )}
-                </>
-              )
+                    {isExpanded && (
+                      <TableRow>
+                        <TableCell colSpan={8} className="bg-muted/30">
+                          <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-2">
+                            <div>
+                              <div className="mb-2 font-medium text-foreground">
+                                What They Sell:
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {row.details.whatTheySell}
+                              </div>
+                            </div>
+                            <div>
+                              <div className="mb-2 font-medium text-foreground">
+                                Description:
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {row.details.description}
+                              </div>
+                            </div>
+                            <div>
+                              <div className="mb-2 font-medium text-foreground">
+                                Buyable Signals:
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {row.details.buyableSignals}
+                              </div>
+                            </div>
+                            <div>
+                              <div className="mb-2 font-medium text-foreground">
+                                Why It's Valuable:
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {row.details.whyValuable}
+                              </div>
+                            </div>
+                            <div>
+                              <div className="mb-2 font-medium text-foreground">
+                                Compute Type:
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {row.details.computeType}
+                              </div>
+                            </div>
+                            <div>
+                              <div className="mb-2 font-medium text-foreground">
+                                Price per Inference Call:
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {row.details.pricePerInferenceCall}
+                              </div>
+                            </div>
+                            <div>
+                              <div className="mb-2 font-medium text-foreground">
+                                Integration Ease:
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {row.details.integrationEase}
+                              </div>
+                            </div>
+                            <div>
+                              <div className="mb-2 font-medium text-foreground">
+                                Reliability Score:
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {row.details.reliabilityScore}
+                              </div>
+                            </div>
+                            <div>
+                              <div className="mb-2 font-medium text-foreground">
+                                Price per Cross-Chain Call:
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {row.details.pricePerCrossChainCall}
+                              </div>
+                            </div>
+                            <div>
+                              <div className="mb-2 font-medium text-foreground">
+                                Other Notes:
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {row.details.otherNotes}
+                              </div>
+                            </div>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </>
+                );
               })
             )}
           </TableBody>
         </Table>
       </div>
     </div>
-  )
+  );
 }
-

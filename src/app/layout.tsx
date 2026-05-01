@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Space_Grotesk } from "next/font/google";
+import { Roboto_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Providers } from "@/components/providers";
-import { ThemeColorMeta } from "@/components/theme-color-meta";
 import { GoogleAnalytics } from "@/components/google-analytics";
 
-const instrumentSans = Instrument_Sans({
-  variable: "--font-instrument-sans",
+const robotoMono = Roboto_Mono({
+  variable: "--font-roboto-mono",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -23,10 +16,10 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://telegraphprotocol.c
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Telegraph Protocol - Unlock Real AI On-Chain",
+    default: "Telegraph — A machine intelligence protocol for autonomous systems",
     template: "%s | Telegraph Protocol"
   },
-  description: "Turn live AI signals into tradeable assets you can own and profit from. Telegraph Protocol unlocks real-world intelligence on-chain—weather forecasts, media authenticity, sports analytics, and more. Buy verified, time-stamped signals from the best AI models.",
+  description: "Telegraph is a messaging protocol built on Base that transforms raw AI outputs from any open or closed-source model into verified, tradable answers that machines can use to make decisions and execute tasks autonomously.",
   keywords: [
     "AI on-chain",
     "blockchain AI",
@@ -52,21 +45,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: baseUrl,
     siteName: "Telegraph Protocol",
-    title: "Telegraph Protocol - Unlock Real AI On-Chain",
-    description: "Turn live AI signals into tradeable assets you can own and profit from. Buy verified, time-stamped signals from the best AI models.",
+    title: "Telegraph — A machine intelligence protocol for autonomous systems",
+    description: "Verified, tradable AI answers for autonomous machines.",
     images: [
       {
         url: `${baseUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Telegraph Protocol - Unlock Real AI On-Chain",
+        alt: "Telegraph Protocol",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Telegraph Protocol - Unlock Real AI On-Chain",
-    description: "Turn live AI signals into tradeable assets you can own and profit from. Buy verified, time-stamped signals from the best AI models.",
+    title: "Telegraph — A machine intelligence protocol for autonomous systems",
+    description: "Verified, tradable AI answers for autonomous machines.",
     images: [`${baseUrl}/og-image.png`],
     creator: "@telegraphprotocol",
   },
@@ -84,10 +77,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: baseUrl,
   },
-  verification: {
-    // Add your verification codes here when available
-    // google: 'your-google-verification-code',
-  },
 };
 
 export default function RootLayout({
@@ -96,24 +85,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <ThemeColorMeta />
-      </head>
+    <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
       <body
-        className={`${instrumentSans.variable} ${spaceGrotesk.variable} font-sans antialiased`}
+        className={`${robotoMono.variable} font-mono antialiased bg-black text-foreground`}
       >
         <GoogleAnalytics />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Providers>
-            {children}
-          </Providers>
-        </ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

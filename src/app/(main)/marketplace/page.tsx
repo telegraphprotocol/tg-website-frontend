@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { MarketplaceTable } from "@/components/marketplace-table"
+import { MarketplaceTable } from "@/components/marketplace-table";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://telegraphprotocol.com'
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://telegraphprotocol.com";
 
 export const metadata: Metadata = {
   title: "Marketplace - Buy & Trade AI Signals",
-  description: "Browse and purchase verified AI signals from Bittensor subnets. Turn subnet inference into tradeable commodities—buy and trade on-chain signals across supported chains. Real-time pricing, availability, and integration status.",
+  description:
+    "Browse and purchase verified AI signals from Bittensor subnets. Turn subnet inference into tradeable commodities—buy and trade on-chain signals across supported chains. Real-time pricing, availability, and integration status.",
   openGraph: {
     title: "Telegraph Marketplace - Buy & Trade AI Signals",
-    description: "Browse and purchase verified AI signals from Bittensor subnets. Turn subnet inference into tradeable commodities.",
+    description:
+      "Browse and purchase verified AI signals from Bittensor subnets. Turn subnet inference into tradeable commodities.",
     url: `${baseUrl}/marketplace`,
     type: "website",
     images: [
@@ -23,7 +26,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Telegraph Marketplace - Buy & Trade AI Signals",
-    description: "Browse and purchase verified AI signals from Bittensor subnets. Turn subnet inference into tradeable commodities.",
+    description:
+      "Browse and purchase verified AI signals from Bittensor subnets. Turn subnet inference into tradeable commodities.",
     images: [`${baseUrl}/og-image.png`],
   },
   alternates: {
@@ -34,9 +38,9 @@ export const metadata: Metadata = {
 export default function MarketplacePage() {
   return (
     <main className="min-h-screen">
-      <div className="container mx-auto max-w-7xl px-4 lg:py-24 py-20">
-        <div className="mb-8 text-center">
-          <h1 className="font-space-grotesk leading-tight tracking-tight text-foreground text-5xl mb-4">
+      <div className="container mx-auto max-w-7xl px-4 lg:py-28 py-12">
+        <div className="mb-10 text-center">
+          <h1 className="font-space-grotesk leading-tight tracking-tight text-foreground text-4xl mb-4">
             Telegraph Marketplace
           </h1>
           <p className="mx-auto max-w-3xl lg:text-lg text-base leading-relaxed text-muted-foreground">
@@ -47,6 +51,5 @@ export default function MarketplacePage() {
         <MarketplaceTable />
       </div>
     </main>
-  )
+  );
 }
-

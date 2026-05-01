@@ -1,29 +1,31 @@
-import { HeroSection } from "@/components/hero-section";
-import { NodesSection } from "@/components/nodes-section";
-import { ProcessSection } from "@/components/process-section";
-import { SignalsSection } from "@/components/signals-section";
-import { ActionableIntelligenceSection } from "@/components/actionable-intelligence-section";
-import { UseCasesSection } from "@/components/use-cases-section";
-import { OurTeamSection } from "@/components/our-team-section";
-import { GetStartedSection } from "@/components/get-started-section";
-import { ToolLayerSection } from "@/components/tool-layer-section";
+import { Hero } from "@/components/landing/hero";
+import { Inspire } from "@/components/landing/inspire";
+import { Improve } from "@/components/landing/improve";
+import { Liquidity } from "@/components/landing/liquidity";
+import { Buy } from "@/components/landing/buy";
+import { Marketplace } from "@/components/landing/marketplace";
+import { How } from "@/components/landing/how";
+import { Access } from "@/components/landing/access";
+import { Power } from "@/components/landing/power";
+import { Path } from "@/components/landing/path";
+import { BuildCta } from "@/components/landing/build-cta";
 import { StructuredData } from "@/components/structured-data";
 
 export default function Home() {
   return (
     <>
       <StructuredData />
-      <main>
-        <HeroSection />
-        <SignalsSection />
-        <NodesSection />
-        <ActionableIntelligenceSection />
-        <ProcessSection />
-        <UseCasesSection />
-        <OurTeamSection />
-        <GetStartedSection />
-        <ToolLayerSection />
-      </main>
+      <Hero />
+      <Inspire />
+      <Improve />
+      <Liquidity />
+      <Buy />
+      <Marketplace />
+      <How />
+      <Access />
+      <Power />
+      <Path />
+      <BuildCta />
     </>
   );
 }
