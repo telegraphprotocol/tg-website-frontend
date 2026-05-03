@@ -26,7 +26,11 @@ export function Navbar() {
           <CtaButton href="/marketplace" variant="dark" arrow={false}>
             <span>Marketplace</span>
           </CtaButton>
-          <CtaButton href="#launch" arrow={false}>
+          <CtaButton
+            href="https://telegraph-terminal.vercel.app"
+            target="_blank"
+            arrow={false}
+          >
             <span>
               <span className="hidden md:inline">Launch</span> Terminal
             </span>

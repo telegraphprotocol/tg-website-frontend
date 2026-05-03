@@ -26,7 +26,11 @@ export function BuildCta() {
           intelligence network that continuously evolves.
         </Reveal>
         <Reveal delay={350} className="flex flex-wrap justify-center gap-3">
-          <CtaButton href="#launch" arrow={true}>
+          <CtaButton
+            href="https://telegraph-terminal.vercel.app"
+            target="_blank"
+            arrow={true}
+          >
             Launch Terminal
           </CtaButton>
           <CtaButton

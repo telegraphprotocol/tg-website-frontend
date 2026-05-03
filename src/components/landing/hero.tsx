@@ -39,7 +39,12 @@ export function Hero() {
           tasks autonomously.
         </Reveal>
         <Reveal delay={400} className="flex flex-wrap justify-center gap-3.5">
-          <CtaButton href="#launch">Launch Terminal</CtaButton>
+          <CtaButton
+            href="https://telegraph-terminal.vercel.app"
+            target="_blank"
+          >
+            Launch Terminal
+          </CtaButton>
           <CtaButton
             href="https://telegraph-2.gitbook.io/telegraph"
             target="_blank"

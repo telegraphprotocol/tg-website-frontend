@@ -11,15 +11,18 @@ const robotoMono = Roboto_Mono({
   display: "swap",
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://telegraphprotocol.com'
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://telegraphprotocol.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Telegraph — A machine intelligence protocol for autonomous systems",
-    template: "%s | Telegraph Protocol"
+    default:
+      "Telegraph — A machine intelligence protocol for autonomous systems",
+    template: "%s | Telegraph Protocol",
   },
-  description: "Telegraph is a messaging protocol built on Base that transforms raw AI outputs from any open or closed-source model into verified, tradable answers that machines can use to make decisions and execute tasks autonomously.",
+  description:
+    "Telegraph is a messaging protocol built on Base that transforms raw AI outputs from any open or closed-source model into verified, tradable answers that machines can use to make decisions and execute tasks autonomously.",
   keywords: [
     "AI on-chain",
     "blockchain AI",
@@ -30,7 +33,7 @@ export const metadata: Metadata = {
     "decentralized AI",
     "AI marketplace",
     "blockchain intelligence",
-    "Telegraph Protocol"
+    "Telegraph Protocol",
   ],
   authors: [{ name: "Telegraph Protocol" }],
   creator: "Telegraph Protocol",
@@ -49,7 +52,7 @@ export const metadata: Metadata = {
     description: "Verified, tradable AI answers for autonomous machines.",
     images: [
       {
-        url: `${baseUrl}/og-image.png`,
+        url: `${baseUrl}/opengraph-image.png`,
         width: 1200,
         height: 630,
         alt: "Telegraph Protocol",
@@ -60,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Telegraph — A machine intelligence protocol for autonomous systems",
     description: "Verified, tradable AI answers for autonomous machines.",
-    images: [`${baseUrl}/og-image.png`],
+    images: [`${baseUrl}/opengraph-image.png`],
     creator: "@telegraphprotocol",
   },
   robots: {
@@ -69,9 +72,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   alternates: {
