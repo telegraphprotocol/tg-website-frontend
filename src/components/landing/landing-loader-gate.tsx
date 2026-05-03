@@ -8,6 +8,12 @@ type LandingLoaderGateProps = {
   imageSources: string[];
 };
 
+type ImageProgress = {
+  loaded: number;
+  total: number | null;
+  done: boolean;
+};
+
 function preloadImage(src: string): Promise<void> {
   return new Promise((resolve) => {
     const image = new Image();
@@ -23,6 +29,52 @@ function preloadImage(src: string): Promise<void> {
   });
 }
 
+async function preloadImageWithProgress(
+  src: string,
+  onProgress: (progress: ImageProgress) => void,
+  signal: AbortSignal,
+): Promise<void> {
+  const response = await fetch(src, { signal, cache: "force-cache" });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch image: ${src}`);
+  }
+
+  const contentLengthHeader = response.headers.get("content-length");
+  const total = contentLengthHeader ? Number(contentLengthHeader) : null;
+
+  if (!response.body) {
+    onProgress({
+      loaded: total ?? 1,
+      total: total ?? 1,
+      done: true,
+    });
+    await preloadImage(src);
+    return;
+  }
+
+  const reader = response.body.getReader();
+  let loaded = 0;
+
+  while (true) {
+    const { value, done } = await reader.read();
+
+    if (done) {
+      break;
+    }
+
+    loaded += value.byteLength;
+    onProgress({ loaded, total, done: false });
+  }
+
+  onProgress({
+    loaded: total ?? loaded,
+    total: total ?? loaded,
+    done: true,
+  });
+  await preloadImage(src);
+}
+
 export function LandingLoaderGate({
   children,
   imageSources,
@@ -30,12 +82,12 @@ export function LandingLoaderGate({
   const [imagesReady, setImagesReady] = useState(false);
   const [isFading, setIsFading] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
-  const [totalImages, setTotalImages] = useState(0);
-  const [loadedImages, setLoadedImages] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
+  const [progressPercent, setProgressPercent] = useState(0);
 
   useEffect(() => {
     let isMounted = true;
+    const abortController = new AbortController();
 
     async function preloadAll() {
       const uniqueSources = Array.from(new Set(imageSources.filter(Boolean)));
@@ -43,27 +95,66 @@ export function LandingLoaderGate({
       setIsFading(false);
       setShowLoader(true);
       setShowProgress(false);
-      setTotalImages(uniqueSources.length);
-      setLoadedImages(0);
+      setProgressPercent(0);
 
       if (uniqueSources.length === 0) {
+        setProgressPercent(100);
         setImagesReady(true);
         return;
       }
 
-      let completed = 0;
+      const progressBySource = new Map<string, ImageProgress>(
+        uniqueSources.map((src) => [
+          src,
+          { loaded: 0, total: null, done: false } as ImageProgress,
+        ]),
+      );
+
+      const updateOverallPercent = () => {
+        const progressItems = Array.from(progressBySource.values());
+
+        if (progressItems.length === 0) {
+          if (isMounted) {
+            setProgressPercent(100);
+          }
+          return;
+        }
+
+        const totalRatio = progressItems.reduce((sum, item) => {
+          if (item.total && item.total > 0) {
+            return sum + Math.min(item.loaded / item.total, 1);
+          }
+
+          return sum + (item.done ? 1 : 0);
+        }, 0);
+
+        const nextPercent = Math.round((totalRatio / progressItems.length) * 100);
+
+        if (isMounted) {
+          setProgressPercent(nextPercent);
+        }
+      };
 
       await Promise.all(
         uniqueSources.map(async (src) => {
-          await preloadImage(src);
-          completed += 1;
-
-          if (!isMounted) return;
-          setLoadedImages(completed);
+          try {
+            await preloadImageWithProgress(
+              src,
+              (progress) => {
+                progressBySource.set(src, progress);
+                updateOverallPercent();
+              },
+              abortController.signal,
+            );
+          } catch {
+            progressBySource.set(src, { loaded: 1, total: 1, done: true });
+            updateOverallPercent();
+          }
         }),
       );
 
       if (!isMounted) return;
+      setProgressPercent(100);
       setImagesReady(true);
     }
 
@@ -71,6 +162,7 @@ export function LandingLoaderGate({
 
     return () => {
       isMounted = false;
+      abortController.abort();
     };
   }, [imageSources]);
 
@@ -102,9 +194,6 @@ export function LandingLoaderGate({
       window.clearTimeout(progressDelayTimeout);
     };
   }, [imagesReady, showLoader]);
-
-  const progressPercent =
-    totalImages === 0 ? 100 : Math.round((loadedImages / totalImages) * 100);
 
   return (
     <>
