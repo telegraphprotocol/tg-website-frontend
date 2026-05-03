@@ -146,12 +146,12 @@ export function Liquidity() {
             <div className="md:text-right mb-8 max-w-[520px]">
               <Typewriter
                 text="Instant Liquidity. Direct Market Signals."
-                className="lg:min-h-[78px] block m-0 mb-4 text-[clamp(22px,2.2vw,30px)] font-normal leading-[1.3] tracking-[0.01em] text-[var(--tg-fg)]"
+                className="lg:backdrop-blur-none backdrop-blur-xs lg:min-h-[78px] block m-0 mb-4 text-[clamp(22px,2.2vw,30px)] font-normal leading-[1.3] tracking-[0.01em] text-[var(--tg-fg)]"
               />
               <Reveal
                 as="p"
                 delay={150}
-                className="m-0 max-w-[520px] text-pretty text-[14px] leading-[1.8] text-[var(--tg-fg-dim)] md:ml-auto"
+                className="lg:backdrop-blur-none backdrop-blur-xs m-0 max-w-[520px] text-pretty text-[14px] leading-[1.8] text-[var(--tg-fg-dim)] md:ml-auto"
               >
                 Telegraph eliminates market friction by indexing a global
                 library of over 1,000 standardized AI skills (sourced directly
@@ -280,11 +280,11 @@ export function Liquidity() {
               We ensure instant utility for developers through a unified gateway
               that guarantees high-fidelity responses from day one. Every
               request is logged on our live dashboard. This acts as a real-time,
-              public tender for the supply side. Miners and developers don&apos;t
-              have to guess what to build; they watch the ledger, identify
-              exactly what intelligence the market is paying for, and deploy
-              models to capture that revenue instantly. We provide the demand;
-              you provide the compute.
+              public tender for the supply side. Miners and developers
+              don&apos;t have to guess what to build; they watch the ledger,
+              identify exactly what intelligence the market is paying for, and
+              deploy models to capture that revenue instantly. We provide the
+              demand; you provide the compute.
             </p>
           </div>
         </div>

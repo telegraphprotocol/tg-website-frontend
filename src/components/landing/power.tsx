@@ -33,9 +33,12 @@ export function Power() {
         <div className="max-w-[600px] md:text-right">
           <Typewriter
             text="Powered by Machina. A 21M Supply Bitcoin-Style Economy."
-            className="lg:min-h-[82px] block m-0 mb-5 text-[clamp(22px,2.2vw,30px)] font-normal leading-[1.35] tracking-[0.005em] text-[var(--tg-fg)]"
+            className="lg:backdrop-blur-none backdrop-blur-xs lg:min-h-[82px] block m-0 mb-5 text-[clamp(22px,2.2vw,30px)] font-normal leading-[1.35] tracking-[0.005em] text-[var(--tg-fg)]"
           />
-          <Reveal delay={150}>
+          <Reveal
+            delay={150}
+            className="lg:backdrop-blur-none backdrop-blur-xs"
+          >
             <p className="m-0 mb-5 text-pretty text-[14px] leading-[1.85] text-[var(--tg-fg-dim)] ">
               Bitcoin gave the world a real currency. Bittensor gave the world
               an open network for intelligence. Telegraph gives the world a

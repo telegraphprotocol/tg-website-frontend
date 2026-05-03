@@ -41,12 +41,16 @@ export function Path() {
       <div className="relative z-10 mx-auto flex min-h-[580px] max-w-[1280px] flex-col justify-end gap-10 px-4 py-12 md:px-14 md:py-20">
         <Typewriter
           text="The Path to the Machine Economy"
-          className="block m-0 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"
+          className="lg:backdrop-blur-none backdrop-blur-xs block m-0 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"
         />
 
         <div className="grid grid-cols-1 gap-7 md:grid-cols-3 md:gap-10">
           {quarters.map((q, i) => (
-            <Reveal key={q.head} delay={i * 150}>
+            <Reveal
+              key={q.head}
+              delay={i * 150}
+              className="lg:backdrop-blur-none backdrop-blur-xs"
+            >
               <div className="flex flex-col gap-2">
                 <h3 className="m-0 mb-2 text-lg font-medium text-[var(--tg-fg)]">
                   {q.head}

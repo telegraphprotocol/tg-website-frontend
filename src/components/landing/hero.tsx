@@ -26,12 +26,12 @@ export function Hero() {
           as="h1"
           text={`A machine intelligence protocol\nfor autonomous systems.`}
           speed={26}
-          className="lg:min-h-[90px] m-0 mb-5 text-balance text-[clamp(22px,2.6vw,34px)] font-medium leading-[1.35] tracking-[-0.005em] text-[#f1f1f1]"
+          className="lg:backdrop-blur-none backdrop-blur-xs lg:min-h-[90px] m-0 mb-5 text-balance text-[clamp(22px,2.6vw,34px)] font-medium leading-[1.35] tracking-[-0.005em] text-[#f1f1f1]"
         />
         <Reveal
           as="p"
           delay={200}
-          className="mx-auto m-0 mb-9 max-w-[560px] text-pretty text-[14px] leading-[1.75] text-[var(--tg-fg-dim)]"
+          className="lg:backdrop-blur-none backdrop-blur-xs mx-auto m-0 mb-9 max-w-[560px] text-pretty text-[14px] leading-[1.75] text-[var(--tg-fg-dim)]"
         >
           Telegraph is a messaging protocol built on Base that transforms raw AI
           outputs — from any open or closed-source model — into verified,

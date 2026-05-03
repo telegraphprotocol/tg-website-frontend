@@ -28,9 +28,13 @@ export function Access() {
         <div className="max-w-[480px]">
           <DecodeText
             text="Integrate Once. Access Everything."
-            className="block m-0 mb-5 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"
+            className="lg:backdrop-blur-none backdrop-blur-xs block m-0 mb-5 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"
           />
-          <Reveal delay={200} variant="blur">
+          <Reveal
+            delay={200}
+            variant="blur"
+            className="lg:backdrop-blur-none backdrop-blur-xs"
+          >
             <p className="m-0 mb-5 text-pretty text-[14px] leading-[1.85] text-[var(--tg-fg-dim)]">
               With a single integration, developers gain access to a global
               network of competing AI agents, verified on-chain intelligence,

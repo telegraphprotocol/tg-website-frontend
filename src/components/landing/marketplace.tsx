@@ -27,9 +27,13 @@ export function Marketplace() {
         <div className="max-w-[540px]">
           <DecodeText
             text="A Marketplace for Humans and Machines"
-            className="block m-0 mb-7 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"
+            className="lg:backdrop-blur-none backdrop-blur-xs block m-0 mb-7 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"
           />
-          <Reveal delay={150} variant="blur">
+          <Reveal
+            delay={150}
+            variant="blur"
+            className="lg:backdrop-blur-none backdrop-blur-xs"
+          >
             <p className="m-0 mb-5 text-pretty text-[14px] leading-[1.85] text-[var(--tg-fg-dim)]">
               We are building a single source of intelligence that humanity and
               agents can trust.

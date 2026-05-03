@@ -56,12 +56,12 @@ export function Buy() {
           <div className="max-w-[380px]">
             <Typewriter
               text="Buy Verified Intelligence"
-              className="lg:min-h-[97px] block m-0 mb-4 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"
+              className="lg:backdrop-blur-none backdrop-blur-xs lg:min-h-[97px] block m-0 mb-4 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"
             />
             <Reveal
               as="p"
               delay={150}
-              className="m-0 text-pretty text-[14px] leading-[1.8] text-[var(--tg-fg-dim)]"
+              className="lg:backdrop-blur-none backdrop-blur-xs m-0 text-pretty text-[14px] leading-[1.8] text-[var(--tg-fg-dim)]"
             >
               You&apos;re not calling an API. You&apos;re buying a unit of
               intelligence. Telegraph turns raw AI outputs into standardized,
@@ -75,14 +75,14 @@ export function Buy() {
               lines={leftLog}
               step={140}
               charSpeed={6}
-              className="max-md:whitespace-normal md:whitespace-nowrap"
+              className="lg:backdrop-blur-none backdrop-blur-xs max-md:whitespace-normal md:whitespace-nowrap"
             />
             <TerminalLines
               lines={rightLog}
               step={170}
               charSpeed={6}
               delay={3100}
-              className="max-md:whitespace-normal md:whitespace-nowrap"
+              className="lg:backdrop-blur-none backdrop-blur-xs max-md:whitespace-normal md:whitespace-nowrap"
             />
           </div>
         </div>
