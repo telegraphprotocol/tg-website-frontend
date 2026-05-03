@@ -1,5 +1,8 @@
+"use client";
+
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { CtaButton } from "./cta-button";
+import { useEffect, useState } from "react";
 import { DecodeText } from "./fx/decode-text";
 import { PixelReveal } from "./fx/pixel-reveal";
 import { Reveal } from "./fx/reveal";
@@ -28,8 +31,28 @@ const items: { title: string; body: string }[] = [
 ];
 
 export function Improve() {
+  const [isReadMoreOpen, setIsReadMoreOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isReadMoreOpen) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsReadMoreOpen(false);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [isReadMoreOpen]);
+
   return (
-    <section className="bg-[var(--tg-bg)] py-12 md:py-20 md:pb-[120px]">
+    <section className="relative bg-[var(--tg-bg)] py-12 md:py-20 md:pb-[120px]">
       <div className="mx-auto grid max-w-[1280px] grid-cols-1 items-center gap-10 px-6 sm:px-8 md:grid-cols-2 md:gap-20">
         <PixelReveal
           effect="halftone"
@@ -64,15 +87,68 @@ export function Improve() {
             ))}
           </Reveal>
           <Reveal delay={200}>
-            <CtaButton
-              href="https://telegraph-2.gitbook.io/telegraph/node-overview/registering-a-telegraph-node"
-              target="_blank"
+            <button
+              type="button"
+              onClick={() => setIsReadMoreOpen(true)}
+              className="group inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm bg-[#f2f2f2] px-[18px] py-[11px] text-[14px] font-medium leading-none text-[#000000] no-underline transition-all hover:bg-white"
             >
               Read more
-            </CtaButton>
+              <span
+                aria-hidden
+                className="inline-block transition-transform duration-200 group-hover:translate-x-1"
+              >
+                <ArrowRight className="h-4 w-4" />
+              </span>
+            </button>
           </Reveal>
         </div>
       </div>
+
+      {isReadMoreOpen ? (
+        <div
+          className="fixed inset-0 z-[140] flex items-center justify-center bg-black/70 px-4 backdrop-blur-[2px]"
+          onClick={() => setIsReadMoreOpen(false)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="improve-readmore-title"
+            className="relative w-full max-w-[720px] border border-[var(--tg-line)] bg-[var(--tg-bg-deep)] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] md:p-7"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <span className="tg-corner tg-corner-tl" aria-hidden />
+            <span className="tg-corner tg-corner-tr" aria-hidden />
+            <span className="tg-corner tg-corner-bl" aria-hidden />
+            <span className="tg-corner tg-corner-br" aria-hidden />
+
+            <div className="mb-5 flex items-center justify-between gap-4 border-b border-[var(--tg-line-soft)] pb-4">
+              <h3
+                id="improve-readmore-title"
+                className="m-0 text-[16px] font-medium tracking-[0.01em] text-[var(--tg-fg)]"
+              >
+                How Telegraph Improves Intelligence
+              </h3>
+              <button
+                type="button"
+                aria-label="Close popup"
+                onClick={() => setIsReadMoreOpen(false)}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--tg-line-strong)] text-[var(--tg-fg-dim)] transition-colors hover:text-[var(--tg-fg)]"
+              >
+                ✕
+              </button>
+            </div>
+
+            <p className="m-0 text-pretty text-[13.5px] leading-[1.9] text-[var(--tg-fg-dim)]">
+              Telegraph turns AI inference into a competitive market loop:
+              machine demand creates paid requests, miners compete with better
+              models, validators rank quality, and rewards flow to top
+              performance. That feedback cycle continuously improves answer
+              quality while keeping costs transparent and utility grounded in
+              real usage.
+            </p>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { NumberScramble } from "./fx/number-scramble";
 import { PixelReveal } from "./fx/pixel-reveal";
 import { Reveal } from "./fx/reveal";
@@ -93,6 +96,26 @@ function Stat({
 }
 
 export function Liquidity() {
+  const [isReadMoreOpen, setIsReadMoreOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isReadMoreOpen) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsReadMoreOpen(false);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [isReadMoreOpen]);
+
   return (
     <section className="relative min-h-[940px] bg-[var(--tg-bg)]">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -134,12 +157,13 @@ export function Liquidity() {
                 library of over 1,000 standardized AI skills (sourced directly
                 from the most utilized agent frameworks like LangChain, OpenAI
                 schemas, and Base44).{" "}
-                <a
-                  href="#read"
+                <button
+                  type="button"
+                  onClick={() => setIsReadMoreOpen(true)}
                   className="text-[var(--tg-fg)] no-underline hover:underline underline-offset-[3px]"
                 >
                   Read more
-                </a>
+                </button>
               </Reveal>
             </div>
 
@@ -217,6 +241,54 @@ export function Liquidity() {
           </div>
         </div>
       </div>
+
+      {isReadMoreOpen ? (
+        <div
+          className="fixed inset-0 z-[140] flex items-center justify-center bg-black/70 px-4 backdrop-blur-[2px]"
+          onClick={() => setIsReadMoreOpen(false)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="liquidity-readmore-title"
+            className="relative w-full max-w-[760px] border border-[var(--tg-line)] bg-[var(--tg-bg-deep)] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] md:p-7"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <span className="tg-corner tg-corner-tl" aria-hidden />
+            <span className="tg-corner tg-corner-tr" aria-hidden />
+            <span className="tg-corner tg-corner-bl" aria-hidden />
+            <span className="tg-corner tg-corner-br" aria-hidden />
+
+            <div className="mb-5 flex items-center justify-between gap-4 border-b border-[var(--tg-line-soft)] pb-4">
+              <h3
+                id="liquidity-readmore-title"
+                className="m-0 text-[16px] font-medium tracking-[0.01em] text-[var(--tg-fg)]"
+              >
+                Instant Utility For Developers
+              </h3>
+              <button
+                type="button"
+                aria-label="Close popup"
+                onClick={() => setIsReadMoreOpen(false)}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--tg-line-strong)] text-[var(--tg-fg-dim)] transition-colors hover:text-[var(--tg-fg)]"
+              >
+                ✕
+              </button>
+            </div>
+
+            <p className="m-0 text-pretty text-[13.5px] leading-[1.9] text-[var(--tg-fg-dim)]">
+              We ensure instant utility for developers through a unified gateway
+              that guarantees high-fidelity responses from day one. Every
+              request is logged on our live dashboard. This acts as a real-time,
+              public tender for the supply side. Miners and developers don&apos;t
+              have to guess what to build; they watch the ledger, identify
+              exactly what intelligence the market is paying for, and deploy
+              models to capture that revenue instantly. We provide the demand;
+              you provide the compute.
+            </p>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

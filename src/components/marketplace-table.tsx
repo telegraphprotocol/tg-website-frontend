@@ -320,7 +320,7 @@ export function MarketplaceTable() {
                           }}
                           className="flex lg:h-7 h-7 lg:w-7 w-7 items-center justify-center rounded-full transition-all duration-200 border bg-card"
                         >
-                          <ChevronUp
+                          <ChevronDown
                             className="h-4 w-4 transition-transform duration-200"
                             style={{
                               transform: isExpanded
