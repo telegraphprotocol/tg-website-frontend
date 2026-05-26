@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaDiscord, FaXTwitter } from "react-icons/fa6";
 
 const features = [
   "Lorem Ipsum",
@@ -66,7 +67,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1280px]">
         <div className="flex flex-col items-start justify-between gap-4 text-[12px] text-[var(--tg-fg)] md:flex-row md:items-center">
           <span>© 2026 Telegraph Protocol. All Rights Reserved.</span>
-          <div className="flex flex-wrap gap-5 md:gap-8">
+          <div className="flex flex-wrap items-center gap-5 md:gap-8">
             <Link
               href="mailto:info@telegraphprotocop.com"
               className="text-[var(--tg-fg-dim)] no-underline hover:text-[var(--tg-fg)]"
@@ -86,11 +87,35 @@ export function Footer() {
               Terms of Service
             </Link>
             <Link
-              href="/marketplace"
+              href="/earn"
               className="text-[var(--tg-fg-dim)] no-underline hover:text-[var(--tg-fg)]"
             >
-              Marketplace
+              Earn
             </Link>
+            <span
+              aria-hidden
+              className="hidden h-3.5 w-px bg-[var(--tg-line)] md:inline-block"
+            />
+            <div className="flex items-center gap-4">
+              <Link
+                href="https://x.com/Telegraphprotoc"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Telegraph on X"
+                className="inline-flex items-center text-[var(--tg-fg-dim)] no-underline transition-colors hover:text-[var(--tg-fg)]"
+              >
+                <FaXTwitter className="h-4 w-4" aria-hidden />
+              </Link>
+              <Link
+                href="https://discord.gg/telegraphprotocol"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Telegraph on Discord"
+                className="inline-flex items-center text-[var(--tg-fg-dim)] no-underline transition-colors hover:text-[var(--tg-fg)]"
+              >
+                <FaDiscord className="h-4 w-4" aria-hidden />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
