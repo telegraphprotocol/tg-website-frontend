@@ -69,7 +69,7 @@ export function Footer() {
           <span>© 2026 Telegraph Protocol. All Rights Reserved.</span>
           <div className="flex flex-wrap items-center gap-5 md:gap-8">
             <Link
-              href="mailto:info@telegraphprotocop.com"
+              href="mailto:info@telegraphprotocol.com"
               className="text-[var(--tg-fg-dim)] no-underline hover:text-[var(--tg-fg)]"
             >
               Contact
@@ -80,12 +80,12 @@ export function Footer() {
             >
               Privacy Policy
             </Link>
-            <Link
+            {/* <Link
               href="/terms"
               className="text-[var(--tg-fg-dim)] no-underline hover:text-[var(--tg-fg)]"
             >
               Terms of Service
-            </Link>
+            </Link> */}
             <Link
               href="/earn"
               className="text-[var(--tg-fg-dim)] no-underline hover:text-[var(--tg-fg)]"
