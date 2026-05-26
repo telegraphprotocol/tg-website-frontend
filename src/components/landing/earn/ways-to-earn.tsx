@@ -25,9 +25,9 @@ const ways: Way[] = [
   },
   {
     index: "02",
-    title: "Become an Intent Evaluator",
+    title: "Become a Script Author",
     audience: "Developers, data scientists, validation specialists.",
-    body: "Write the scoring logic that determines whose model is the best. Validators run your evaluation scripts to grade miner responses, and you earn a share of the 20% Intent Evaluator emission pool. The more validators rely on your script, the larger your portion — distributed automatically via on-chain Hash-Math. You never sell the script; you're compensated directly by the protocol for making the network accurate.",
+    body: "Write the scoring logic that determines whose model is the best. Validators run your evaluation scripts to grade miner responses, and you earn a share of the 20% Script Authors emission pool. The more validators rely on your script, the larger your portion — distributed automatically via on-chain Hash-Math. You never sell the script; you're compensated directly by the protocol for making the network accurate.",
     cta: "Get Paid",
     href: "https://telegraph-2.gitbook.io/telegraph",
     external: true,
