@@ -40,7 +40,7 @@ export function Hero() {
         </Reveal>
         <Reveal delay={400} className="flex flex-wrap justify-center gap-3.5">
           <CtaButton
-            href="https://telegraph-terminal.vercel.app"
+            href="https://terminal.telegraphprotocol.com/intelligence-terminal"
             target="_blank"
           >
             Launch Terminal

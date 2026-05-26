@@ -38,7 +38,7 @@ const ways: Way[] = [
     subtitle: "Get Real, Verified Answers",
     body: "Query the live network of competing models from one terminal. Pay per inference, receive cryptographically receipted answers.",
     cta: "Launch Now",
-    href: "https://telegraph-terminal.vercel.app",
+    href: "https://terminal.telegraphprotocol.com/intelligence-terminal",
     external: true,
   },
   {

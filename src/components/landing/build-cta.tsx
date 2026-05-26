@@ -27,7 +27,7 @@ export function BuildCta() {
         </Reveal>
         <Reveal delay={350} className="flex flex-wrap justify-center gap-3">
           <CtaButton
-            href="https://telegraph-terminal.vercel.app"
+            href="https://terminal.telegraphprotocol.com/intelligence-terminal"
             target="_blank"
             arrow={true}
           >

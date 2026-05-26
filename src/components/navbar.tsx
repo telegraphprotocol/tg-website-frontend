@@ -59,21 +59,21 @@ export function Navbar() {
           >
             <FaXTwitter className="h-4 w-4" aria-hidden />
           </Link>
-          <CtaButton
+          <Link
             href="https://discord.gg/telegraphprotocol"
             target="_blank"
-            variant="dark"
-            arrow={false}
+            rel="noopener noreferrer"
+            aria-label="Telegraph on Discord"
+            className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
           >
             <FaDiscord className="h-4 w-4 opacity-90" aria-hidden />
-            <span>Join Community</span>
-          </CtaButton>
+          </Link>
           <CtaButton href="/earn" variant="dark" arrow={false}>
             <Coins className="h-4 w-4 opacity-80" aria-hidden />
             <span>Earn</span>
           </CtaButton>
           <CtaButton
-            href="https://telegraph-terminal.vercel.app"
+            href="https://terminal.telegraphprotocol.com/intelligence-terminal"
             target="_blank"
             arrow={false}
           >
@@ -124,7 +124,7 @@ export function Navbar() {
           </Link>
 
           <Link
-            href="https://telegraph-terminal.vercel.app"
+            href="https://terminal.telegraphprotocol.com/intelligence-terminal"
             target="_blank"
             onClick={close}
             className="inline-flex items-center gap-3 rounded-sm bg-[#f2f2f2] px-4 py-3 text-[14px] font-semibold text-black no-underline transition-colors hover:bg-white"
@@ -133,27 +133,28 @@ export function Navbar() {
             <span>Launch Terminal</span>
           </Link>
 
-          <Link
-            href="https://discord.gg/telegraphprotocol"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={close}
-            className="inline-flex items-center gap-3 rounded-sm bg-[#1a1a1a] px-4 py-3 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#222]"
-          >
-            <FaDiscord className="h-4 w-4 opacity-90" aria-hidden />
-            <span>Join Community</span>
-          </Link>
-
-          <Link
-            href="https://x.com/Telegraphprotoc"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={close}
-            className="inline-flex items-center gap-3 rounded-sm bg-[#1a1a1a] px-4 py-3 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#222]"
-          >
-            <FaXTwitter className="h-4 w-4" aria-hidden />
-            <span>Follow on X</span>
-          </Link>
+          <div className="flex items-center gap-3 pt-1">
+            <Link
+              href="https://x.com/Telegraphprotoc"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Telegraph on X"
+              onClick={close}
+              className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
+            >
+              <FaXTwitter className="h-4 w-4" aria-hidden />
+            </Link>
+            <Link
+              href="https://discord.gg/telegraphprotocol"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Telegraph on Discord"
+              onClick={close}
+              className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
+            >
+              <FaDiscord className="h-4 w-4 opacity-90" aria-hidden />
+            </Link>
+          </div>
         </nav>
       </div>
     </header>

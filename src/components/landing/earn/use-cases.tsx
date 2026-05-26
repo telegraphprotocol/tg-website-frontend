@@ -1,4 +1,7 @@
+"use client";
+
 import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { DecodeText } from "../fx/decode-text";
 import { Reveal } from "../fx/reveal";
 
@@ -115,6 +118,7 @@ function Card({ item }: { item: UseCase }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Open ${item.name} on GitHub`}
+      draggable={false}
       className="group relative mx-3 flex w-[320px] shrink-0 snap-start flex-col border border-[var(--tg-line)] bg-[var(--tg-bg)] no-underline outline-none transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--tg-line-strong)] hover:bg-[#0c0c0c] focus-visible:border-[var(--tg-fg-dim)] md:w-[380px]"
     >
       <span className="tg-corner tg-corner-tl" aria-hidden />
@@ -168,8 +172,92 @@ function Card({ item }: { item: UseCase }) {
   );
 }
 
+function useDragScroll<T extends HTMLElement>() {
+  const ref = useRef<T | null>(null);
+  const [dragging, setDragging] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const DRAG_THRESHOLD = 4;
+    let activePointer: number | null = null;
+    let didDrag = false;
+    let startX = 0;
+    let startScroll = 0;
+
+    const onPointerDown = (e: PointerEvent) => {
+      // Mouse / pen only — touch uses native scrolling
+      if (e.pointerType !== "mouse" && e.pointerType !== "pen") return;
+      if (e.button !== 0) return;
+      activePointer = e.pointerId;
+      didDrag = false;
+      startX = e.clientX;
+      startScroll = el.scrollLeft;
+      try {
+        el.setPointerCapture(e.pointerId);
+      } catch {}
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (activePointer === null || e.pointerId !== activePointer) return;
+      const dx = e.clientX - startX;
+      if (!didDrag && Math.abs(dx) > DRAG_THRESHOLD) {
+        didDrag = true;
+        setDragging(true);
+      }
+      if (didDrag) {
+        e.preventDefault();
+        el.scrollLeft = startScroll - dx;
+      }
+    };
+
+    const finish = (e: PointerEvent) => {
+      if (activePointer === null || e.pointerId !== activePointer) return;
+      try {
+        el.releasePointerCapture(activePointer);
+      } catch {}
+      activePointer = null;
+      if (didDrag) {
+        // Swallow the click that follows a drag so the card link doesn't open
+        const swallow = (ev: MouseEvent) => {
+          ev.preventDefault();
+          ev.stopPropagation();
+        };
+        el.addEventListener("click", swallow, { capture: true, once: true });
+        setTimeout(
+          () => el.removeEventListener("click", swallow, { capture: true }),
+          50,
+        );
+      }
+      setDragging(false);
+    };
+
+    // Block native link / image drag that would otherwise hijack the gesture
+    const onDragStart = (e: DragEvent) => {
+      e.preventDefault();
+    };
+
+    el.addEventListener("pointerdown", onPointerDown);
+    el.addEventListener("pointermove", onPointerMove);
+    el.addEventListener("pointerup", finish);
+    el.addEventListener("pointercancel", finish);
+    el.addEventListener("dragstart", onDragStart);
+
+    return () => {
+      el.removeEventListener("pointerdown", onPointerDown);
+      el.removeEventListener("pointermove", onPointerMove);
+      el.removeEventListener("pointerup", finish);
+      el.removeEventListener("pointercancel", finish);
+      el.removeEventListener("dragstart", onDragStart);
+    };
+  }, []);
+
+  return { ref, dragging };
+}
+
 export function EarnUseCases() {
-  const track = [...useCases, ...useCases, ...useCases];
+  const { ref, dragging } = useDragScroll<HTMLDivElement>();
 
   return (
     <section className="bg-[var(--tg-bg)] px-0 py-20 md:py-[110px]">
@@ -190,23 +278,18 @@ export function EarnUseCases() {
         </Reveal>
       </div>
 
-      {/* Mobile: native horizontal swipe with scroll-snap */}
-      <div className="md:hidden">
-        <div className="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-px-3 px-3 py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div
+        className="relative md:[-webkit-mask-image:linear-gradient(90deg,transparent_0,#000_5%,#000_95%,transparent_100%)] md:[mask-image:linear-gradient(90deg,transparent_0,#000_5%,#000_95%,transparent_100%)]"
+      >
+        <div
+          ref={ref}
+          className={`flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-px-3 px-3 py-2 select-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:snap-none md:cursor-grab ${
+            dragging ? "md:!cursor-grabbing" : ""
+          }`}
+          style={{ scrollBehavior: "auto" }}
+        >
           {useCases.map((item) => (
             <Card key={item.id} item={item} />
-          ))}
-        </div>
-      </div>
-
-      {/* Desktop: continuous marquee auto-scroll */}
-      <div
-        className="tg-marquee hidden md:block"
-        style={{ "--tg-marquee-duration": "80s" } as React.CSSProperties}
-      >
-        <div className="tg-marquee-track py-2">
-          {track.map((item, i) => (
-            <Card key={`${item.id}-${i}`} item={item} />
           ))}
         </div>
       </div>
