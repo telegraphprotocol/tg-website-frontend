@@ -115,7 +115,7 @@ function Card({ item }: { item: UseCase }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Open ${item.name} on GitHub`}
-      className="group relative mx-3 flex w-[320px] shrink-0 flex-col border border-[var(--tg-line)] bg-[var(--tg-bg)] no-underline outline-none transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--tg-line-strong)] hover:bg-[#0c0c0c] focus-visible:border-[var(--tg-fg-dim)] md:w-[380px]"
+      className="group relative mx-3 flex w-[320px] shrink-0 snap-start flex-col border border-[var(--tg-line)] bg-[var(--tg-bg)] no-underline outline-none transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--tg-line-strong)] hover:bg-[#0c0c0c] focus-visible:border-[var(--tg-fg-dim)] md:w-[380px]"
     >
       <span className="tg-corner tg-corner-tl" aria-hidden />
       <span className="tg-corner tg-corner-tr" aria-hidden />
@@ -175,7 +175,7 @@ export function EarnUseCases() {
     <section className="bg-[var(--tg-bg)] px-0 py-20 md:py-[110px]">
       <div className="mx-auto mb-12 max-w-[1080px] px-6 sm:px-8 md:mb-16">
         <DecodeText
-          text="Built With Telegraph"
+          text="What's Being Built on Telegraph"
           className="block m-0 mb-5 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"
         />
         <Reveal
@@ -190,8 +190,18 @@ export function EarnUseCases() {
         </Reveal>
       </div>
 
+      {/* Mobile: native horizontal swipe with scroll-snap */}
+      <div className="md:hidden">
+        <div className="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-px-3 px-3 py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {useCases.map((item) => (
+            <Card key={item.id} item={item} />
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop: continuous marquee auto-scroll */}
       <div
-        className="tg-marquee"
+        className="tg-marquee hidden md:block"
         style={{ "--tg-marquee-duration": "80s" } as React.CSSProperties}
       >
         <div className="tg-marquee-track py-2">

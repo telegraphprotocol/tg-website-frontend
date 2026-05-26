@@ -9,11 +9,11 @@ const baseUrl =
 export const metadata: Metadata = {
   title: "Earn — Mine, Validate & Build on Telegraph",
   description:
-    "Earn on Telegraph Protocol. Become a miner, intent evaluator, run a node, build with verified signal APIs, or query the Terminal — every contribution to the machine economy is rewarded.",
+    "Earn on Telegraph Protocol. Become a miner, script author, run a node, build with verified signal APIs, or query the Terminal — every contribution to the machine economy is rewarded.",
   openGraph: {
     title: "Earn on Telegraph — Mine, Validate & Build",
     description:
-      "Five ways to earn on Telegraph: mine signals, evaluate intent, run a node, build with signal APIs, or launch the Terminal.",
+      "Five ways to earn on Telegraph: mine signals, author scripts, run a node, build with signal APIs, or launch the Terminal.",
     url: `${baseUrl}/earn`,
     type: "website",
     images: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Earn on Telegraph — Mine, Validate & Build",
     description:
-      "Five ways to earn on Telegraph: mine signals, evaluate intent, run a node, build with signal APIs, or launch the Terminal.",
+      "Five ways to earn on Telegraph: mine signals, author scripts, run a node, build with signal APIs, or launch the Terminal.",
     images: [`${baseUrl}/opengraph-image.png`],
   },
   alternates: {
