@@ -194,9 +194,8 @@ function useDragScroll<T extends HTMLElement>() {
       didDrag = false;
       startX = e.clientX;
       startScroll = el.scrollLeft;
-      try {
-        el.setPointerCapture(e.pointerId);
-      } catch {}
+      // Don't capture yet — capturing redirects the synthesized click
+      // away from the anchor and would break plain clicks.
     };
 
     const onPointerMove = (e: PointerEvent) => {
@@ -205,6 +204,11 @@ function useDragScroll<T extends HTMLElement>() {
       if (!didDrag && Math.abs(dx) > DRAG_THRESHOLD) {
         didDrag = true;
         setDragging(true);
+        // Once we know it's a drag, capture so the cursor can leave the
+        // element without us losing pointer events.
+        try {
+          el.setPointerCapture(e.pointerId);
+        } catch {}
       }
       if (didDrag) {
         e.preventDefault();
@@ -214,11 +218,10 @@ function useDragScroll<T extends HTMLElement>() {
 
     const finish = (e: PointerEvent) => {
       if (activePointer === null || e.pointerId !== activePointer) return;
-      try {
-        el.releasePointerCapture(activePointer);
-      } catch {}
-      activePointer = null;
       if (didDrag) {
+        try {
+          el.releasePointerCapture(activePointer);
+        } catch {}
         // Swallow the click that follows a drag so the card link doesn't open
         const swallow = (ev: MouseEvent) => {
           ev.preventDefault();
@@ -230,6 +233,7 @@ function useDragScroll<T extends HTMLElement>() {
           50,
         );
       }
+      activePointer = null;
       setDragging(false);
     };
 
