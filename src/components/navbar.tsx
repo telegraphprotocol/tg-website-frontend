@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { Coins, Terminal } from "lucide-react";
+import { FaDiscord, FaXTwitter } from "react-icons/fa6";
 import { CtaButton } from "./landing/cta-button";
 import Image from "next/image";
 
@@ -22,16 +23,36 @@ export function Navbar() {
           <span className="font-medium hidden md:block">Telegraph</span>
         </Link>
 
-        <div className="flex items-center gap-3">
-          <CtaButton href="/marketplace" variant="dark" arrow={false}>
-            <span>Marketplace</span>
+        <div className="flex items-center gap-2 md:gap-3">
+          <Link
+            href="https://x.com/Telegraphprotoc"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Telegraph on X"
+            className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
+          >
+            <FaXTwitter className="h-4 w-4" aria-hidden />
+          </Link>
+          <CtaButton
+            href="https://discord.gg/telegraphprotocol"
+            target="_blank"
+            variant="dark"
+            arrow={false}
+          >
+            <FaDiscord className="h-4 w-4 opacity-90" aria-hidden />
+            <span className="hidden md:inline">Join Community</span>
+          </CtaButton>
+          <CtaButton href="/earn" variant="dark" arrow={false}>
+            <Coins className="h-4 w-4 opacity-80" aria-hidden />
+            <span>Earn</span>
           </CtaButton>
           <CtaButton
             href="https://telegraph-terminal.vercel.app"
             target="_blank"
             arrow={false}
           >
-            <span>
+            <Terminal className="h-4 w-4" strokeWidth={2.5} aria-hidden />
+            <span className="font-semibold">
               <span className="hidden md:inline">Launch</span> Terminal
             </span>
           </CtaButton>
