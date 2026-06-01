@@ -69,7 +69,7 @@ export function Footer() {
           <span>© 2026 Telegraph Protocol. All Rights Reserved.</span>
           <div className="flex flex-wrap items-center gap-5 md:gap-8">
             <Link
-              href="https://drive.google.com/drive/folders/1F82vXvNiY6yW5_QILvgFi-X3vkM7xvq9"
+              href="/Machina_Token_Price_Scenarios_v66.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-sm border border-amber-500/80 bg-amber-500/10 px-2.5 py-1 text-amber-400 no-underline transition-colors hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300"

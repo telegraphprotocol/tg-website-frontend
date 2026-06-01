@@ -7,8 +7,7 @@ import { CtaButton } from "./landing/cta-button";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const MACHINA_REPORT_URL =
-  "https://drive.google.com/drive/folders/1F82vXvNiY6yW5_QILvgFi-X3vkM7xvq9";
+const MACHINA_REPORT_URL = "/Machina_Token_Price_Scenarios_v66.pdf";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
