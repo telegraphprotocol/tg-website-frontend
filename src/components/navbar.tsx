@@ -1,11 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { Coins, Menu, Terminal, X } from "lucide-react";
+import { Coins, FileBarChart, FileText, Menu, Terminal, X } from "lucide-react";
 import { FaDiscord, FaXTwitter } from "react-icons/fa6";
 import { CtaButton } from "./landing/cta-button";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+
+const MACHINA_REPORT_URL =
+  "https://drive.google.com/drive/folders/1F82vXvNiY6yW5_QILvgFi-X3vkM7xvq9";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -51,6 +54,40 @@ export function Navbar() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-3">
           <Link
+            href={MACHINA_REPORT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm border border-amber-500/80 bg-amber-500/10 px-[17px] py-[10px] text-[14px] font-semibold leading-none text-amber-400 no-underline transition-all hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300"
+          >
+            <FileBarChart className="h-4 w-4" aria-hidden />
+            <span>MACHINA: Token Report</span>
+          </Link>
+          <CtaButton
+            href="https://docs.google.com/document/d/1TnOAXJ__t_btosmui179qSAOsbUVSro9H8GCKRIpVao/edit?tab=t.0"
+            target="_blank"
+            variant="dark"
+            arrow={false}
+          >
+            <FileText className="h-4 w-4 opacity-80" aria-hidden />
+            <span>Whitepaper</span>
+          </CtaButton>
+          <CtaButton href="/earn" variant="dark" arrow={false}>
+            <Coins className="h-4 w-4 opacity-80" aria-hidden />
+            <span>Earn</span>
+          </CtaButton>
+          <CtaButton
+            href="https://terminal.telegraphprotocol.com/intelligence-terminal"
+            target="_blank"
+            arrow={false}
+          >
+            <Terminal className="h-4 w-4" strokeWidth={2.5} aria-hidden />
+            <span className="font-semibold">Launch Terminal</span>
+          </CtaButton>
+          <span
+            aria-hidden
+            className="mx-1 h-5 w-px bg-[var(--tg-line)]"
+          />
+          <Link
             href="https://x.com/Telegraphprotoc"
             target="_blank"
             rel="noopener noreferrer"
@@ -68,35 +105,35 @@ export function Navbar() {
           >
             <FaDiscord className="h-4 w-4 opacity-90" aria-hidden />
           </Link>
-          <CtaButton href="/earn" variant="dark" arrow={false}>
-            <Coins className="h-4 w-4 opacity-80" aria-hidden />
-            <span>Earn</span>
-          </CtaButton>
-          <CtaButton
-            href="https://terminal.telegraphprotocol.com/intelligence-terminal"
-            target="_blank"
-            arrow={false}
-          >
-            <Terminal className="h-4 w-4" strokeWidth={2.5} aria-hidden />
-            <span className="font-semibold">Launch Terminal</span>
-          </CtaButton>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="tg-mobile-nav"
-          className="md:hidden inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
-        >
-          {open ? (
-            <X className="h-4 w-4" aria-hidden />
-          ) : (
-            <Menu className="h-4 w-4" aria-hidden />
-          )}
-        </button>
+        {/* Mobile actions */}
+        <div className="md:hidden flex items-center gap-2">
+          <Link
+            href={MACHINA_REPORT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="MACHINA Token Report"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-sm border border-amber-500/80 bg-amber-500/10 px-2.5 py-[9px] text-[11px] font-semibold uppercase tracking-[0.06em] text-amber-400 no-underline transition-colors hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300"
+          >
+            <FileBarChart className="h-3.5 w-3.5" aria-hidden />
+            <span>Token Report</span>
+          </Link>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="tg-mobile-nav"
+            className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
+          >
+            {open ? (
+              <X className="h-4 w-4" aria-hidden />
+            ) : (
+              <Menu className="h-4 w-4" aria-hidden />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile overlay menu */}
@@ -115,12 +152,34 @@ export function Navbar() {
         />
         <nav className="relative mx-auto flex w-full flex-col gap-3 border-b border-[var(--tg-line)] bg-[#010101] px-6 py-6">
           <Link
+            href={MACHINA_REPORT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={close}
+            className="inline-flex items-center gap-3 rounded-sm border border-amber-500/80 bg-amber-500/10 px-4 py-3 text-[14px] font-semibold text-amber-400 no-underline transition-colors hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300"
+          >
+            <FileBarChart className="h-4 w-4" aria-hidden />
+            <span>MACHINA: Token Report</span>
+          </Link>
+
+          <Link
             href="/earn"
             onClick={close}
             className="inline-flex items-center gap-3 rounded-sm bg-[#1a1a1a] px-4 py-3 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#222]"
           >
             <Coins className="h-4 w-4 opacity-80" aria-hidden />
             <span>Earn</span>
+          </Link>
+
+          <Link
+            href="https://docs.google.com/document/d/1TnOAXJ__t_btosmui179qSAOsbUVSro9H8GCKRIpVao/edit?tab=t.0"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={close}
+            className="inline-flex items-center gap-3 rounded-sm bg-[#1a1a1a] px-4 py-3 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#222]"
+          >
+            <FileText className="h-4 w-4 opacity-80" aria-hidden />
+            <span>Whitepaper</span>
           </Link>
 
           <Link

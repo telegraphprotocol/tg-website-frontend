@@ -30,7 +30,7 @@ export function CtaButton({
     <Link
       href={href}
       target={target}
-      className={`group inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm px-[18px] py-[11px] text-[14px] font-medium leading-none no-underline transition-all ${styles[variant]}`}
+      className={`group inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm px-[18px] py-[11px] text-[14px] font-medium leading-none no-underline transition-all ${styles[variant]} ${className}`}
     >
       {children}
       {arrow ? (

@@ -69,6 +69,14 @@ export function Footer() {
           <span>© 2026 Telegraph Protocol. All Rights Reserved.</span>
           <div className="flex flex-wrap items-center gap-5 md:gap-8">
             <Link
+              href="https://drive.google.com/drive/folders/1F82vXvNiY6yW5_QILvgFi-X3vkM7xvq9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-sm border border-amber-500/80 bg-amber-500/10 px-2.5 py-1 text-amber-400 no-underline transition-colors hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300"
+            >
+              MACHINA: Token Report
+            </Link>
+            <Link
               href="mailto:info@telegraphprotocol.com"
               className="text-[var(--tg-fg-dim)] no-underline hover:text-[var(--tg-fg)]"
             >
@@ -91,6 +99,14 @@ export function Footer() {
               className="text-[var(--tg-fg-dim)] no-underline hover:text-[var(--tg-fg)]"
             >
               Earn
+            </Link>
+            <Link
+              href="https://docs.google.com/document/d/1TnOAXJ__t_btosmui179qSAOsbUVSro9H8GCKRIpVao/edit?tab=t.0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--tg-fg-dim)] no-underline hover:text-[var(--tg-fg)]"
+            >
+              Whitepaper
             </Link>
             <span
               aria-hidden
