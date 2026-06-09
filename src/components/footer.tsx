@@ -101,7 +101,7 @@ export function Footer() {
               Earn
             </Link>
             <Link
-              href="https://docs.google.com/document/d/1TnOAXJ__t_btosmui179qSAOsbUVSro9H8GCKRIpVao/edit?tab=t.0"
+              href="/Whitepapers%20-%20Telegraph%20Protocol.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[var(--tg-fg-dim)] no-underline hover:text-[var(--tg-fg)]"

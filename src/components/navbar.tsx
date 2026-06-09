@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const MACHINA_REPORT_URL = "/Machina_Token_Price_Scenarios_v66.pdf";
+const WHITEPAPER_URL = "/Whitepapers%20-%20Telegraph%20Protocol.pdf";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -62,7 +63,7 @@ export function Navbar() {
             <span>MACHINA: Token Report</span>
           </Link>
           <CtaButton
-            href="https://docs.google.com/document/d/1TnOAXJ__t_btosmui179qSAOsbUVSro9H8GCKRIpVao/edit?tab=t.0"
+            href={WHITEPAPER_URL}
             target="_blank"
             variant="dark"
             arrow={false}
@@ -171,7 +172,7 @@ export function Navbar() {
           </Link>
 
           <Link
-            href="https://docs.google.com/document/d/1TnOAXJ__t_btosmui179qSAOsbUVSro9H8GCKRIpVao/edit?tab=t.0"
+            href={WHITEPAPER_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={close}
