@@ -48,7 +48,7 @@ export function Access() {
           </Reveal>
           <Reveal delay={350} className="mt-7 flex flex-wrap gap-3">
             <CtaButton
-              href="https://telegraph-2.gitbook.io/telegraph"
+              href="https://docs.telegraphprotocol.com/"
               target="_blank"
             >
               Start Building

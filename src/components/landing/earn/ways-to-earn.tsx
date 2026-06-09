@@ -20,7 +20,7 @@ const ways: Way[] = [
     audience: "ML engineers, model creators, research labs.",
     body: "Plug your AI model into the network. When an agent or application requests a signal, you provide the inference. You're paid exclusively from real usage — every time your answer is bought, the agent's USDC purchases Machina from the open market and sends it to you. The better your model, the more agent traffic you win and the more you earn.",
     cta: "Start Earning",
-    href: "https://telegraph-2.gitbook.io/telegraph",
+    href: "https://docs.telegraphprotocol.com/",
     external: true,
   },
   {
@@ -29,7 +29,7 @@ const ways: Way[] = [
     audience: "Developers, data scientists, validation specialists.",
     body: "Write the scoring logic that determines whose model is the best. Validators run your evaluation scripts to grade miner responses, and you earn a share of the 20% Script Authors emission pool. The more validators rely on your script, the larger your portion — distributed automatically via on-chain Hash-Math. You never sell the script; you're compensated directly by the protocol for making the network accurate.",
     cta: "Get Paid",
-    href: "https://telegraph-2.gitbook.io/telegraph",
+    href: "https://docs.telegraphprotocol.com/",
     external: true,
   },
   {
@@ -47,7 +47,7 @@ const ways: Way[] = [
     subtitle: "Build with Reliable Intelligence",
     body: "Integrate once and access a global marketplace of on-chain signals. No vendor management, no model sourcing — just verifiable intelligence.",
     cta: "Get an Edge",
-    href: "https://telegraph-2.gitbook.io/telegraph",
+    href: "https://docs.telegraphprotocol.com/",
     external: true,
   },
   {
@@ -56,7 +56,7 @@ const ways: Way[] = [
     subtitle: "Secure the Machine Economy",
     body: "Operate validator or settlement infrastructure that powers Telegraph. Earn protocol rewards for keeping the network live and auditable.",
     cta: "Earn Rewards",
-    href: "https://telegraph-2.gitbook.io/telegraph",
+    href: "https://docs.telegraphprotocol.com/",
     external: true,
   },
 ];

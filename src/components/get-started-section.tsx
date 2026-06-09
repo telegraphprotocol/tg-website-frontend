@@ -12,7 +12,7 @@ export function GetStartedSection() {
       description:
         "Start building in minutes. Simple steps to launch your project smoothly.",
       linkText: "Read the documents",
-      link: "https://telegraph-2.gitbook.io/telegraph",
+      link: "https://docs.telegraphprotocol.com/",
     },
     {
       icon: Network,
@@ -20,7 +20,7 @@ export function GetStartedSection() {
       description:
         "Run your own node. No signup needed — earn rewards, support the network.",
       linkText: "Run a Node",
-      link: "https://telegraph-2.gitbook.io/telegraph/node-overview/registering-a-telegraph-node",
+      link: "https://docs.telegraphprotocol.com/",
     },
     {
       icon: Users,

@@ -46,7 +46,7 @@ export function Hero() {
             Launch Terminal
           </CtaButton>
           <CtaButton
-            href="https://telegraph-2.gitbook.io/telegraph"
+            href="https://docs.telegraphprotocol.com/"
             target="_blank"
             variant="dark"
           >

@@ -126,7 +126,7 @@ export function ToolLayerSection() {
                   asChild
                 >
                   <Link
-                    href="https://telegraph-2.gitbook.io/telegraph"
+                    href="https://docs.telegraphprotocol.com/"
                     target="_blank"
                   >
                     <Settings className="h-4 w-4" />
