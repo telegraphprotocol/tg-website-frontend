@@ -38,19 +38,28 @@ export function Hero() {
           tradable answers that machines can use to make decisions and execute
           tasks autonomously.
         </Reveal>
-        <Reveal delay={400} className="flex flex-wrap justify-center gap-3.5">
+        <Reveal delay={400} className="flex flex-col items-center gap-3.5">
+          <div className="flex flex-wrap justify-center gap-3.5">
+            <CtaButton
+              href="https://terminal.telegraphprotocol.com/intelligence-terminal"
+              target="_blank"
+            >
+              Launch Terminal
+            </CtaButton>
+            <CtaButton
+              href="https://docs.telegraphprotocol.com/"
+              target="_blank"
+              variant="dark"
+            >
+              Read the Docs &amp; Build
+            </CtaButton>
+          </div>
           <CtaButton
-            href="https://terminal.telegraphprotocol.com/intelligence-terminal"
+            href="https://hackathon.telegraphprotocol.com/"
             target="_blank"
+            variant="ghost"
           >
-            Launch Terminal
-          </CtaButton>
-          <CtaButton
-            href="https://docs.telegraphprotocol.com/"
-            target="_blank"
-            variant="dark"
-          >
-            Read the Docs &amp; Build
+            Join Hackathon
           </CtaButton>
         </Reveal>
       </div>
