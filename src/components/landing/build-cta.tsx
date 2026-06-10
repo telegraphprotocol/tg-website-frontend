@@ -17,13 +17,13 @@ export function BuildCta() {
           variant="blur"
           className="mx-auto m-0 mb-10 max-w-[720px] text-pretty text-[14px] leading-[1.85] text-[var(--tg-fg-dim)]"
         >
-          Centralized AI platforms like OpenAI and Anthropic push products where
-          you are the product — harvesting your private queries to train their
-          walled-off, proprietary models. Telegraph flips this model, aligning
-          incentives and letting the network grow itself. Humans and Agents
-          contribute and compete for real user requests. The best result wins.
-          Revenue flows to performance. The result is a self-distributing
-          intelligence network that continuously evolves.
+          Every dollar invested in AI anywhere in the world makes Telegraph
+          better - for free. Telegraph does not train AI models and does not
+          need to. Every frontier lab, every open-source project, every new
+          model that gets funded and shipped simply becomes a better supplier
+          on the Telegraph network. The billions being poured into AI
+          infrastructure are, in effect, subsidising the protocol&apos;s supply
+          side at no cost.
         </Reveal>
         <Reveal delay={350} className="flex flex-wrap justify-center gap-3">
           <CtaButton
