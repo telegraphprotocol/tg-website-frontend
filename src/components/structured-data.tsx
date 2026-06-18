@@ -14,7 +14,7 @@ export function StructuredData() {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "Customer Service",
-      email: "info@telegraphprotocop.com",
+      email: "info@telegraphprotocol.com",
     },
   };
 
