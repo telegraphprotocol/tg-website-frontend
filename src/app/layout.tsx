@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     url: baseUrl,
     siteName: "Telegraph Protocol",
     title: "Telegraph — A machine intelligence protocol for autonomous systems",
-    description: "Buy, sell, and settle machine intelligence.",
+    description: "Buy, sell, and settle verified machine intelligence.",
     images: [
       {
         url: `${baseUrl}/telegraph-social-card.jpg`,
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Telegraph — A machine intelligence protocol for autonomous systems",
-    description: "Buy, sell, and settle machine intelligence.",
+    description: "Buy, sell, and settle verified machine intelligence.",
     images: [`${baseUrl}/telegraph-social-card.jpg`],
     creator: "@telegraphprotocol",
   },
