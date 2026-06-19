@@ -76,7 +76,7 @@ export function Navbar() {
             <span>Earn</span>
           </CtaButton>
           <CtaButton
-            href="https://terminal.telegraphprotocol.com/intelligence-terminal"
+            href="https://terminal.telegraphprotocol.com"
             target="_blank"
             arrow={false}
           >
@@ -183,7 +183,7 @@ export function Navbar() {
           </Link>
 
           <Link
-            href="https://terminal.telegraphprotocol.com/intelligence-terminal"
+            href="https://terminal.telegraphprotocol.com"
             target="_blank"
             onClick={close}
             className="inline-flex items-center gap-3 rounded-sm bg-[#f2f2f2] px-4 py-3 text-[14px] font-semibold text-black no-underline transition-colors hover:bg-white"

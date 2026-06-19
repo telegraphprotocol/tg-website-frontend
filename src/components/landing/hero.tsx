@@ -41,7 +41,7 @@ export function Hero() {
         <Reveal delay={400} className="flex flex-col items-center gap-3.5">
           <div className="flex flex-wrap justify-center gap-3.5">
             <CtaButton
-              href="https://terminal.telegraphprotocol.com/intelligence-terminal"
+              href="https://terminal.telegraphprotocol.com"
               target="_blank"
             >
               Launch Terminal
