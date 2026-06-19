@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     description: "Verified, tradable AI answers for autonomous machines.",
     images: [
       {
-        url: `${baseUrl}/opengraph-image.png`,
+        url: `${baseUrl}/telegraph-social-card.jpg`,
         width: 1200,
         height: 630,
         alt: "Telegraph Protocol",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Telegraph — A machine intelligence protocol for autonomous systems",
     description: "Verified, tradable AI answers for autonomous machines.",
-    images: [`${baseUrl}/opengraph-image.png`],
+    images: [`${baseUrl}/telegraph-social-card.jpg`],
     creator: "@telegraphprotocol",
   },
   robots: {
