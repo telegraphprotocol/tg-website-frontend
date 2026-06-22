@@ -1,14 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import { Coins, FileBarChart, FileText, Menu, Terminal, X } from "lucide-react";
+import {
+  Coins,
+  FileBarChart,
+  FileText,
+  LineChart,
+  Menu,
+  Terminal,
+  X,
+} from "lucide-react";
 import { FaDiscord, FaXTwitter } from "react-icons/fa6";
 import { CtaButton } from "./landing/cta-button";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const MACHINA_REPORT_URL = "/Machina_Token_Price_Scenarios_v66.pdf";
+const MACHINA_COINGECKO_URL = "https://www.coingecko.com/en/coins/machina-2";
 const WHITEPAPER_URL = "/Whitepapers%20-%20Telegraph%20Protocol.pdf";
+
+const coingeckoBtnClass =
+  "group inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm border border-emerald-500/80 bg-emerald-500/10 px-[17px] py-[10px] text-[14px] font-semibold leading-none text-emerald-400 no-underline transition-all hover:border-emerald-400 hover:bg-emerald-500/15 hover:text-emerald-300";
+const coingeckoBtnMobileClass =
+  "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-emerald-500/80 bg-emerald-500/10 px-2 py-[9px] text-[11px] font-semibold uppercase tracking-[0.04em] text-emerald-400 no-underline transition-colors hover:border-emerald-400 hover:bg-emerald-500/15 hover:text-emerald-300";
+const tokenReportBtnMobileClass =
+  "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-amber-500/80 bg-amber-500/10 px-2 py-[9px] text-[11px] font-semibold uppercase tracking-[0.04em] text-amber-400 no-underline transition-colors hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300";
+const coingeckoBtnOverlayClass =
+  "inline-flex items-center gap-3 rounded-sm border border-emerald-500/80 bg-emerald-500/10 px-4 py-3 text-[14px] font-semibold text-emerald-400 no-underline transition-colors hover:border-emerald-400 hover:bg-emerald-500/15 hover:text-emerald-300";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -35,11 +53,11 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 flex h-[72px] items-center border-b border-[var(--tg-line)] bg-[#010101]/50 backdrop-blur-md supports-[backdrop-filter]:bg-[#010101]/55">
-      <div className="flex w-full items-center justify-between px-6 md:px-10">
+      <div className="flex w-full min-w-0 items-center justify-between gap-3 px-4 sm:px-6 md:px-10">
         <Link
           href="/"
           aria-label="Telegraph home"
-          className="flex items-center gap-2.5 text-[17px] font-medium text-[var(--tg-fg)] no-underline"
+          className="flex min-w-0 shrink items-center gap-2.5 text-[17px] font-medium text-[var(--tg-fg)] no-underline"
         >
           <Image
             src="/t-logo.png"
@@ -61,6 +79,15 @@ export function Navbar() {
           >
             <FileBarChart className="h-4 w-4" aria-hidden />
             <span>MACHINA: Token Report</span>
+          </Link>
+          <Link
+            href={MACHINA_COINGECKO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={coingeckoBtnClass}
+          >
+            <LineChart className="h-4 w-4" aria-hidden />
+            <span>MACHINA Token</span>
           </Link>
           <CtaButton
             href={WHITEPAPER_URL}
@@ -108,16 +135,26 @@ export function Navbar() {
         </div>
 
         {/* Mobile actions */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="md:hidden flex shrink-0 items-center gap-2">
           <Link
             href={MACHINA_REPORT_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="MACHINA Token Report"
-            className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-sm border border-amber-500/80 bg-amber-500/10 px-2.5 py-[9px] text-[11px] font-semibold uppercase tracking-[0.06em] text-amber-400 no-underline transition-colors hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300"
+            className={tokenReportBtnMobileClass}
           >
-            <FileBarChart className="h-3.5 w-3.5" aria-hidden />
-            <span>Token Report</span>
+            <FileBarChart className="h-3.5 w-3.5 shrink-0" aria-hidden />
+            <span>Report</span>
+          </Link>
+          <Link
+            href={MACHINA_COINGECKO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="MACHINA Token"
+            className={coingeckoBtnMobileClass}
+          >
+            <LineChart className="h-3.5 w-3.5 shrink-0" aria-hidden />
+            <span>Token</span>
           </Link>
           <button
             type="button"
@@ -125,7 +162,7 @@ export function Navbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="tg-mobile-nav"
-            className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
+            className="inline-flex shrink-0 items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
           >
             {open ? (
               <X className="h-4 w-4" aria-hidden />
@@ -160,6 +197,17 @@ export function Navbar() {
           >
             <FileBarChart className="h-4 w-4" aria-hidden />
             <span>MACHINA: Token Report</span>
+          </Link>
+
+          <Link
+            href={MACHINA_COINGECKO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={close}
+            className={coingeckoBtnOverlayClass}
+          >
+            <LineChart className="h-4 w-4" aria-hidden />
+            <span>MACHINA Token</span>
           </Link>
 
           <Link
