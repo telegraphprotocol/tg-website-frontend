@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { DecodeText } from "../fx/decode-text";
 import { Reveal } from "../fx/reveal";
@@ -12,7 +12,8 @@ type UseCase = {
   description: string;
   subnets: { id: number; label: string }[];
   payment: string;
-  href: string;
+  githubHref: string;
+  liveHref?: string;
 };
 
 const REPO_BASE =
@@ -30,7 +31,8 @@ const useCases: UseCase[] = [
       { id: 34, label: "Bitmind" },
     ],
     payment: "Solana · USDC",
-    href: `${REPO_BASE}/telegraph-truthwire`,
+    githubHref: `${REPO_BASE}/telegraph-truthwire`,
+    liveHref: "https://truthwire.telegraphprotocol.com",
   },
   {
     id: "02",
@@ -40,7 +42,7 @@ const useCases: UseCase[] = [
       "Submit a URL or message — the Groq LLM returns scam / suspicious / likely_safe with plain-English reasoning, metered per call on-chain.",
     subnets: [{ id: 102, label: "Groq" }],
     payment: "Solana · USDC",
-    href: `${REPO_BASE}/telegraph-trustfilter`,
+    githubHref: `${REPO_BASE}/telegraph-trustfilter`,
   },
   {
     id: "03",
@@ -53,17 +55,19 @@ const useCases: UseCase[] = [
       { id: 34, label: "Bitmind" },
     ],
     payment: "Solana · USDC",
-    href: `${REPO_BASE}/telegraph-scholarguard`,
+    githubHref: `${REPO_BASE}/telegraph-scholarguard`,
+    liveHref: "https://scholarguard.telegraphprotocol.com",
   },
   {
     id: "04",
-    name: "ReviewRadar",
+    name: "ReviewReward",
     subtitle: "Amazon Review Authenticity",
     description:
       "Paste a product URL — pulls recent reviews, scores each through ItsAI, and surfaces an AI-vs-human signal summary with per-review transaction proofs.",
     subnets: [{ id: 32, label: "ItsAI" }],
     payment: "Solana · USDC",
-    href: `${REPO_BASE}/telegraph-reviewradar`,
+    githubHref: `${REPO_BASE}/telegraph-reviewreward`,
+    liveHref: "https://reviewradar.telegraphprotocol.com",
   },
   {
     id: "05",
@@ -76,7 +80,7 @@ const useCases: UseCase[] = [
       { id: 102, label: "Groq" },
     ],
     payment: "Polygon · USDC",
-    href: `${REPO_BASE}/telegraph-polymarket-bot`,
+    githubHref: `${REPO_BASE}/telegraph-polymarket-bot`,
   },
   {
     id: "06",
@@ -89,13 +93,13 @@ const useCases: UseCase[] = [
       { id: 32, label: "ItsAI" },
     ],
     payment: "Solana · USDC",
-    href: `${REPO_BASE}/telegraph-adguard`,
+    githubHref: `${REPO_BASE}/telegraph-adguard`,
   },
 ];
 
 function SubnetChip({ id, label }: { id: number; label: string }) {
   return (
-    <span className="inline-flex flex-col items-start gap-0.5 border border-[var(--tg-line-strong)] bg-[#0c0c0c] px-3 py-2 transition-colors duration-200 group-hover:border-[var(--tg-fg-faint)] group-hover:bg-[#111]">
+    <span className="inline-flex flex-col items-start gap-0.5 border border-[var(--tg-line-strong)] bg-[#0c0c0c] px-3 py-2">
       <span className="flex items-baseline gap-1.5 leading-none">
         <span className="text-[9px] uppercase tracking-[0.22em] text-[var(--tg-fg-faint)]">
           SN
@@ -113,13 +117,9 @@ function SubnetChip({ id, label }: { id: number; label: string }) {
 
 function Card({ item }: { item: UseCase }) {
   return (
-    <a
-      href={item.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`Open ${item.name} on GitHub`}
+    <div
       draggable={false}
-      className="group relative mx-3 flex w-[320px] shrink-0 snap-start flex-col border border-[var(--tg-line)] bg-[var(--tg-bg)] no-underline outline-none transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--tg-line-strong)] hover:bg-[#0c0c0c] focus-visible:border-[var(--tg-fg-dim)] md:w-[380px]"
+      className="group relative mx-3 flex w-[320px] shrink-0 snap-start flex-col border border-[var(--tg-line)] bg-[var(--tg-bg)] md:w-[380px]"
     >
       <span className="tg-corner tg-corner-tl" aria-hidden />
       <span className="tg-corner tg-corner-tr" aria-hidden />
@@ -130,17 +130,24 @@ function Card({ item }: { item: UseCase }) {
         <span className="text-[11px] tracking-[0.22em] text-[var(--tg-fg-faint)]">
           USE / {item.id}
         </span>
+        {item.liveHref && (
+          <span className="inline-flex items-center gap-1.5">
+            <span
+              className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_1px_rgba(52,211,153,0.6)]"
+              aria-hidden
+            />
+            <span className="text-[9px] uppercase tracking-[0.22em] text-emerald-500">
+              Live
+            </span>
+          </span>
+        )}
         <span className="ml-auto text-[10px] uppercase tracking-[0.18em] text-[var(--tg-fg-faint)]">
           {item.payment}
         </span>
-        <ArrowUpRight
-          className="h-3.5 w-3.5 text-[var(--tg-fg-faint)] transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--tg-fg)]"
-          aria-hidden
-        />
       </header>
 
       <div className="flex flex-1 flex-col gap-3 px-6 py-6">
-        <h3 className="m-0 text-[18px] font-medium leading-[1.25] tracking-[0.005em] text-[var(--tg-fg)] transition-colors duration-200">
+        <h3 className="m-0 text-[18px] font-medium leading-[1.25] tracking-[0.005em] text-[var(--tg-fg)]">
           {item.name}
         </h3>
         <p className="m-0 text-[12px] uppercase tracking-[0.12em] text-[var(--tg-fg-dim)]">
@@ -158,7 +165,7 @@ function Card({ item }: { item: UseCase }) {
           </span>
           <span className="h-px flex-1 bg-[var(--tg-line-soft)]" />
         </div>
-        <div className="flex flex-wrap items-stretch gap-2">
+        <div className="mb-5 flex flex-wrap items-stretch gap-2">
           {item.subnets.map((sn) => (
             <SubnetChip
               key={`${item.id}-${sn.id}`}
@@ -167,8 +174,39 @@ function Card({ item }: { item: UseCase }) {
             />
           ))}
         </div>
+
+        <div className="flex items-center gap-3">
+          <a
+            href={item.githubHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${item.name} on GitHub`}
+            onClick={(e) => e.stopPropagation()}
+            className="inline-flex items-center gap-1.5 border border-[var(--tg-line)] bg-transparent px-3 py-2 text-[10px] uppercase tracking-[0.18em] text-[var(--tg-fg-dim)] no-underline outline-none transition-colors duration-200 hover:border-[var(--tg-line-strong)] hover:text-[var(--tg-fg)] focus-visible:border-[var(--tg-fg-dim)]"
+          >
+            <Github className="h-3 w-3" aria-hidden />
+            GitHub
+          </a>
+          {item.liveHref && (
+            <a
+              href={item.liveHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${item.name} live app`}
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1.5 border border-emerald-500/30 bg-emerald-500/5 px-3 py-2 text-[10px] uppercase tracking-[0.18em] text-emerald-500 no-underline outline-none transition-colors duration-200 hover:border-emerald-500/60 hover:bg-emerald-500/10 focus-visible:border-emerald-500"
+            >
+              <span
+                className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_5px_1px_rgba(52,211,153,0.5)]"
+                aria-hidden
+              />
+              Live App
+              <ArrowUpRight className="h-3 w-3" aria-hidden />
+            </a>
+          )}
+        </div>
       </footer>
-    </a>
+    </div>
   );
 }
 
@@ -187,15 +225,12 @@ function useDragScroll<T extends HTMLElement>() {
     let startScroll = 0;
 
     const onPointerDown = (e: PointerEvent) => {
-      // Mouse / pen only — touch uses native scrolling
       if (e.pointerType !== "mouse" && e.pointerType !== "pen") return;
       if (e.button !== 0) return;
       activePointer = e.pointerId;
       didDrag = false;
       startX = e.clientX;
       startScroll = el.scrollLeft;
-      // Don't capture yet — capturing redirects the synthesized click
-      // away from the anchor and would break plain clicks.
     };
 
     const onPointerMove = (e: PointerEvent) => {
@@ -204,8 +239,6 @@ function useDragScroll<T extends HTMLElement>() {
       if (!didDrag && Math.abs(dx) > DRAG_THRESHOLD) {
         didDrag = true;
         setDragging(true);
-        // Once we know it's a drag, capture so the cursor can leave the
-        // element without us losing pointer events.
         try {
           el.setPointerCapture(e.pointerId);
         } catch {}
@@ -222,7 +255,6 @@ function useDragScroll<T extends HTMLElement>() {
         try {
           el.releasePointerCapture(activePointer);
         } catch {}
-        // Swallow the click that follows a drag so the card link doesn't open
         const swallow = (ev: MouseEvent) => {
           ev.preventDefault();
           ev.stopPropagation();
@@ -237,7 +269,6 @@ function useDragScroll<T extends HTMLElement>() {
       setDragging(false);
     };
 
-    // Block native link / image drag that would otherwise hijack the gesture
     const onDragStart = (e: DragEvent) => {
       e.preventDefault();
     };
@@ -282,9 +313,7 @@ export function EarnUseCases() {
         </Reveal>
       </div>
 
-      <div
-        className="relative md:[-webkit-mask-image:linear-gradient(90deg,transparent_0,#000_5%,#000_95%,transparent_100%)] md:[mask-image:linear-gradient(90deg,transparent_0,#000_5%,#000_95%,transparent_100%)]"
-      >
+      <div className="relative md:[-webkit-mask-image:linear-gradient(90deg,transparent_0,#000_5%,#000_95%,transparent_100%)] md:[mask-image:linear-gradient(90deg,transparent_0,#000_5%,#000_95%,transparent_100%)]">
         <div
           ref={ref}
           className={`flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-px-3 px-3 py-2 select-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:snap-none md:cursor-grab ${
