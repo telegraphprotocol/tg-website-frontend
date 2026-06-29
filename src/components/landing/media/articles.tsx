@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { DecodeText } from "../fx/decode-text";
 import { Reveal } from "../fx/reveal";
@@ -10,6 +11,8 @@ type Article = {
   publishedAt: string;
   publishedLabel: string;
   href: string;
+  cover: string;
+  coverAlt: string;
 };
 
 const articles: Article[] = [
@@ -23,6 +26,8 @@ const articles: Article[] = [
     publishedAt: "2026-06-23",
     publishedLabel: "Jun 23, 2026",
     href: "https://e27.co/agentic-commerces-dirty-secret-the-data-powering-ai-purchases-is-often-wrong-20260623/",
+    cover: "/media/agentic-commerce-e27.png",
+    coverAlt: "e27 — Agentic commerce's dirty secret",
   },
   {
     id: "01",
@@ -33,6 +38,8 @@ const articles: Article[] = [
     publishedAt: "2026-06-08",
     publishedLabel: "Jun 8, 2026",
     href: "https://www.theopensourcepress.com/telegraph-wants-to-be-the-visa-of-machine-intelligence/",
+    cover: "/telegraph-social-card.jpg",
+    coverAlt: "Telegraph Wants to Be the Visa of Machine Intelligence",
   },
 ];
 
@@ -42,42 +49,58 @@ function ArticleCard({ item }: { item: Article }) {
       href={item.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex flex-col border border-[var(--tg-line)] bg-[var(--tg-bg)] p-7 no-underline transition-colors duration-200 hover:border-[var(--tg-line-strong)] md:p-9"
+      className="group relative grid grid-cols-1 border border-[var(--tg-line)] bg-[var(--tg-bg)] no-underline transition-colors duration-200 hover:border-[var(--tg-line-strong)] md:grid-cols-[minmax(0,42%)_1fr]"
     >
       <span className="tg-corner tg-corner-tl" aria-hidden />
       <span className="tg-corner tg-corner-tr" aria-hidden />
       <span className="tg-corner tg-corner-bl" aria-hidden />
       <span className="tg-corner tg-corner-br" aria-hidden />
 
-      <header className="mb-5 flex items-center gap-3">
-        <span className="text-[11px] tracking-[0.22em] text-[var(--tg-fg-faint)]">
-          PRESS / {item.id}
-        </span>
-        <span className="h-px flex-1 bg-[var(--tg-line-soft)]" />
-        <time
-          dateTime={item.publishedAt}
-          className="text-[10px] uppercase tracking-[0.18em] text-[var(--tg-fg-faint)]"
-        >
-          {item.publishedLabel}
-        </time>
-      </header>
-
-      <p className="m-0 mb-3 text-[12px] uppercase tracking-[0.16em] text-[var(--tg-fg-dim)]">
-        {item.outlet}
-      </p>
-      <h3 className="m-0 mb-4 text-pretty text-[20px] font-medium leading-[1.35] tracking-[0.005em] text-[var(--tg-fg)] transition-colors duration-200 group-hover:text-white md:text-[22px]">
-        {item.title}
-      </h3>
-      <p className="m-0 mb-6 text-pretty text-[13.5px] leading-[1.8] text-[var(--tg-fg-dim)]">
-        {item.summary}
-      </p>
-
-      <div className="mt-auto flex items-center gap-1.5 text-[10px] uppercase tracking-[0.22em] text-[var(--tg-fg-dim)] transition-colors duration-200 group-hover:text-[var(--tg-fg)]">
-        Read on {item.outlet}
-        <ArrowUpRight
-          className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          aria-hidden
+      <div className="relative aspect-[16/9] overflow-hidden border-b border-[var(--tg-line-soft)] bg-[#0c0c0c] md:aspect-auto md:border-b-0 md:border-r">
+        <Image
+          src={item.cover}
+          alt={item.coverAlt}
+          fill
+          sizes="(min-width: 768px) 42vw, 100vw"
+          className="object-cover opacity-90 transition-all duration-300 group-hover:scale-[1.02] group-hover:opacity-100"
         />
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-black/0"
+        />
+      </div>
+
+      <div className="flex flex-col p-7 md:p-9">
+        <header className="mb-5 flex items-center gap-3">
+          <span className="text-[11px] tracking-[0.22em] text-[var(--tg-fg-faint)]">
+            PRESS / {item.id}
+          </span>
+          <span className="h-px flex-1 bg-[var(--tg-line-soft)]" />
+          <time
+            dateTime={item.publishedAt}
+            className="text-[10px] uppercase tracking-[0.18em] text-[var(--tg-fg-faint)]"
+          >
+            {item.publishedLabel}
+          </time>
+        </header>
+
+        <p className="m-0 mb-3 text-[12px] uppercase tracking-[0.16em] text-[var(--tg-fg-dim)]">
+          {item.outlet}
+        </p>
+        <h3 className="m-0 mb-4 text-pretty text-[20px] font-medium leading-[1.35] tracking-[0.005em] text-[var(--tg-fg)] transition-colors duration-200 group-hover:text-white md:text-[22px]">
+          {item.title}
+        </h3>
+        <p className="m-0 mb-6 text-pretty text-[13.5px] leading-[1.8] text-[var(--tg-fg-dim)]">
+          {item.summary}
+        </p>
+
+        <div className="mt-auto flex items-center gap-1.5 text-[10px] uppercase tracking-[0.22em] text-[var(--tg-fg-dim)] transition-colors duration-200 group-hover:text-[var(--tg-fg)]">
+          Read on {item.outlet}
+          <ArrowUpRight
+            className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            aria-hidden
+          />
+        </div>
       </div>
     </a>
   );
