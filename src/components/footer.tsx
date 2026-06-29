@@ -101,6 +101,12 @@ export function Footer() {
               Earn
             </Link>
             <Link
+              href="/media"
+              className="text-[var(--tg-fg-dim)] no-underline hover:text-[var(--tg-fg)]"
+            >
+              Media
+            </Link>
+            <Link
               href="/Whitepapers%20-%20Telegraph%20Protocol.pdf"
               target="_blank"
               rel="noopener noreferrer"

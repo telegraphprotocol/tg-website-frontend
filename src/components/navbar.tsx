@@ -7,6 +7,7 @@ import {
   FileText,
   LineChart,
   Menu,
+  Newspaper,
   Terminal,
   X,
 } from "lucide-react";
@@ -101,6 +102,10 @@ export function Navbar() {
           <CtaButton href="/earn" variant="dark" arrow={false}>
             <Coins className="h-4 w-4 opacity-80" aria-hidden />
             <span>Earn</span>
+          </CtaButton>
+          <CtaButton href="/media" variant="dark" arrow={false}>
+            <Newspaper className="h-4 w-4 opacity-80" aria-hidden />
+            <span>Media</span>
           </CtaButton>
           <CtaButton
             href="https://terminal.telegraphprotocol.com"
@@ -217,6 +222,15 @@ export function Navbar() {
           >
             <Coins className="h-4 w-4 opacity-80" aria-hidden />
             <span>Earn</span>
+          </Link>
+
+          <Link
+            href="/media"
+            onClick={close}
+            className="inline-flex items-center gap-3 rounded-sm bg-[#1a1a1a] px-4 py-3 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#222]"
+          >
+            <Newspaper className="h-4 w-4 opacity-80" aria-hidden />
+            <span>Media</span>
           </Link>
 
           <Link
