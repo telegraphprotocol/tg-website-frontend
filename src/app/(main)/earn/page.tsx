@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${baseUrl}/opengraph-image.png`,
+        url: `${baseUrl}/telegraph-social-card.jpg`,
         width: 1200,
         height: 630,
         alt: "Earn on Telegraph Protocol",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Earn on Telegraph — Mine, Validate & Build",
     description:
       "Five ways to earn on Telegraph: mine signals, author scripts, run a node, build with signal APIs, or launch the Terminal.",
-    images: [`${baseUrl}/opengraph-image.png`],
+    images: [`${baseUrl}/telegraph-social-card.jpg`],
   },
   alternates: {
     canonical: `${baseUrl}/earn`,

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${baseUrl}/opengraph-image.png`,
+        url: `${baseUrl}/telegraph-social-card.jpg`,
         width: 1200,
         height: 630,
         alt: "Telegraph Protocol in the Media",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "Media — Telegraph in the Press",
     description:
       "Press coverage, interviews, and external commentary on Telegraph Protocol.",
-    images: [`${baseUrl}/opengraph-image.png`],
+    images: [`${baseUrl}/telegraph-social-card.jpg`],
   },
   alternates: {
     canonical: `${baseUrl}/media`,

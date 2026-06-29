@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${baseUrl}/opengraph-image.png`,
+        url: `${baseUrl}/telegraph-social-card.jpg`,
         width: 1200,
         height: 630,
         alt: "Telegraph Marketplace",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Telegraph Marketplace - Buy & Trade AI Signals",
     description:
       "Browse and purchase verified AI signals from Bittensor subnets. Turn subnet inference into tradeable commodities.",
-    images: [`${baseUrl}/opengraph-image.png`],
+    images: [`${baseUrl}/telegraph-social-card.jpg`],
   },
   alternates: {
     canonical: `${baseUrl}/marketplace`,
