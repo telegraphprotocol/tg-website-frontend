@@ -8,6 +8,7 @@ import {
   LineChart,
   Menu,
   Newspaper,
+  Server,
   Terminal,
   X,
 } from "lucide-react";
@@ -19,6 +20,7 @@ import { useEffect, useState } from "react";
 const MACHINA_REPORT_URL = "/Machina_Token_Price_Scenarios_v66.pdf";
 const MACHINA_COINGECKO_URL = "https://www.coingecko.com/en/coins/machina-2";
 const WHITEPAPER_URL = "/Whitepapers%20-%20Telegraph%20Protocol.pdf";
+const RUN_A_NODE_URL = "/Telegraph_Validator_Proposal.pdf";
 
 const coingeckoBtnClass =
   "group inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm border border-emerald-500/80 bg-emerald-500/10 px-[17px] py-[10px] text-[14px] font-semibold leading-none text-emerald-400 no-underline transition-all hover:border-emerald-400 hover:bg-emerald-500/15 hover:text-emerald-300";
@@ -28,6 +30,12 @@ const tokenReportBtnMobileClass =
   "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-amber-500/80 bg-amber-500/10 px-2 py-[9px] text-[11px] font-semibold uppercase tracking-[0.04em] text-amber-400 no-underline transition-colors hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300";
 const coingeckoBtnOverlayClass =
   "inline-flex items-center gap-3 rounded-sm border border-emerald-500/80 bg-emerald-500/10 px-4 py-3 text-[14px] font-semibold text-emerald-400 no-underline transition-colors hover:border-emerald-400 hover:bg-emerald-500/15 hover:text-emerald-300";
+const runNodeBtnClass =
+  "inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm border border-blue-500/80 bg-blue-500/10 px-[17px] py-[10px] text-[14px] font-semibold leading-none text-blue-400 no-underline transition-all hover:border-blue-400 hover:bg-blue-500/15 hover:text-blue-300";
+const runNodeBtnOverlayClass =
+  "inline-flex items-center gap-3 rounded-sm border border-blue-500/80 bg-blue-500/10 px-4 py-3 text-[14px] font-semibold text-blue-400 no-underline transition-colors hover:border-blue-400 hover:bg-blue-500/15 hover:text-blue-300";
+const runNodeBtnMobileClass =
+  "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-blue-500/80 bg-blue-500/10 px-2 py-[9px] text-[11px] font-semibold uppercase tracking-[0.04em] text-blue-400 no-underline transition-colors hover:border-blue-400 hover:bg-blue-500/15 hover:text-blue-300";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -79,7 +87,7 @@ export function Navbar() {
             className="group inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm border border-amber-500/80 bg-amber-500/10 px-[17px] py-[10px] text-[14px] font-semibold leading-none text-amber-400 no-underline transition-all hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300"
           >
             <FileBarChart className="h-4 w-4" aria-hidden />
-            <span>MACHINA: Token Report</span>
+            <span>Token Report</span>
           </Link>
           <Link
             href={MACHINA_COINGECKO_URL}
@@ -89,6 +97,15 @@ export function Navbar() {
           >
             <LineChart className="h-4 w-4" aria-hidden />
             <span>MACHINA Token</span>
+          </Link>
+          <Link
+            href={RUN_A_NODE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={runNodeBtnClass}
+          >
+            <Server className="h-4 w-4" aria-hidden />
+            <span>Run a Node</span>
           </Link>
           <CtaButton
             href={WHITEPAPER_URL}
@@ -113,7 +130,7 @@ export function Navbar() {
             arrow={false}
           >
             <Terminal className="h-4 w-4" strokeWidth={2.5} aria-hidden />
-            <span className="font-semibold">Launch Terminal</span>
+            <span className="font-semibold">Terminal</span>
           </CtaButton>
           <span
             aria-hidden
@@ -160,6 +177,16 @@ export function Navbar() {
           >
             <LineChart className="h-3.5 w-3.5 shrink-0" aria-hidden />
             <span>Token</span>
+          </Link>
+          <Link
+            href={RUN_A_NODE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Run a Node"
+            className={runNodeBtnMobileClass}
+          >
+            <Server className="h-3.5 w-3.5 shrink-0" aria-hidden />
+            <span>Node</span>
           </Link>
           <button
             type="button"
@@ -216,6 +243,17 @@ export function Navbar() {
           </Link>
 
           <Link
+            href={RUN_A_NODE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={close}
+            className={runNodeBtnOverlayClass}
+          >
+            <Server className="h-4 w-4" aria-hidden />
+            <span>Run a Node</span>
+          </Link>
+
+          <Link
             href="/earn"
             onClick={close}
             className="inline-flex items-center gap-3 rounded-sm bg-[#1a1a1a] px-4 py-3 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#222]"
@@ -251,7 +289,7 @@ export function Navbar() {
             className="inline-flex items-center gap-3 rounded-sm bg-[#f2f2f2] px-4 py-3 text-[14px] font-semibold text-black no-underline transition-colors hover:bg-white"
           >
             <Terminal className="h-4 w-4" strokeWidth={2.5} aria-hidden />
-            <span>Launch Terminal</span>
+            <span>Terminal</span>
           </Link>
 
           <div className="flex items-center gap-3 pt-1">
