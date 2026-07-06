@@ -39,10 +39,11 @@ const useCases: UseCase[] = [
     name: "TrustFilter",
     subtitle: "Scam & Phishing Analysis",
     description:
-      "Submit a URL or message — the Groq LLM returns scam / suspicious / likely_safe with plain-English reasoning, metered per call on-chain.",
-    subnets: [{ id: 102, label: "Groq" }],
+      "Submit a phone number or message — OpenAI returns scam / suspicious / likely_safe with plain-English reasoning, metered per call on-chain.",
+    subnets: [{ id: 102, label: "OpenAI" }],
     payment: "Solana · USDC",
     githubHref: `${REPO_BASE}/telegraph-trustfilter`,
+    liveHref: "https://trustfilter.telegraphprotocol.com",
   },
   {
     id: "03",
