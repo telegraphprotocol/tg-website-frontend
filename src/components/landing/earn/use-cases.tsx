@@ -10,7 +10,7 @@ type UseCase = {
   name: string;
   subtitle: string;
   description: string;
-  subnets: { id: number; label: string }[];
+  miners: { id: number; label: string }[];
   payment: string;
   githubHref: string;
   liveHref?: string;
@@ -26,7 +26,7 @@ const useCases: UseCase[] = [
     subtitle: "X-Post AI Detection",
     description:
       "Paste an X post URL — fetches the post and runs AI-content detection on the text and any attached images. Verdicts ship with on-chain payment proof.",
-    subnets: [
+    miners: [
       { id: 32, label: "ItsAI" },
       { id: 34, label: "Bitmind" },
     ],
@@ -40,7 +40,7 @@ const useCases: UseCase[] = [
     subtitle: "Scam & Phishing Analysis",
     description:
       "Submit a phone number or message — OpenAI returns scam / suspicious / likely_safe with plain-English reasoning, metered per call on-chain.",
-    subnets: [{ id: 102, label: "OpenAI" }],
+    miners: [{ id: 102, label: "OpenAI" }],
     payment: "Solana · USDC",
     githubHref: `${REPO_BASE}/telegraph-trustfilter`,
     liveHref: "https://trustfilter.telegraphprotocol.com",
@@ -51,7 +51,7 @@ const useCases: UseCase[] = [
     subtitle: "Academic Document Integrity",
     description:
       "Upload a PDF or DOCX — extracted text runs through ItsAI for AI-writing detection while embedded images flow to Bitmind. Every call returns its own tx hash.",
-    subnets: [
+    miners: [
       { id: 32, label: "ItsAI" },
       { id: 34, label: "Bitmind" },
     ],
@@ -65,7 +65,7 @@ const useCases: UseCase[] = [
     subtitle: "Amazon Review Authenticity",
     description:
       "Paste a product URL — pulls recent reviews, scores each through ItsAI, and surfaces an AI-vs-human signal summary with per-review transaction proofs.",
-    subnets: [{ id: 32, label: "ItsAI" }],
+    miners: [{ id: 32, label: "ItsAI" }],
     payment: "Solana · USDC",
     githubHref: `${REPO_BASE}/telegraph-reviewreward`,
     liveHref: "https://reviewradar.telegraphprotocol.com",
@@ -75,10 +75,10 @@ const useCases: UseCase[] = [
     name: "Polymarket Sniper",
     subtitle: "Autonomous Prediction Trading",
     description:
-      "Connect a wallet — every two hours the bot pulls Polymarket positions, gathers context via DeSearch, and asks the Groq LLM to decide YES / NO / HOLD.",
-    subnets: [
+      "Connect a wallet — every two hours the bot pulls Polymarket positions, gathers context via DeSearch, and asks OpenAI to decide YES / NO / HOLD.",
+    miners: [
       { id: 101, label: "DeSearch" },
-      { id: 102, label: "Groq" },
+      { id: 102, label: "OpenAI" },
     ],
     payment: "Polygon · USDC",
     githubHref: `${REPO_BASE}/telegraph-polymarket-bot`,
@@ -89,7 +89,7 @@ const useCases: UseCase[] = [
     subtitle: "Brand-Safe Ad Pausing",
     description:
       "Score articles for deepfakes via Bitmind and AI-written copy via ItsAI. If the weighted threat score crosses your threshold, AdGuard pauses the matching Google Ads campaigns automatically.",
-    subnets: [
+    miners: [
       { id: 34, label: "Bitmind" },
       { id: 32, label: "ItsAI" },
     ],
@@ -98,12 +98,12 @@ const useCases: UseCase[] = [
   },
 ];
 
-function SubnetChip({ id, label }: { id: number; label: string }) {
+function MinerChip({ id, label }: { id: number; label: string }) {
   return (
     <span className="inline-flex flex-col items-start gap-0.5 border border-[var(--tg-line-strong)] bg-[#0c0c0c] px-3 py-2">
       <span className="flex items-baseline gap-1.5 leading-none">
         <span className="text-[9px] uppercase tracking-[0.22em] text-[var(--tg-fg-faint)]">
-          SN
+          MN
         </span>
         <span className="text-[15px] font-medium tracking-[0.01em] text-[var(--tg-fg)]">
           {id}
@@ -167,11 +167,11 @@ function Card({ item }: { item: UseCase }) {
           <span className="h-px flex-1 bg-[var(--tg-line-soft)]" />
         </div>
         <div className="mb-5 flex flex-wrap items-stretch gap-2">
-          {item.subnets.map((sn) => (
-            <SubnetChip
-              key={`${item.id}-${sn.id}`}
-              id={sn.id}
-              label={sn.label}
+          {item.miners.map((mn) => (
+            <MinerChip
+              key={`${item.id}-${mn.id}`}
+              id={mn.id}
+              label={mn.label}
             />
           ))}
         </div>
@@ -308,7 +308,7 @@ export function EarnUseCases() {
           delay={150}
           className="m-0 max-w-[620px] text-pretty text-[13.5px] leading-[1.85] text-[var(--tg-fg-dim)]"
         >
-          Real apps routing inference through Telegraph subnets and settling
+          Real apps routing inference through Telegraph miners and settling
           micro-fees on-chain via x402. Every card below is a workflow live
           today — calling specialised AI models like any REST API.
         </Reveal>
