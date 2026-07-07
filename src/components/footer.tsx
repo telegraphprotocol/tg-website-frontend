@@ -68,6 +68,7 @@ export function Footer() {
         <div className="flex flex-col items-start justify-between gap-4 text-[12px] text-[var(--tg-fg)] md:flex-row md:items-center">
           <span>© 2026 Telegraph Protocol. All Rights Reserved.</span>
           <div className="flex flex-wrap items-center gap-5 md:gap-8">
+            {/* Temporarily hidden — Token Report
             <Link
               href="/Machina_Token_Price_Scenarios_v66.pdf"
               target="_blank"
@@ -76,6 +77,7 @@ export function Footer() {
             >
               MACHINA: Token Report
             </Link>
+            */}
             <Link
               href="mailto:info@telegraphprotocol.com"
               className="text-[var(--tg-fg-dim)] no-underline hover:text-[var(--tg-fg)]"

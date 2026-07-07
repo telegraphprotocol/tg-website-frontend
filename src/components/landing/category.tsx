@@ -1,16 +1,15 @@
 import Image from "next/image";
 import { DecodeText } from "./fx/decode-text";
-import { PixelReveal } from "./fx/pixel-reveal";
 import { Reveal } from "./fx/reveal";
 
 const producers = [
   "Frontier models",
-  "Chinese labs",
+  "Data & API providers",
   "Academic labs",
-  "Developers",
+  "Indie developers",
   "Enterprises",
-  "Banks",
-  "Prediction markets",
+  "Financial & market data",
+  "Logistics & compliance tools",
   "Autonomous agents",
 ];
 
@@ -30,26 +29,8 @@ function TickConnector({ delay = 0 }: { delay?: number }) {
 
 export function Category() {
   return (
-    <section className="relative overflow-hidden bg-[var(--tg-bg)] px-5 py-16 sm:px-8 sm:py-20 md:py-[120px]">
-      <PixelReveal
-        effect="halftone"
-        duration={1700}
-        className="absolute inset-0 z-0 bg-no-repeat opacity-40"
-        style={{
-          backgroundImage: "url('/images/landing/access-bg.png')",
-          backgroundPosition: "center 25%",
-          backgroundSize: "auto 100%",
-          maskImage:
-            "linear-gradient(to bottom, black 0%, black 55%, transparent 90%)",
-          WebkitMaskImage:
-            "linear-gradient(to bottom, black 0%, black 55%, transparent 90%)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-[var(--tg-bg)]/20"
-      />
-      <div className="relative z-10 mx-auto max-w-[1280px]">
+    <section className="bg-[var(--tg-bg)] px-5 py-16 sm:px-8 sm:py-20 md:py-[120px]">
+      <div className="mx-auto max-w-[1280px]">
         <DecodeText
           text="The Layer Where Intelligence Is Built, Bought, and Sold"
           className="block m-0 mb-5 max-w-[820px] text-pretty text-[clamp(22px,3vw,38px)] font-medium leading-[1.3] tracking-[-0.005em] text-[var(--tg-fg)] sm:mb-7"
@@ -59,15 +40,16 @@ export function Category() {
           delay={100}
           className="m-0 mb-12 max-w-[820px] text-pretty text-[13.5px] leading-[1.8] text-[var(--tg-fg-dim)] sm:mb-16 sm:text-[14px] md:mb-20"
         >
-          Telegraph is the commercial rail for the AI industry — the neutral
-          layer where every producer of intelligence gets found, trusted, and
-          paid. We own no models, we build no data centers. We are the
-          payment layer the AI economy runs on.
+          Telegraph is the commercial rail for machine intelligence — the
+          neutral layer where any service behind an API gets discovered,
+          verified, and paid. Whether it&apos;s a model, dataset, tool, or
+          live data feed, we don&apos;t own the supply. We are the payment
+          and verification layer that autonomous agents and systems run on.
         </Reveal>
 
         <Reveal variant="blur" className="mx-auto max-w-[1080px]">
           <span className="mb-4 block text-pretty text-center text-[10px] uppercase leading-[1.5] tracking-[0.14em] text-[var(--tg-fg-faint)] sm:mb-6 sm:text-[11px] sm:tracking-[0.2em]">
-            The AI Industry — Producers &amp; Demand
+            Any Service Behind an API — Producers &amp; Demand
           </span>
 
           <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3 lg:grid-cols-8">
@@ -111,7 +93,7 @@ export function Category() {
               </h3>
             </div>
             <p className="relative m-0 mt-3 mb-3 text-pretty text-[13px] text-[var(--tg-fg-dim)] sm:text-[14px]">
-              The commercial &amp; payment rail for intelligence
+              The commercial &amp; payment rail for machine intelligence
             </p>
             <p className="relative m-0 text-pretty text-[11.5px] uppercase tracking-[0.14em] text-[var(--tg-fg-faint)] sm:text-[13px] sm:tracking-[0.18em]">
               Verify · Route · Settle · Receipt
