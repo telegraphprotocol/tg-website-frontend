@@ -80,6 +80,7 @@ export function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-3">
+          {/* Temporarily hidden — Token Report
           <Link
             href={MACHINA_REPORT_URL}
             target="_blank"
@@ -89,6 +90,7 @@ export function Navbar() {
             <FileBarChart className="h-4 w-4" aria-hidden />
             <span>Token Report</span>
           </Link>
+          */}
           <Link
             href={MACHINA_COINGECKO_URL}
             target="_blank"
@@ -98,6 +100,7 @@ export function Navbar() {
             <LineChart className="h-4 w-4" aria-hidden />
             <span>MACHINA Token</span>
           </Link>
+          {/* Temporarily hidden — Run a Node
           <Link
             href={RUN_A_NODE_URL}
             target="_blank"
@@ -107,6 +110,7 @@ export function Navbar() {
             <Server className="h-4 w-4" aria-hidden />
             <span>Run a Node</span>
           </Link>
+          */}
           <CtaButton
             href={WHITEPAPER_URL}
             target="_blank"
@@ -158,6 +162,7 @@ export function Navbar() {
 
         {/* Mobile actions */}
         <div className="md:hidden flex shrink-0 items-center gap-2">
+          {/* Temporarily hidden — Token Report
           <Link
             href={MACHINA_REPORT_URL}
             target="_blank"
@@ -168,6 +173,7 @@ export function Navbar() {
             <FileBarChart className="h-3.5 w-3.5 shrink-0" aria-hidden />
             <span>Report</span>
           </Link>
+          */}
           <Link
             href={MACHINA_COINGECKO_URL}
             target="_blank"
@@ -178,6 +184,7 @@ export function Navbar() {
             <LineChart className="h-3.5 w-3.5 shrink-0" aria-hidden />
             <span>Token</span>
           </Link>
+          {/* Temporarily hidden — Run a Node
           <Link
             href={RUN_A_NODE_URL}
             target="_blank"
@@ -188,6 +195,7 @@ export function Navbar() {
             <Server className="h-3.5 w-3.5 shrink-0" aria-hidden />
             <span>Node</span>
           </Link>
+          */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -220,6 +228,7 @@ export function Navbar() {
           className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         />
         <nav className="relative mx-auto flex w-full flex-col gap-3 border-b border-[var(--tg-line)] bg-[#010101] px-6 py-6">
+          {/* Temporarily hidden — Token Report
           <Link
             href={MACHINA_REPORT_URL}
             target="_blank"
@@ -230,6 +239,7 @@ export function Navbar() {
             <FileBarChart className="h-4 w-4" aria-hidden />
             <span>MACHINA: Token Report</span>
           </Link>
+          */}
 
           <Link
             href={MACHINA_COINGECKO_URL}
@@ -242,6 +252,7 @@ export function Navbar() {
             <span>MACHINA Token</span>
           </Link>
 
+          {/* Temporarily hidden — Run a Node
           <Link
             href={RUN_A_NODE_URL}
             target="_blank"
@@ -252,6 +263,7 @@ export function Navbar() {
             <Server className="h-4 w-4" aria-hidden />
             <span>Run a Node</span>
           </Link>
+          */}
 
           <Link
             href="/earn"
