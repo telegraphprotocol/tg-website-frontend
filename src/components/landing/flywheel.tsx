@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { DecodeText } from "./fx/decode-text";
+import { PixelReveal } from "./fx/pixel-reveal";
 import { Reveal } from "./fx/reveal";
 
 type Node = {
@@ -98,8 +99,21 @@ export function Flywheel() {
     active === null || active === a.from || active === a.to;
 
   return (
-    <section className="relative bg-[var(--tg-bg)] px-6 py-20 sm:px-8 md:py-[120px]">
-      <div className="mx-auto max-w-[1080px] text-center">
+    <section className="relative overflow-hidden bg-[var(--tg-bg)] px-6 py-20 sm:px-8 md:py-[120px]">
+      <PixelReveal
+        effect="halftone"
+        duration={1700}
+        className="absolute inset-0 z-0 bg-contain bg-no-repeat opacity-40"
+        style={{
+          backgroundImage: "url('/images/landing/power-bg.png')",
+          backgroundPosition: "center 20%",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1] bg-[var(--tg-bg)]/20"
+      />
+      <div className="relative z-10 mx-auto max-w-[1080px] text-center">
         <DecodeText
           text="The Autonomous Intelligence Loop"
           className="block m-0 mb-3 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"

@@ -1,3 +1,4 @@
+import { PixelReveal } from "./fx/pixel-reveal";
 import { Reveal } from "./fx/reveal";
 import { Typewriter } from "./fx/typewriter";
 
@@ -33,8 +34,21 @@ const lineage: Lineage[] = [
 
 export function Inspire() {
   return (
-    <section className="bg-[var(--tg-bg)] px-6 py-24 sm:px-8 md:py-[140px]">
-      <div className="mx-auto max-w-[1080px]">
+    <section className="relative overflow-hidden bg-[var(--tg-bg)] px-6 py-24 sm:px-8 md:py-[140px]">
+      <PixelReveal
+        effect="halftone"
+        duration={1700}
+        className="absolute inset-0 z-0 bg-contain bg-no-repeat opacity-40"
+        style={{
+          backgroundImage: "url('/images/landing/improve-angel.png')",
+          backgroundPosition: "center 15%",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1] bg-[var(--tg-bg)]/20"
+      />
+      <div className="relative z-10 mx-auto max-w-[1080px]">
         <Typewriter
           text="Inspired By Bitcoin And Bittensor"
           className="block mb-5 text-center text-[clamp(22px,2.2vw,30px)] font-medium tracking-[0.005em] text-[var(--tg-fg)]"
@@ -55,9 +69,13 @@ export function Inspire() {
         >
           <div
             aria-hidden
+            className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-[var(--tg-line)] md:hidden"
+          />
+          <div
+            aria-hidden
             className="absolute left-0 right-0 top-[27px] hidden h-px bg-[var(--tg-line)] md:block"
           />
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-6">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-6">
             {lineage.map((l) => (
               <div
                 key={l.id}

@@ -1,7 +1,9 @@
 import { Hero } from "@/components/landing/hero";
 import { Inspire } from "@/components/landing/inspire";
 import { Flywheel } from "@/components/landing/flywheel";
-import { Improve } from "@/components/landing/improve";
+import { Category } from "@/components/landing/category";
+// Temporarily hidden — Machines Improving Machines (redundant with Flywheel)
+// import { Improve } from "@/components/landing/improve";
 import { Liquidity } from "@/components/landing/liquidity";
 import { Buy } from "@/components/landing/buy";
 import { Marketplace } from "@/components/landing/marketplace";
@@ -21,7 +23,8 @@ export default function Home() {
         <Hero />
         <Inspire />
         <Flywheel />
-        <Improve />
+        <Category />
+        {/* <Improve /> */}
         <Liquidity />
         <Buy />
         <Marketplace />

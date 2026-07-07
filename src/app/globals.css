@@ -260,6 +260,25 @@
 .tg-flow-dot {
   animation: tg-flow 3.6s linear infinite;
 }
+@keyframes tg-flow-vertical {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+.tg-flow-dot-vertical {
+  animation: tg-flow-vertical 2.2s linear infinite;
+}
 .tg-cursor::after {
   content: "_";
   display: inline-block;

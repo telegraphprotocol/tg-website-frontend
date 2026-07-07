@@ -58,35 +58,67 @@ export function How() {
             </Reveal>
           </div>
 
-          <div className="w-full overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <div className="relative flex min-w-[900px] items-start justify-between gap-2 px-2 md:min-w-0">
-              <div
-                aria-hidden
-                className="absolute left-[5%] right-[5%] top-[15px] h-px bg-[var(--tg-line)]"
-              />
-              <div
-                aria-hidden
-                className="tg-flow-dot pointer-events-none absolute top-[11px] h-[9px] w-[9px] -translate-x-1/2 rounded-full bg-[#f1f1f1] shadow-[0_0_8px_2px_rgba(241,241,241,0.5)]"
-              />
-
+          {/* Mobile: vertical flow */}
+          <div className="relative md:hidden">
+            <div
+              aria-hidden
+              className="absolute left-[15px] top-2 bottom-2 w-px bg-[var(--tg-line)]"
+            />
+            <div
+              aria-hidden
+              className="tg-flow-dot-vertical pointer-events-none absolute left-[15px] h-[8px] w-[8px] -translate-x-1/2 rounded-full bg-[#f1f1f1] shadow-[0_0_8px_2px_rgba(241,241,241,0.5)]"
+            />
+            <div className="flex flex-col gap-7">
               {steps.map((s, i) => (
                 <Reveal
                   key={s.num}
                   delay={i * 90}
-                  className="relative z-10 flex w-[150px] shrink-0 flex-col items-start"
+                  className="relative z-10 flex items-start gap-4"
                 >
-                  <span className="mb-4 flex h-[31px] w-[31px] items-center justify-center rounded-full border border-[var(--tg-line-strong)] bg-[var(--tg-bg-deep)] text-[12px] font-medium text-[#f1f1f1]">
+                  <span className="flex h-[31px] w-[31px] shrink-0 items-center justify-center rounded-full border border-[var(--tg-line-strong)] bg-[var(--tg-bg-deep)] text-[12px] font-medium text-[#f1f1f1]">
                     {s.num}
                   </span>
-                  <p className="m-0 mb-2 text-[13px] font-medium tracking-[0.08em] text-[#f1f1f1]">
-                    {s.label}
-                  </p>
-                  <p className="m-0 max-w-[150px] text-pretty text-[13px] leading-[1.6] text-[var(--tg-fg-dim)]">
-                    {s.text}
-                  </p>
+                  <div className="pt-1.5">
+                    <p className="m-0 mb-1.5 text-[13px] font-medium tracking-[0.08em] text-[#f1f1f1]">
+                      {s.label}
+                    </p>
+                    <p className="m-0 max-w-[280px] text-pretty text-[13px] leading-[1.6] text-[var(--tg-fg-dim)]">
+                      {s.text}
+                    </p>
+                  </div>
                 </Reveal>
               ))}
             </div>
+          </div>
+
+          {/* Desktop: horizontal pipeline */}
+          <div className="relative hidden md:flex md:items-start md:justify-between md:gap-2">
+            <div
+              aria-hidden
+              className="absolute left-[5%] right-[5%] top-[15px] h-px bg-[var(--tg-line)]"
+            />
+            <div
+              aria-hidden
+              className="tg-flow-dot pointer-events-none absolute top-[11px] h-[9px] w-[9px] -translate-x-1/2 rounded-full bg-[#f1f1f1] shadow-[0_0_8px_2px_rgba(241,241,241,0.5)]"
+            />
+
+            {steps.map((s, i) => (
+              <Reveal
+                key={s.num}
+                delay={i * 90}
+                className="relative z-10 flex w-[150px] shrink-0 flex-col items-start"
+              >
+                <span className="mb-4 flex h-[31px] w-[31px] items-center justify-center rounded-full border border-[var(--tg-line-strong)] bg-[var(--tg-bg-deep)] text-[12px] font-medium text-[#f1f1f1]">
+                  {s.num}
+                </span>
+                <p className="m-0 mb-2 text-[13px] font-medium tracking-[0.08em] text-[#f1f1f1]">
+                  {s.label}
+                </p>
+                <p className="m-0 max-w-[150px] text-pretty text-[13px] leading-[1.6] text-[var(--tg-fg-dim)]">
+                  {s.text}
+                </p>
+              </Reveal>
+            ))}
           </div>
         </div>
       </div>
