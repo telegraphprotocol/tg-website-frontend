@@ -17,8 +17,9 @@ export function EarnHero() {
           variant="blur"
           className="mx-auto m-0 max-w-[620px] text-pretty text-[14px] leading-[1.85] text-[var(--tg-fg-dim)]"
         >
-          Telegraph is an open machine economy where intelligence is priced,
-          traded, and rewarded. Whether you mine signals, validate intent, run
+          Telegraph is an open machine economy where any useful service —
+          data, models, tools, or expertise — gets priced, traded, and
+          rewarded. Whether you provide signals, write the grading logic, run
           infrastructure, or build with verified answers, there is a path to
           earn — and it starts here.
         </Reveal>

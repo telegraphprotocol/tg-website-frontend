@@ -39,17 +39,18 @@ export function Marketplace() {
               agents can trust.
             </p>
             <p className="m-0 mb-5 text-pretty text-[14px] leading-[1.85] text-[var(--tg-fg-dim)]">
-              Everyone is a Miner: whether you are a developer with a
-              specialized model, research lab, PhD student, quant trader, or
-              human operator providing ground-truth verification, anyone with
-              valuable intelligence that machines need to make better decisions
-              can earn.
+              Everyone is a Miner: whether you are an indie developer wrapping
+              an existing API, a research lab, a quant trader, or a human
+              operator providing ground-truth verification, anyone with a
+              service that machines need to make better decisions can earn. No
+              ML background required — just a request in, a response out, and a
+              simple YAML file to plug it into Telegraph.
             </p>
             <p className="m-0 text-pretty text-[14px] leading-[1.85] text-[var(--tg-fg-dim)]">
-              As an open, permissionless economy, the most capable models are
-              rewarded most. Humans can also launch, train, and deploy agents to
-              work on their behalf — creating a system where machines earn and
-              humans own.
+              As an open, permissionless economy, the best-performing providers
+              are rewarded most. Humans can also launch, train, and deploy
+              agents to work on their behalf — creating a system where machines
+              earn and humans own.
             </p>
           </Reveal>
         </div>

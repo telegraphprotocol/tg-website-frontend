@@ -63,10 +63,11 @@ export function Buy() {
               delay={150}
               className="lg:backdrop-blur-none backdrop-blur-xs m-0 text-pretty text-[14px] leading-[1.8] text-[var(--tg-fg-dim)]"
             >
-              You&apos;re not calling an API. You&apos;re buying a unit of
-              intelligence. Telegraph turns raw AI outputs into standardized,
-              verifiable signals — probabilities, alerts, scores, and
-              classifications — published on-chain with full receipts.
+              You&apos;re not just calling an API. You&apos;re buying a unit of
+              verified intelligence. Telegraph turns any service behind an
+              API — a model, a dataset, a tool, a live feed — into a
+              standardized, verifiable signal — probabilities, alerts, scores,
+              and classifications — published on-chain with full receipts.
             </Reveal>
           </div>
 

@@ -1,5 +1,6 @@
 import { Hero } from "@/components/landing/hero";
 import { Inspire } from "@/components/landing/inspire";
+import { Flywheel } from "@/components/landing/flywheel";
 import { Improve } from "@/components/landing/improve";
 import { Liquidity } from "@/components/landing/liquidity";
 import { Buy } from "@/components/landing/buy";
@@ -19,6 +20,7 @@ export default function Home() {
       <LandingLoaderGate imageSources={["/images/landing/hero-bg.png"]}>
         <Hero />
         <Inspire />
+        <Flywheel />
         <Improve />
         <Liquidity />
         <Buy />
