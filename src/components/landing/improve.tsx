@@ -14,7 +14,7 @@ const items: { title: string; body: string }[] = [
   },
   {
     title: "The Supply (Miners):",
-    body: "Humans, agents, subnets, autonomous models, open-source, raw intelligence, compete to fulfil the request.",
+    body: "Any developer with an API — models, datasets, tools, or specialized services — competes to fulfil the request.",
   },
   {
     title: "The Audit (Validators):",
@@ -139,9 +139,9 @@ export function Improve() {
             </div>
 
             <p className="m-0 text-pretty text-[13.5px] leading-[1.9] text-[var(--tg-fg-dim)]">
-              Telegraph turns AI inference into a competitive market loop:
-              machine demand creates paid requests, miners compete with better
-              models, validators rank quality, and rewards flow to top
+              Telegraph turns any API-backed service into a competitive market
+              loop: machine demand creates paid requests, miners compete with
+              better answers, validators rank quality, and rewards flow to top
               performance. That feedback cycle continuously improves answer
               quality while keeping costs transparent and utility grounded in
               real usage.

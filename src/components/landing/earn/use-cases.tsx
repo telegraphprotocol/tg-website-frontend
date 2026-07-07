@@ -308,9 +308,10 @@ export function EarnUseCases() {
           delay={150}
           className="m-0 max-w-[620px] text-pretty text-[13.5px] leading-[1.85] text-[var(--tg-fg-dim)]"
         >
-          Real apps routing inference through Telegraph miners and settling
+          Real apps routing requests through Telegraph Miners and settling
           micro-fees on-chain via x402. Every card below is a workflow live
-          today — calling specialised AI models like any REST API.
+          today — calling verified Miners, whether they run AI models or
+          specialised APIs, just like any REST call.
         </Reveal>
       </div>
 

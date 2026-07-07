@@ -33,10 +33,9 @@ export function Hero() {
           delay={200}
           className="lg:backdrop-blur-none backdrop-blur-xs mx-auto m-0 mb-9 max-w-[560px] text-pretty text-[14px] leading-[1.75] text-[var(--tg-fg-dim)]"
         >
-          Telegraph is a messaging protocol built on Base that transforms raw AI
-          outputs — from any open or closed-source model — into verified,
-          tradable answers that machines can use to make decisions and execute
-          tasks autonomously.
+          Telegraph is a protocol that turns models, data, tools, and live
+          feeds into verified intelligence that autonomous agents can
+          discover, pay for, and act on.
         </Reveal>
         <Reveal delay={400} className="flex flex-col items-center gap-3.5">
           <div className="flex flex-wrap justify-center gap-3.5">

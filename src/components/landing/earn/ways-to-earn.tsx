@@ -17,8 +17,9 @@ const ways: Way[] = [
   {
     index: "01",
     title: "Become a Miner",
-    audience: "ML engineers, model creators, research labs.",
-    body: "Plug your AI model into the network. When an agent or application requests a signal, you provide the inference. You're paid exclusively from real usage — every time your answer is bought, the agent's USDC purchases Machina from the open market and sends it to you. The better your model, the more agent traffic you win and the more you earn.",
+    audience:
+      "Any developers, data providers, indie hackers, ML engineers, research labs — anyone with a useful API.",
+    body: "Register as a Miner by wrapping any API behind a simple config file — a weather feed, a compliance check, a logistics API, a financial signal, a model, anything that takes a request and returns an answer. When an agent needs it, you provide the response. You're paid exclusively from real usage — every time your answer is bought, the agent's USDC purchases Machina from the open market and sends it to you. The better your Miner performs, the more agent traffic you win and the more you earn.",
     cta: "Start Earning",
     href: "https://docs.telegraphprotocol.com/",
     external: true,
@@ -26,8 +27,8 @@ const ways: Way[] = [
   {
     index: "02",
     title: "Become a Script Author",
-    audience: "Developers, data scientists, validation specialists.",
-    body: "Write the scoring logic that determines whose model is the best. Validators run your evaluation scripts to grade miner responses, and you earn a share of the 20% Script Authors emission pool. The more validators rely on your script, the larger your portion — distributed automatically via on-chain Hash-Math. You never sell the script; you're compensated directly by the protocol for making the network accurate.",
+    audience: "Developers, domain experts, data scientists, validator specialists.",
+    body: "Write the evaluation script that determines whose response is actually the best. Validators run it to score every miner's output, and you earn a share of the 20% Script Authors emission pool. The more validators rely on your script, the larger your portion — distributed automatically via on-chain Hash-Math. You never sell the script; you're compensated directly by the protocol for keeping the network honest.",
     cta: "Get Paid",
     href: "https://docs.telegraphprotocol.com/",
     external: true,
@@ -36,7 +37,7 @@ const ways: Way[] = [
     index: "03",
     title: "Launch Terminal",
     subtitle: "Get Real, Verified Answers",
-    body: "Query the live network of competing models from one terminal. Pay per inference, receive cryptographically receipted answers.",
+    body: "Query the live network of competing Miners from one terminal. Pay per request, receive cryptographically receipted answers.",
     cta: "Launch Now",
     href: "https://terminal.telegraphprotocol.com",
     external: true,
@@ -45,7 +46,7 @@ const ways: Way[] = [
     index: "04",
     title: "Explore Signal APIs",
     subtitle: "Build with Reliable Intelligence",
-    body: "Integrate once and access a global marketplace of on-chain signals. No vendor management, no model sourcing — just verifiable intelligence.",
+    body: "Integrate once and access a global marketplace of on-chain signals from every kind of Miner. No vendor management, no sourcing — just verifiable intelligence.",
     cta: "Get an Edge",
     href: "https://docs.telegraphprotocol.com/",
     external: true,
@@ -134,8 +135,8 @@ export function WaysToEarn() {
             className="m-0 text-pretty text-[13.5px] leading-[1.85] text-[var(--tg-fg-dim)]"
           >
             Every role in the network earns from real usage. Pick the one that
-            fits — there&apos;s no shopping for goods or services here, only
-            machines paying machines for verified work.
+            fits — this is an open economy where every Miner, whatever API
+            they bring to it, gets paid the moment a machine needs it.
           </Reveal>
         </div>
 

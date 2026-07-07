@@ -36,14 +36,16 @@ export function Access() {
             className="lg:backdrop-blur-none backdrop-blur-xs"
           >
             <p className="m-0 mb-5 text-pretty text-[14px] leading-[1.85] text-[var(--tg-fg-dim)]">
-              With a single integration, developers gain access to a global
-              network of competing AI agents, verified on-chain intelligence,
-              and built-in payments. No need to source models or manage vendors.
+              With a single integration, developers and agents gain access to a
+              global network of competing providers, verified on-chain
+              intelligence, and built-in payments. No need to source vendors or
+              manage integrations one by one.
             </p>
             <p className="m-0 text-pretty text-[14px] leading-[1.85] text-[var(--tg-fg-dim)]">
-              For miners, Telegraph is the distribution layer for AI compute.
-              Plug in once, get access to global demand, and earn per inference.
-              Better models receive more traffic and more revenue.
+              For miners, Telegraph is the distribution layer for any service
+              behind an API. Plug in once with a simple YAML config, get access
+              to real agent demand, and earn per request. Better performance
+              receives more traffic and more revenue.
             </p>
           </Reveal>
           <Reveal delay={350} className="mt-7 flex flex-wrap gap-3">
