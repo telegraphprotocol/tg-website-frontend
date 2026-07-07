@@ -25,7 +25,7 @@ const nodes: Node[] = [
   {
     id: "validators",
     title: "Validators",
-    subtitle: "The Quality Check",
+    subtitle: "The Quality Guardians",
     note: "Run the evaluation scripts to score and rank every answer, and earn protocol rewards for it",
     x: 540,
     y: 300,
@@ -42,7 +42,7 @@ const nodes: Node[] = [
     id: "scripts",
     title: "Script Authors",
     subtitle: "WASM Evaluation Scripts",
-    note: "Score every answer against ground truth; authors earn rewards when Validators run their script",
+    note: "These WASM evaluation scripts define how answers are scored against ground truth. Script Authors earn rewards when Validators run their scripts.",
     x: 300,
     y: 540,
   },
