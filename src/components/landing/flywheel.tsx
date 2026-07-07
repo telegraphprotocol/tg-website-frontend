@@ -40,8 +40,8 @@ const nodes: Node[] = [
   },
   {
     id: "scripts",
-    title: "WASM Evaluation Scripts",
-    subtitle: "Written by Script Authors",
+    title: "Script Authors",
+    subtitle: "WASM Evaluation Scripts",
     note: "Score every answer against ground truth; authors earn rewards when Validators run their script",
     x: 300,
     y: 540,
