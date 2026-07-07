@@ -149,7 +149,7 @@ export function Flywheel() {
         <Reveal
           delay={250}
           variant="blur"
-          className="relative mx-auto aspect-square w-full max-w-[420px] shrink-0 lg:max-w-[440px]"
+          className="relative mx-auto aspect-square w-full max-w-[475px] shrink-0 lg:max-w-[500px]"
         >
           <svg
             viewBox="0 0 600 600"
