@@ -40,18 +40,18 @@ export function Inspire() {
         duration={1700}
         className="absolute inset-0 z-0 bg-contain bg-no-repeat opacity-40"
         style={{
-          backgroundImage: "url('/images/landing/improve-angel.png')",
+          backgroundImage: "url('/images/landing/marketplace-bg.png')",
           backgroundPosition: "center 15%",
         }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-[var(--tg-bg)]/20"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[var(--tg-bg)]/30"
       />
       <div className="relative z-10 mx-auto max-w-[1080px]">
         <Typewriter
           text="Inspired By Bitcoin And Bittensor"
-          className="block mb-5 text-center text-[clamp(22px,2.2vw,30px)] font-medium tracking-[0.005em] text-[var(--tg-fg)]"
+          className="block mb-5 text-center text-[clamp(22px,2.2vw,30px)] font-medium tracking-[0.005em] text-[#f5f5f5] [text-shadow:0_2px_16px_rgba(0,0,0,0.6)]"
         />
         <Reveal
           as="p"

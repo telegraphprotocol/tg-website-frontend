@@ -34,10 +34,15 @@ export function Category() {
       <PixelReveal
         effect="halftone"
         duration={1700}
-        className="absolute inset-0 z-0 bg-contain bg-no-repeat opacity-40"
+        className="absolute inset-0 z-0 bg-no-repeat opacity-40"
         style={{
           backgroundImage: "url('/images/landing/access-bg.png')",
           backgroundPosition: "center 25%",
+          backgroundSize: "auto 100%",
+          maskImage:
+            "linear-gradient(to bottom, black 0%, black 55%, transparent 90%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, black 0%, black 55%, transparent 90%)",
         }}
       />
       <div
