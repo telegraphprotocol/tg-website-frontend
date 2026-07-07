@@ -26,7 +26,7 @@ const nodes: Node[] = [
     id: "validators",
     title: "Validators",
     subtitle: "The Quality Check",
-    note: "Score and rank every answer, and earn protocol rewards for it",
+    note: "Run the evaluation scripts to score and rank every answer, and earn protocol rewards for it",
     x: 540,
     y: 300,
   },
@@ -41,8 +41,8 @@ const nodes: Node[] = [
   {
     id: "scripts",
     title: "Script Authors",
-    subtitle: "The Rulebook",
-    note: "Write the rules that define a good answer, and earn rewards when Validators use them",
+    subtitle: "The Evaluation Scripts",
+    note: "Write the evaluation scripts that grade every answer, and earn rewards when Validators run them",
     x: 300,
     y: 540,
   },
@@ -118,10 +118,10 @@ export function Flywheel() {
         >
           The better a Miner performs, the more requests it wins. More
           requests mean more revenue, which attracts even stronger Miners
-          over time. Validators score every answer using rules written by
-          Script Authors, then route traffic only to the best performer.
-          Better providers earn more, and the network gets better with every
-          single request. Hover a node to trace the loop.
+          over time. Validators score the results using evaluation scripts
+          written by Script Authors, then route traffic only to the best
+          performer. Better providers earn more, and the network gets better
+          with every single request. Hover a node to trace the loop.
         </Reveal>
 
         <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-center lg:gap-16">
@@ -134,7 +134,7 @@ export function Flywheel() {
             viewBox="0 0 600 600"
             className="h-full w-full overflow-visible"
             role="img"
-            aria-label="Diagram of the Telegraph autonomous intelligence loop: Applications & Agents and Script Authors both feed Validators, who score every answer and route traffic to the best-performing Miners & Providers, who deliver the verified answer back to Applications & Agents."
+            aria-label="Diagram of the Telegraph autonomous intelligence loop: Applications & Agents submit requests to Validators, who run evaluation scripts written by Script Authors to score every answer and route traffic to the best-performing Miners & Providers, who deliver the verified answer back to Applications & Agents."
           >
             <defs>
               <marker

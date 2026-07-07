@@ -28,7 +28,7 @@ const ways: Way[] = [
     index: "02",
     title: "Become a Script Author",
     audience: "Developers, domain experts, data scientists, validator specialists.",
-    body: "Write the grading logic that determines whose response is actually the best. Validators run your evaluation scripts to score every miner's output, and you earn a share of the 20% Script Authors emission pool. The more validators rely on your script, the larger your portion — distributed automatically via on-chain Hash-Math. You never sell the script; you're compensated directly by the protocol for keeping the network honest.",
+    body: "Write the evaluation script that determines whose response is actually the best. Validators run it to score every miner's output, and you earn a share of the 20% Script Authors emission pool. The more validators rely on your script, the larger your portion — distributed automatically via on-chain Hash-Math. You never sell the script; you're compensated directly by the protocol for keeping the network honest.",
     cta: "Get Paid",
     href: "https://docs.telegraphprotocol.com/",
     external: true,
