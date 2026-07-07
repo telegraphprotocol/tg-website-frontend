@@ -7,13 +7,13 @@ const steps: { num: string; label: string; text: string }[] = [
   {
     num: "02",
     label: "ROUTE",
-    text: "The protocol broadcasts the task to the libp2p mesh.",
+    text: "The protocol broadcasts the task to the network.",
   },
-  { num: "03", label: "INFER", text: "Competing miners compute the answer." },
+  { num: "03", label: "INFER", text: "Competing Miners compute the answer." },
   {
     num: "04",
     label: "VALIDATE",
-    text: "Nodes verify the output against the intent benchmark.",
+    text: "Validators verify the output against ground truth.",
   },
   {
     num: "05",
@@ -23,7 +23,7 @@ const steps: { num: string; label: string; text: string }[] = [
   {
     num: "06",
     label: "SETTLE",
-    text: "Payment is settled instantly via the x402 rail.",
+    text: "Payment is settled instantly on-chain.",
   },
 ];
 
@@ -41,7 +41,7 @@ export function How() {
           }}
         />
 
-        <div className="relative z-10 flex flex-col gap-[60px] md:gap-[320px]">
+        <div className="relative z-10 flex flex-col gap-[60px] md:gap-[160px]">
           <div className="max-w-[460px]">
             <Typewriter
               text="How Telegraph Works"
@@ -58,20 +58,35 @@ export function How() {
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-3 md:gap-x-14 md:gap-y-14">
-            {steps.map((s, i) => (
-              <Reveal key={s.num} delay={i * 90}>
-                <p className="m-0 mb-3.5 text-[14px] font-medium tracking-[0.06em] text-[#f1f1f1] text-balance">
-                  <b className="mr-2.5 font-medium text-[var(--tg-fg)]">
+          <div className="w-full overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="relative flex min-w-[900px] items-start justify-between gap-2 px-2 md:min-w-0">
+              <div
+                aria-hidden
+                className="absolute left-[5%] right-[5%] top-[15px] h-px bg-[var(--tg-line)]"
+              />
+              <div
+                aria-hidden
+                className="tg-flow-dot pointer-events-none absolute top-[11px] h-[9px] w-[9px] -translate-x-1/2 rounded-full bg-[#f1f1f1] shadow-[0_0_8px_2px_rgba(241,241,241,0.5)]"
+              />
+
+              {steps.map((s, i) => (
+                <Reveal
+                  key={s.num}
+                  delay={i * 90}
+                  className="relative z-10 flex w-[150px] shrink-0 flex-col items-start"
+                >
+                  <span className="mb-4 flex h-[31px] w-[31px] items-center justify-center rounded-full border border-[var(--tg-line-strong)] bg-[var(--tg-bg-deep)] text-[12px] font-medium text-[#f1f1f1]">
                     {s.num}
-                  </b>
-                  {s.label}
-                </p>
-                <p className="m-0 max-w-[240px] text-pretty text-[14px] leading-[1.7] text-[var(--tg-fg-dim)]">
-                  {s.text}
-                </p>
-              </Reveal>
-            ))}
+                  </span>
+                  <p className="m-0 mb-2 text-[13px] font-medium tracking-[0.08em] text-[#f1f1f1]">
+                    {s.label}
+                  </p>
+                  <p className="m-0 max-w-[150px] text-pretty text-[13px] leading-[1.6] text-[var(--tg-fg-dim)]">
+                    {s.text}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </div>
