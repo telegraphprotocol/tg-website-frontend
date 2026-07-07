@@ -17,50 +17,70 @@ const nodes: Node[] = [
   {
     id: "apps",
     title: "Applications & Agents",
-    subtitle: "The Demand",
-    note: "Broadcasts requests and capital",
+    subtitle: "The Demand Engine",
+    note: "Triggers x402 Micropayments & ERC-8183 Job Escrows",
     x: 300,
     y: 60,
   },
   {
     id: "validators",
     title: "Validators",
-    subtitle: "The Audit",
-    note: "Generates verified, stake-weighted rankings",
+    subtitle: "The Immunological Audit",
+    note: "Generates zkTLS Proofs & Stake-Weighted Medians",
     x: 540,
+    y: 300,
+  },
+  {
+    id: "miners",
+    title: "Miners & Providers",
+    subtitle: "The Quality Supply",
+    note: "Integrates Any Web2 API via Declarative YAML",
+    x: 60,
     y: 300,
   },
   {
     id: "scripts",
     title: "WASM Script Authors",
-    subtitle: "The Grading Logic",
-    note: "Supplies un-gameable evaluation logic",
+    subtitle: "The Standard of Truth",
+    note: "Earns Protocol Emissions for WASM Evaluation Code",
     x: 300,
     y: 540,
   },
+];
+
+// Validators are the hub: they take in the request/capital and the grading
+// logic, execute the WASM script themselves, and are the ones who route
+// traffic to the top-ranked Miners. Script Authors never rank or route
+// anything directly — they only supply the logic Validators execute.
+const arcs: {
+  from: string;
+  to: string;
+  label: string;
+}[] = [
   {
-    id: "miners",
-    title: "Miners & Providers",
-    subtitle: "The Supply",
-    note: "Integrates any API via a simple YAML file",
-    x: 60,
-    y: 300,
+    from: "apps",
+    to: "validators",
+    label: "1. Broadcasts Requests & USDC Capital",
+  },
+  {
+    from: "scripts",
+    to: "validators",
+    label: "2. Supplies Un-gameable Grading Logic",
+  },
+  {
+    from: "validators",
+    to: "miners",
+    label: "3. Routes Traffic ONLY to Highest Ranked",
+  },
+  {
+    from: "miners",
+    to: "apps",
+    label: "4. Delivers Pristine, Verified Intelligence",
   },
 ];
 
-const arcs = [
-  { from: "apps", to: "validators", label: "1. Routes requests & capital" },
-  { from: "validators", to: "scripts", label: "2. Enforces grading logic" },
-  { from: "scripts", to: "miners", label: "3. Ranks & routes to the best" },
-  { from: "miners", to: "apps", label: "4. Delivers verified intelligence" },
-];
-
-const RING_RADIUS = 240;
-
-// Nodes sit on a shared circle; connectors are arc segments of that same
-// circle (not separate bezier curves), so the loop reads as one ring.
-function arcPath(from: Node, to: Node) {
-  return `M ${from.x} ${from.y} A ${RING_RADIUS} ${RING_RADIUS} 0 0 1 ${to.x} ${to.y}`;
+function straightPath(from: Node, to: Node) {
+  return `M ${from.x} ${from.y} L ${to.x} ${to.y}`;
 }
 
 export function Flywheel() {
@@ -74,17 +94,26 @@ export function Flywheel() {
       <div className="mx-auto max-w-[1080px] text-center">
         <DecodeText
           text="The Autonomous Intelligence Loop"
-          className="block m-0 mb-5 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"
+          className="block m-0 mb-3 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"
         />
+        <Reveal
+          as="p"
+          delay={100}
+          className="m-0 mb-8 text-[11px] uppercase tracking-[0.18em] text-[var(--tg-fg-faint)]"
+        >
+          The Compounding Moat: Performance Directly Drives Demand
+        </Reveal>
         <Reveal
           as="p"
           delay={150}
           className="mx-auto m-0 mb-14 max-w-[640px] text-pretty text-[14px] leading-[1.85] text-[var(--tg-fg-dim)]"
         >
-          Performance directly drives demand. Every loop through the network
-          routes more traffic to the best providers, which earns more revenue,
-          which attracts better supply — compounding the quality of the
-          network with every request. Hover a node to trace the loop.
+          Validators sit at the center: they take in demand from Applications
+          &amp; Agents and grading logic from WASM Script Authors, execute
+          that logic themselves to rank every Miner, then route traffic only
+          to the best. Better rankings earn more traffic, more traffic earns
+          more revenue, and more revenue attracts better Miners — compounding
+          the network with every request. Hover a node to trace the loop.
         </Reveal>
 
         <Reveal
@@ -96,7 +125,7 @@ export function Flywheel() {
             viewBox="0 0 600 600"
             className="h-full w-full overflow-visible"
             role="img"
-            aria-label="Diagram of the Telegraph autonomous intelligence flywheel: Applications & Agents, Validators, WASM Script Authors, and Miners & Providers form a self-reinforcing loop."
+            aria-label="Diagram of the Telegraph autonomous intelligence loop: Applications & Agents and WASM Script Authors both feed Validators, who execute the grading logic to rank Miners & Providers and route traffic to the best, which deliver verified intelligence back to Applications & Agents."
           >
             <defs>
               <marker
@@ -121,7 +150,7 @@ export function Flywheel() {
             {arcs.map((a) => {
               const from = nodes.find((n) => n.id === a.from)!;
               const to = nodes.find((n) => n.id === a.to)!;
-              const path = arcPath(from, to);
+              const path = straightPath(from, to);
               const arcActive = isArcActive(a);
               return (
                 <g key={a.from + a.to} opacity={arcActive ? 1 : 0.22}>
@@ -161,7 +190,6 @@ export function Flywheel() {
                   onBlur={() => setActive(null)}
                   tabIndex={0}
                   className="cursor-pointer outline-none"
-                  opacity={dimmed ? 0.45 : 1}
                 >
                   <rect
                     x={n.x - 90}
@@ -174,6 +202,7 @@ export function Flywheel() {
                       nodeActive ? "var(--tg-fg)" : "var(--tg-line-strong)"
                     }
                     strokeWidth={nodeActive ? 1.5 : 1}
+                    strokeOpacity={dimmed ? 0.4 : 1}
                     filter={nodeActive ? "url(#fw-glow)" : undefined}
                     className="transition-all duration-300"
                   />
@@ -182,8 +211,10 @@ export function Flywheel() {
                     y={n.y - 6}
                     textAnchor="middle"
                     fill="var(--tg-fg)"
+                    fillOpacity={dimmed ? 0.4 : 1}
                     fontSize="13"
                     fontWeight={500}
+                    className="transition-all duration-300"
                   >
                     {n.title}
                   </text>
@@ -192,8 +223,10 @@ export function Flywheel() {
                     y={n.y + 14}
                     textAnchor="middle"
                     fill="var(--tg-fg-dim)"
+                    fillOpacity={dimmed ? 0.4 : 1}
                     fontSize="11"
                     letterSpacing="0.02em"
+                    className="transition-all duration-300"
                   >
                     {n.subtitle}
                   </text>
@@ -213,7 +246,9 @@ export function Flywheel() {
                   onMouseEnter={() => setActive(a.from)}
                   onMouseLeave={() => setActive(null)}
                   className={`m-0 text-pretty text-[13px] leading-[1.7] transition-opacity duration-300 ${
-                    highlighted ? "text-[var(--tg-fg-dim)]" : "opacity-40 text-[var(--tg-fg-dim)]"
+                    highlighted
+                      ? "text-[var(--tg-fg-dim)]"
+                      : "opacity-40 text-[var(--tg-fg-dim)]"
                   }`}
                 >
                   <b className="font-medium text-[var(--tg-fg)]">{a.label}</b>{" "}
