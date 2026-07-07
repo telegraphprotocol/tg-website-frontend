@@ -56,31 +56,60 @@ const arcs: {
   from: string;
   to: string;
   label: string;
+  kind: "rim" | "spoke";
 }[] = [
   {
     from: "apps",
     to: "validators",
     label: "1. Broadcasts Requests & USDC Capital",
+    kind: "rim",
   },
   {
     from: "scripts",
     to: "validators",
     label: "2. Supplies Un-gameable Grading Logic",
+    kind: "spoke",
   },
   {
     from: "validators",
     to: "miners",
     label: "3. Routes Traffic ONLY to Highest Ranked",
+    kind: "rim",
   },
   {
     from: "miners",
     to: "apps",
     label: "4. Delivers Pristine, Verified Intelligence",
+    kind: "rim",
   },
 ];
 
-function straightPath(from: Node, to: Node) {
-  return `M ${from.x} ${from.y} L ${to.x} ${to.y}`;
+const CENTER = { x: 300, y: 300 };
+const RIM_RADIUS = 240;
+
+function angleOf(n: Node) {
+  return Math.atan2(n.y - CENTER.y, n.x - CENTER.x);
+}
+
+// All four nodes sit on the same circle. The three edges that form the
+// actual settlement loop (apps -> validators -> miners -> apps) trace that
+// circle's rim end to end, so together they read as one complete wheel.
+function rimPath(from: Node, to: Node) {
+  let span = angleOf(to) - angleOf(from);
+  while (span < 0) span += Math.PI * 2;
+  const largeArc = span > Math.PI ? 1 : 0;
+  return `M ${from.x} ${from.y} A ${RIM_RADIUS} ${RIM_RADIUS} 0 ${largeArc} 1 ${to.x} ${to.y}`;
+}
+
+// WASM Script Authors only feed grading logic into Validators — they are
+// not part of the settlement loop, so this connector is drawn as an inner
+// spoke rather than a rim segment.
+function spokePath(from: Node, to: Node) {
+  const mx = (from.x + to.x) / 2;
+  const my = (from.y + to.y) / 2;
+  const cx = CENTER.x + (mx - CENTER.x) * 0.45;
+  const cy = CENTER.y + (my - CENTER.y) * 0.45;
+  return `M ${from.x} ${from.y} Q ${cx} ${cy} ${to.x} ${to.y}`;
 }
 
 export function Flywheel() {
@@ -116,10 +145,11 @@ export function Flywheel() {
           the network with every request. Hover a node to trace the loop.
         </Reveal>
 
+        <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-center lg:gap-16">
         <Reveal
           delay={250}
           variant="blur"
-          className="relative mx-auto aspect-square w-full max-w-[600px]"
+          className="relative mx-auto aspect-square w-full max-w-[420px] shrink-0 lg:max-w-[440px]"
         >
           <svg
             viewBox="0 0 600 600"
@@ -150,7 +180,8 @@ export function Flywheel() {
             {arcs.map((a) => {
               const from = nodes.find((n) => n.id === a.from)!;
               const to = nodes.find((n) => n.id === a.to)!;
-              const path = straightPath(from, to);
+              const path =
+                a.kind === "rim" ? rimPath(from, to) : spokePath(from, to);
               const arcActive = isArcActive(a);
               return (
                 <g key={a.from + a.to} opacity={arcActive ? 1 : 0.22}>
@@ -236,7 +267,7 @@ export function Flywheel() {
           </svg>
         </Reveal>
 
-        <div className="mx-auto mt-12 grid max-w-[900px] grid-cols-1 gap-6 text-left sm:grid-cols-2">
+        <div className="grid w-full max-w-[900px] grid-cols-1 gap-6 text-left sm:grid-cols-2 lg:max-w-[380px] lg:grid-cols-1">
           {arcs.map((a, i) => {
             const from = nodes.find((n) => n.id === a.from)!;
             const highlighted = isArcActive(a);
@@ -257,6 +288,7 @@ export function Flywheel() {
               </Reveal>
             );
           })}
+        </div>
         </div>
       </div>
     </section>

@@ -33,10 +33,9 @@ export function Hero() {
           delay={200}
           className="lg:backdrop-blur-none backdrop-blur-xs mx-auto m-0 mb-9 max-w-[560px] text-pretty text-[14px] leading-[1.75] text-[var(--tg-fg-dim)]"
         >
-          Telegraph is a routing and verification protocol that turns any
-          service behind an API — a model, a dataset, a tool, a live feed —
-          into a verified, tradable signal that agents can pay for and act on
-          autonomously.
+          Telegraph is a protocol that turns any service behind an API into
+          reliable, verified intelligence that autonomous agents can
+          discover, pay for, and trust.
         </Reveal>
         <Reveal delay={400} className="flex flex-col items-center gap-3.5">
           <div className="flex flex-wrap justify-center gap-3.5">

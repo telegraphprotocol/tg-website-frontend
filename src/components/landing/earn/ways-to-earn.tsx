@@ -19,7 +19,7 @@ const ways: Way[] = [
     title: "Become a Miner",
     audience:
       "Any developers, data providers, indie hackers, ML engineers, research labs — anyone with a useful API.",
-    body: "Wrap any service behind a simple config file and plug it into the network — a weather feed, a compliance check, a logistics API, a financial signal, a model, anything that takes a request and returns an answer. When an agent needs it, you provide the response. You're paid exclusively from real usage — every time your answer is bought, the agent's USDC purchases Machina from the open market and sends it to you. The more useful your service, the more agent traffic you win and the more you earn.",
+    body: "Register as a Miner by wrapping any API behind a simple config file — a weather feed, a compliance check, a logistics API, a financial signal, a model, anything that takes a request and returns an answer. When an agent needs it, you provide the response. You're paid exclusively from real usage — every time your answer is bought, the agent's USDC purchases Machina from the open market and sends it to you. The better your Miner performs, the more agent traffic you win and the more you earn.",
     cta: "Start Earning",
     href: "https://docs.telegraphprotocol.com/",
     external: true,
@@ -37,7 +37,7 @@ const ways: Way[] = [
     index: "03",
     title: "Launch Terminal",
     subtitle: "Get Real, Verified Answers",
-    body: "Query the live network of competing providers from one terminal. Pay per inference, receive cryptographically receipted answers.",
+    body: "Query the live network of competing Miners from one terminal. Pay per request, receive cryptographically receipted answers.",
     cta: "Launch Now",
     href: "https://terminal.telegraphprotocol.com",
     external: true,
@@ -46,7 +46,7 @@ const ways: Way[] = [
     index: "04",
     title: "Explore Signal APIs",
     subtitle: "Build with Reliable Intelligence",
-    body: "Integrate once and access a global marketplace of on-chain signals from every kind of provider. No vendor management, no sourcing — just verifiable intelligence.",
+    body: "Integrate once and access a global marketplace of on-chain signals from every kind of Miner. No vendor management, no sourcing — just verifiable intelligence.",
     cta: "Get an Edge",
     href: "https://docs.telegraphprotocol.com/",
     external: true,
@@ -135,8 +135,8 @@ export function WaysToEarn() {
             className="m-0 text-pretty text-[13.5px] leading-[1.85] text-[var(--tg-fg-dim)]"
           >
             Every role in the network earns from real usage. Pick the one that
-            fits — this is an open economy where any useful service, dataset,
-            or tool gets paid the moment a machine needs it.
+            fits — this is an open economy where every Miner, whatever API
+            they bring to it, gets paid the moment a machine needs it.
           </Reveal>
         </div>
 
