@@ -1,30 +1,11 @@
-import Image from "next/image";
 import { CtaButton } from "./cta-button";
 import { DecodeText } from "./fx/decode-text";
-import { PixelReveal } from "./fx/pixel-reveal";
 import { Reveal } from "./fx/reveal";
 
 export function BuildCta() {
   return (
-    <section className="relative bg-[var(--tg-bg)] px-6 py-24 text-center md:px-8 md:py-[120px]">
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <PixelReveal
-          effect="halftone"
-          duration={1700}
-          className="absolute inset-0 opacity-50"
-        >
-          <Image
-            src="/images/landing/The_founding_of_a_new_Roman_colony.png"
-            alt=""
-            aria-hidden
-            fill
-            sizes="100vw"
-            className="object-cover"
-          />
-        </PixelReveal>
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-[780px]">
+    <section className="bg-[var(--tg-bg)] px-6 py-24 text-center md:px-8 md:py-[120px]">
+      <div className="mx-auto max-w-[780px]">
         <DecodeText
           text="The Network That Builds Itself"
           className="block m-0 mb-7 text-[clamp(22px,2.2vw,30px)] font-normal leading-[1.35] tracking-[0.005em] text-[var(--tg-fg)]"
