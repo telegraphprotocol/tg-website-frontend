@@ -9,7 +9,7 @@ export function Access() {
       <PixelReveal
         effect="halftone"
         duration={1500}
-        className="absolute inset-y-0 right-0 z-0 hidden w-[58%] bg-no-repeat md:block"
+        className="absolute inset-y-0 right-0 z-0 hidden w-[58%] bg-no-repeat opacity-80 md:block"
         style={{
           backgroundImage: "url('/images/landing/access-bg.png')",
           backgroundPosition: "35% center",

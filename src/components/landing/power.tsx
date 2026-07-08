@@ -16,7 +16,7 @@ export function Power() {
         <PixelReveal
           effect="halftone"
           duration={1700}
-          className="absolute -left-[4%] top-1/2 h-[528px] w-[528px] -translate-y-1/2 opacity-50 sm:h-[704px] sm:w-[704px]"
+          className="absolute -left-[4%] top-1/2 h-[528px] w-[528px] -translate-y-1/2 opacity-60 sm:h-[704px] sm:w-[704px]"
         >
           <Image
             src="/images/landing/power-bg.png"

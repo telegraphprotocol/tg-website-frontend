@@ -35,10 +35,10 @@ export function How() {
         <PixelReveal
           effect="halftone"
           duration={1700}
-          className="pointer-events-none absolute left-0 top-0 z-0 hidden h-[300px] w-[300px] opacity-20 md:block"
+          className="pointer-events-none absolute left-0 top-0 z-0 hidden h-[330px] w-[330px] opacity-60 md:block"
         >
           <Image
-            src="/images/landing/liquidity-wheel.png"
+            src="/images/landing/samad_Iris_the_rainbow_messenger_goddess_with_win.png"
             alt=""
             aria-hidden
             fill

@@ -121,7 +121,7 @@ export function Liquidity() {
       <PixelReveal
         effect="halftone"
         duration={1500}
-        className="absolute inset-0 z-0 bg-no-repeat opacity-40"
+        className="absolute inset-0 z-0 bg-no-repeat opacity-60"
         style={{
           backgroundImage: "url('/images/landing/category-cave.png')",
           backgroundPosition: "140% center",

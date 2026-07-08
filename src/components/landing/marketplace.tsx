@@ -8,7 +8,7 @@ export function Marketplace() {
       <PixelReveal
         effect="halftone"
         duration={1700}
-        className="absolute inset-y-0 right-0 z-0 hidden w-[45%] bg-no-repeat opacity-50 md:block"
+        className="absolute inset-y-0 right-0 z-0 hidden w-[45%] bg-no-repeat opacity-80 md:block"
         style={{
           backgroundImage: "url('/images/landing/marketplace-bg.png')",
           backgroundPosition: "65% center",

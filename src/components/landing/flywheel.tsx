@@ -105,7 +105,7 @@ export function Flywheel() {
         <PixelReveal
           effect="halftone"
           duration={1800}
-          className="absolute -left-[8%] -top-[8%] h-[420px] w-[420px] opacity-25 sm:h-[520px] sm:w-[520px]"
+          className="absolute -left-[8%] -top-[8%] h-[420px] w-[420px] opacity-60 sm:h-[520px] sm:w-[520px]"
         >
           <Image
             src="/images/landing/flywheel-loop.png"

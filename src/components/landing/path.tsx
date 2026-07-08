@@ -29,7 +29,7 @@ export function Path() {
         <PixelReveal
           effect="halftone"
           duration={1800}
-          className="absolute -right-[10%] top-0 h-[420px] w-[420px] opacity-40 sm:h-[560px] sm:w-[560px]"
+          className="absolute -right-[10%] top-0 h-[420px] w-[420px] opacity-60 sm:h-[560px] sm:w-[560px]"
         >
           <Image
             src="/images/landing/path-time.jpg"

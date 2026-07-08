@@ -85,7 +85,7 @@ export function Buy() {
         <PixelReveal
           effect="halftone"
           duration={1600}
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-50"
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-70"
           style={{ backgroundImage: "url('/images/landing/buy-bg.png')" }}
         />
         <div
