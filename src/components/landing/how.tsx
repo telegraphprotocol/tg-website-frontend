@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PixelReveal } from "./fx/pixel-reveal";
 import { Reveal } from "./fx/reveal";
 import { Typewriter } from "./fx/typewriter";
@@ -30,19 +31,30 @@ const steps: { num: string; label: string; text: string }[] = [
 export function How() {
   return (
     <section className="relative bg-[var(--tg-bg)] pb-20 md:px-8 lg:pt-6 pt-20">
-      <div className="relative mx-auto min-h-[720px] max-w-[1280px] overflow-hidden p-4 md:p-14">
+      <div className="relative mx-auto min-h-[640px] max-w-[1280px] overflow-hidden p-4 md:p-14">
         <PixelReveal
           effect="halftone"
           duration={1700}
-          className="absolute inset-0 z-0 bg-contain bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/landing/how-bg.png')",
-            backgroundPosition: "center 60%",
-          }}
-        />
+          className="pointer-events-none absolute left-0 top-0 z-0 hidden h-[300px] w-[300px] opacity-20 md:block"
+        >
+          <Image
+            src="/images/landing/liquidity-wheel.png"
+            alt=""
+            aria-hidden
+            fill
+            sizes="480px"
+            className="object-contain"
+            style={{
+              maskImage:
+                "radial-gradient(circle at 35% 35%, black 0%, black 55%, transparent 85%)",
+              WebkitMaskImage:
+                "radial-gradient(circle at 35% 35%, black 0%, black 55%, transparent 85%)",
+            }}
+          />
+        </PixelReveal>
 
-        <div className="relative z-10 flex flex-col gap-[60px] md:gap-[160px]">
-          <div className="max-w-[460px]">
+        <div className="relative z-10 flex flex-col gap-[60px] md:gap-36">
+          <div className="max-w-[460px] md:ml-auto md:text-right">
             <Typewriter
               text="How Telegraph Works"
               className="block m-0 mb-3.5 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[#f1f1f1]"
@@ -50,7 +62,7 @@ export function How() {
             <Reveal
               as="p"
               delay={150}
-              className="m-0 text-pretty text-[14px] leading-[1.8] text-[var(--tg-fg-dim)]"
+              className="m-0 text-pretty text-[14px] leading-[1.8] text-[var(--tg-fg-dim)] md:ml-auto"
             >
               Every request becomes a market transaction for intelligence.
               Telegraph handles the high-speed orchestration, verification, and
@@ -73,9 +85,9 @@ export function How() {
                 <Reveal
                   key={s.num}
                   delay={i * 90}
-                  className="relative z-10 flex items-start gap-4"
+                  className="group relative z-10 flex items-start gap-4"
                 >
-                  <span className="flex h-[31px] w-[31px] shrink-0 items-center justify-center rounded-full border border-[var(--tg-line-strong)] bg-[var(--tg-bg-deep)] text-[12px] font-medium text-[#f1f1f1]">
+                  <span className="flex h-[31px] w-[31px] shrink-0 items-center justify-center rounded-full border border-[var(--tg-line-strong)] bg-[var(--tg-bg-deep)] text-[12px] font-medium text-[#f1f1f1] transition-all duration-300 group-hover:border-[var(--tg-fg)] group-hover:shadow-[0_0_14px_2px_rgba(241,241,241,0.35)]">
                     {s.num}
                   </span>
                   <div className="pt-1.5">
@@ -95,7 +107,7 @@ export function How() {
           <div className="relative hidden md:flex md:items-start md:justify-between md:gap-2">
             <div
               aria-hidden
-              className="absolute left-[5%] right-[5%] top-[15px] h-px bg-[var(--tg-line)]"
+              className="absolute left-[15.5px] right-[15.5px] top-[15px] h-px bg-[var(--tg-line)]"
             />
             <div
               aria-hidden
@@ -106,12 +118,12 @@ export function How() {
               <Reveal
                 key={s.num}
                 delay={i * 90}
-                className="relative z-10 flex w-[150px] shrink-0 flex-col items-start"
+                className="group relative z-10 flex w-[150px] shrink-0 flex-col items-start"
               >
-                <span className="mb-4 flex h-[31px] w-[31px] items-center justify-center rounded-full border border-[var(--tg-line-strong)] bg-[var(--tg-bg-deep)] text-[12px] font-medium text-[#f1f1f1]">
+                <span className="mb-4 flex h-[31px] w-[31px] items-center justify-center rounded-full border border-[var(--tg-line-strong)] bg-[var(--tg-bg-deep)] text-[12px] font-medium text-[#f1f1f1] transition-all duration-300 group-hover:border-[var(--tg-fg)] group-hover:shadow-[0_0_14px_2px_rgba(241,241,241,0.35)]">
                   {s.num}
                 </span>
-                <p className="m-0 mb-2 text-[13px] font-medium tracking-[0.08em] text-[#f1f1f1]">
+                <p className="m-0 mb-2 text-[13px] font-medium tracking-[0.08em] text-[#f1f1f1] transition-colors duration-300 group-hover:text-white">
                   {s.label}
                 </p>
                 <p className="m-0 max-w-[150px] text-pretty text-[13px] leading-[1.6] text-[var(--tg-fg-dim)]">

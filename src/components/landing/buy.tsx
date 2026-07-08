@@ -2,6 +2,54 @@ import { PixelReveal } from "./fx/pixel-reveal";
 import { Reveal } from "./fx/reveal";
 import { TerminalLines, type TerminalLine } from "./fx/terminal-lines";
 import { Typewriter } from "./fx/typewriter";
+import { ReactNode } from "react";
+
+function TerminalWindow({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="relative overflow-hidden rounded-lg border border-white/10 bg-white/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+      <span className="tg-corner tg-corner-tl" aria-hidden />
+      <span className="tg-corner tg-corner-tr" aria-hidden />
+      <span className="tg-corner tg-corner-bl" aria-hidden />
+      <span className="tg-corner tg-corner-br" aria-hidden />
+
+      <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.03] px-4 py-2.5">
+        <span className="flex gap-1.5" aria-hidden>
+          <span className="h-[9px] w-[9px] rounded-full bg-[#ff5f57]/70" />
+          <span className="h-[9px] w-[9px] rounded-full bg-[#febc2e]/70" />
+          <span className="h-[9px] w-[9px] rounded-full bg-[#28c840]/70" />
+        </span>
+        <span className="ml-1 text-[11px] tracking-[0.08em] text-[var(--tg-fg-faint)]">
+          {title}
+        </span>
+        <span className="ml-auto inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.14em] text-emerald-400/90">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          </span>
+          Live
+        </span>
+      </div>
+
+      <div className="relative p-5">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.05]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(0deg, #fff 0px, #fff 1px, transparent 1px, transparent 3px)",
+          }}
+        />
+        {children}
+      </div>
+    </div>
+  );
+}
 
 const leftLog: TerminalLine[] = [
   { kind: "head", text: "A:: SECURE_DATA_STREAM [SIGNAL_INDEX_v4.02]" },
@@ -16,16 +64,13 @@ const leftLog: TerminalLine[] = [
 
 const rightLog: TerminalLine[] = [
   { kind: "head", text: "B:: SECURE_DATA_STREAM [SIGNAL_INDEX_v4.03]" },
-  { kind: "rule", text: "-------------------------------------- >" },
-  { kind: "raw", text: "> INITIALIZING SIGNAL >" },
-  { kind: "raw", text: "#14562 [TARGET]" },
-  {
-    kind: "raw",
-    text: "DEEPFAKE DETECTION: MULTI-MODAL DEFENSE [CLASSIFICATION]",
-  },
-  { kind: "raw", text: "TECHNICAL MINER STRATEGY [ORIGIN]" },
-  { kind: "raw", text: "BITMIND SUBNET_34 [MINER]" },
-  { kind: "status", text: "MINER_88 STATUS: OPTIMIZING_WEIGHTS", cursor: true },
+  { kind: "rule", text: "--------------------------------------------" },
+  { kind: "raw", text: "> INITIALIZING SIGNAL #14562" },
+  { kind: "kv", key: "  [TARGET]", val: "DEEPFAKE DETECTION" },
+  { kind: "kv", key: "  [CLASSIFICATION]", val: "MULTI-MODAL DEFENSE" },
+  { kind: "kv", key: "  [ORIGIN]", val: "TECHNICAL MINER STRATEGY" },
+  { kind: "kv", key: "  [MINER]", val: "BITMIND SUBNET_34" },
+  { kind: "status", text: "STATUS: OPTIMIZING_WEIGHTS", cursor: true },
 ];
 
 export function Buy() {
@@ -40,7 +85,7 @@ export function Buy() {
         <PixelReveal
           effect="halftone"
           duration={1600}
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-50"
           style={{ backgroundImage: "url('/images/landing/buy-bg.png')" }}
         />
         <div
@@ -72,19 +117,23 @@ export function Buy() {
           </div>
 
           <div className="grid grid-cols-1 items-start gap-7 md:grid-cols-2 md:gap-14">
-            <TerminalLines
-              lines={leftLog}
-              step={140}
-              charSpeed={6}
-              className="lg:backdrop-blur-none backdrop-blur-xs max-md:whitespace-normal md:whitespace-nowrap"
-            />
-            <TerminalLines
-              lines={rightLog}
-              step={170}
-              charSpeed={6}
-              delay={3100}
-              className="lg:backdrop-blur-none backdrop-blur-xs max-md:whitespace-normal md:whitespace-nowrap"
-            />
+            <TerminalWindow title="session_a.log">
+              <TerminalLines
+                lines={leftLog}
+                step={140}
+                charSpeed={6}
+                className="max-md:whitespace-normal md:whitespace-nowrap"
+              />
+            </TerminalWindow>
+            <TerminalWindow title="session_b.log">
+              <TerminalLines
+                lines={rightLog}
+                step={170}
+                charSpeed={6}
+                delay={3100}
+                className="max-md:whitespace-normal md:whitespace-nowrap"
+              />
+            </TerminalWindow>
           </div>
         </div>
       </div>

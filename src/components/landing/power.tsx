@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PixelReveal } from "./fx/pixel-reveal";
 import { Reveal } from "./fx/reveal";
 import { Typewriter } from "./fx/typewriter";
@@ -11,23 +12,29 @@ const chips = [
 export function Power() {
   return (
     <section className="relative min-h-[720px] bg-[var(--tg-bg)] lg:py-20 py-16">
-      <PixelReveal
-        effect="halftone"
-        duration={1700}
-        className="absolute inset-0 z-0 bg-cover bg-no-repeat"
-        style={{
-          backgroundImage: "url('/images/landing/power-bg.png')",
-          backgroundPosition: "left center",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1]"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 35%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.85) 100%)",
-        }}
-      />
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <PixelReveal
+          effect="halftone"
+          duration={1700}
+          className="absolute -left-[4%] top-1/2 h-[528px] w-[528px] -translate-y-1/2 opacity-50 sm:h-[704px] sm:w-[704px]"
+        >
+          <Image
+            src="/images/landing/power-bg.png"
+            alt=""
+            aria-hidden
+            fill
+            sizes="640px"
+            className="object-cover"
+            style={{
+              objectPosition: "left center",
+              maskImage:
+                "radial-gradient(circle at 38% 50%, black 0%, black 40%, transparent 78%)",
+              WebkitMaskImage:
+                "radial-gradient(circle at 38% 50%, black 0%, black 40%, transparent 78%)",
+            }}
+          />
+        </PixelReveal>
+      </div>
 
       <div className="relative z-10 mx-auto flex min-h-[600px] max-w-[1280px] items-center justify-end px-4 py-14 md:px-14 md:py-20">
         <div className="max-w-[600px] md:text-right">

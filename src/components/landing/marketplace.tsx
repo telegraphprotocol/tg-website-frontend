@@ -8,18 +8,16 @@ export function Marketplace() {
       <PixelReveal
         effect="halftone"
         duration={1700}
-        className="absolute inset-0 z-0 bg-cover bg-no-repeat"
+        className="absolute inset-y-0 right-0 z-0 hidden w-[45%] bg-no-repeat opacity-50 md:block"
         style={{
           backgroundImage: "url('/images/landing/marketplace-bg.png')",
-          backgroundPosition: "center right",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1]"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.1) 65%, rgba(0,0,0,0) 100%)",
+          backgroundPosition: "65% center",
+          backgroundSize: "cover",
+          transform: "scaleX(-1)",
+          maskImage:
+            "linear-gradient(90deg, transparent 0%, black 55%, black 85%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(90deg, transparent 0%, black 55%, black 85%, transparent 100%)",
         }}
       />
 

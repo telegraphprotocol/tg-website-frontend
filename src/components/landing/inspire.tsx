@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { PixelReveal } from "./fx/pixel-reveal";
 import { Reveal } from "./fx/reveal";
 import { Typewriter } from "./fx/typewriter";
 
@@ -33,8 +35,31 @@ const lineage: Lineage[] = [
 
 export function Inspire() {
   return (
-    <section className="bg-[var(--tg-bg)] px-6 py-24 sm:px-8 md:py-[140px]">
-      <div className="mx-auto max-w-[1080px]">
+    <section className="relative bg-[var(--tg-bg)] px-6 py-24 sm:px-8 md:py-[140px]">
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <PixelReveal
+          effect="halftone"
+          duration={1800}
+          className="absolute -right-[8%] -top-[8%] h-[420px] w-[420px] opacity-25 sm:h-[520px] sm:w-[520px]"
+        >
+          <Image
+            src="/images/landing/improve-angel.png"
+            alt=""
+            aria-hidden
+            fill
+            sizes="520px"
+            className="object-cover"
+            style={{
+              maskImage:
+                "radial-gradient(circle at 70% 30%, black 0%, black 40%, transparent 75%)",
+              WebkitMaskImage:
+                "radial-gradient(circle at 70% 30%, black 0%, black 40%, transparent 75%)",
+            }}
+          />
+        </PixelReveal>
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-[1080px]">
         <Typewriter
           text="Inspired By Bitcoin And Bittensor"
           className="block mb-5 text-center text-[clamp(22px,2.2vw,30px)] font-medium tracking-[0.005em] text-[var(--tg-fg)]"

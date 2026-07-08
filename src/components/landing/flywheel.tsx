@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { DecodeText } from "./fx/decode-text";
+import { PixelReveal } from "./fx/pixel-reveal";
 import { Reveal } from "./fx/reveal";
 
 type Node = {
@@ -99,7 +101,30 @@ export function Flywheel() {
 
   return (
     <section className="relative bg-[var(--tg-bg)] px-6 py-20 sm:px-8 md:py-[120px]">
-      <div className="mx-auto max-w-[1080px] text-center">
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <PixelReveal
+          effect="halftone"
+          duration={1800}
+          className="absolute -left-[8%] -top-[8%] h-[420px] w-[420px] opacity-25 sm:h-[520px] sm:w-[520px]"
+        >
+          <Image
+            src="/images/landing/flywheel-loop.png"
+            alt=""
+            aria-hidden
+            fill
+            sizes="520px"
+            className="object-cover"
+            style={{
+              maskImage:
+                "radial-gradient(circle at 30% 30%, black 0%, black 40%, transparent 75%)",
+              WebkitMaskImage:
+                "radial-gradient(circle at 30% 30%, black 0%, black 40%, transparent 75%)",
+            }}
+          />
+        </PixelReveal>
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-[1080px] text-center">
         <DecodeText
           text="The Autonomous Intelligence Loop"
           className="block m-0 mb-3 text-[clamp(22px,2.2vw,30px)] font-normal tracking-[0.005em] text-[var(--tg-fg)]"
