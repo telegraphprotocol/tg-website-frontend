@@ -9,18 +9,15 @@ export function Access() {
       <PixelReveal
         effect="halftone"
         duration={1500}
-        className="absolute inset-0 z-0 bg-cover bg-no-repeat"
+        className="absolute inset-y-0 right-0 z-0 hidden w-[58%] bg-no-repeat opacity-80 md:block"
         style={{
           backgroundImage: "url('/images/landing/access-bg.png')",
-          backgroundPosition: "center right",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1]"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0) 100%)",
+          backgroundPosition: "35% center",
+          backgroundSize: "cover",
+          maskImage:
+            "linear-gradient(90deg, transparent 0%, black 22%, black 78%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(90deg, transparent 0%, black 22%, black 78%, transparent 100%)",
         }}
       />
 
@@ -55,7 +52,11 @@ export function Access() {
             >
               Start Building
             </CtaButton>
-            <CtaButton href="#miner" variant="dark">
+            <CtaButton
+              href="https://integrate.telegraphprotocol.com"
+              target="_blank"
+              variant="dark"
+            >
               Become a Miner
             </CtaButton>
           </Reveal>

@@ -117,41 +117,37 @@ export function Liquidity() {
   }, [isReadMoreOpen]);
 
   return (
-    <section className="relative min-h-[940px] bg-[var(--tg-bg)]">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <PixelReveal
-          effect="halftone"
-          duration={1500}
-          className="absolute inset-0 bg-cover bg-no-repeat -left-48"
-          style={{
-            backgroundImage: "url('/images/landing/liquidity-warrior.png')",
-            backgroundPosition: "left center",
-          }}
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 z-[1] lg:hidden block"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(0,0,0,0.45) 100%, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 0%), linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.55) 100%)",
-          }}
-        />
-      </div>
+    <section className="relative min-h-[820px] bg-[var(--tg-bg)]">
+      <PixelReveal
+        effect="halftone"
+        duration={1500}
+        className="absolute inset-0 z-0 bg-no-repeat opacity-60"
+        style={{
+          backgroundImage: "url('/images/landing/category-cave.png')",
+          backgroundPosition: "140% center",
+          backgroundSize: "auto 100%",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.65) 35%, rgba(0,0,0,0.15) 70%, rgba(0,0,0,0) 100%)",
+        }}
+      />
 
-      <div className="relative z-10 mx-auto max-w-[1280px] px-1 py-12 md:px-8 md:py-[100px]">
-        <div className="grid min-h-[560px] grid-cols-1 items-stretch md:grid-cols-[1.05fr_1fr]">
-          <div aria-hidden className="hidden md:block" />
-
-          <div className="flex flex-col gap-7 px-4 py-4 md:col-start-2 md:px-6 justify-end items-end">
-            <div className="md:text-right mb-8 max-w-[520px]">
+      <div className="relative z-10 mx-auto flex min-h-[560px] max-w-[1280px] items-center px-1 py-12 md:px-8 md:py-[100px]">
+        <div className="flex w-full max-w-[820px] flex-col gap-7 px-4 py-4 md:px-6">
+            <div className="mb-8 max-w-[520px]">
               <Typewriter
                 text="Instant Liquidity. Direct Market Signals."
-                className="lg:backdrop-blur-none backdrop-blur-xs lg:min-h-[78px] block m-0 mb-4 text-[clamp(22px,2.2vw,30px)] font-normal leading-[1.3] tracking-[0.01em] text-[var(--tg-fg)]"
+                className="block m-0 mb-4 text-[clamp(22px,2.2vw,30px)] font-normal leading-[1.3] tracking-[0.01em] text-[var(--tg-fg)]"
               />
               <Reveal
                 as="p"
                 delay={150}
-                className="lg:backdrop-blur-none backdrop-blur-xs m-0 max-w-[520px] text-pretty text-[14px] leading-[1.8] text-[var(--tg-fg-dim)] md:ml-auto"
+                className="m-0 max-w-[520px] text-pretty text-[14px] leading-[1.8] text-[var(--tg-fg-dim)]"
               >
                 Telegraph eliminates market friction by indexing a global
                 library of over 1,000 standardized AI skills (sourced directly
@@ -188,58 +184,55 @@ export function Liquidity() {
               <span className="tg-corner tg-corner-tr" aria-hidden />
               <span className="tg-corner tg-corner-bl" aria-hidden />
               <span className="tg-corner tg-corner-br" aria-hidden />
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse text-[14px]">
-                  <thead>
-                    <tr>
-                      {[
-                        "Agent ID",
-                        "Request Type",
-                        "Payment ($)",
-                        "Yield",
-                        "Status",
-                      ].map((h) => (
-                        <th
-                          key={h}
-                          className="whitespace-nowrap border-b border-[#1a1a1a] bg-[var(--tg-bg-deep)] px-[18px] py-3 text-left text-[14px] font-medium tracking-[0.01em] text-[var(--tg-fg-dim)]"
-                        >
-                          {h}{" "}
-                          <span className="ml-1 inline-block -translate-y-px text-[14px] text-[var(--tg-fg-faint)]">
-                            ⇅
-                          </span>
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {rows.map((r, i) => (
-                      <tr
-                        key={r.agent + i}
-                        className={`${i % 2 === 1 ? "bg-white/[0.025]" : "bg-white/[0.025]"} hover:bg-white/[0.05] transition-colors`}
+              <table className="w-full table-fixed border-collapse text-[14px]">
+                <thead>
+                  <tr>
+                    {[
+                      "Agent ID",
+                      "Request Type",
+                      "Payment ($)",
+                      "Yield",
+                      "Status",
+                    ].map((h) => (
+                      <th
+                        key={h}
+                        className="truncate border-b border-[#1a1a1a] bg-[var(--tg-bg-deep)] px-2 py-3 text-left text-[12px] font-medium tracking-[0.01em] text-[var(--tg-fg-dim)] sm:px-[18px] sm:text-[14px]"
                       >
-                        <td className="whitespace-nowrap border-b border-[#111] px-[18px] py-4 text-[var(--tg-fg)]">
-                          {r.agent}
-                        </td>
-                        <td className="whitespace-nowrap border-b border-[#111] px-[18px] py-4 text-[var(--tg-fg)]">
-                          {r.type}
-                        </td>
-                        <td className="whitespace-nowrap border-b border-[#111] px-[18px] py-4 text-[var(--tg-fg)]">
-                          {r.payment}
-                        </td>
-                        <td className="whitespace-nowrap border-b border-[#111] px-[18px] py-4 text-[var(--tg-fg)]">
-                          {r.yieldPct}
-                        </td>
-                        <td className="whitespace-nowrap border-b border-[#111] px-[18px] py-4 last:[&]:border-b-0">
-                          <StatusPill status={r.status} />
-                        </td>
-                      </tr>
+                        {h}{" "}
+                        <span className="ml-1 inline-block -translate-y-px text-[14px] text-[var(--tg-fg-faint)]">
+                          ⇅
+                        </span>
+                      </th>
                     ))}
-                  </tbody>
-                </table>
-              </div>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map((r, i) => (
+                    <tr
+                      key={r.agent + i}
+                      className={`${i % 2 === 1 ? "bg-white/[0.025]" : "bg-white/[0.025]"} hover:bg-white/[0.05] transition-colors`}
+                    >
+                      <td className="truncate border-b border-[#111] px-2 py-4 text-[12px] text-[var(--tg-fg)] sm:px-[18px] sm:text-[14px]">
+                        {r.agent}
+                      </td>
+                      <td className="truncate border-b border-[#111] px-2 py-4 text-[12px] text-[var(--tg-fg)] sm:px-[18px] sm:text-[14px]">
+                        {r.type}
+                      </td>
+                      <td className="truncate border-b border-[#111] px-2 py-4 text-[12px] text-[var(--tg-fg)] sm:px-[18px] sm:text-[14px]">
+                        {r.payment}
+                      </td>
+                      <td className="truncate border-b border-[#111] px-2 py-4 text-[12px] text-[var(--tg-fg)] sm:px-[18px] sm:text-[14px]">
+                        {r.yieldPct}
+                      </td>
+                      <td className="truncate border-b border-[#111] px-2 py-4 text-[12px] last:[&]:border-b-0 sm:px-[18px] sm:text-[14px]">
+                        <StatusPill status={r.status} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </Reveal>
           </div>
-        </div>
       </div>
 
       {isReadMoreOpen ? (

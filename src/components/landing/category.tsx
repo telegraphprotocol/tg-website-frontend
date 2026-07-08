@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { DecodeText } from "./fx/decode-text";
+import { PixelReveal } from "./fx/pixel-reveal";
 import { Reveal } from "./fx/reveal";
 
 const producers = [
@@ -29,8 +30,32 @@ function TickConnector({ delay = 0 }: { delay?: number }) {
 
 export function Category() {
   return (
-    <section className="bg-[var(--tg-bg)] px-5 py-16 sm:px-8 sm:py-20 md:py-[120px]">
-      <div className="mx-auto max-w-[1280px]">
+    <section className="relative bg-[var(--tg-bg)] px-5 py-16 sm:px-8 sm:py-20 md:py-[120px]">
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <PixelReveal
+          effect="halftone"
+          duration={1800}
+          className="absolute right-0 top-0 h-[420px] w-[420px] opacity-100 sm:h-[520px] sm:w-[520px]"
+        >
+          <Image
+            src="/images/landing/liquidity-warrior.png"
+            alt=""
+            aria-hidden
+            fill
+            sizes="520px"
+            className="object-cover"
+            style={{
+              transform: "scaleX(-1)",
+              maskImage:
+                "radial-gradient(circle at 70% 30%, black 0%, black 40%, transparent 75%)",
+              WebkitMaskImage:
+                "radial-gradient(circle at 70% 30%, black 0%, black 40%, transparent 75%)",
+            }}
+          />
+        </PixelReveal>
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-[1280px]">
         <DecodeText
           text="The Layer Where Intelligence Is Built, Bought, and Sold"
           className="block m-0 mb-5 max-w-[820px] text-pretty text-[clamp(22px,3vw,38px)] font-medium leading-[1.3] tracking-[-0.005em] text-[var(--tg-fg)] sm:mb-7"
@@ -56,8 +81,12 @@ export function Category() {
             {producers.map((p) => (
               <div
                 key={p}
-                className="tg-glitch-hover flex h-[56px] cursor-default items-center justify-center border border-[var(--tg-line)] bg-[var(--tg-bg-deep)] px-2.5 text-center transition-colors duration-300 hover:border-[var(--tg-line-strong)] sm:h-[64px] sm:px-3"
+                className="tg-glitch-hover relative flex h-[56px] cursor-default items-center justify-center border border-[var(--tg-line)] bg-[var(--tg-bg-deep)] px-2.5 text-center transition-colors duration-300 hover:border-[var(--tg-line-strong)] sm:h-[64px] sm:px-3"
               >
+                <span className="tg-corner tg-corner-tl" aria-hidden />
+                <span className="tg-corner tg-corner-tr" aria-hidden />
+                <span className="tg-corner tg-corner-bl" aria-hidden />
+                <span className="tg-corner tg-corner-br" aria-hidden />
                 <span className="text-pretty text-[12px] leading-[1.35] text-[var(--tg-fg-dim)] sm:text-[12.5px] sm:leading-[1.4]">
                   {p}
                 </span>
@@ -109,7 +138,11 @@ export function Category() {
             <TickConnector delay={0.8} />
           </div>
 
-          <div className="border border-[var(--tg-line-soft)] bg-[var(--tg-bg)] px-4 py-5 text-center transition-colors duration-300 hover:border-[var(--tg-line-strong)] sm:px-6 sm:py-6">
+          <div className="relative border border-[var(--tg-line-soft)] bg-[var(--tg-bg)] px-4 py-5 text-center transition-colors duration-300 hover:border-[var(--tg-line-strong)] sm:px-6 sm:py-6">
+            <span className="tg-corner tg-corner-tl" aria-hidden />
+            <span className="tg-corner tg-corner-tr" aria-hidden />
+            <span className="tg-corner tg-corner-bl" aria-hidden />
+            <span className="tg-corner tg-corner-br" aria-hidden />
             <p className="m-0 mb-1.5 text-pretty text-[11.5px] uppercase tracking-[0.14em] text-[var(--tg-fg-dim)] sm:text-[13px] sm:tracking-[0.18em]">
               End Users &amp; The Global Economy
             </p>

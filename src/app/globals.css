@@ -189,50 +189,50 @@
 .tg-corner-tl::before {
   top: 0;
   left: 0;
-  width: 12;
+  width: 12px;
   height: 1px;
 }
 .tg-corner-tl::after {
   top: 0;
   left: 0;
   width: 1px;
-  height: 12;
+  height: 12px;
 }
 .tg-corner-tr::before {
   top: 0;
   right: 0;
-  width: 12;
+  width: 12px;
   height: 1px;
 }
 .tg-corner-tr::after {
   top: 0;
   right: 0;
   width: 1px;
-  height: 12;
+  height: 12px;
 }
 .tg-corner-bl::before {
   bottom: 0;
   left: 0;
-  width: 12;
+  width: 12px;
   height: 1px;
 }
 .tg-corner-bl::after {
   bottom: 0;
   left: 0;
   width: 1px;
-  height: 12;
+  height: 12px;
 }
 .tg-corner-br::before {
   bottom: 0;
   right: 0;
-  width: 12;
+  width: 12px;
   height: 1px;
 }
 .tg-corner-br::after {
   bottom: 0;
   right: 0;
   width: 1px;
-  height: 12;
+  height: 12px;
 }
 
 /* ---------- Blinking cursor ---------- */
@@ -243,7 +243,7 @@
 }
 @keyframes tg-flow {
   0% {
-    left: 5%;
+    left: 15.5px;
     opacity: 0;
   }
   8% {
@@ -253,7 +253,7 @@
     opacity: 1;
   }
   100% {
-    left: 95%;
+    left: calc(100% - 15.5px);
     opacity: 0;
   }
 }
