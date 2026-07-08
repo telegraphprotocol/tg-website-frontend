@@ -25,7 +25,7 @@ const nodes: Node[] = [
   {
     id: "validators",
     title: "Validators",
-    subtitle: "The Quality Check",
+    subtitle: "The Quality Guardians",
     note: "Run the evaluation scripts to score and rank every answer, and earn protocol rewards for it",
     x: 540,
     y: 300,
@@ -41,8 +41,8 @@ const nodes: Node[] = [
   {
     id: "scripts",
     title: "Script Authors",
-    subtitle: "The Evaluation Scripts",
-    note: "Write the evaluation scripts that grade every answer, and earn rewards when Validators run them",
+    subtitle: "WASM Evaluation Scripts",
+    note: "These WASM evaluation scripts define how answers are scored against ground truth. Script Authors earn rewards when Validators run their scripts.",
     x: 300,
     y: 540,
   },
@@ -249,9 +249,9 @@ export function Flywheel() {
                   className="cursor-pointer outline-none"
                 >
                   <rect
-                    x={n.x - 90}
+                    x={n.x - 99}
                     y={n.y - 34}
-                    width="180"
+                    width="198"
                     height="68"
                     rx="2"
                     fill="var(--tg-bg-deep)"
