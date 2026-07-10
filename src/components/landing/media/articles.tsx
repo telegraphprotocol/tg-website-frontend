@@ -17,6 +17,18 @@ type Article = {
 
 const articles: Article[] = [
   {
+    id: "03",
+    outlet: "0xSammy on X",
+    title: "Machines Will Become Our Masters",
+    summary:
+      "The protocols building for machine customers — a breakdown of the emerging machine economy stack, naming Telegraph alongside peaq, xMaquina, Auki, CrunchDAO, and OpenServ as infrastructure for autonomous, machine-to-machine commerce.",
+    publishedAt: "2026-07-09",
+    publishedLabel: "Jul 9, 2026",
+    href: "https://x.com/i/article/2075174035885862914",
+    cover: "/media/HMyFfY4W4AAUCfX.jpg",
+    coverAlt: "Machines Will Become Our Masters",
+  },
+  {
     id: "02",
     outlet: "e27",
     title:
