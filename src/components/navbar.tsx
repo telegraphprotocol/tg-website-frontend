@@ -100,7 +100,6 @@ export function Navbar() {
             <LineChart className="h-4 w-4" aria-hidden />
             <span>MACHINA Token</span>
           </Link>
-          {/* Temporarily hidden — Run a Node
           <Link
             href={RUN_A_NODE_URL}
             target="_blank"
@@ -108,9 +107,8 @@ export function Navbar() {
             className={runNodeBtnClass}
           >
             <Server className="h-4 w-4" aria-hidden />
-            <span>Run a Node</span>
+            <span>Validator Opportunity</span>
           </Link>
-          */}
           <CtaButton
             href={WHITEPAPER_URL}
             target="_blank"
@@ -184,18 +182,16 @@ export function Navbar() {
             <LineChart className="h-3.5 w-3.5 shrink-0" aria-hidden />
             <span>Token</span>
           </Link>
-          {/* Temporarily hidden — Run a Node
           <Link
             href={RUN_A_NODE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Run a Node"
+            aria-label="Validator Opportunity"
             className={runNodeBtnMobileClass}
           >
             <Server className="h-3.5 w-3.5 shrink-0" aria-hidden />
-            <span>Node</span>
+            <span>Validator</span>
           </Link>
-          */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -252,7 +248,6 @@ export function Navbar() {
             <span>MACHINA Token</span>
           </Link>
 
-          {/* Temporarily hidden — Run a Node
           <Link
             href={RUN_A_NODE_URL}
             target="_blank"
@@ -261,9 +256,8 @@ export function Navbar() {
             className={runNodeBtnOverlayClass}
           >
             <Server className="h-4 w-4" aria-hidden />
-            <span>Run a Node</span>
+            <span>Validator Opportunity</span>
           </Link>
-          */}
 
           <Link
             href="/earn"
