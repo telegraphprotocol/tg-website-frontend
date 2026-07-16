@@ -11,6 +11,7 @@ type Way = {
   cta: string;
   href: string;
   external?: boolean;
+  badge?: string;
 };
 
 const ways: Way[] = [
@@ -35,12 +36,13 @@ const ways: Way[] = [
   },
   {
     index: "03",
-    title: "Launch Terminal",
+    title: "Explore Alexandria",
     subtitle: "Get Real, Verified Answers",
     body: "Query the live network of competing Miners from one terminal. Pay per request, receive cryptographically receipted answers.",
-    cta: "Launch Now",
-    href: "https://terminal.telegraphprotocol.com",
+    cta: "Explore Now",
+    href: "https://alexandria.telegraphprotocol.com",
     external: true,
+    badge: "Beta",
   },
   {
     index: "04",
@@ -81,8 +83,13 @@ function WayCard({ way, delay }: { way: Way; delay: number }) {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="m-0 text-[17px] font-medium leading-[1.3] tracking-[0.005em] text-[var(--tg-fg)] md:text-[18px]">
+        <h3 className="m-0 flex items-center gap-2 text-[17px] font-medium leading-[1.3] tracking-[0.005em] text-[var(--tg-fg)] md:text-[18px]">
           {way.title}
+          {way.badge ? (
+            <span className="rounded-sm border border-[var(--tg-line-strong)] px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] text-[var(--tg-fg-faint)]">
+              {way.badge}
+            </span>
+          ) : null}
         </h3>
         {way.subtitle ? (
           <p className="m-0 text-[13px] leading-[1.55] text-[var(--tg-fg-dim)]">

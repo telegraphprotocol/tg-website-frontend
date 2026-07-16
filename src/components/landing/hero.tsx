@@ -40,10 +40,13 @@ export function Hero() {
         <Reveal delay={400} className="flex flex-col items-center gap-3.5">
           <div className="flex flex-wrap justify-center gap-3.5">
             <CtaButton
-              href="https://terminal.telegraphprotocol.com"
+              href="https://alexandria.telegraphprotocol.com"
               target="_blank"
             >
-              Launch Terminal
+              Explore Alexandria
+              <span className="ml-1 rounded-sm border border-current/30 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] opacity-70">
+                Beta
+              </span>
             </CtaButton>
             <CtaButton
               href="https://docs.telegraphprotocol.com/"
