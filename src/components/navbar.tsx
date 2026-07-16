@@ -127,12 +127,15 @@ export function Navbar() {
             <span>Media</span>
           </CtaButton>
           <CtaButton
-            href="https://terminal.telegraphprotocol.com"
+            href="https://alexandria.telegraphprotocol.com"
             target="_blank"
             arrow={false}
           >
             <Terminal className="h-4 w-4" strokeWidth={2.5} aria-hidden />
-            <span className="font-semibold">Terminal</span>
+            <span className="font-semibold">Alexandria</span>
+            <span className="rounded-sm border border-current/30 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] opacity-70">
+              Beta
+            </span>
           </CtaButton>
           <span
             aria-hidden
@@ -289,13 +292,16 @@ export function Navbar() {
           </Link>
 
           <Link
-            href="https://terminal.telegraphprotocol.com"
+            href="https://alexandria.telegraphprotocol.com"
             target="_blank"
             onClick={close}
             className="inline-flex items-center gap-3 rounded-sm bg-[#f2f2f2] px-4 py-3 text-[14px] font-semibold text-black no-underline transition-colors hover:bg-white"
           >
             <Terminal className="h-4 w-4" strokeWidth={2.5} aria-hidden />
-            <span>Terminal</span>
+            <span>Alexandria</span>
+            <span className="rounded-sm border border-black/30 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] opacity-70">
+              Beta
+            </span>
           </Link>
 
           <div className="flex items-center gap-3 pt-1">
