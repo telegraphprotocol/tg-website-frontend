@@ -25,7 +25,7 @@ const articles: Article[] = [
     publishedAt: "2026-07-09",
     publishedLabel: "Jul 9, 2026",
     href: "https://x.com/i/article/2075174035885862914",
-    cover: "/media/HMyFfY4W4AAUCfX.jpg",
+    cover: "/media/WJoBQyLi_400x400.jpg",
     coverAlt: "Machines Will Become Our Masters",
   },
   {
