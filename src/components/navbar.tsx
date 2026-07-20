@@ -5,7 +5,6 @@ import {
   Coins,
   FileBarChart,
   FileText,
-  LineChart,
   Menu,
   Newspaper,
   Server,
@@ -22,14 +21,8 @@ const MACHINA_COINGECKO_URL = "https://www.coingecko.com/en/coins/machina-2";
 const WHITEPAPER_URL = "/Whitepapers%20-%20Telegraph%20Protocol.pdf";
 const RUN_A_NODE_URL = "/Telegraph_Validator_Proposal.pdf";
 
-const coingeckoBtnClass =
-  "group inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm border border-emerald-500/80 bg-emerald-500/10 px-[17px] py-[10px] text-[14px] font-semibold leading-none text-emerald-400 no-underline transition-all hover:border-emerald-400 hover:bg-emerald-500/15 hover:text-emerald-300";
-const coingeckoBtnMobileClass =
-  "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-emerald-500/80 bg-emerald-500/10 px-2 py-[9px] text-[11px] font-semibold uppercase tracking-[0.04em] text-emerald-400 no-underline transition-colors hover:border-emerald-400 hover:bg-emerald-500/15 hover:text-emerald-300";
 const tokenReportBtnMobileClass =
   "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-amber-500/80 bg-amber-500/10 px-2 py-[9px] text-[11px] font-semibold uppercase tracking-[0.04em] text-amber-400 no-underline transition-colors hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300";
-const coingeckoBtnOverlayClass =
-  "inline-flex items-center gap-3 rounded-sm border border-emerald-500/80 bg-emerald-500/10 px-4 py-3 text-[14px] font-semibold text-emerald-400 no-underline transition-colors hover:border-emerald-400 hover:bg-emerald-500/15 hover:text-emerald-300";
 const runNodeBtnClass =
   "inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm border border-blue-500/80 bg-blue-500/10 px-[17px] py-[10px] text-[14px] font-semibold leading-none text-blue-400 no-underline transition-all hover:border-blue-400 hover:bg-blue-500/15 hover:text-blue-300";
 const runNodeBtnOverlayClass =
@@ -92,15 +85,6 @@ export function Navbar() {
           </Link>
           */}
           <Link
-            href={MACHINA_COINGECKO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={coingeckoBtnClass}
-          >
-            <LineChart className="h-4 w-4" aria-hidden />
-            <span>MACHINA Token</span>
-          </Link>
-          <Link
             href={RUN_A_NODE_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -148,7 +132,7 @@ export function Navbar() {
             aria-label="Telegraph on X"
             className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
           >
-            <FaXTwitter className="h-4 w-4" aria-hidden />
+            <FaXTwitter className="h-5 w-5" aria-hidden />
           </Link>
           <Link
             href="https://discord.gg/telegraphprotocol"
@@ -157,7 +141,23 @@ export function Navbar() {
             aria-label="Telegraph on Discord"
             className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
           >
-            <FaDiscord className="h-4 w-4 opacity-90" aria-hidden />
+            <FaDiscord className="h-5 w-5 opacity-90" aria-hidden />
+          </Link>
+          <Link
+            href={MACHINA_COINGECKO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="MACHINA Token on CoinGecko"
+            className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
+          >
+            <Image
+              src="/coingecko-white.46524c06.png"
+              alt=""
+              width={20}
+              height={20}
+              className="h-5 w-5 opacity-90"
+              aria-hidden
+            />
           </Link>
         </div>
 
@@ -175,16 +175,6 @@ export function Navbar() {
             <span>Report</span>
           </Link>
           */}
-          <Link
-            href={MACHINA_COINGECKO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="MACHINA Token"
-            className={coingeckoBtnMobileClass}
-          >
-            <LineChart className="h-3.5 w-3.5 shrink-0" aria-hidden />
-            <span>Token</span>
-          </Link>
           <Link
             href={RUN_A_NODE_URL}
             target="_blank"
@@ -239,17 +229,6 @@ export function Navbar() {
             <span>MACHINA: Token Report</span>
           </Link>
           */}
-
-          <Link
-            href={MACHINA_COINGECKO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={close}
-            className={coingeckoBtnOverlayClass}
-          >
-            <LineChart className="h-4 w-4" aria-hidden />
-            <span>MACHINA Token</span>
-          </Link>
 
           <Link
             href={RUN_A_NODE_URL}
@@ -313,7 +292,7 @@ export function Navbar() {
               onClick={close}
               className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
             >
-              <FaXTwitter className="h-4 w-4" aria-hidden />
+              <FaXTwitter className="h-5 w-5" aria-hidden />
             </Link>
             <Link
               href="https://discord.gg/telegraphprotocol"
@@ -323,7 +302,24 @@ export function Navbar() {
               onClick={close}
               className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
             >
-              <FaDiscord className="h-4 w-4 opacity-90" aria-hidden />
+              <FaDiscord className="h-5 w-5 opacity-90" aria-hidden />
+            </Link>
+            <Link
+              href={MACHINA_COINGECKO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="MACHINA Token on CoinGecko"
+              onClick={close}
+              className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
+            >
+              <Image
+                src="/coingecko-white.46524c06.png"
+                alt=""
+                width={20}
+                height={20}
+                className="h-5 w-5 opacity-90"
+                aria-hidden
+              />
             </Link>
           </div>
         </nav>
