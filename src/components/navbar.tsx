@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {
+  ChevronDown,
   Coins,
   FileBarChart,
   FileText,
@@ -14,7 +15,7 @@ import {
 import { FaDiscord, FaXTwitter } from "react-icons/fa6";
 import { CtaButton } from "./landing/cta-button";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const MACHINA_REPORT_URL = "/Machina_Token_Price_Scenarios_v66.pdf";
 const MACHINA_COINGECKO_URL = "https://www.coingecko.com/en/coins/machina-2";
@@ -27,11 +28,13 @@ const runNodeBtnClass =
   "inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm border border-blue-500/80 bg-blue-500/10 px-[17px] py-[10px] text-[14px] font-semibold leading-none text-blue-400 no-underline transition-all hover:border-blue-400 hover:bg-blue-500/15 hover:text-blue-300";
 const runNodeBtnOverlayClass =
   "inline-flex items-center gap-3 rounded-sm border border-blue-500/80 bg-blue-500/10 px-4 py-3 text-[14px] font-semibold text-blue-400 no-underline transition-colors hover:border-blue-400 hover:bg-blue-500/15 hover:text-blue-300";
-const runNodeBtnMobileClass =
+const alexandriaBtnMobileClass =
   "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-blue-500/80 bg-blue-500/10 px-2 py-[9px] text-[11px] font-semibold uppercase tracking-[0.04em] text-blue-400 no-underline transition-colors hover:border-blue-400 hover:bg-blue-500/15 hover:text-blue-300";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -50,6 +53,24 @@ export function Navbar() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
+
+  useEffect(() => {
+    if (!moreOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMoreOpen(false);
+    };
+    const onClick = (e: MouseEvent) => {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
+        setMoreOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("mousedown", onClick);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("mousedown", onClick);
+    };
+  }, [moreOpen]);
 
   const close = () => setOpen(false);
 
@@ -84,32 +105,6 @@ export function Navbar() {
             <span>Token Report</span>
           </Link>
           */}
-          <Link
-            href={RUN_A_NODE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={runNodeBtnClass}
-          >
-            <Server className="h-4 w-4" aria-hidden />
-            <span>Validator Opportunity</span>
-          </Link>
-          <CtaButton
-            href={WHITEPAPER_URL}
-            target="_blank"
-            variant="dark"
-            arrow={false}
-          >
-            <FileText className="h-4 w-4 opacity-80" aria-hidden />
-            <span>Whitepaper</span>
-          </CtaButton>
-          <CtaButton href="/earn" variant="dark" arrow={false}>
-            <Coins className="h-4 w-4 opacity-80" aria-hidden />
-            <span>Earn</span>
-          </CtaButton>
-          <CtaButton href="/media" variant="dark" arrow={false}>
-            <Newspaper className="h-4 w-4 opacity-80" aria-hidden />
-            <span>Media</span>
-          </CtaButton>
           <CtaButton
             href="https://alexandria.telegraphprotocol.com"
             target="_blank"
@@ -121,44 +116,115 @@ export function Navbar() {
               Beta
             </span>
           </CtaButton>
-          <span
-            aria-hidden
-            className="mx-1 h-5 w-px bg-[var(--tg-line)]"
-          />
-          <Link
-            href="https://x.com/Telegraphprotoc"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Telegraph on X"
-            className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
-          >
-            <FaXTwitter className="h-5 w-5" aria-hidden />
-          </Link>
-          <Link
-            href="https://discord.gg/telegraphprotocol"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Telegraph on Discord"
-            className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
-          >
-            <FaDiscord className="h-5 w-5 opacity-90" aria-hidden />
-          </Link>
-          <Link
-            href={MACHINA_COINGECKO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="MACHINA Token on CoinGecko"
-            className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
-          >
-            <Image
-              src="/coingecko-white.46524c06.png"
-              alt=""
-              width={20}
-              height={20}
-              className="h-5 w-5 opacity-90"
-              aria-hidden
-            />
-          </Link>
+
+          <div ref={moreRef} className="relative">
+            <button
+              type="button"
+              onClick={() => setMoreOpen((v) => !v)}
+              aria-haspopup="menu"
+              aria-expanded={moreOpen}
+              className="inline-flex items-center gap-1.5 rounded-sm bg-[#1a1a1a] px-[14px] py-[10px] text-[14px] font-medium text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
+            >
+              <span>More</span>
+              <ChevronDown
+                className={`h-4 w-4 opacity-70 transition-transform ${
+                  moreOpen ? "rotate-180" : ""
+                }`}
+                aria-hidden
+              />
+            </button>
+
+            <div
+              role="menu"
+              className={`absolute right-0 top-[calc(100%+8px)] w-64 rounded-sm border border-[var(--tg-line)] bg-[#0a0a0a] p-2 shadow-xl transition-all ${
+                moreOpen
+                  ? "pointer-events-auto opacity-100 translate-y-0"
+                  : "pointer-events-none opacity-0 -translate-y-1"
+              }`}
+            >
+              <Link
+                href={RUN_A_NODE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMoreOpen(false)}
+                className="flex items-center gap-3 rounded-sm px-3 py-2.5 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#1a1a1a]"
+              >
+                <Server className="h-4 w-4 opacity-80" aria-hidden />
+                <span>Validator Opportunity</span>
+              </Link>
+              <Link
+                href={WHITEPAPER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMoreOpen(false)}
+                className="flex items-center gap-3 rounded-sm px-3 py-2.5 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#1a1a1a]"
+              >
+                <FileText className="h-4 w-4 opacity-80" aria-hidden />
+                <span>Whitepaper</span>
+              </Link>
+              <Link
+                href="/earn"
+                onClick={() => setMoreOpen(false)}
+                className="flex items-center gap-3 rounded-sm px-3 py-2.5 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#1a1a1a]"
+              >
+                <Coins className="h-4 w-4 opacity-80" aria-hidden />
+                <span>Earn</span>
+              </Link>
+              <Link
+                href="/media"
+                onClick={() => setMoreOpen(false)}
+                className="flex items-center gap-3 rounded-sm px-3 py-2.5 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#1a1a1a]"
+              >
+                <Newspaper className="h-4 w-4 opacity-80" aria-hidden />
+                <span>Media</span>
+              </Link>
+
+              <span
+                aria-hidden
+                className="my-2 block h-px w-full bg-[var(--tg-line)]"
+              />
+
+              <div className="flex items-center gap-2 px-1">
+                <Link
+                  href="https://x.com/Telegraphprotoc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Telegraph on X"
+                  onClick={() => setMoreOpen(false)}
+                  className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
+                >
+                  <FaXTwitter className="h-5 w-5" aria-hidden />
+                </Link>
+                <Link
+                  href="https://discord.gg/telegraphprotocol"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Telegraph on Discord"
+                  onClick={() => setMoreOpen(false)}
+                  className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
+                >
+                  <FaDiscord className="h-5 w-5 opacity-90" aria-hidden />
+                </Link>
+                <Link
+                  href={MACHINA_COINGECKO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="MACHINA Token on CoinGecko"
+                  onClick={() => setMoreOpen(false)}
+                  className="inline-flex items-center justify-center rounded-sm bg-[#1a1a1a] p-[11px] text-[var(--tg-fg)] transition-colors hover:bg-[#222]"
+                >
+                  <Image
+                    src="/coingecko-white.46524c06.png"
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 opacity-90"
+                    aria-hidden
+                  />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Mobile actions */}
@@ -176,14 +242,14 @@ export function Navbar() {
           </Link>
           */}
           <Link
-            href={RUN_A_NODE_URL}
+            href="https://alexandria.telegraphprotocol.com"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Validator Opportunity"
-            className={runNodeBtnMobileClass}
+            aria-label="Explore Alexandria (beta)"
+            className={alexandriaBtnMobileClass}
           >
-            <Server className="h-3.5 w-3.5 shrink-0" aria-hidden />
-            <span>Validator</span>
+            <Terminal className="h-3.5 w-3.5 shrink-0" aria-hidden />
+            <span>Alexandria</span>
           </Link>
           <button
             type="button"
@@ -231,6 +297,24 @@ export function Navbar() {
           */}
 
           <Link
+            href="https://alexandria.telegraphprotocol.com"
+            target="_blank"
+            onClick={close}
+            className="inline-flex items-center gap-3 rounded-sm bg-[#f2f2f2] px-4 py-3 text-[14px] font-semibold text-black no-underline transition-colors hover:bg-white"
+          >
+            <Terminal className="h-4 w-4" strokeWidth={2.5} aria-hidden />
+            <span>Alexandria</span>
+            <span className="rounded-sm border border-black/30 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] opacity-70">
+              Beta
+            </span>
+          </Link>
+
+          <span
+            aria-hidden
+            className="my-1 block h-px w-full bg-[var(--tg-line)]"
+          />
+
+          <Link
             href={RUN_A_NODE_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -239,6 +323,17 @@ export function Navbar() {
           >
             <Server className="h-4 w-4" aria-hidden />
             <span>Validator Opportunity</span>
+          </Link>
+
+          <Link
+            href={WHITEPAPER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={close}
+            className="inline-flex items-center gap-3 rounded-sm bg-[#1a1a1a] px-4 py-3 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#222]"
+          >
+            <FileText className="h-4 w-4 opacity-80" aria-hidden />
+            <span>Whitepaper</span>
           </Link>
 
           <Link
@@ -257,30 +352,6 @@ export function Navbar() {
           >
             <Newspaper className="h-4 w-4 opacity-80" aria-hidden />
             <span>Media</span>
-          </Link>
-
-          <Link
-            href={WHITEPAPER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={close}
-            className="inline-flex items-center gap-3 rounded-sm bg-[#1a1a1a] px-4 py-3 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#222]"
-          >
-            <FileText className="h-4 w-4 opacity-80" aria-hidden />
-            <span>Whitepaper</span>
-          </Link>
-
-          <Link
-            href="https://alexandria.telegraphprotocol.com"
-            target="_blank"
-            onClick={close}
-            className="inline-flex items-center gap-3 rounded-sm bg-[#f2f2f2] px-4 py-3 text-[14px] font-semibold text-black no-underline transition-colors hover:bg-white"
-          >
-            <Terminal className="h-4 w-4" strokeWidth={2.5} aria-hidden />
-            <span>Alexandria</span>
-            <span className="rounded-sm border border-black/30 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] opacity-70">
-              Beta
-            </span>
           </Link>
 
           <div className="flex items-center gap-3 pt-1">
