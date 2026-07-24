@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { FaDiscord, FaXTwitter } from "react-icons/fa6";
 import { CtaButton } from "./landing/cta-button";
+import { GuideNavLink, GuideNavLinkOverlay } from "./guide-nav-link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -116,6 +117,8 @@ export function Navbar() {
               Beta
             </span>
           </CtaButton>
+
+          <GuideNavLink />
 
           <div ref={moreRef} className="relative">
             <button
@@ -308,6 +311,8 @@ export function Navbar() {
               Beta
             </span>
           </Link>
+
+          <GuideNavLinkOverlay onClick={close} />
 
           <span
             aria-hidden
