@@ -8,7 +8,6 @@ import {
   FileText,
   Menu,
   Newspaper,
-  Server,
   Terminal,
   X,
 } from "lucide-react";
@@ -21,14 +20,9 @@ import { useEffect, useRef, useState } from "react";
 const MACHINA_REPORT_URL = "/Machina_Token_Price_Scenarios_v66.pdf";
 const MACHINA_COINGECKO_URL = "https://www.coingecko.com/en/coins/machina-2";
 const WHITEPAPER_URL = "/Whitepapers%20-%20Telegraph%20Protocol.pdf";
-const RUN_A_NODE_URL = "/Telegraph_Validator_Proposal.pdf";
 
 const tokenReportBtnMobileClass =
   "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-amber-500/80 bg-amber-500/10 px-2 py-[9px] text-[11px] font-semibold uppercase tracking-[0.04em] text-amber-400 no-underline transition-colors hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300";
-const runNodeBtnClass =
-  "inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm border border-blue-500/80 bg-blue-500/10 px-[17px] py-[10px] text-[14px] font-semibold leading-none text-blue-400 no-underline transition-all hover:border-blue-400 hover:bg-blue-500/15 hover:text-blue-300";
-const runNodeBtnOverlayClass =
-  "inline-flex items-center gap-3 rounded-sm border border-blue-500/80 bg-blue-500/10 px-4 py-3 text-[14px] font-semibold text-blue-400 no-underline transition-colors hover:border-blue-400 hover:bg-blue-500/15 hover:text-blue-300";
 const alexandriaBtnMobileClass =
   "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-blue-500/80 bg-blue-500/10 px-2 py-[9px] text-[11px] font-semibold uppercase tracking-[0.04em] text-blue-400 no-underline transition-colors hover:border-blue-400 hover:bg-blue-500/15 hover:text-blue-300";
 
@@ -145,16 +139,6 @@ export function Navbar() {
                   : "pointer-events-none opacity-0 -translate-y-1"
               }`}
             >
-              <Link
-                href={RUN_A_NODE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMoreOpen(false)}
-                className="flex items-center gap-3 rounded-sm px-3 py-2.5 text-[14px] font-medium text-[var(--tg-fg)] no-underline transition-colors hover:bg-[#1a1a1a]"
-              >
-                <Server className="h-4 w-4 opacity-80" aria-hidden />
-                <span>Validator Opportunity</span>
-              </Link>
               <Link
                 href={WHITEPAPER_URL}
                 target="_blank"
@@ -318,17 +302,6 @@ export function Navbar() {
             aria-hidden
             className="my-1 block h-px w-full bg-[var(--tg-line)]"
           />
-
-          <Link
-            href={RUN_A_NODE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={close}
-            className={runNodeBtnOverlayClass}
-          >
-            <Server className="h-4 w-4" aria-hidden />
-            <span>Validator Opportunity</span>
-          </Link>
 
           <Link
             href={WHITEPAPER_URL}
