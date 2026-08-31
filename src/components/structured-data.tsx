@@ -9,7 +9,7 @@ export function StructuredData() {
     url: baseUrl,
     logo: `${baseUrl}/t-logo.png`,
     description:
-      "Telegraph Protocol unlocks real AI on-chain—turn live signals into tradeable assets you can own and profit from.",
+      "Telegraph Protocol unlocks real AI on-chain, turn live signals into tradeable assets you can own and profit from.",
     sameAs: ["https://x.com/Telegraphprotoc"],
     contactPoint: {
       "@type": "ContactPoint",

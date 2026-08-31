@@ -7,7 +7,7 @@ const baseUrl =
 export const metadata: Metadata = {
   title: "Marketplace - Buy & Trade AI Signals",
   description:
-    "Browse and purchase verified AI signals from Bittensor subnets. Turn subnet inference into tradeable commodities—buy and trade on-chain signals across supported chains. Real-time pricing, availability, and integration status.",
+    "Browse and purchase verified AI signals from Bittensor subnets. Turn subnet inference into tradeable commodities, buy and trade on-chain signals across supported chains. Real-time pricing, availability, and integration status.",
   openGraph: {
     title: "Telegraph Marketplace - Buy & Trade AI Signals",
     description:
