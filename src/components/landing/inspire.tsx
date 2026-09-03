@@ -19,12 +19,6 @@ const lineage: Lineage[] = [
     role: "Secures the ledger",
   },
   {
-    id: "bittensor",
-    name: "Bittensor",
-    year: "2021",
-    role: "Opens AI production",
-  },
-  {
     id: "telegraph",
     name: "Telegraph",
     year: "Now",
@@ -61,7 +55,7 @@ export function Inspire() {
 
       <div className="relative z-10 mx-auto max-w-[1080px]">
         <Typewriter
-          text="Inspired By Bitcoin And Bittensor"
+          text="Inspired By Bitcoin"
           className="block mb-5 text-center text-[clamp(22px,2.2vw,30px)] font-medium tracking-[0.005em] text-[var(--tg-fg)]"
         />
         <Reveal
@@ -69,9 +63,9 @@ export function Inspire() {
           delay={100}
           className="mx-auto m-0 mb-16 max-w-[560px] text-pretty text-center text-[14px] leading-[1.8] text-[var(--tg-fg-dim)] md:mb-20"
         >
-          Three open networks, three different jobs. Telegraph takes the same
-          principle — trust earned through competition, not permission — and
-          applies it to machine intelligence.
+          Bitcoin proved trust can be earned through competition rather than
+          granted by permission. Telegraph applies that to machine
+          intelligence.
         </Reveal>
 
         <Reveal
@@ -86,7 +80,7 @@ export function Inspire() {
             aria-hidden
             className="absolute left-0 right-0 top-[27px] hidden h-px bg-[var(--tg-line)] md:block"
           />
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-6">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-6">
             {lineage.map((l) => (
               <div
                 key={l.id}
