@@ -22,7 +22,7 @@ const lineage: Lineage[] = [
     id: "telegraph",
     name: "Telegraph",
     year: "Now",
-    role: "Delivers verified intelligence agents can trust",
+    role: "Delivers verified, ranked intelligence agents can trust",
     current: true,
   },
 ];
@@ -133,7 +133,8 @@ export function Inspire() {
           className="mx-auto m-0 mt-16 max-w-[620px] text-pretty text-center text-[13.5px] leading-[1.8] text-[var(--tg-fg-dim)] md:mt-20"
         >
           Any developer can wrap a model, dataset, or API and get paid the
-          moment a machine needs it — verified, priced, and settled on-chain,
+          moment a machine needs it — verified, ranked, priced, and settled
+          on-chain,
           with no permission required.
         </Reveal>
       </div>
