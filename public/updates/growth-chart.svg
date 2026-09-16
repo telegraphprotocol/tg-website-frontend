@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#0a0a0a"/>
+  <g stroke="#2a2a2a" stroke-width="1">
+    <line x1="60" y1="40" x2="60" y2="340"/>
+    <line x1="60" y1="340" x2="760" y2="340"/>
+  </g>
+  <polyline points="60,300 180,280 300,230 420,190 540,120 660,90 760,50"
+    fill="none" stroke="#5fd48a" stroke-width="4"/>
+  <g fill="#5fd48a">
+    <circle cx="60" cy="300" r="5"/>
+    <circle cx="180" cy="280" r="5"/>
+    <circle cx="300" cy="230" r="5"/>
+    <circle cx="420" cy="190" r="5"/>
+    <circle cx="540" cy="120" r="5"/>
+    <circle cx="660" cy="90" r="5"/>
+    <circle cx="760" cy="50" r="5"/>
+  </g>
+  <text x="60" y="30" fill="#e5e5e5" font-family="monospace" font-size="18">Network Growth — Active Nodes</text>
+</svg>

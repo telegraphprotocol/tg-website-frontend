@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#0a0a0a"/>
+  <g fill="none" stroke="#5fd48a" stroke-width="2">
+    <circle cx="250" cy="200" r="50"/>
+    <circle cx="400" cy="180" r="60"/>
+    <circle cx="550" cy="200" r="50"/>
+  </g>
+  <text x="400" y="330" fill="#e5e5e5" font-family="monospace" font-size="18" text-anchor="middle">The Team — Building in Public</text>
+  <text x="400" y="360" fill="#7a7a7a" font-family="monospace" font-size="13" text-anchor="middle">San Francisco, CA</text>
+</svg>

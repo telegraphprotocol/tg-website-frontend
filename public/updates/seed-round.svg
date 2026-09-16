@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#0a0a0a"/>
+  <circle cx="400" cy="200" r="90" fill="none" stroke="#5fd48a" stroke-width="2"/>
+  <circle cx="400" cy="200" r="60" fill="none" stroke="#5fd48a" stroke-width="2" opacity="0.6"/>
+  <circle cx="400" cy="200" r="30" fill="#5fd48a" opacity="0.15"/>
+  <text x="400" y="340" fill="#e5e5e5" font-family="monospace" font-size="20" text-anchor="middle">Seed Round — Closed</text>
+</svg>
