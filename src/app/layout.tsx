@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     url: baseUrl,
     siteName: "Telegraph Protocol",
     title: "Telegraph - A peer-to-peer ranking protocol for machine intelligence",
-    description: "Plug in once. Get the best available answer for every task.",
+    description: "A new way for humans and agents to find answers they can rely on",
     images: [
       {
         url: `${baseUrl}/telegraph-social-card.jpg`,
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Telegraph - A peer-to-peer ranking protocol for machine intelligence",
-    description: "Plug in once. Get the best available answer for every task.",
+    description: "A new way for humans and agents to find answers they can rely on",
     images: [`${baseUrl}/telegraph-social-card.jpg`],
     creator: "@telegraphprotocol",
   },
