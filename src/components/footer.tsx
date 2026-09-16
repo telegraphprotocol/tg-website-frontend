@@ -109,7 +109,7 @@ export function Footer() {
               Media
             </Link>
             <Link
-              href="/Whitepapers%20-%20Telegraph%20Protocol.pdf"
+              href="/Telegraph%20Protocol%20Whitepaper%20V2.0.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[var(--tg-fg-dim)] no-underline hover:text-[var(--tg-fg)]"

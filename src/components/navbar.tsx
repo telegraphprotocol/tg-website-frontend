@@ -19,7 +19,7 @@ import { useEffect, useRef, useState } from "react";
 
 const MACHINA_REPORT_URL = "/Machina_Token_Price_Scenarios_v66.pdf";
 const MACHINA_COINGECKO_URL = "https://www.coingecko.com/en/coins/machina-2";
-const WHITEPAPER_URL = "/Whitepapers%20-%20Telegraph%20Protocol.pdf";
+const WHITEPAPER_URL = "/Telegraph%20Protocol%20Whitepaper%20V2.0.pdf";
 
 const tokenReportBtnMobileClass =
   "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-amber-500/80 bg-amber-500/10 px-2 py-[9px] text-[11px] font-semibold uppercase tracking-[0.04em] text-amber-400 no-underline transition-colors hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300";
