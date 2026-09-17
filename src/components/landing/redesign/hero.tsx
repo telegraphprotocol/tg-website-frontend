@@ -2,6 +2,7 @@ import Image from "next/image";
 import { CtaButton } from "../cta-button";
 import { Reveal } from "../fx/reveal";
 import { Typewriter } from "../fx/typewriter";
+import { HeroStats } from "./hero-stats";
 
 export function RedesignHero() {
   return (
@@ -53,6 +54,10 @@ export function RedesignHero() {
         >
           See how it works
         </CtaButton>
+      </Reveal>
+
+      <Reveal delay={520}>
+        <HeroStats />
       </Reveal>
     </section>
   );
