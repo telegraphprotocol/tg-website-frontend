@@ -73,7 +73,7 @@ export function HeroStats() {
       />
       <Stat value={formatCount(stats.totalMiners)} label="Miners" live />
       <Stat value={formatCount(stats.totalApps)} label="Apps" live />
-      <Stat value="8 / 64" label="Nodes securing" />
+      <Stat value="8 / 64" label="Validators online" />
       <Stat value="Jan 2027" label="Mainnet" />
     </div>
   );
