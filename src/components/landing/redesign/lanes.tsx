@@ -60,7 +60,7 @@ function PayArrows() {
   return (
     <div className="hidden w-24 shrink-0 flex-col items-center justify-center gap-2 sm:flex">
       <div className="w-full text-center">
-        <span className="block text-[9px] text-[var(--tg-fg-faint)]">answer + receipt</span>
+        <span className="block text-[9px] text-[var(--tg-fg-dim)]">answer + receipt</span>
         <div className="relative mt-0.5 h-px w-full bg-[var(--tg-fg)]">
           <span
             aria-hidden
@@ -75,7 +75,7 @@ function PayArrows() {
             className="absolute left-0 top-1/2 -translate-y-1/2 border-y-[3px] border-r-[5px] border-y-transparent border-r-[var(--tg-line-strong)]"
           />
         </div>
-        <span className="mt-0.5 block text-[9px] text-[var(--tg-fg-faint)]">pays per request</span>
+        <span className="mt-0.5 block text-[9px] text-[var(--tg-fg-dim)]">pays per request</span>
       </div>
     </div>
   );
