@@ -45,8 +45,46 @@ export function Alexandria() {
         Alexandria.
       </SectionHeading>
 
-      <Reveal delay={150} className="mt-14 overflow-x-auto">
-        <div className="grid min-w-[680px] grid-cols-[160px_1fr_1fr] gap-x-5 gap-y-4">
+      {/* Mobile: stacked rows */}
+      <div className="mt-14 flex flex-col gap-8 md:hidden">
+        {rows.map((row, i) => (
+          <Reveal key={row.label} delay={i * 100}>
+            <div>
+              <span className="text-[13px] font-medium text-[var(--tg-fg)]">
+                {row.label}
+              </span>
+              <div className="mt-3 grid grid-cols-1 gap-3">
+                <div className="rounded-sm border border-[var(--tg-line)] bg-[var(--tg-surface)] px-5 py-4 text-center">
+                  <span className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-[var(--tg-fg-faint)]">
+                    Closed
+                  </span>
+                  <p className="m-0 text-[14px] font-medium text-[var(--tg-fg)]">
+                    {row.closed.heading}
+                  </p>
+                  <p className="m-0 mt-1.5 text-[12px] leading-[1.6] text-[var(--tg-fg-dim)]">
+                    {row.closed.text}
+                  </p>
+                </div>
+                <div className="rounded-sm border border-[var(--tg-line)] bg-[var(--tg-surface)] px-5 py-4 text-center">
+                  <span className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-[var(--tg-fg-faint)]">
+                    Open and permissionless
+                  </span>
+                  <p className="m-0 text-[14px] font-medium text-[var(--tg-fg)]">
+                    {row.open.heading}
+                  </p>
+                  <p className="m-0 mt-1.5 text-[12px] leading-[1.6] text-[var(--tg-fg-dim)]">
+                    {row.open.text}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* Desktop: 3-column table */}
+      <Reveal delay={150} className="mt-14 hidden md:block">
+        <div className="grid grid-cols-[160px_1fr_1fr] gap-x-5 gap-y-4">
           <span />
           <span className="text-center text-[11px] uppercase tracking-[0.2em] text-[var(--tg-fg-faint)]">
             Closed

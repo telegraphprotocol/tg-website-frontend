@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Reveal } from "../fx/reveal";
-import { Section, SectionHeading } from "./shared";
+import { ArrowDownLine, Section, SectionHeading } from "./shared";
 
 const lanes = [
   {
@@ -100,7 +100,68 @@ export function Lanes() {
         Global intelligence, local answers.
       </SectionHeading>
 
-      <Reveal delay={150} className="mt-14 overflow-x-auto">
+      {/* Mobile: stacked lanes */}
+      <div className="mt-14 flex flex-col gap-10 md:hidden">
+        {lanes.map((lane, i) => (
+          <Reveal key={lane.intent} delay={i * 100}>
+            <div className="flex flex-col items-stretch gap-2">
+              <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--tg-fg-faint)]">
+                Open supply
+              </span>
+              {lane.supply.map((s) => (
+                <div
+                  key={s}
+                  className="rounded-sm border border-[var(--tg-line)] bg-[var(--tg-bg)] px-3 py-2 text-[12px] text-[var(--tg-fg-dim)]"
+                >
+                  {s}
+                </div>
+              ))}
+
+              <ArrowDownLine className="my-1" />
+
+              <div className="rounded-sm border border-[var(--tg-line-strong)] bg-[var(--tg-surface-strong)] px-4 py-4">
+                <p className="m-0 mb-2 text-[13px] font-medium text-[var(--tg-fg)]">
+                  {lane.intent}
+                </p>
+                <ul className="m-0 space-y-1 p-0 text-[12px]">
+                  {lane.ranking.map((r, idx) => (
+                    <li
+                      key={r.name}
+                      className={`flex items-center gap-2 rounded-sm px-2.5 py-1.5 ${
+                        r.top
+                          ? "border border-[var(--tg-line-strong)] bg-[var(--tg-bg)] text-[var(--tg-fg)]"
+                          : "text-[var(--tg-fg-dim)]"
+                      }`}
+                    >
+                      <span className="w-3 text-[var(--tg-fg-faint)]">{idx + 1}</span>
+                      <span className="flex-1">{r.name}</span>
+                      <span className="tabular-nums">{r.score}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="my-1 flex flex-col items-center gap-1 text-center">
+                <span className="text-[10px] text-[var(--tg-fg-dim)]">answer + receipt</span>
+                <ArrowDownLine className="h-5" />
+                <span className="text-[10px] text-[var(--tg-fg-dim)]">pays per request</span>
+              </div>
+
+              <div className="rounded-sm border border-[var(--tg-line)] bg-[var(--tg-surface)] px-4 py-3">
+                <p className="m-0 text-[13px] font-medium text-[var(--tg-fg)]">
+                  {lane.query}
+                </p>
+                <p className="m-0 mt-1 text-[12px] leading-[1.5] text-[var(--tg-fg-dim)]">
+                  {lane.outcome}
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* Desktop: multi-lane diagram */}
+      <Reveal delay={150} className="mt-14 hidden overflow-x-auto md:block">
         <div className="grid min-w-[880px] grid-cols-[1fr_auto_1.5fr_auto_1fr] items-start gap-x-2">
           <div className="pb-4">
             <h3 className="m-0 text-[14px] font-medium text-[var(--tg-fg)]">
