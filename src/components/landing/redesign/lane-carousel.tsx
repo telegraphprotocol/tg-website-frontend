@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowDownLine } from "./shared";
 
 type Lane = {
@@ -65,13 +65,6 @@ export function LaneCarousel({ lanes }: { lanes: Lane[] }) {
   const [index, setIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
   const touchDeltaX = useRef(0);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setIndex((i) => (i + 1) % lanes.length);
-    }, 4500);
-    return () => clearInterval(id);
-  }, [lanes.length, index]);
 
   const goTo = (i: number) => setIndex((i + lanes.length) % lanes.length);
 
