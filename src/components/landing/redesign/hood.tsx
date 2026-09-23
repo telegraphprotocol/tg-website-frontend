@@ -57,7 +57,7 @@ export function Hood() {
 
       <Reveal delay={450} className="mt-10 text-center">
         <CtaButton
-          href="/Telegraph%20Protocol%20Whitepaper%20V2.0.pdf"
+          href="/Telegraph%20Whitepaper%20%26%20Specification%20V2.0.pdf"
           target="_blank"
           className="h-10 border border-black/10 hover:!bg-neutral-300"
         >

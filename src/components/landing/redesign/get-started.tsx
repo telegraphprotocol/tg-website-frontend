@@ -21,7 +21,7 @@ const items = [
   {
     label: "Read",
     text: "The full protocol in the whitepaper",
-    href: "/Telegraph%20Protocol%20Whitepaper%20V2.0.pdf",
+    href: "/Telegraph%20Whitepaper%20%26%20Specification%20V2.0.pdf",
   },
 ];
 
