@@ -1,7 +1,6 @@
 "use server"
 
 import { cookies } from "next/headers"
-import { redirect } from "next/navigation"
 import {
   DECK_COOKIE_NAME,
   DECK_SESSION_MAX_AGE_SECONDS,
@@ -12,6 +11,7 @@ import {
 
 export type LoginState = {
   error?: string
+  redirectTo?: string
 }
 
 export async function loginAction(_prevState: LoginState, formData: FormData): Promise<LoginState> {
@@ -38,5 +38,6 @@ export async function loginAction(_prevState: LoginState, formData: FormData): P
     maxAge: DECK_SESSION_MAX_AGE_SECONDS,
   })
 
-  redirect(from.startsWith("/deck") ? from : "/deck")
+  // Full-page navigation on the client: /deck resolves to a PDF, which a server action redirect can't render
+  return { redirectTo: from.startsWith("/deck") ? from : "/deck" }
 }

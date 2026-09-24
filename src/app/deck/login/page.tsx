@@ -1,6 +1,6 @@
 "use client"
 
-import { Suspense, useActionState } from "react"
+import { Suspense, useActionState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -22,6 +22,10 @@ function DeckLoginForm() {
   const searchParams = useSearchParams()
   const from = searchParams.get("from") ?? "/deck"
   const [state, formAction, isPending] = useActionState(loginAction, initialState)
+
+  useEffect(() => {
+    if (state.redirectTo) window.location.assign(state.redirectTo)
+  }, [state.redirectTo])
 
   return (
     <div className="flex min-h-[70vh] items-center justify-center px-4">
