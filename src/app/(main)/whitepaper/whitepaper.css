@@ -1,0 +1,165 @@
+/* Whitepaper page. Diagrams are drawn in CSS; everything is scoped under .wp and uses the site's --tg-* tokens. */
+.wp {
+  --wp-fg: var(--tg-fg);
+  --wp-text: var(--tg-fg-dim);
+  --wp-muted: var(--tg-fg-faint);
+  --wp-line: var(--tg-line-soft);
+  --wp-line-2: var(--tg-line-strong);
+  --wp-solid: var(--tg-bg);
+  --wp-card: var(--tg-surface);
+  --wp-soft: var(--tg-surface-hi);
+  --wp-fill: #f2f2f2;
+  --wp-on-fill: #000;
+}
+.wp-card { border-top-color: var(--tg-line); }
+
+/* ── Hero diagram ───────────────────────── */
+.wp-system { width: 100%; max-width: 500px; justify-self: center; background: var(--wp-solid); border: 1px solid var(--wp-line-2); font-size: 12px; color: var(--wp-fg); }
+.wp-system-head, .wp-ranking-title {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wp-muted);
+}
+.wp-system-head { padding: 13px 16px; border-bottom: 1px solid var(--wp-line-2); }
+.wp-live { display: inline-flex; align-items: center; gap: 8px; color: var(--wp-fg); }
+.wp-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--wp-fg); animation: wp-live 1.6s ease-out infinite; }
+@keyframes wp-live { 0%, 100% { opacity: 1; } 70% { opacity: 0.3; } }
+.wp-lanes { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--wp-line-2); }
+.wp-lane { padding: 18px 16px 16px; min-width: 0; }
+.wp-lane + .wp-lane { border-left: 1px solid var(--wp-line-2); }
+.wp-lane-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--wp-muted); margin: 0 0 12px; }
+.wp-lane ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 7px; }
+.wp-lane li { display: grid; gap: 6px; padding: 8px 10px; border: 1px solid var(--wp-line-2); background: var(--wp-card); transition: background 0.4s, border-color 0.4s, color 0.4s; }
+.wp-lane-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.wp-lane small { font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wp-muted); font-variant-numeric: tabular-nums; transition: color 0.4s; }
+.wp-bar { display: block; height: 3px; background: var(--wp-line); }
+.wp-bar > i { display: block; height: 100%; background: var(--wp-line-2); transition: width 0.9s cubic-bezier(.4, 0, .2, 1), background 0.4s; }
+.wp-lane li.is-top { border-color: var(--wp-fg); }
+.wp-lane li.is-top .wp-bar > i { background: var(--wp-fg); }
+.wp-lane li.is-top small { color: var(--wp-fg); }
+.wp-lane .wp-eval-list { position: relative; display: block; }
+.wp-eval-list li { position: absolute; left: 0; right: 0; top: 0; height: 37px; align-content: center; transition: transform 0.7s cubic-bezier(.4, 0, .2, 1), background 0.4s, border-color 0.4s, color 0.4s; }
+.wp-lane li.is-judge { background: var(--wp-fill); border-color: var(--wp-fill); color: var(--wp-on-fill); }
+.wp-lane li.is-judge small { color: var(--wp-on-fill); opacity: 0.75; }
+.wp-replace { margin: 0; padding: 14px 16px; min-height: 72px; border-bottom: 1px solid var(--wp-line-2); background: var(--wp-soft); line-height: 1.6; color: var(--wp-text); }
+.wp-replace strong { color: var(--wp-fg); font-weight: 600; }
+.wp-ranking { padding: 16px 16px 14px; }
+.wp-ranking-title { margin: 0 0 6px; }
+.wp-ranking ol { position: relative; list-style: none; padding: 0; margin: 0; overflow: hidden; }
+.wp-ranking li {
+  position: absolute; left: 0; right: 0; top: 0; height: 40px;
+  display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--wp-line); font-size: 13px;
+  transition: transform 0.7s cubic-bezier(.4, 0, .2, 1), opacity 0.5s;
+}
+.wp-rank-no { width: 24px; height: 24px; display: grid; place-items: center; border: 1px solid var(--wp-line-2); font-size: 10px; transition: background 0.4s, color 0.4s, border-color 0.4s; }
+.wp-ranking li.is-top .wp-rank-no { background: var(--wp-fill); border-color: var(--wp-fill); color: var(--wp-on-fill); }
+.wp-demand { margin-left: auto; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wp-fg); animation: wp-demand 1.6s ease-in-out infinite; }
+@keyframes wp-demand { 0%, 100% { transform: translateX(0); opacity: 1; } 50% { transform: translateX(4px); opacity: 0.55; } }
+.wp-route { margin: 2px 0 0; padding-top: 10px; border-top: 1px solid var(--wp-line); font-size: 11px; color: var(--wp-muted); }
+.wp-route strong { color: var(--wp-fg); font-weight: 500; }
+
+/* ── Task pipeline: four steps joined by arrows, each with a small illustration ── */
+.wp-steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px; }
+.wp-step { position: relative; animation: wp-step-card 4s infinite; animation-delay: calc(var(--i) * 1s); }
+@keyframes wp-step-card { 0%, 22% { border-top-color: var(--wp-fill); } 25%, 100% { border-top-color: var(--tg-line); } }
+.wp-step:not(:last-child)::after { content: ''; position: absolute; top: 72px; right: -24px; width: 18px; height: 1px; background: var(--wp-muted); }
+.wp-step:not(:last-child)::before {
+  content: ''; position: absolute; top: 69px; right: -25px;
+  border: 3.5px solid transparent; border-left: 5px solid var(--wp-muted); border-right: 0;
+}
+.wp-viz {
+  height: 96px; margin-bottom: 8px; padding: 12px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--wp-line-2); background: var(--wp-solid); font-size: 11px; color: var(--wp-fg);
+}
+.wp-viz ul, .wp-viz ol { list-style: none; padding: 0; margin: 0; width: 100%; }
+.wp-viz-task { display: grid; gap: 4px; padding: 10px 14px; border: 1px dashed var(--wp-line-2); text-align: center; }
+.wp-viz-task small { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wp-muted); }
+.wp-viz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.wp-viz-grid li { padding: 5px 0; text-align: center; border: 1px solid var(--wp-line-2); }
+.wp-viz-bars { display: grid; gap: 7px; }
+.wp-viz-bars li { display: grid; grid-template-columns: 48px 1fr; align-items: center; gap: 8px; }
+.wp-viz-bars span { color: var(--wp-muted); }
+.wp-viz-bars i { display: block; height: 7px; background: var(--wp-line-2); }
+.wp-viz-bars li:first-child i { background: var(--wp-fg); }
+.wp-viz-rank { display: grid; gap: 4px; }
+.wp-viz-rank li { display: flex; align-items: center; gap: 8px; }
+.wp-viz-rank b { width: 18px; height: 18px; display: grid; place-items: center; border: 1px solid var(--wp-line-2); font-size: 9px; font-weight: 400; }
+.wp-viz-rank li:first-child b { background: var(--wp-fill); border-color: var(--wp-fill); color: var(--wp-on-fill); }
+.wp-viz-rank em { margin-left: auto; font-style: normal; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wp-muted); }
+
+/* ── Comparison: vertical steps joined by a rail; Telegraph's loops back to the start ── */
+.wp-diagram { position: relative; margin: 12px 0 10px; color: var(--wp-fg); }
+.wp-loop { padding-right: 46px; }
+.wp-nodes { list-style: none; padding: 0; margin: 0; display: grid; gap: 22px; }
+.wp-node { position: relative; display: flex; align-items: center; gap: 12px; padding: 11px 14px; border: 1px solid var(--wp-line-2); background: var(--wp-solid); font-size: 13px; }
+.wp-node + .wp-node::before { content: ''; position: absolute; left: 26px; top: -23px; width: 1px; height: 22px; background: var(--wp-line-2); }
+.wp-node + .wp-node::after {
+  content: ''; position: absolute; left: 23px; top: -6px;
+  border: 3.5px solid transparent; border-top: 5px solid var(--wp-muted); border-bottom: 0;
+}
+.wp-node-n { flex: none; width: 26px; height: 26px; display: grid; place-items: center; border: 1px solid var(--wp-line-2); font-size: 10px; letter-spacing: 0.05em; }
+.wp-node-text { min-width: 0; }
+.wp-node small { margin-left: auto; text-align: right; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wp-muted); }
+.wp-node.is-fixed { border-style: dashed; background: repeating-linear-gradient(135deg, transparent 0 6px, var(--wp-line) 6px 7px), var(--wp-solid); }
+.wp-node.is-fixed small { color: var(--wp-fg); }
+/* Several Evaluators competing: the step is drawn as a stack. */
+.wp-node.is-stack {
+  margin-right: 8px;
+  box-shadow: 4px 4px 0 -1px var(--wp-solid), 4px 4px 0 0 var(--wp-line-2), 8px 8px 0 -1px var(--wp-solid), 8px 8px 0 0 var(--wp-line-2);
+}
+.wp-loop .wp-node-n { animation: wp-step 4s infinite; animation-delay: calc(var(--i) * 1s); }
+@keyframes wp-step {
+  0%, 22% { background: var(--wp-fill); border-color: var(--wp-fill); color: var(--wp-on-fill); }
+  25%, 100% { background: transparent; border-color: var(--wp-line-2); color: inherit; }
+}
+/* Return rail from the last step back to the first, with an arrowhead into step 01. */
+.wp-return { position: absolute; right: 12px; top: 25px; bottom: 25px; width: 22px; border: 1px solid var(--wp-line-2); border-left: 0; }
+.wp-return::before {
+  content: ''; position: absolute; left: -2px; top: -4px;
+  border: 3.5px solid transparent; border-right: 5px solid var(--wp-muted); border-left: 0;
+}
+.wp-return > span {
+  position: absolute; right: -7px; top: 50%; transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl; padding: 8px 0; background: var(--wp-card);
+  font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wp-muted); white-space: nowrap;
+}
+
+/* ── Closing block: system chain, document card, next steps ── */
+.wp-chain { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(3, max-content); gap: 10px 26px; }
+.wp-chain li { position: relative; display: flex; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid var(--wp-line-2); background: var(--wp-solid); font-size: 13px; color: var(--wp-fg); }
+.wp-chain li:not(:nth-child(3n))::after { content: ''; position: absolute; right: -20px; top: 50%; width: 14px; height: 1px; background: var(--wp-muted); }
+@media (max-width: 560px) {
+  .wp-chain { grid-template-columns: repeat(2, max-content); }
+  .wp-chain li:nth-child(n)::after { content: ''; }
+  .wp-chain li:nth-child(2n)::after { content: none; }
+}
+.wp-doc {
+  display: flex; flex-direction: column; gap: 14px; padding: 24px 22px; min-height: 300px;
+  background: var(--wp-card); border: 1px solid var(--wp-line-2);
+  box-shadow: 8px 8px 0 -1px var(--tg-bg), 8px 8px 0 0 var(--wp-line-2);
+  text-decoration: none; transition: transform 0.2s;
+}
+.wp-doc:hover { transform: translateY(-3px); }
+.wp-doc-top { display: flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wp-muted); }
+.wp-doc-title { font-size: 18px; line-height: 1.3; color: var(--wp-fg); }
+.wp-doc-lines { display: grid; gap: 8px; }
+.wp-doc-lines i { display: block; height: 6px; background: var(--wp-line); }
+.wp-doc-lines i:nth-child(2) { width: 82%; }
+.wp-doc-lines i:nth-child(3) { width: 64%; }
+.wp-doc-mark { display: grid; gap: 6px; padding: 10px 12px; background: var(--wp-fill); color: var(--wp-on-fill); font-size: 12px; }
+.wp-doc-mark-top { display: flex; justify-content: space-between; gap: 12px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; }
+.wp-doc-open { margin-top: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--wp-fg); }
+.wp-next-card:hover .wp-next-icon { background: var(--wp-fill); border-color: var(--wp-fill); color: var(--wp-on-fill); }
+
+@media (max-width: 980px) {
+  .wp-steps { grid-template-columns: 1fr; }
+  .wp-step:not(:last-child)::after { top: auto; bottom: -24px; right: auto; left: 50%; width: 1px; height: 18px; }
+  .wp-step:not(:last-child)::before { top: auto; bottom: -25px; right: auto; left: calc(50% - 3px); border: 3.5px solid transparent; border-top: 5px solid var(--wp-muted); border-bottom: 0; }
+  .wp-viz { max-width: 360px; }
+  .wp-system { justify-self: start; }
+  .wp-doc { max-width: 380px; min-height: 0; }
+}
+@media (max-width: 520px) {
+  .wp-lanes { grid-template-columns: 1fr; }
+  .wp-lane + .wp-lane { border-left: 0; border-top: 1px solid var(--wp-line-2); }
+}
+@media (prefers-reduced-motion: reduce) { .wp-dot, .wp-loop .wp-node-n, .wp-step, .wp-demand { animation: none; } }

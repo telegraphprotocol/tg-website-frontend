@@ -3,6 +3,7 @@ import { Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { XPixel } from "@/components/x-pixel";
 
 const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
@@ -93,6 +94,7 @@ export default function RootLayout({
         className={`${robotoMono.variable} font-mono antialiased bg-black text-foreground`}
       >
         <GoogleAnalytics />
+        <XPixel />
         <Providers>{children}</Providers>
       </body>
     </html>

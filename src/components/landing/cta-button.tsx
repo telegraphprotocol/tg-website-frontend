@@ -18,6 +18,7 @@ export function CtaButton({
   className = "",
   children,
   arrow = true,
+  onClick,
 }: {
   href: string;
   variant?: Variant;
@@ -25,11 +26,13 @@ export function CtaButton({
   className?: string;
   children: ReactNode;
   arrow?: boolean;
+  onClick?: () => void;
 }) {
   return (
     <Link
       href={href}
       target={target}
+      onClick={onClick}
       className={`group tg-glitch-hover inline-flex items-center gap-2.5 whitespace-nowrap rounded-sm px-[18px] py-[11px] text-[14px] font-medium leading-none no-underline transition-all ${styles[variant]} ${className}`}
     >
       {children}
