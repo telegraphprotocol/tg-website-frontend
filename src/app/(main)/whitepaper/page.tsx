@@ -33,11 +33,20 @@ export const metadata: Metadata = {
     description,
     url: `${baseUrl}/whitepaper`,
     type: "website",
+    images: [
+      {
+        url: `${baseUrl}/telegraph-social-card.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Telegraph Protocol",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Whitepaper | Telegraph Protocol",
     description,
+    images: [`${baseUrl}/telegraph-social-card.jpg`],
   },
   alternates: {
     canonical: `${baseUrl}/whitepaper`,
@@ -143,8 +152,10 @@ export default function WhitepaperPage() {
         <div className="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div>
             <Eyebrow>Whitepaper</Eyebrow>
-            <h1 className="m-0 mt-5 max-w-[640px] text-balance text-[clamp(34px,4.6vw,58px)] font-normal leading-[1.1] tracking-[0.005em] text-[var(--tg-fg)]">
-              Intelligence competes. So does the way it is measured.
+            <h1 className="m-0 mt-5 max-w-[640px] text-balance text-[clamp(18px,6.8vw,52px)] font-normal lg:text-[clamp(32px,3.3vw,42px)] leading-[1.1] tracking-[0.005em] text-[var(--tg-fg)]">
+              <span className="whitespace-nowrap">Intelligence competes.</span>
+              <br />
+              So does the way it is measured.
             </h1>
             <p className="m-0 mt-6 max-w-[600px] text-pretty text-[15px] leading-[1.85] text-[var(--tg-fg-dim)]">
               Telegraph is a peer-to-peer ranking protocol for machine intelligence. Models, APIs, datasets and tools
