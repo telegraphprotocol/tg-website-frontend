@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BookOpen } from "lucide-react";
-import { useRedesignTheme } from "./landing/redesign/theme-context";
+import { THEMED_PATHS, useRedesignTheme } from "./landing/redesign/theme-context";
 
 const GUIDE_URL = "https://guide.telegraphprotocol.com";
 
@@ -46,7 +46,7 @@ function MiniBar({ pct }: { pct: number }) {
 function useGuideChipTone() {
   const pathname = usePathname();
   const { theme } = useRedesignTheme();
-  const isLight = pathname === "/" && theme === "light";
+  const isLight = THEMED_PATHS.includes(pathname) && theme === "light";
   return isLight
     ? "bg-black/[0.05] text-[#101012] hover:bg-black/[0.09]"
     : "bg-[#1a1a1a] text-[var(--tg-fg)] hover:bg-[#222]";

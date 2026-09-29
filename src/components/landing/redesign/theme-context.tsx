@@ -10,18 +10,21 @@ import {
 
 const STORAGE_KEY = "tg-redesign-theme";
 
+/** Pages that follow the light/dark toggle. Every other page stays dark. */
+export const THEMED_PATHS = ["/", "/whitepaper"];
+
 type Theme = "dark" | "light";
 
 const RedesignThemeContext = createContext<{
   theme: Theme;
   setTheme: (theme: Theme) => void;
 }>({
-  theme: "dark",
+  theme: "light",
   setTheme: () => {},
 });
 
 export function RedesignThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY);

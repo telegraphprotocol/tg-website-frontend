@@ -8,8 +8,8 @@
   --wp-solid: var(--tg-bg);
   --wp-card: var(--tg-surface);
   --wp-soft: var(--tg-surface-hi);
-  --wp-fill: #f2f2f2;
-  --wp-on-fill: #000;
+  --wp-fill: var(--tg-fg);
+  --wp-on-fill: var(--tg-bg);
 }
 .wp-card { border-top-color: var(--tg-line); }
 

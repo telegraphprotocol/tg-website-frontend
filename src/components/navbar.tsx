@@ -17,7 +17,7 @@ import {
 import { FaDiscord, FaXTwitter } from "react-icons/fa6";
 import { CtaButton } from "./landing/cta-button";
 import { GuideNavLink, GuideNavLinkOverlay } from "./guide-nav-link";
-import { useRedesignTheme } from "./landing/redesign/theme-context";
+import { THEMED_PATHS, useRedesignTheme } from "./landing/redesign/theme-context";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -35,7 +35,7 @@ export function Navbar() {
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const isThemed = THEMED_PATHS.includes(pathname);
   const { theme, setTheme } = useRedesignTheme();
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export function Navbar() {
   }, [moreOpen]);
 
   const close = () => setOpen(false);
-  const isLight = isHome && theme === "light";
+  const isLight = isThemed && theme === "light";
   const chipTone = isLight
     ? "bg-black/[0.05] text-[#101012] hover:bg-black/[0.09]"
     : "bg-[#1a1a1a] text-[#e9e9e9] hover:bg-[#222]";
@@ -116,7 +116,7 @@ export function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-3">
-          {isHome ? (
+          {isThemed ? (
             <button
               type="button"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -262,7 +262,7 @@ export function Navbar() {
 
         {/* Mobile actions */}
         <div className="md:hidden flex shrink-0 items-center gap-2">
-          {isHome ? (
+          {isThemed ? (
             <button
               type="button"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

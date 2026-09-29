@@ -47,6 +47,7 @@ export const metadata: Metadata = {
 const card = "rounded-sm border border-[var(--tg-line)] bg-[var(--tg-surface)] p-6";
 const cardIdx = "text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--tg-fg-faint)]";
 const cardTitle = "m-0 text-[15px] font-medium text-[var(--tg-fg)]";
+const primaryBtn = "border border-black/10 hover:!bg-neutral-300";
 const cardBody = "m-0 text-[13px] leading-[1.7] text-[var(--tg-fg-dim)]";
 
 const STEPS = [
@@ -127,8 +128,8 @@ const NEXT: { icon: LucideIcon; title: string; body: string; href: string; exter
 function Actions() {
   return (
     <div className="mt-8 flex flex-wrap items-center gap-3">
-      <WhitepaperButton href={THESIS_PDF}>Read the thesis</WhitepaperButton>
-      <WhitepaperButton variant="dark" className="border border-[var(--tg-line)]">
+      <WhitepaperButton href={THESIS_PDF} className={primaryBtn}>Read the thesis</WhitepaperButton>
+      <WhitepaperButton variant="dark" className="border border-[var(--tg-line)] !text-[#e9e9e9]">
         Open the full specification
       </WhitepaperButton>
     </div>
@@ -175,7 +176,7 @@ export default function WhitepaperPage() {
             Better intelligence can earn more demand. A better Evaluator can replace a weaker one. The system can
             improve on both sides without Telegraph deciding the winner.
           </p>
-          <WhitepaperButton href={THESIS_PDF}>Read the thesis</WhitepaperButton>
+          <WhitepaperButton href={THESIS_PDF} className={primaryBtn}>Read the thesis</WhitepaperButton>
         </div>
       </Section>
 
