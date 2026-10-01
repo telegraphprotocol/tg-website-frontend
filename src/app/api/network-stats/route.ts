@@ -7,7 +7,8 @@ const ALEXANDRIA_API_BASE_URL = "https://alexandria.telegraphprotocol.com";
 // since there's no dedicated lifetime-count endpoint (same approach telegraph-explorer uses).
 const ALL_TIME_SINCE_HOURS = 24 * 365 * 5;
 
-export const revalidate = 300;
+// Fetched at request time so a flaky upstream can't fail `next build`; each fetch below is still cached for 5 min
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const [minersRes, signalsRes, appsRes] = await Promise.allSettled([
