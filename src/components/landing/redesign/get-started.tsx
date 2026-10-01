@@ -27,7 +27,7 @@ const BUILD: Item & { sub: string; cta: string } = {
   sub: "Plug in once and get the best-ranked intelligence for the job, for your agent, app or integration.",
   cta: "Start building",
   who: "Builders",
-  href: "https://docs.telegraphprotocol.com/",
+  href: "https://integrate.telegraphprotocol.com/integrate",
   icon: Bot,
 };
 
