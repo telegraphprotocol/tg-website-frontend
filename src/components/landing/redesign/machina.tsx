@@ -30,7 +30,7 @@ export function Machina() {
             <div
               className={`h-full rounded-sm border p-6 text-left ${
                 p.highlight
-                  ? "border-[var(--tg-fg)] bg-[var(--tg-surface-strong)]"
+                  ? "border-[var(--tg-line)] bg-[var(--tg-surface-strong)]"
                   : "border-[var(--tg-line)] bg-[var(--tg-surface)]"
               }`}
             >
@@ -40,7 +40,7 @@ export function Machina() {
               <p
                 className={`m-0 mt-4 text-[18px] ${
                   p.highlight
-                    ? "font-medium text-[var(--tg-fg)]"
+                    ? "text-[var(--tg-fg)]"
                     : "text-[var(--tg-fg-dim)]"
                 }`}
               >
