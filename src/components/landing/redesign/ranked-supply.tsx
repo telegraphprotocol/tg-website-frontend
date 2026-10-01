@@ -1,6 +1,6 @@
 import type { Demo } from "./intent-demos";
 
-const ROW_H = 60;
+const DEFAULT_ROW_H = 60;
 // Provider i sits at row SHUFFLE[i] while the request resolves, so the reorder is visible
 const SHUFFLE = [2, 0, 1];
 
@@ -10,11 +10,14 @@ export function RankedSupplyRows({
   demo,
   resolving,
   answered,
+  rowHeight = DEFAULT_ROW_H,
 }: {
   demo: Demo;
   resolving: boolean;
   answered: boolean;
+  rowHeight?: number;
 }) {
+  const ROW_H = rowHeight;
   return (
     <>
       <div className="grid grid-cols-[2rem_1fr_5.5rem_4rem] items-center gap-x-3 px-3 pb-2 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--tg-fg-faint)]">
