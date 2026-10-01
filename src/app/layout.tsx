@@ -23,11 +23,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default:
-      "Telegraph - A machine intelligence protocol for autonomous systems",
+      "Telegraph - A network that turns intelligence into a graded commodity.",
     template: "%s | Telegraph Protocol",
   },
-  description:
-    "Telegraph is the network that turns intelligence into a graded commodity. Competing providers are ranked by performance for each Intent, and paid demand follows performance.",
+  description: "Ranked by performance. Driven by demand.",
   keywords: [
     "AI on-chain",
     "blockchain AI",
@@ -53,8 +52,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: baseUrl,
     siteName: "Telegraph Protocol",
-    title: "Telegraph - A peer-to-peer ranking protocol for machine intelligence",
-    description: "A new way for humans and agents to find answers they can rely on.",
+    title: "Telegraph - A network that turns intelligence into a graded commodity.",
+    description: "Ranked by performance. Driven by demand.",
     images: [
       {
         url: `${baseUrl}/telegraph-social-card.jpg`,
@@ -66,8 +65,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Telegraph - A peer-to-peer ranking protocol for machine intelligence",
-    description: "A new way for humans and agents to find answers they can rely on.",
+    title: "Telegraph - A network that turns intelligence into a graded commodity.",
+    description: "Ranked by performance. Driven by demand.",
     images: [`${baseUrl}/telegraph-social-card.jpg`],
     creator: "@telegraphprotocol",
   },
