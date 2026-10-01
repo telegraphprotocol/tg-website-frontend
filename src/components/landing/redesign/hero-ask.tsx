@@ -121,9 +121,6 @@ export function HeroAsk() {
         <div className="p-5 md:p-7">
           <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
             <Label>Ask the network</Label>
-            <span className="rounded-full border border-[var(--tg-line-strong)] bg-[var(--tg-bg)] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-[var(--tg-fg-dim)]">
-              Preview · Mainnet Jan 2027
-            </span>
           </div>
 
           <form
