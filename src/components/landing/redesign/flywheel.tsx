@@ -45,14 +45,29 @@ export function RedesignFlywheel() {
           className="mx-auto w-full max-w-[880px]"
           fill="none"
         >
-          <ellipse cx={CX} cy={CY} rx={RX} ry={RY} stroke={LINE} strokeWidth={1.2} />
+          {/* Dashed loop whose dashes travel clockwise, the same direction as the arrows */}
+          <ellipse
+            cx={CX}
+            cy={CY}
+            rx={RX}
+            ry={RY}
+            stroke="var(--tg-fg-dim)"
+            strokeWidth={1.6}
+            strokeDasharray="6 6"
+            className="tg-flow-path"
+            style={{ animationDuration: "0.6s" }}
+          />
 
           {arrows.map((a, i) => (
             <polygon
               key={i}
-              points="-6,-4.5 6,0 -6,4.5"
+              points="-12,-9 12,0 -12,9 -6,0"
               transform={`translate(${a.x} ${a.y}) rotate(${a.angle})`}
-              fill={LINE}
+              fill="var(--tg-fg)"
+              stroke="var(--tg-bg)"
+              strokeWidth={5}
+              strokeLinejoin="round"
+              paintOrder="stroke"
             />
           ))}
 

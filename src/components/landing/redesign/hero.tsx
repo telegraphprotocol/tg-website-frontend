@@ -4,7 +4,7 @@ import { HeroStats } from "./hero-stats";
 export function RedesignHero() {
   return (
     <section className="relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center border-b border-[var(--tg-line)] px-4 py-20 text-center md:px-8">
-      <h1 className="m-0 mb-6 max-w-[900px] text-balance text-[clamp(34px,6vw,72px)] font-normal leading-[1.1] tracking-[0.005em] text-[var(--tg-fg)]">
+      <h1 className="m-0 mb-6 max-w-[900px] text-balance text-[clamp(27px,4.8vw,58px)] font-normal leading-[1.1] tracking-[0.005em] text-[var(--tg-fg)]">
         A network that turns intelligence into a graded commodity.
       </h1>
 

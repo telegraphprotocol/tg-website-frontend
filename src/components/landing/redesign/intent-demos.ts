@@ -1,6 +1,6 @@
 // The canonical demo Intents, shared by the hero and the Alexandria preview. Illustrative data only.
 
-export const RESOLVE_MS = 900;
+export const RESOLVE_MS = 600;
 
 // Timings for the automatic demos (hero and Alexandria preview)
 export const TYPE_MS = 22; // per character while the demo types its question

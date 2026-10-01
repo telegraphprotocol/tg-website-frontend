@@ -43,7 +43,7 @@ export function RankedSupplyRows({
                 height: ROW_H,
                 animationDelay: `${i * 80}ms`,
               }}
-              className={`tg-row-in absolute inset-x-0 grid grid-cols-[2rem_1fr_5.5rem_4rem] items-center gap-x-3 border-l-2 px-3 text-[14px] transition-[top,background-color] duration-500 ease-in-out ${
+              className={`tg-row-in absolute inset-x-0 grid grid-cols-[2rem_1fr_5.5rem_4rem] items-center gap-x-3 border-l-2 px-3 text-[14px] transition-[top,background-color] duration-300 ease-in-out ${
                 selected
                   ? "border-l-[var(--tg-fg)] bg-[var(--tg-surface-hi)]"
                   : "border-l-transparent"
