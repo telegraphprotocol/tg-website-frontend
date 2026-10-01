@@ -28,8 +28,7 @@ export function Machina() {
         {prices.map((p, i) => (
           <Reveal key={p.label} delay={i * 120}>
             <div
-              style={{ animationDelay: `${i * 500}ms` }}
-              className={`tg-pulse h-full rounded-sm border p-6 text-left ${
+              className={`h-full rounded-sm border p-6 text-left ${
                 p.highlight
                   ? "border-[var(--tg-fg)] bg-[var(--tg-surface-strong)]"
                   : "border-[var(--tg-line)] bg-[var(--tg-surface)]"
