@@ -1,5 +1,5 @@
 import { Reveal } from "../fx/reveal";
-import { ArrowDownLine, Eyebrow, Section, SectionHeading } from "./shared";
+import { ArrowDownLine, Section, SectionHeading } from "./shared";
 
 const DIAMONDS = [
   "different quality",
@@ -59,8 +59,14 @@ function Column({
 }) {
   return (
     <div className="mx-auto w-full max-w-[340px]">
-      <div className="mb-5 text-center">
-        <Eyebrow>{title}</Eyebrow>
+      <div className="mb-6 border-b border-[var(--tg-line-strong)] pb-4 text-center">
+        <h3
+          className={`m-0 text-[17px] font-medium uppercase tracking-[0.2em] ${
+            muted ? "text-[var(--tg-fg-dim)]" : "text-[var(--tg-fg)]"
+          }`}
+        >
+          {title}
+        </h3>
       </div>
       {steps.map((step, i) => (
         <div key={step}>

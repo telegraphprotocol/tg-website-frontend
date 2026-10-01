@@ -49,9 +49,9 @@ export function HeroAsk() {
 
   return (
     <div className="mx-auto mt-12 w-full max-w-[1100px] overflow-hidden rounded-md border border-[var(--tg-line-strong)] bg-[var(--tg-surface-strong)] text-left shadow-[0_12px_40px_rgba(0,0,0,0.10)]">
-      <div className="grid lg:grid-cols-[1.1fr_1fr]">
-        {/* Left: ask + result */}
-        <div className="p-5 md:p-7">
+      {/* Top: the question, full width so it is always readable */}
+      <div className="border-b border-[var(--tg-line-strong)] p-5 md:p-7">
+        <div>
           <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
             <Label>Ask the network</Label>
           </div>
@@ -105,8 +105,13 @@ export function HeroAsk() {
               );
             })}
           </div>
+        </div>
+      </div>
 
-          <div className="mt-6 flex items-center gap-2.5">
+      <div className="grid lg:grid-cols-[1.1fr_1fr]">
+        {/* Left: resolved Intent + result */}
+        <div className="p-5 md:p-7">
+          <div className="flex items-center gap-2.5">
             <Label>Intent</Label>
             <span className="rounded-sm border border-[var(--tg-line-strong)] bg-[var(--tg-bg)] px-2 py-1 font-mono text-[12px] text-[var(--tg-fg)]">
               {resolving ? (
