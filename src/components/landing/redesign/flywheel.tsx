@@ -152,6 +152,15 @@ export function RedesignFlywheel() {
           </div>
         </div>
       </Reveal>
+
+      {/* Bridge into the Machina section; kept out of the diagram so the loop stays the core network mechanism */}
+      <Reveal delay={200} className="mt-12">
+        <p className="m-0 mx-auto max-w-[780px] text-pretty text-center text-[14px] leading-[1.85] text-[var(--tg-fg-dim)]">
+          As paid demand gives graded intelligence economic value, MACHINA
+          becomes the unit through which that intelligence commodity is priced
+          and the network around it is rewarded.
+        </p>
+      </Reveal>
     </Section>
   );
 }

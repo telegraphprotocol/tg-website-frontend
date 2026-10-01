@@ -18,7 +18,7 @@ export function Machina() {
   return (
     <Section>
       <SectionHeading
-        lede="Stocks and most tokens price a company or a project. Machina prices the intelligence commodity itself, rewarding the validators and evaluators who check and grade every answer."
+        lede="Stocks and most tokens price a company or a project. Machina prices the intelligence commodity itself, rewarding the validators and evaluators who verify the network and continually improve how intelligence is measured."
       >
         Machina is the unit cost of graded intelligence.
       </SectionHeading>
