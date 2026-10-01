@@ -37,7 +37,7 @@ function Grade({ value }: { value: string }) {
 
 export function AlexandriaPreview() {
   const [demoId, setDemoId] = useState(DEMOS[0].id);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(DEMOS[0].query);
   const [resolving, setResolving] = useState(false);
   const [answered, setAnswered] = useState(false);
   const [history, setHistory] = useState<string[]>([]);
