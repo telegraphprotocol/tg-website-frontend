@@ -17,11 +17,13 @@ export function EarnHero() {
           variant="blur"
           className="mx-auto m-0 max-w-[620px] text-pretty text-[14px] leading-[1.85] text-[var(--tg-fg-dim)]"
         >
-          Telegraph is an open machine economy where Miners are priced,
-          traded, and rewarded for real usage — whether what they provide is
-          a model, a dataset, a tool, or any other API. Whether you become a
-          Miner, write the grading logic, run infrastructure, or build with
-          verified answers, there is a path to earn — and it starts here.
+          Telegraph is the network that turns intelligence into a graded
+          commodity. Providers are ranked by performance for each Intent and
+          rewarded when paid demand follows — whether what they provide is a
+          model, an API, a dataset, an algorithm, a search system or a tool.
+          Whether you supply intelligence, build Evaluators, run a Validator,
+          or build with the network, there is a path to earn — and it starts
+          here.
         </Reveal>
       </div>
     </section>

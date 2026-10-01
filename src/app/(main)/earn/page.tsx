@@ -7,13 +7,13 @@ const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://telegraphprotocol.com";
 
 export const metadata: Metadata = {
-  title: "Earn - Mine, Validate & Build on Telegraph",
+  title: "Earn - Supply, Evaluate, Verify & Build on Telegraph",
   description:
-    "Earn on Telegraph Protocol. Become a miner, script author, run a node, build with verified signal APIs, or query the Terminal - every contribution to the machine economy is rewarded.",
+    "Earn on Telegraph, the network that turns intelligence into a graded commodity. Supply intelligence as a provider, build Evaluators, run a Validator, build with the network, or query through Alexandria - paid demand follows performance.",
   openGraph: {
-    title: "Earn on Telegraph - Mine, Validate & Build",
+    title: "Earn on Telegraph - Supply, Evaluate, Verify & Build",
     description:
-      "Five ways to earn on Telegraph: mine signals, author scripts, run a node, build with signal APIs, or launch the Terminal.",
+      "Five ways to earn on Telegraph: supply intelligence, build Evaluators, query with Alexandria, build with the network, or run a Validator.",
     url: `${baseUrl}/earn`,
     type: "website",
     images: [
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Earn on Telegraph - Mine, Validate & Build",
+    title: "Earn on Telegraph - Supply, Evaluate, Verify & Build",
     description:
-      "Five ways to earn on Telegraph: mine signals, author scripts, run a node, build with signal APIs, or launch the Terminal.",
+      "Five ways to earn on Telegraph: supply intelligence, build Evaluators, query with Alexandria, build with the network, or run a Validator.",
     images: [`${baseUrl}/telegraph-social-card.jpg`],
   },
   alternates: {

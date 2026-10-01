@@ -175,12 +175,17 @@ export function HeroAsk() {
 
         {/* Right: ranked supply */}
         <div className="border-t border-[var(--tg-line-strong)] bg-[var(--tg-bg)] p-5 md:p-7 lg:border-l lg:border-t-0">
-          <div className="mb-5 flex items-center gap-2">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              </span>
+              <Label>Live board · top-ranked supply per Intent</Label>
+            </div>
+            <span className="font-mono text-[11px] text-[var(--tg-fg-dim)]">
+              {demo.intent}
             </span>
-            <Label>Ranked supply · {demo.intent}</Label>
           </div>
 
           <RankedSupplyRows

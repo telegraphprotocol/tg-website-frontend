@@ -10,8 +10,8 @@ const LINE = "var(--tg-line-strong)";
 // One causal loop, clockwise from the top. Each step names the participant driving it.
 const nodes = [
   { x: 400, y: 70, tag: "Providers", lines: ["More + better", "intelligence supply"] },
-  { x: 685.8, y: 185, tag: "Evaluators", lines: ["Better evaluation", "measures performance"] },
-  { x: 685.8, y: 415, tag: "Validators", lines: ["Supply becomes", "comparable + ranked"] },
+  { x: 685.8, y: 185, tag: "Evaluators", lines: ["Measure performance +", "make supply comparable"] },
+  { x: 685.8, y: 415, tag: "Validators", lines: ["Verify + finalize", "rankings"] },
   { x: 400, y: 530, tag: "Consumers", lines: ["Paid demand flows", "toward performance"] },
   { x: 114.2, y: 415, tag: "Economics", lines: ["Graded intelligence gains", "economic value"] },
   { x: 114.2, y: 185, tag: "Participation", lines: ["Economic opportunity attracts", "better supply + evaluation"] },

@@ -82,7 +82,7 @@ export function AlexandriaPreview() {
   const record: { label: string; value: string }[] = [
     { label: "Served by", value: winner.name },
     { label: "Intent", value: demo.intent },
-    { label: "Provider grade", value: winner.grade.toFixed(2) },
+    { label: "Performance", value: winner.grade.toFixed(2) },
     { label: "Confidence", value: demo.confidence },
     { label: "Verified by", value: "43 of 64 validators" },
     { label: "Price", value: winner.price },
