@@ -3,9 +3,9 @@ import { MachinaLoop } from "./machina-loop";
 import { Section, SectionHeading } from "./shared";
 
 const prices = [
-  { label: "Stocks", text: "price a company", highlight: false },
-  { label: "Most tokens", text: "price a project", highlight: false },
-  { label: "Machina", text: "prices graded intelligence", highlight: true },
+  { label: "Stocks", text: "price a company" },
+  { label: "Most tokens", text: "price a project" },
+  { label: "Machina", text: "prices graded intelligence" },
 ];
 
 const loop = [
@@ -28,22 +28,12 @@ export function Machina() {
         {prices.map((p, i) => (
           <Reveal key={p.label} delay={i * 120}>
             <div
-              className={`h-full rounded-sm border p-6 text-left ${
-                p.highlight
-                  ? "border-[var(--tg-line)] bg-[var(--tg-surface-strong)]"
-                  : "border-[var(--tg-line)] bg-[var(--tg-surface)]"
-              }`}
+              className="h-full rounded-sm border border-[var(--tg-line)] bg-[var(--tg-surface)] p-6 text-left"
             >
               <span className="block text-[11px] uppercase tracking-[0.2em] text-[var(--tg-fg-faint)]">
                 {p.label}
               </span>
-              <p
-                className={`m-0 mt-4 text-[18px] ${
-                  p.highlight
-                    ? "text-[var(--tg-fg)]"
-                    : "text-[var(--tg-fg-dim)]"
-                }`}
-              >
+              <p className="m-0 mt-4 text-[18px] text-[var(--tg-fg-dim)]">
                 {p.text}
               </p>
             </div>
