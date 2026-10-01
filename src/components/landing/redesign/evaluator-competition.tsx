@@ -6,20 +6,30 @@ import {
   SectionHeading,
 } from "./shared";
 
-function Challenger({ className }: { className: string }) {
+function Challenger({
+  className,
+  delayMs,
+}: {
+  className: string;
+  delayMs: number;
+}) {
   return (
     <div
-      className={`flex h-14 flex-col items-center justify-center rounded-sm border border-[var(--tg-line-strong)] bg-[var(--tg-bg)] px-4 text-center text-[13px] text-[var(--tg-fg-dim)] ${className}`}
+      style={{ animationDelay: `${delayMs}ms` }}
+      className={`tg-pulse flex h-14 flex-col items-center justify-center rounded-sm border border-[var(--tg-line-strong)] bg-[var(--tg-bg)] px-4 text-center text-[13px] text-[var(--tg-fg-dim)] ${className}`}
     >
       Challenger Evaluator
-      <span className="mt-0.5 text-[11px] text-[var(--tg-fg-faint)]">
-        proposes a better method
+      <span className="relative mt-0.5 block h-4 w-full text-[11px] text-[var(--tg-fg-faint)]">
+        <span className="tg-swap-a absolute inset-0">proposes a better method</span>
+        <span className="tg-swap-b absolute inset-0 text-[var(--tg-fg)]">
+          outperforms the standard
+        </span>
       </span>
     </div>
   );
 }
 
-export function Market() {
+export function EvaluatorCompetition() {
   return (
     <Section>
       <SectionHeading
@@ -30,12 +40,15 @@ export function Market() {
 
       <Reveal delay={150} className="mt-14">
         <div className="mx-auto grid max-w-[780px] gap-y-0 lg:grid-cols-[minmax(0,1fr)_3.5rem_minmax(0,1fr)]">
-          <Challenger className="lg:col-start-1 lg:row-start-1" />
+          <Challenger className="lg:col-start-1 lg:row-start-1" delayMs={0} />
           <div className="lg:col-start-1 lg:row-start-2">
-            <ArrowDownLine />
+            <ArrowDownLine pulseDelayMs={600} />
           </div>
 
-          <div className="flex h-14 flex-col items-center justify-center rounded-sm border border-[var(--tg-fg)] bg-[var(--tg-bg)] px-4 text-center text-[13px] font-medium text-[var(--tg-fg)] lg:col-start-1 lg:row-start-3">
+          <div
+            style={{ animationDelay: "900ms" }}
+            className="tg-pulse flex h-14 flex-col items-center justify-center rounded-sm border border-[var(--tg-fg)] bg-[var(--tg-bg)] px-4 text-center text-[13px] font-medium text-[var(--tg-fg)] lg:col-start-1 lg:row-start-3"
+          >
             Canonical Evaluator
             <span className="mt-0.5 text-[11px] font-normal text-[var(--tg-fg-faint)]">
               the current standard
@@ -43,15 +56,15 @@ export function Market() {
           </div>
 
           <div className="lg:col-start-1 lg:row-start-4">
-            <ArrowDownLine className="rotate-180" />
+            <ArrowDownLine className="rotate-180" pulseDelayMs={1000} />
           </div>
-          <Challenger className="lg:col-start-1 lg:row-start-5" />
+          <Challenger className="lg:col-start-1 lg:row-start-5" delayMs={400} />
 
           <div className="hidden self-center lg:col-start-2 lg:row-start-3 lg:block">
-            <ArrowRightLine />
+            <ArrowRightLine pulseDelayMs={1400} />
           </div>
           <div className="lg:hidden">
-            <ArrowDownLine />
+            <ArrowDownLine pulseDelayMs={1400} />
           </div>
 
           <div className="flex h-14 items-center justify-center rounded-sm border border-[var(--tg-fg)] bg-[var(--tg-fg)] px-4 text-center text-[13px] text-[var(--tg-bg)] lg:col-start-3 lg:row-start-3">
@@ -62,7 +75,9 @@ export function Market() {
             aria-hidden
             className="mx-auto hidden h-9 w-px bg-[var(--tg-line-strong)] lg:col-start-3 lg:row-start-4 lg:block"
           />
-          <div className="mt-3 flex h-14 flex-col items-center justify-center rounded-sm border border-dashed border-[var(--tg-line-strong)] bg-[var(--tg-bg)] px-4 text-center text-[13px] text-[var(--tg-fg)] lg:col-start-3 lg:row-start-5 lg:mt-0">
+          <div
+            style={{ animationDelay: "1900ms" }}
+            className="tg-pulse mt-3 flex h-14 flex-col items-center justify-center rounded-sm border border-dashed border-[var(--tg-line-strong)] bg-[var(--tg-bg)] px-4 text-center text-[13px] text-[var(--tg-fg)] lg:col-start-3 lg:row-start-5 lg:mt-0">
             Validators
             <span className="mt-0.5 text-[11px] text-[var(--tg-fg-dim)]">
               verify + finalize

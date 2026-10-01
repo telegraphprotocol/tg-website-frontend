@@ -25,11 +25,18 @@ const RedesignThemeContext = createContext<{
 
 export function RedesignThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
+  const [resolved, setResolved] = useState(false);
 
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY);
     if (stored === "light" || stored === "dark") setTheme(stored);
+    setResolved(true);
   }, []);
+
+  // Reveal the page (hidden by the pre-paint script) only after the saved theme is rendered
+  useEffect(() => {
+    if (resolved) document.documentElement.removeAttribute("data-tg-pre-theme");
+  }, [resolved]);
 
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, theme);

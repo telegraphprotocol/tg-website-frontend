@@ -78,9 +78,21 @@ export function Box({
   );
 }
 
-export function ArrowRightLine({ className = "" }: { className?: string }) {
+// pulseDelayMs: when set, the line lights up in the section's looping activation sequence (see .tg-line-pulse)
+export function ArrowRightLine({
+  className = "",
+  pulseDelayMs,
+}: {
+  className?: string;
+  pulseDelayMs?: number;
+}) {
   return (
-    <div className={`relative h-px w-full bg-[var(--tg-line-strong)] ${className}`}>
+    <div
+      style={pulseDelayMs === undefined ? undefined : { animationDelay: `${pulseDelayMs}ms` }}
+      className={`relative h-px w-full bg-[var(--tg-line-strong)] ${
+        pulseDelayMs === undefined ? "" : "tg-line-pulse"
+      } ${className}`}
+    >
       <span
         aria-hidden
         className="absolute right-0 top-1/2 -translate-y-1/2 border-y-[4px] border-l-[7px] border-y-transparent border-l-[var(--tg-line-strong)]"
@@ -89,9 +101,20 @@ export function ArrowRightLine({ className = "" }: { className?: string }) {
   );
 }
 
-export function ArrowDownLine({ className = "" }: { className?: string }) {
+export function ArrowDownLine({
+  className = "",
+  pulseDelayMs,
+}: {
+  className?: string;
+  pulseDelayMs?: number;
+}) {
   return (
-    <div className={`relative mx-auto h-9 w-px bg-[var(--tg-line-strong)] ${className}`}>
+    <div
+      style={pulseDelayMs === undefined ? undefined : { animationDelay: `${pulseDelayMs}ms` }}
+      className={`relative mx-auto h-9 w-px bg-[var(--tg-line-strong)] ${
+        pulseDelayMs === undefined ? "" : "tg-line-pulse"
+      } ${className}`}
+    >
       <span
         aria-hidden
         className="absolute bottom-0 left-1/2 -translate-x-1/2 border-x-[4px] border-t-[7px] border-x-transparent border-t-[var(--tg-line-strong)]"

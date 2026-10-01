@@ -12,6 +12,10 @@ const robotoMono = Roboto_Mono({
   display: "swap",
 });
 
+// Runs before first paint on themed pages so the saved theme's background shows
+// immediately; RedesignThemeProvider clears the attribute once it has applied the theme.
+const PRE_THEME_SCRIPT = `try{if(["/","/whitepaper"].indexOf(location.pathname)>-1){var t=localStorage.getItem("tg-redesign-theme");document.documentElement.setAttribute("data-tg-pre-theme",t==="dark"?"dark":"light")}}catch(e){}`;
+
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://telegraphprotocol.com";
 
@@ -23,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Telegraph Protocol",
   },
   description:
-    "Telegraph is a messaging protocol built on Base that transforms raw AI outputs from any open or closed-source model into verified, tradable answers that machines can use to make decisions and execute tasks autonomously.",
+    "Telegraph is the network that turns intelligence into a graded commodity. Competing providers are ranked by performance for each Intent, and paid demand follows performance.",
   keywords: [
     "AI on-chain",
     "blockchain AI",
@@ -89,7 +93,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
+    <html
+      lang="en"
+      className="dark"
+      style={{ colorScheme: "dark" }}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: PRE_THEME_SCRIPT }} />
+      </head>
       <body
         className={`${robotoMono.variable} font-mono antialiased bg-black text-foreground`}
       >

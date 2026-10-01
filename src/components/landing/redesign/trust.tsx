@@ -2,18 +2,21 @@ import { Reveal } from "../fx/reveal";
 import { Box, Section, SectionHeading } from "./shared";
 
 const items = [
-  { heading: "Independent validators", text: "no stake in who wins" },
   {
-    heading: "Open scoring logic",
-    text: "public, deterministic and replaceable",
+    heading: "Independent Validators",
+    text: "verify protocol execution and finalized rankings",
   },
   {
-    heading: "Paid by real demand",
-    text: "miners earn when someone pays for their answer",
+    heading: "Competitive Evaluation",
+    text: "the grading standard can be challenged",
   },
   {
-    heading: "A 2% protocol fee",
-    text: "the protocol owns no supply, so the ranking is the only thing it sells",
+    heading: "Open Supply",
+    text: "providers compete under the same Intent-specific measurement",
+  },
+  {
+    heading: "Real Demand",
+    text: "providers earn from fulfilled paid usage",
   },
 ];
 

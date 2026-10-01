@@ -10,8 +10,9 @@ const NAV: { label: string; hint: string; icon: LucideIcon }[] = [
 ];
 
 const CERTIFICATE: { label: string; value: string }[] = [
-  { label: "Produced by", value: "Forecast model" },
-  { label: "Rank for intent", value: "#1 · weather-forecast" },
+  { label: "Served by", value: "Forecast model" },
+  { label: "Intent", value: "weather-forecast" },
+  { label: "Provider grade", value: "0.93" },
   { label: "Confidence", value: "0.91" },
   { label: "Verified by", value: "43 of 64 validators" },
   { label: "Price", value: "from $0.01" },
@@ -20,9 +21,8 @@ const CERTIFICATE: { label: string; value: string }[] = [
 
 const BOARD = [
   { intent: "weather-forecast", meta: "Forecast model · from $0.01", grade: "0.93" },
-  { intent: "fake-profile-detection", meta: "Identity API · from $0.01", grade: "0.94" },
   { intent: "price-direction", meta: "Quant model · from $0.01", grade: "0.90" },
-  { intent: "fraud-check", meta: "Risk model · from $0.01", grade: "0.92" },
+  { intent: "fake-profile-detection", meta: "Identity API · from $0.01", grade: "0.94" },
 ];
 
 function Grade({ value }: { value: string }) {
@@ -46,19 +46,10 @@ export function Alexandria() {
     <Section>
       <SectionHeading
         lede={
-          <>
-            Alexandria is the interface. Telegraph is the ranking network
-            underneath. Closed products can only serve what their company
-            built.{" "}
-            <strong className="font-medium text-[var(--tg-fg)]">
-              Alexandria routes to whatever is currently best for the intent -
-              ChatGPT, Claude and every other model are just miners competing
-              for it.
-            </strong>
-          </>
+          "Telegraph is the network underneath. Alexandria is the interface on top."
         }
       >
-        Alexandria.
+        Alexandria is how humans query the network.
       </SectionHeading>
 
       <Reveal delay={150} className="mt-14">
@@ -123,13 +114,13 @@ export function Alexandria() {
           {/* Main */}
           <div className="min-w-0 flex-1 p-5 md:p-8">
             <h3 className="m-0 text-[clamp(20px,2.4vw,30px)] font-normal leading-[1.2] text-[var(--tg-fg)]">
-              What graded answers do you need today?
+              What do you need answered today?
             </h3>
 
             <div className="mt-5 flex gap-3">
               <div className="flex h-11 min-w-0 flex-1 items-center rounded-sm border border-[var(--tg-line-strong)] bg-[var(--tg-surface)] px-4 text-[14px] text-[var(--tg-fg-faint)]">
                 <span className="truncate">
-                  Ask anything, from a fraud check to a wind forecast
+                  Ask for intelligence
                 </span>
               </div>
               <div className="flex h-11 items-center rounded-sm bg-[var(--tg-fg)] px-5 text-[14px] font-medium text-[var(--tg-bg)]">
@@ -152,21 +143,24 @@ export function Alexandria() {
             <div className="mt-6 grid gap-5 lg:grid-cols-2">
               {/* Answer */}
               <div className="rounded-md border border-[var(--tg-line)] bg-[var(--tg-surface)] p-5">
-                <Label>Your graded answer</Label>
+                <Label>Your answer</Label>
                 <p className="m-0 mt-4 text-[15px] text-[var(--tg-fg)]">
-                  Wind at the harbour, next 6 hours?
+                  Will wind generation exceed 4GW in Texas tomorrow?
                 </p>
-                <p className="m-0 mt-3 text-[13px] leading-[1.7] text-[var(--tg-fg-dim)]">
-                  South-westerly 14-18 knots, gusting 24 by early evening,
-                  easing overnight.
+                <p className="m-0 mt-3 text-[26px] leading-[1.2] text-[var(--tg-fg)]">
+                  4.7 GW
+                </p>
+                <p className="m-0 mt-2 text-[13px] leading-[1.7] text-[var(--tg-fg-dim)]">
+                  Forecast peak wind generation, Texas, tomorrow. Above the 4 GW
+                  threshold.
                 </p>
 
                 <div className="mt-5 rounded-md border border-[var(--tg-line-strong)] bg-[var(--tg-bg)]">
                   <div className="flex items-center justify-between px-4 py-3.5">
                     <span className="text-[16px] text-[var(--tg-fg)]">
-                      Grading certificate
+                      Provider record
                     </span>
-                    <Grade value="0.93" />
+                    <Grade value="Rank #1" />
                   </div>
                   {CERTIFICATE.map((row) => (
                     <div
@@ -199,7 +193,7 @@ export function Alexandria() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                     <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
                   </span>
-                  <Label>Live board (illustrative)</Label>
+                  <Label>Rank #1 per Intent (illustrative)</Label>
                 </div>
                 <div className="mt-4">
                   {BOARD.map((row) => (

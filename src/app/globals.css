@@ -121,6 +121,139 @@
 }
 
 /* ---------- Site frame + section dividers ---------- */
+/* Pre-paint theme (set by inline script in layout.tsx): right background, frame hidden until theme is applied */
+html[data-tg-pre-theme="light"] body {
+  background: #ffffff;
+}
+html[data-tg-pre-theme] .tg-frame {
+  visibility: hidden;
+  animation: tg-unhide 0s 2s forwards;
+}
+@keyframes tg-unhide {
+  to {
+    visibility: visible;
+  }
+}
+
+/* Diagram steps light up in sequence, looping, once their section has scrolled into view.
+   Each step returns to its own border colour between pulses. Per-step order comes from an
+   inline animation-delay. */
+@keyframes tg-pulse {
+  0% {
+    border-color: var(--tg-line-strong);
+  }
+  5% {
+    border-color: var(--tg-fg);
+  }
+  15%,
+  100% {
+    border-color: var(--tg-line-strong);
+  }
+}
+@keyframes tg-pulse-stroke {
+  0% {
+    stroke: var(--tg-line-strong);
+  }
+  5% {
+    stroke: var(--tg-fg);
+  }
+  15%,
+  100% {
+    stroke: var(--tg-line-strong);
+  }
+}
+/* One 6s cycle: each step pulses for ~0.9s at its own offset, then the sequence repeats */
+.is-in .tg-pulse {
+  animation: tg-pulse 6s ease infinite;
+}
+.is-in .tg-pulse-stroke {
+  animation: tg-pulse-stroke 6s ease infinite;
+}
+/* Connector lines light up just ahead of the step they lead into, so the path itself activates */
+@keyframes tg-pulse-bg {
+  0% {
+    background-color: var(--tg-line-strong);
+  }
+  5% {
+    background-color: var(--tg-fg);
+  }
+  15%,
+  100% {
+    background-color: var(--tg-line-strong);
+  }
+}
+.is-in .tg-line-pulse {
+  animation: tg-pulse-bg 6s ease infinite;
+}
+
+/* A challenger's label changes state: it proposes a method, then outperforms the standard */
+.tg-swap-b {
+  opacity: 0;
+}
+@keyframes tg-swap-a {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  55%,
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tg-swap-b {
+  0%,
+  45% {
+    opacity: 0;
+  }
+  55%,
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.is-in .tg-swap-a {
+  animation: tg-swap-a 8s ease infinite;
+}
+.is-in .tg-swap-b {
+  animation: tg-swap-b 8s ease infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-in .tg-pulse,
+  .is-in .tg-pulse-stroke,
+  .is-in .tg-line-pulse,
+  .is-in .tg-swap-a,
+  .is-in .tg-swap-b {
+    animation: none;
+  }
+}
+
+/* Hero interface: ranked-supply rows settle in when the intent changes */
+@keyframes tg-row-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.tg-row-in {
+  opacity: 0;
+  animation: tg-row-in 450ms ease forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tg-row-in {
+    opacity: 1;
+    animation: none;
+  }
+}
+
 .tg-frame {
   position: relative;
   margin-left: auto;
