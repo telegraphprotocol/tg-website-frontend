@@ -199,11 +199,26 @@ html[data-tg-pre-theme] .tg-frame {
     border-color: var(--tg-fg);
   }
 }
+@keyframes tg-line-chase {
+  0%,
+  36%,
+  100% {
+    background-color: var(--tg-line-strong);
+  }
+  8%,
+  22% {
+    background-color: var(--tg-fg);
+  }
+}
 .is-in .tg-chase {
   animation: tg-chase 2.5s ease-in-out infinite;
 }
+.is-in .tg-line-chase {
+  animation: tg-line-chase 2.5s ease-in-out infinite;
+}
 @media (prefers-reduced-motion: reduce) {
-  .is-in .tg-chase {
+  .is-in .tg-chase,
+  .is-in .tg-line-chase {
     animation: none;
   }
 }
@@ -321,10 +336,10 @@ html[data-tg-pre-theme] .tg-frame {
   }
 }
 .is-in .tg-swap-a {
-  animation: tg-swap-a 8s ease infinite;
+  animation: tg-swap-a 5s ease infinite;
 }
 .is-in .tg-swap-b {
-  animation: tg-swap-b 8s ease infinite;
+  animation: tg-swap-b 5s ease infinite;
 }
 @media (prefers-reduced-motion: reduce) {
   .is-in .tg-pulse,

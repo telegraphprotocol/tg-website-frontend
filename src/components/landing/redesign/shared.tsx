@@ -82,15 +82,18 @@ export function Box({
 export function ArrowRightLine({
   className = "",
   pulseDelayMs,
+  chase,
 }: {
   className?: string;
   pulseDelayMs?: number;
+  // chase: use the quick continuous 2.5s cycle instead of the shared 6s one
+  chase?: boolean;
 }) {
   return (
     <div
       style={pulseDelayMs === undefined ? undefined : { animationDelay: `${pulseDelayMs}ms` }}
       className={`relative h-px w-full bg-[var(--tg-line-strong)] ${
-        pulseDelayMs === undefined ? "" : "tg-line-pulse"
+        pulseDelayMs === undefined ? "" : chase ? "tg-line-chase" : "tg-line-pulse"
       } ${className}`}
     >
       <span
@@ -104,15 +107,17 @@ export function ArrowRightLine({
 export function ArrowDownLine({
   className = "",
   pulseDelayMs,
+  chase,
 }: {
   className?: string;
   pulseDelayMs?: number;
+  chase?: boolean;
 }) {
   return (
     <div
       style={pulseDelayMs === undefined ? undefined : { animationDelay: `${pulseDelayMs}ms` }}
       className={`relative mx-auto h-9 w-px bg-[var(--tg-line-strong)] ${
-        pulseDelayMs === undefined ? "" : "tg-line-pulse"
+        pulseDelayMs === undefined ? "" : chase ? "tg-line-chase" : "tg-line-pulse"
       } ${className}`}
     >
       <span

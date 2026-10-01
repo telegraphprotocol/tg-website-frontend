@@ -1,5 +1,5 @@
 import { Reveal } from "../fx/reveal";
-import { Section, SectionHeading } from "./shared";
+import { ArrowDownLine, Section, SectionHeading } from "./shared";
 
 const DIAMONDS = [
   "different quality",
@@ -19,7 +19,7 @@ const INTELLIGENCE = [
 // Rows that are a process (grading / evaluation) rather than a state
 const PROCESS_ROWS = [1];
 
-// Dashed connector whose dashes flow downward to the next step
+// Dashed connector whose dashes flow downward to the next step (animated column only)
 function FlowDown() {
   return (
     <div className="relative mx-auto h-9 w-px">
@@ -38,12 +38,14 @@ function Step({
   final,
   muted,
   delayMs,
+  animated,
 }: {
   children: string;
   process?: boolean;
   final?: boolean;
   muted?: boolean;
   delayMs: number;
+  animated?: boolean;
 }) {
   const tone = final
     ? "border-[var(--tg-fg)] bg-[var(--tg-fg)] text-[var(--tg-bg)]"
@@ -54,8 +56,8 @@ function Step({
         }`;
   return (
     <div
-      style={{ animationDelay: `${delayMs}ms` }}
-      className={`${final ? "" : "tg-chase"} flex h-14 items-center justify-center rounded-sm border px-4 text-center text-[13px] ${
+      style={animated ? { animationDelay: `${delayMs}ms` } : undefined}
+      className={`${animated && !final ? "tg-chase" : ""} flex h-14 items-center justify-center rounded-sm border px-4 text-center text-[13px] ${
         process ? "font-mono uppercase tracking-[0.12em] text-[12px]" : ""
       } ${tone}`}
     >
@@ -64,14 +66,18 @@ function Step({
   );
 }
 
+// Only the Raw intelligence column moves, so it is the one the eye follows;
+// the rough-diamond analogy beside it stays still.
 function Column({
   title,
   steps,
   muted,
+  animated,
 }: {
   title: string;
   steps: string[];
   muted?: boolean;
+  animated?: boolean;
 }) {
   return (
     <div className="mx-auto w-full max-w-[340px]">
@@ -86,12 +92,13 @@ function Column({
       </div>
       {steps.map((step, i) => (
         <div key={step}>
-          {i > 0 ? <FlowDown /> : null}
+          {i > 0 ? animated ? <FlowDown /> : <ArrowDownLine /> : null}
           <Step
             process={PROCESS_ROWS.includes(i)}
             final={!muted && i === steps.length - 1}
             muted={muted}
             delayMs={i * 500}
+            animated={animated}
           >
             {step}
           </Step>
@@ -132,7 +139,7 @@ export function Rough() {
       <Reveal delay={250} className="mt-14">
         <div className="grid gap-12 md:grid-cols-2 md:gap-8">
           <Column title="Rough diamonds" steps={DIAMONDS} muted />
-          <Column title="Raw intelligence" steps={INTELLIGENCE} />
+          <Column title="Raw intelligence" steps={INTELLIGENCE} animated />
         </div>
       </Reveal>
     </Section>

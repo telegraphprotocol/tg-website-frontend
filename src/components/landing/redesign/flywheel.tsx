@@ -50,13 +50,9 @@ export function RedesignFlywheel() {
           {arrows.map((a, i) => (
             <polygon
               key={i}
-              points="-12,-9 12,0 -12,9 -6,0"
+              points="-6,-4.5 6,0 -6,4.5"
               transform={`translate(${a.x} ${a.y}) rotate(${a.angle})`}
-              fill="var(--tg-fg)"
-              stroke="var(--tg-bg)"
-              strokeWidth={5}
-              strokeLinejoin="round"
-              paintOrder="stroke"
+              fill={LINE}
             />
           ))}
 
