@@ -1,5 +1,6 @@
 import { Reveal } from "../fx/reveal";
-import { ArrowDownLine, Section, SectionHeading } from "./shared";
+import { MachinaLoop } from "./machina-loop";
+import { Section, SectionHeading } from "./shared";
 
 const prices = [
   { label: "Stocks", text: "price a company", highlight: false },
@@ -27,7 +28,8 @@ export function Machina() {
         {prices.map((p, i) => (
           <Reveal key={p.label} delay={i * 120}>
             <div
-              className={`h-full rounded-sm border p-6 text-left ${
+              style={{ animationDelay: `${i * 500}ms` }}
+              className={`tg-pulse h-full rounded-sm border p-6 text-left ${
                 p.highlight
                   ? "border-[var(--tg-fg)] bg-[var(--tg-surface-strong)]"
                   : "border-[var(--tg-line)] bg-[var(--tg-surface)]"
@@ -52,41 +54,7 @@ export function Machina() {
 
       {/* The economic loop, kept deliberately simple */}
       <Reveal delay={150} className="mt-16">
-        <div className="grid grid-cols-1 gap-y-0 md:grid-cols-4 md:gap-x-12">
-          {loop.map((step, i) => (
-            <div key={step} className="relative">
-              {i > 0 ? (
-                <div className="md:hidden">
-                  <ArrowDownLine />
-                </div>
-              ) : null}
-              <div className="flex min-h-[84px] items-center justify-center rounded-sm border border-[var(--tg-line-strong)] bg-[var(--tg-bg)] px-4 py-3 text-center text-[13px] leading-[1.5] text-[var(--tg-fg)]">
-                {step}
-              </div>
-              {i < loop.length - 1 ? (
-                <span
-                  aria-hidden
-                  className="absolute left-full top-1/2 ml-1 hidden h-px w-10 -translate-y-1/2 bg-[var(--tg-line-strong)] md:block"
-                >
-                  <span className="absolute right-0 top-1/2 -translate-y-1/2 border-y-[4px] border-l-[7px] border-y-transparent border-l-[var(--tg-line-strong)]" />
-                </span>
-              ) : null}
-            </div>
-          ))}
-        </div>
-
-        <div className="relative mx-[calc((100%-9rem)/8)] mt-3 hidden h-9 rounded-b-sm border-x border-b border-[var(--tg-line-strong)] md:block">
-          <span
-            aria-hidden
-            className="absolute -left-[4.5px] -top-[1px] border-x-[4px] border-b-[7px] border-x-transparent border-b-[var(--tg-line-strong)]"
-          />
-          <span className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/2 bg-[var(--tg-bg)] px-3 text-[11px] uppercase tracking-[0.2em] text-[var(--tg-fg-dim)]">
-            repeat
-          </span>
-        </div>
-        <p className="m-0 mt-3 text-center text-[11px] uppercase tracking-[0.2em] text-[var(--tg-fg-dim)] md:hidden">
-          ↻ repeat
-        </p>
+        <MachinaLoop steps={loop} />
       </Reveal>
     </Section>
   );

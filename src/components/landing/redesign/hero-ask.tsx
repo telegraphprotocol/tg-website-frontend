@@ -2,13 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Check, Loader2, Search } from "lucide-react";
-import { DEMOS, RESOLVE_MS, matchDemo } from "./intent-demos";
+import {
+  DEMOS,
+  FIRST_HOLD_MS,
+  HOLD_MS,
+  PRESS_MS,
+  RESOLVE_MS,
+  TYPE_MS,
+  matchDemo,
+} from "./intent-demos";
 import { RankedSupplyRows } from "./ranked-supply";
-
-const TYPE_MS = 22; // per character while the demo types its question
-const PRESS_MS = 450; // pause between finishing the question and pressing Ask
-const HOLD_MS = 4200; // how long each answer stays on screen before the next Intent
-const FIRST_HOLD_MS = 3200;
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
@@ -60,9 +63,7 @@ export function HeroAsk() {
   function playDemo(index: number) {
     if (!auto.current) return;
     const d = DEMOS[index];
-    setDemoId(d.id);
-    setAnswered(false);
-    setResolving(false);
+    // The previous answer stays on screen while the next question types, so the card never looks empty
     setQuery("");
     let n = 0;
     typer.current = setInterval(() => {
@@ -72,6 +73,8 @@ export function HeroAsk() {
         if (typer.current) clearInterval(typer.current);
         typer.current = null;
         later(() => {
+          setDemoId(d.id);
+          setAnswered(false);
           setResolving(true);
           later(() => {
             setResolving(false);
@@ -186,26 +189,33 @@ export function HeroAsk() {
             ) : null}
           </div>
 
-          <div className="h-[172px] rounded-md border border-[var(--tg-line-strong)] bg-[var(--tg-bg)] p-4">
+          <div className="h-[190px] rounded-md border border-[var(--tg-line-strong)] bg-[var(--tg-bg)] p-4">
             {resolving ? (
-              <div className="flex h-[138px] items-center gap-2.5 text-[13px] text-[var(--tg-fg-dim)]">
+              <div className="flex h-[156px] items-center gap-2.5 text-[13px] text-[var(--tg-fg-dim)]">
                 <Loader2 className="h-4 w-4 animate-spin" />
                 Routing to the top-ranked provider
               </div>
             ) : !answered ? (
-              <div className="flex h-[138px] items-center text-[13px] leading-[1.7] text-[var(--tg-fg-faint)]">
-                Press Ask. Telegraph resolves the Intent and routes your request
-                to the top-ranked provider.
+              <div
+                aria-label="Waiting for a question"
+                className="flex h-[156px] flex-col justify-center gap-3"
+              >
+                <span className="h-8 w-28 rounded-sm bg-[var(--tg-line)] opacity-60" />
+                <span className="h-2.5 w-3/4 rounded-sm bg-[var(--tg-line-soft)]" />
+                <span className="h-2.5 w-1/2 rounded-sm bg-[var(--tg-line-soft)]" />
+                <span className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-[var(--tg-fg-faint)]">
+                  Press Ask
+                </span>
               </div>
             ) : (
               <div key={demo.id} className="tg-row-in">
                 <p className="m-0 text-[clamp(26px,3vw,36px)] font-normal leading-[1.1] tracking-[0.005em] text-[var(--tg-fg)]">
                   {demo.result}
                 </p>
-                <p className="m-0 mt-1.5 text-[12px] leading-[1.6] text-[var(--tg-fg-dim)]">
+                <p className="m-0 mt-1.5 min-h-[38px] text-[12px] leading-[1.6] text-[var(--tg-fg-dim)]">
                   {demo.detail}
                 </p>
-                <div className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-[var(--tg-line-soft)] pt-3 text-[12px]">
+                <div className="mt-3 flex flex-col gap-1 border-t border-[var(--tg-line-soft)] pt-3 text-[12px]">
                   <span className="text-[var(--tg-fg)]">
                     Served by{" "}
                     <span className="font-medium">{winner.name}</span>

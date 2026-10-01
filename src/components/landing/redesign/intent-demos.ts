@@ -2,6 +2,12 @@
 
 export const RESOLVE_MS = 900;
 
+// Timings for the automatic demos (hero and Alexandria preview)
+export const TYPE_MS = 22; // per character while the demo types its question
+export const PRESS_MS = 450; // pause between finishing the question and pressing Ask
+export const HOLD_MS = 4200; // how long each answer stays on screen before the next Intent
+export const FIRST_HOLD_MS = 3200; // how long the opening answer is held before the cycle starts
+
 export type Provider = { name: string; grade: number; price: string };
 
 export type Demo = {

@@ -10,7 +10,12 @@ import {
   Server,
   type LucideIcon,
 } from "lucide-react";
-import { DEMOS, RESOLVE_MS, matchDemo } from "./intent-demos";
+import { DEMOS, RESOLVE_MS, TYPE_MS, matchDemo } from "./intent-demos";
+
+// Quicker than the hero: the larger preview moves straight on to the next Intent
+const FIRST_HOLD_MS = 1200;
+const PRESS_MS = 250;
+const HOLD_MS = 2400;
 import { RankedSupplyRows } from "./ranked-supply";
 
 const NAV: { label: string; hint: string; icon: LucideIcon }[] = [
@@ -39,41 +44,110 @@ export function AlexandriaPreview() {
   const [demoId, setDemoId] = useState(DEMOS[0].id);
   const [query, setQuery] = useState(DEMOS[0].query);
   const [resolving, setResolving] = useState(false);
-  const [answered, setAnswered] = useState(false);
-  const [history, setHistory] = useState<string[]>([]);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Starts on a finished answer so the record is never empty, even before the demo runs
+  const [answered, setAnswered] = useState(true);
+  const [history, setHistory] = useState<string[]>([DEMOS[0].query]);
+  // The question the shown answer belongs to. It only changes when Ask is pressed, never while typing.
+  const [asked, setAsked] = useState(DEMOS[0].query);
+  const rootRef = useRef<HTMLDivElement | null>(null);
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const typer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const auto = useRef(true);
 
-  useEffect(() => () => {
-    if (timer.current) clearTimeout(timer.current);
-  }, []);
+  function clearAll() {
+    timers.current.forEach(clearTimeout);
+    timers.current = [];
+    if (typer.current) clearInterval(typer.current);
+    typer.current = null;
+  }
 
-  const demo = DEMOS.find((d) => d.id === demoId) ?? DEMOS[0];
-  const winner = demo.providers[0];
+  function later(fn: () => void, ms: number) {
+    timers.current.push(setTimeout(fn, ms));
+  }
 
-  // A chip only sets up the question; the answer appears once Ask is pressed
-  function select(id: string, nextQuery: string) {
-    if (timer.current) clearTimeout(timer.current);
-    setDemoId(id);
-    setQuery(nextQuery);
-    setResolving(false);
-    setAnswered(false);
+  // The user has taken over: stop the automatic demo for good
+  function stopAuto() {
+    auto.current = false;
+    clearAll();
+  }
+
+  function remember(text: string) {
+    setHistory((h) => [text, ...h.filter((x) => x !== text)].slice(0, 4));
   }
 
   function ask(id: string, text: string) {
-    if (timer.current) clearTimeout(timer.current);
+    clearAll();
     setDemoId(id);
     setQuery(text);
-    setHistory((h) => [text, ...h.filter((x) => x !== text)].slice(0, 4));
+    setAsked(text);
+    remember(text);
     setAnswered(false);
     setResolving(true);
-    timer.current = setTimeout(() => {
+    later(() => {
       setResolving(false);
       setAnswered(true);
     }, RESOLVE_MS);
   }
 
+  // One automatic cycle: type the question, press Ask, resolve, hold the answer, next Intent
+  function playDemo(index: number) {
+    if (!auto.current) return;
+    const d = DEMOS[index];
+    // The previous answer stays on screen while the next question types, so the card never looks empty
+    setQuery("");
+    let n = 0;
+    typer.current = setInterval(() => {
+      n += 1;
+      setQuery(d.query.slice(0, n));
+      if (n >= d.query.length) {
+        if (typer.current) clearInterval(typer.current);
+        typer.current = null;
+        later(() => {
+          remember(d.query);
+          setAsked(d.query);
+          setDemoId(d.id);
+          setAnswered(false);
+          setResolving(true);
+          later(() => {
+            setResolving(false);
+            setAnswered(true);
+            later(() => playDemo((index + 1) % DEMOS.length), HOLD_MS);
+          }, RESOLVE_MS);
+        }, PRESS_MS);
+      }
+    }, TYPE_MS);
+  }
+
+  // The preview sits far down the page, so the demo starts when it scrolls into view
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      auto.current = false;
+      return;
+    }
+    const el = rootRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          later(() => playDemo(1), FIRST_HOLD_MS);
+        }
+      },
+      { threshold: 0.3 },
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      clearAll();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const demo = DEMOS.find((d) => d.id === demoId) ?? DEMOS[0];
+  const winner = demo.providers[0];
+
   function newQuery() {
-    if (timer.current) clearTimeout(timer.current);
+    stopAuto();
     setQuery("");
     setResolving(false);
     setAnswered(false);
@@ -90,7 +164,10 @@ export function AlexandriaPreview() {
   ];
 
   return (
-    <div className="overflow-hidden rounded-md border border-[var(--tg-line-strong)] bg-[var(--tg-bg)] shadow-[0_20px_60px_rgba(0,0,0,0.14)]">
+    <div
+      ref={rootRef}
+      className="overflow-hidden rounded-md border border-[var(--tg-line-strong)] bg-[var(--tg-bg)] shadow-[0_20px_60px_rgba(0,0,0,0.14)]"
+    >
       {/* Window chrome */}
       <div className="flex items-center gap-3 border-b border-[var(--tg-line)] bg-[var(--tg-surface-strong)] px-4 py-2.5">
         <span className="flex gap-1.5">
@@ -171,6 +248,7 @@ export function AlexandriaPreview() {
           <form
             onSubmit={(e) => {
               e.preventDefault();
+              stopAuto();
               const text = query.trim() || demo.query;
               ask(matchDemo(text) ?? demoId, text);
             }}
@@ -184,6 +262,7 @@ export function AlexandriaPreview() {
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                onFocus={stopAuto}
                 placeholder="Ask for intelligence"
                 aria-label="Ask for intelligence"
                 className="h-11 w-full rounded-sm border border-[var(--tg-line-strong)] bg-[var(--tg-surface)] pl-11 pr-4 text-[14px] text-[var(--tg-fg)] outline-none transition-colors placeholder:text-[var(--tg-fg-faint)] focus:border-[var(--tg-fg-dim)]"
@@ -201,9 +280,6 @@ export function AlexandriaPreview() {
             <span className="rounded-full border border-[var(--tg-fg-dim)] bg-[var(--tg-surface-hi)] px-4 py-2 text-[13px] text-[var(--tg-fg)]">
               Auto routing
             </span>
-            <span className="rounded-full border border-[var(--tg-line-strong)] px-4 py-2 text-[13px] text-[var(--tg-fg-dim)]">
-              Agentic mode
-            </span>
             <span className="font-mono text-[11px] text-[var(--tg-fg-faint)]">
               Pay per answer
             </span>
@@ -214,7 +290,10 @@ export function AlexandriaPreview() {
               <button
                 key={d.id}
                 type="button"
-                onClick={() => select(d.id, d.query)}
+                onClick={() => {
+                  stopAuto();
+                  ask(d.id, d.query);
+                }}
                 aria-pressed={d.id === demoId}
                 className={`rounded-full border px-4 py-2 text-[13px] transition-colors ${
                   d.id === demoId
@@ -237,14 +316,30 @@ export function AlexandriaPreview() {
                   Resolving intent and routing to the top-ranked provider
                 </div>
               ) : !answered ? (
-                <p className="m-0 mt-4 text-[13px] leading-[1.7] text-[var(--tg-fg-faint)]">
-                  Ask a question or pick an Intent above. Telegraph resolves the
-                  Intent and routes your request to the top-ranked provider.
-                </p>
+                <div
+                  aria-label="Waiting for a question"
+                  className="mt-5 flex flex-col gap-3"
+                >
+                  <span className="h-6 w-2/3 rounded-sm bg-[var(--tg-line-soft)]" />
+                  <span className="h-9 w-28 rounded-sm bg-[var(--tg-line)] opacity-60" />
+                  <span className="h-2.5 w-3/4 rounded-sm bg-[var(--tg-line-soft)]" />
+                  <div className="mt-4 rounded-md border border-[var(--tg-line)] bg-[var(--tg-bg)] p-4">
+                    {[0, 1, 2, 3, 4].map((n) => (
+                      <span
+                        key={n}
+                        className="my-3 block h-2.5 rounded-sm bg-[var(--tg-line-soft)]"
+                        style={{ width: `${88 - n * 9}%` }}
+                      />
+                    ))}
+                  </div>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-[var(--tg-fg-faint)]">
+                    Press Ask
+                  </span>
+                </div>
               ) : (
                 <div key={demo.id} className="tg-row-in">
                   <p className="m-0 mt-4 text-[15px] text-[var(--tg-fg)]">
-                    {query}
+                    {asked}
                   </p>
                   <p className="m-0 mt-3 text-[26px] leading-[1.2] text-[var(--tg-fg)]">
                     {demo.result}
