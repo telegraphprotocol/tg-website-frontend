@@ -45,18 +45,7 @@ export function RedesignFlywheel() {
           className="mx-auto w-full max-w-[880px]"
           fill="none"
         >
-          {/* Dashed loop whose dashes travel clockwise, the same direction as the arrows */}
-          <ellipse
-            cx={CX}
-            cy={CY}
-            rx={RX}
-            ry={RY}
-            stroke="var(--tg-fg-dim)"
-            strokeWidth={1.6}
-            strokeDasharray="6 6"
-            className="tg-flow-path"
-            style={{ animationDuration: "0.6s" }}
-          />
+          <ellipse cx={CX} cy={CY} rx={RX} ry={RY} stroke={LINE} strokeWidth={1.2} />
 
           {arrows.map((a, i) => (
             <polygon
@@ -110,7 +99,7 @@ export function RedesignFlywheel() {
                 rx={3}
                 fill="var(--tg-surface)"
                 stroke={LINE}
-                className="tg-pulse-stroke"
+                className="tg-fw-glow"
                 style={{ animationDelay: `${i * 500}ms` }}
               />
               <text
@@ -151,7 +140,7 @@ export function RedesignFlywheel() {
               {i > 0 ? <ArrowDownLine /> : null}
               <div
                 style={{ animationDelay: `${i * 500}ms` }}
-                className="tg-pulse rounded-sm border border-[var(--tg-line-strong)] bg-[var(--tg-surface)] px-4 py-3 text-center"
+                className="tg-fw-glow-box rounded-sm border border-[var(--tg-line-strong)] bg-[var(--tg-surface)] px-4 py-3 text-center"
               >
                 <span className="block text-[10px] uppercase tracking-[0.2em] text-[var(--tg-fg-faint)]">
                   {n.tag}

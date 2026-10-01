@@ -186,6 +186,65 @@ html[data-tg-pre-theme] .tg-frame {
   animation: tg-pulse-bg 6s ease infinite;
 }
 
+/* Rough Diamonds / Raw Intelligence: border highlight steps down each column with no idle gap
+   (5 steps x 0.5s = one 2.5s lap, each border bright for ~0.9s) */
+@keyframes tg-chase {
+  0%,
+  36%,
+  100% {
+    border-color: var(--tg-line-strong);
+  }
+  8%,
+  22% {
+    border-color: var(--tg-fg);
+  }
+}
+.is-in .tg-chase {
+  animation: tg-chase 2.5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-in .tg-chase {
+    animation: none;
+  }
+}
+
+/* Flywheel: the border highlight moves box to box with no pause. Same step spacing as the other
+   diagrams (0.5s per box, 6 boxes = one 3s lap), and border only: no glow, no fill change. */
+@keyframes tg-fw-glow {
+  0%,
+  30%,
+  100% {
+    stroke: var(--tg-line-strong);
+  }
+  5%,
+  20% {
+    stroke: var(--tg-fg);
+  }
+}
+@keyframes tg-fw-glow-box {
+  0%,
+  30%,
+  100% {
+    border-color: var(--tg-line-strong);
+  }
+  5%,
+  20% {
+    border-color: var(--tg-fg);
+  }
+}
+.is-in .tg-fw-glow {
+  animation: tg-fw-glow 3s ease-in-out infinite;
+}
+.is-in .tg-fw-glow-box {
+  animation: tg-fw-glow-box 3s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-in .tg-fw-glow,
+  .is-in .tg-fw-glow-box {
+    animation: none;
+  }
+}
+
 /* Dashed connectors whose dashes travel in the direction of the flow (Machina loop) */
 @keyframes tg-flow-x {
   to {

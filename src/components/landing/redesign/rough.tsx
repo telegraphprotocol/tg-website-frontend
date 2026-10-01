@@ -1,5 +1,5 @@
 import { Reveal } from "../fx/reveal";
-import { ArrowDownLine, Section, SectionHeading } from "./shared";
+import { Section, SectionHeading } from "./shared";
 
 const DIAMONDS = [
   "different quality",
@@ -19,16 +19,31 @@ const INTELLIGENCE = [
 // Rows that are a process (grading / evaluation) rather than a state
 const PROCESS_ROWS = [1];
 
+// Dashed connector whose dashes flow downward to the next step
+function FlowDown() {
+  return (
+    <div className="relative mx-auto h-9 w-px">
+      <span aria-hidden className="tg-flow-y absolute inset-0" />
+      <span
+        aria-hidden
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 border-x-[4px] border-t-[7px] border-x-transparent border-t-[var(--tg-fg-dim)]"
+      />
+    </div>
+  );
+}
+
 function Step({
   children,
   process,
   final,
   muted,
+  delayMs,
 }: {
   children: string;
   process?: boolean;
   final?: boolean;
   muted?: boolean;
+  delayMs: number;
 }) {
   const tone = final
     ? "border-[var(--tg-fg)] bg-[var(--tg-fg)] text-[var(--tg-bg)]"
@@ -39,7 +54,8 @@ function Step({
         }`;
   return (
     <div
-      className={`flex h-14 items-center justify-center rounded-sm border px-4 text-center text-[13px] ${
+      style={{ animationDelay: `${delayMs}ms` }}
+      className={`${final ? "" : "tg-chase"} flex h-14 items-center justify-center rounded-sm border px-4 text-center text-[13px] ${
         process ? "font-mono uppercase tracking-[0.12em] text-[12px]" : ""
       } ${tone}`}
     >
@@ -70,11 +86,12 @@ function Column({
       </div>
       {steps.map((step, i) => (
         <div key={step}>
-          {i > 0 ? <ArrowDownLine /> : null}
+          {i > 0 ? <FlowDown /> : null}
           <Step
             process={PROCESS_ROWS.includes(i)}
             final={!muted && i === steps.length - 1}
             muted={muted}
+            delayMs={i * 500}
           >
             {step}
           </Step>
