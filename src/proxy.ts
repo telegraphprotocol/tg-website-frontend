@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { UPDATES_COOKIE_NAME, verifySession as verifyUpdatesSession } from "@/lib/updates-auth"
 import { DECK_COOKIE_NAME, verifySession as verifyDeckSession } from "@/lib/deck-auth"
+import { NODE_COOKIE_NAME, verifySession as verifyNodeSession } from "@/lib/node-auth"
 
 export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl
@@ -15,6 +16,23 @@ export async function proxy(req: NextRequest) {
 
     if (!isAuthenticated) {
       const loginUrl = new URL("/deck/login", req.url)
+      loginUrl.searchParams.set("from", pathname)
+      return NextResponse.redirect(loginUrl)
+    }
+
+    return NextResponse.next()
+  }
+
+  if (pathname.startsWith("/node")) {
+    if (pathname.startsWith("/node/login")) {
+      return NextResponse.next()
+    }
+
+    const cookie = req.cookies.get(NODE_COOKIE_NAME)?.value
+    const isAuthenticated = await verifyNodeSession(cookie)
+
+    if (!isAuthenticated) {
+      const loginUrl = new URL("/node/login", req.url)
       loginUrl.searchParams.set("from", pathname)
       return NextResponse.redirect(loginUrl)
     }
@@ -39,5 +57,5 @@ export async function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/updates/:path*", "/deck/:path*"],
+  matcher: ["/updates/:path*", "/deck/:path*", "/node/:path*"],
 }
