@@ -9,9 +9,12 @@ import {
   PRESS_MS,
   RESOLVE_MS,
   TYPE_MS,
-  matchDemo,
 } from "./intent-demos";
 import { RankedSupplyRows } from "./ranked-supply";
+import { Section, SectionHeading } from "./shared";
+
+// Pause after the section comes back into view before the cycle continues
+const RESUME_MS = 600;
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
@@ -21,15 +24,19 @@ function Label({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function HeroAsk() {
+// A fully automatic, watch-only demo: nothing in it can be clicked, typed into or focused
+function DemoCard() {
+  const rootRef = useRef<HTMLDivElement>(null);
   // Starts on a finished answer so the card is never empty, even before the demo runs
   const [demoId, setDemoId] = useState(DEMOS[0].id);
   const [query, setQuery] = useState(DEMOS[0].query);
   const [resolving, setResolving] = useState(false);
-  const [answered, setAnswered] = useState(true);
+  const [typing, setTyping] = useState(false);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const typer = useRef<ReturnType<typeof setInterval> | null>(null);
-  const auto = useRef(true);
+  const nextIndex = useRef(1);
+  const lastAnswered = useRef(DEMOS[0].id);
+  const started = useRef(false);
 
   function clearAll() {
     timers.current.forEach(clearTimeout);
@@ -42,29 +49,22 @@ export function HeroAsk() {
     timers.current.push(setTimeout(fn, ms));
   }
 
-  // The user has taken over: stop the automatic demo for good
-  function stopAuto() {
-    auto.current = false;
-    clearAll();
-  }
-
-  function ask(id: string) {
-    clearAll();
-    setDemoId(id);
-    setAnswered(false);
-    setResolving(true);
-    later(() => {
-      setResolving(false);
-      setAnswered(true);
-    }, RESOLVE_MS);
+  // Back to the last finished answer, e.g. after the section scrolled out mid-cycle
+  function settle() {
+    const d = DEMOS.find((x) => x.id === lastAnswered.current) ?? DEMOS[0];
+    setDemoId(d.id);
+    setQuery(d.query);
+    setResolving(false);
+    setTyping(false);
   }
 
   // One automatic cycle: type the question, press Ask, resolve, hold the answer, next Intent
   function playDemo(index: number) {
-    if (!auto.current) return;
     const d = DEMOS[index];
+    nextIndex.current = (index + 1) % DEMOS.length;
     // The previous answer stays on screen while the next question types, so the card never looks empty
     setQuery("");
+    setTyping(true);
     let n = 0;
     typer.current = setInterval(() => {
       n += 1;
@@ -73,26 +73,42 @@ export function HeroAsk() {
         if (typer.current) clearInterval(typer.current);
         typer.current = null;
         later(() => {
+          setTyping(false);
           setDemoId(d.id);
-          setAnswered(false);
           setResolving(true);
           later(() => {
             setResolving(false);
-            setAnswered(true);
-            later(() => playDemo((index + 1) % DEMOS.length), HOLD_MS);
+            lastAnswered.current = d.id;
+            later(() => playDemo(nextIndex.current), HOLD_MS);
           }, RESOLVE_MS);
         }, PRESS_MS);
       }
     }, TYPE_MS);
   }
 
+  // Run only while the card is on screen: starts when scrolled into view, pauses when it leaves
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      auto.current = false;
-      return;
-    }
-    later(() => playDemo(1), FIRST_HOLD_MS);
-    return clearAll;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = rootRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const delay = started.current ? RESUME_MS : FIRST_HOLD_MS;
+          started.current = true;
+          later(() => playDemo(nextIndex.current), delay);
+        } else {
+          clearAll();
+          settle();
+        }
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      clearAll();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -100,63 +116,50 @@ export function HeroAsk() {
   const winner = demo.providers[0];
 
   return (
-    <div className="mx-auto mt-10 w-full max-w-[1100px] overflow-hidden rounded-md border border-[var(--tg-line-strong)] bg-[var(--tg-surface-strong)] text-left shadow-[0_12px_40px_rgba(0,0,0,0.10)]">
+    <div
+      ref={rootRef}
+      className="pointer-events-none mx-auto mt-14 w-full max-w-[1100px] select-none overflow-hidden rounded-md border border-[var(--tg-line-strong)] bg-[var(--tg-surface-strong)] text-left shadow-[0_12px_40px_rgba(0,0,0,0.10)]"
+    >
       {/* Top: the question, full width so it is always readable */}
       <div className="border-b border-[var(--tg-line-strong)] p-4 md:p-5">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            stopAuto();
-            ask(matchDemo(query) ?? demoId);
-          }}
-          className="flex gap-3"
-        >
-          <div className="relative min-w-0 flex-1">
+        <div className="flex gap-3">
+          <div className="relative flex h-11 min-w-0 flex-1 items-center rounded-sm border border-[var(--tg-line-strong)] bg-[var(--tg-bg)] pl-11 pr-4 text-[14px] text-[var(--tg-fg)]">
             <Search
               aria-hidden
-              className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--tg-fg-faint)]"
+              className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--tg-fg-faint)]"
             />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onFocus={stopAuto}
-              placeholder="Ask for intelligence"
-              aria-label="Ask for intelligence"
-              className="h-11 w-full rounded-sm border border-[var(--tg-line-strong)] bg-[var(--tg-bg)] pl-11 pr-4 text-[14px] text-[var(--tg-fg)] outline-none transition-colors placeholder:text-[var(--tg-fg-faint)] focus:border-[var(--tg-fg-dim)]"
-            />
+            <span className="truncate">{query}</span>
+            {typing ? (
+              <span
+                aria-hidden
+                className="ml-0.5 inline-block h-4 w-px shrink-0 animate-pulse bg-[var(--tg-fg-dim)]"
+              />
+            ) : null}
           </div>
-          <button
-            type="submit"
-            className={`group inline-flex h-11 items-center justify-center gap-2.5 whitespace-nowrap rounded-sm bg-[var(--tg-fg)] px-5 text-[14px] font-medium text-[var(--tg-bg)] transition-all hover:opacity-85 ${
+          <div
+            className={`inline-flex h-11 items-center justify-center gap-2.5 whitespace-nowrap rounded-sm bg-[var(--tg-fg)] px-5 text-[14px] font-medium text-[var(--tg-bg)] transition-all ${
               resolving ? "scale-[0.97] opacity-80" : ""
             }`}
           >
             Ask
-            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-          </button>
-        </form>
+            <ArrowRight className="h-4 w-4" />
+          </div>
+        </div>
 
         <div className="mt-3 flex flex-wrap gap-2">
           {DEMOS.map((d) => {
             const active = d.id === demoId;
             return (
-              <button
+              <span
                 key={d.id}
-                type="button"
-                onClick={() => {
-                  stopAuto();
-                  setQuery(d.query);
-                  ask(d.id);
-                }}
-                aria-pressed={active}
                 className={`rounded-full border px-3.5 py-1.5 text-[12px] transition-colors ${
                   active
                     ? "border-[var(--tg-fg-dim)] bg-[var(--tg-surface-hi)] text-[var(--tg-fg)]"
-                    : "border-[var(--tg-line-strong)] bg-[var(--tg-bg)] text-[var(--tg-fg-dim)] hover:border-[var(--tg-fg-dim)] hover:text-[var(--tg-fg)]"
+                    : "border-[var(--tg-line-strong)] bg-[var(--tg-bg)] text-[var(--tg-fg-dim)]"
                 }`}
               >
                 {d.chip}
-              </button>
+              </span>
             );
           })}
         </div>
@@ -178,14 +181,11 @@ export function HeroAsk() {
                 )}
               </span>
             </div>
-            {answered ? (
-              <button
-                type="button"
-                className="group inline-flex cursor-default items-center gap-1.5 whitespace-nowrap text-[12px] text-[var(--tg-fg)] underline underline-offset-4"
-              >
-                View receipt
-                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-              </button>
+            {!resolving ? (
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-[12px] text-[var(--tg-fg-dim)]">
+                <Check className="h-3.5 w-3.5 text-emerald-400" />
+                Receipt issued
+              </span>
             ) : null}
           </div>
 
@@ -194,18 +194,6 @@ export function HeroAsk() {
               <div className="flex h-[156px] items-center gap-2.5 text-[13px] text-[var(--tg-fg-dim)]">
                 <Loader2 className="h-4 w-4 animate-spin" />
                 Routing to the top-ranked provider
-              </div>
-            ) : !answered ? (
-              <div
-                aria-label="Waiting for a question"
-                className="flex h-[156px] flex-col justify-center gap-3"
-              >
-                <span className="h-8 w-28 rounded-sm bg-[var(--tg-line)] opacity-60" />
-                <span className="h-2.5 w-3/4 rounded-sm bg-[var(--tg-line-soft)]" />
-                <span className="h-2.5 w-1/2 rounded-sm bg-[var(--tg-line-soft)]" />
-                <span className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-[var(--tg-fg-faint)]">
-                  Press Ask
-                </span>
               </div>
             ) : (
               <div key={demo.id} className="tg-row-in">
@@ -249,11 +237,22 @@ export function HeroAsk() {
           <RankedSupplyRows
             demo={demo}
             resolving={resolving}
-            answered={answered}
+            answered={!resolving}
             rowHeight={46}
           />
         </div>
       </div>
     </div>
+  );
+}
+
+export function LiveDemo() {
+  return (
+    <Section>
+      <SectionHeading lede="Each request resolves to an Intent, is served by the top-ranked provider for it, and is verified by validators. This is the network running live.">
+        Ask for intelligence. Get the top-ranked answer.
+      </SectionHeading>
+      <DemoCard />
+    </Section>
   );
 }

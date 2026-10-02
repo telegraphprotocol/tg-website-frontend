@@ -1,4 +1,5 @@
 import { RedesignHero } from "@/components/landing/redesign/hero";
+import { LiveDemo } from "@/components/landing/redesign/live-demo";
 import { Rough } from "@/components/landing/redesign/rough";
 import { Network } from "@/components/landing/redesign/network";
 import { EvaluatorCompetition } from "@/components/landing/redesign/evaluator-competition";
@@ -18,6 +19,7 @@ export default function Home() {
       <StructuredData />
       <ThemeScope>
         <RedesignHero />
+        <LiveDemo />
         <Rough />
         <Network />
         <Lanes />
