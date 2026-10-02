@@ -61,9 +61,9 @@ const cardBody = "m-0 text-[13px] leading-[1.7] text-[var(--tg-fg-dim)]";
 
 const STEPS = [
   { n: "01 / Tasks", title: "A specific task", body: "Intelligence is organized around the job being done." },
-  { n: "02 / Providers", title: "Providers compete", body: "Models, APIs, datasets and tools compete to provide the strongest intelligence for each task." },
+  { n: "02 / Providers", title: "Providers compete", body: "Models, APIs, datasets and tools compete on measured performance for each task." },
   { n: "03 / Evaluators", title: "Evaluation competes", body: "Independent Evaluators compete to determine how that performance is measured." },
-  { n: "04 / Ranking", title: "Demand follows", body: "Verifiers finalize rankings. Consumer demand routes through those rankings." },
+  { n: "04 / Ranking", title: "Demand follows", body: "Validators verify execution and finalize rankings. Consumer demand routes through those rankings." },
 ];
 
 // Small illustration above each step, in the same order as STEPS.
@@ -112,7 +112,7 @@ const COMPARE: { label: string; loop: boolean; nodes: Node[]; body: string }[] =
     nodes: [
       { text: "Intelligence improves", tag: "Providers compete" },
       { text: "Evaluators compete", tag: "Open", kind: "stack" },
-      { text: "Ranking updates", tag: "Verifiers finalize" },
+      { text: "Ranking updates", tag: "Validators finalize" },
       { text: "Demand reroutes", tag: "To the top rank" },
     ],
     body: "A better competitor can take the top spot, and a better Evaluator can change how the top spot is decided.",
@@ -123,7 +123,7 @@ const SYSTEM: [LucideIcon, string][] = [
   [Target, "Tasks"],
   [Cpu, "Providers"],
   [Scale, "Evaluators"],
-  [ShieldCheck, "Verifiers"],
+  [ShieldCheck, "Validators"],
   [ListOrdered, "Ranking"],
   [Route, "Routing"],
 ];
@@ -158,9 +158,9 @@ export default function WhitepaperPage() {
               So does the way it is measured.
             </h1>
             <p className="m-0 mt-6 max-w-[600px] text-pretty text-[15px] leading-[1.85] text-[var(--tg-fg-dim)]">
-              Telegraph is a peer-to-peer ranking protocol for machine intelligence. Models, APIs, datasets and tools
-              compete for each task, while independent evaluation methods compete to improve how that intelligence is
-              measured.
+              Telegraph is the network that turns intelligence into a graded commodity. Ranked by performance. Driven
+              by demand. Under the hood, intelligence providers compete within each task, Evaluators compete over how
+              performance is measured, and Validators verify and finalize the resulting rankings.
             </p>
             <Actions />
           </div>
@@ -184,8 +184,8 @@ export default function WhitepaperPage() {
         </ol>
         <div className="mt-10 flex flex-col items-start gap-7 border-t border-[var(--tg-line)] pt-8 md:flex-row md:items-center md:justify-between">
           <p className="m-0 max-w-[60ch] text-[clamp(16px,1.6vw,20px)] leading-[1.5] text-[var(--tg-fg)]">
-            Better intelligence can earn more demand. A better Evaluator can replace a weaker one. The system can
-            improve on both sides without Telegraph deciding the winner.
+            Higher-performing intelligence can earn more demand. A stronger Evaluator can replace a weaker one. Both
+            sides can improve without Telegraph manually choosing the outcome.
           </p>
           <WhitepaperButton href={THESIS_PDF} className={primaryBtn}>Read the thesis</WhitepaperButton>
         </div>
@@ -232,7 +232,7 @@ export default function WhitepaperPage() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:gap-16">
           <div>
             <SectionHeading eyebrow="Read the thesis">Read how the full system works.</SectionHeading>
-            <ol className="wp-chain" aria-label="Tasks, Providers, Evaluators, Verifiers, Ranking, Routing: one system">
+            <ol className="wp-chain" aria-label="Tasks, Providers, Evaluators, Validators, Ranking, Routing: one system">
               {SYSTEM.map(([Icon, label]) => (
                 <li key={label}>
                   <Icon className="h-[18px] w-[18px]" strokeWidth={1.5} aria-hidden />
