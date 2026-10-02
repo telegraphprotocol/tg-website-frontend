@@ -1,8 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 
 const POLL_MS = 30_000;
+// Last good stats, so a returning visitor never sees "—" while the first request is in flight
+const CACHE_KEY = "tg_network_stats_v1";
+
+type Stats = {
+  totalMiners: number | null;
+  totalTransactions: number | null;
+  totalApps: number | null;
+};
+
+// The cache is only written by this component, so there is nothing to subscribe to
+function subscribeNever(): () => void {
+  return () => {};
+}
+
+function readCachedRaw(): string | null {
+  try {
+    return window.localStorage.getItem(CACHE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function parseCache(raw: string | null): Partial<Stats> | null {
+  try {
+    return raw ? (JSON.parse(raw) as Partial<Stats>) : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeCache(stats: Stats): void {
+  try {
+    window.localStorage.setItem(CACHE_KEY, JSON.stringify(stats));
+  } catch {
+    // storage full or unavailable: skip caching
+  }
+}
 
 function formatCount(n: number | null): string {
   if (n === null) return "—";
@@ -38,11 +75,16 @@ function Stat({
 }
 
 export function HeroStats() {
-  const [stats, setStats] = useState<{
-    totalMiners: number | null;
-    totalTransactions: number | null;
-    totalApps: number | null;
-  }>({ totalMiners: null, totalTransactions: null, totalApps: null });
+  const [stats, setStats] = useState<Stats>({
+    totalMiners: null,
+    totalTransactions: null,
+    totalApps: null,
+  });
+
+  // Cached numbers are used until fresh ones arrive (the server render has none, so hydration sees null first)
+  const cachedRaw = useSyncExternalStore(subscribeNever, readCachedRaw, () => null);
+  const cached = useMemo(() => parseCache(cachedRaw), [cachedRaw]);
+  const transactions = stats.totalTransactions ?? cached?.totalTransactions ?? null;
 
   useEffect(() => {
     let cancelled = false;
@@ -50,8 +92,18 @@ export function HeroStats() {
       try {
         const res = await fetch("/api/network-stats", { cache: "no-store" });
         if (!res.ok) return;
-        const data = await res.json();
-        if (!cancelled) setStats(data);
+        const data = (await res.json()) as Stats;
+        if (cancelled) return;
+        // A null from the API means that upstream call failed: keep what is already shown
+        setStats((prev) => {
+          const next = {
+            totalMiners: data.totalMiners ?? prev.totalMiners,
+            totalTransactions: data.totalTransactions ?? prev.totalTransactions,
+            totalApps: data.totalApps ?? prev.totalApps,
+          };
+          writeCache(next);
+          return next;
+        });
       } catch {
         // silently keep last-known values on transient network failure
       }
@@ -67,7 +119,7 @@ export function HeroStats() {
   return (
     <div className="mt-10 flex flex-wrap items-center justify-center divide-x divide-[var(--tg-line)]">
       <Stat
-        value={formatCount(stats.totalTransactions)}
+        value={formatCount(transactions)}
         label="Transactions (testnet)"
         live
       />

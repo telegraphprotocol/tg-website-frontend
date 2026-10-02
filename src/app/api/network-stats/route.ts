@@ -10,6 +10,15 @@ const ALL_TIME_SINCE_HOURS = 24 * 365 * 5;
 // Fetched at request time so a flaky upstream can't fail `next build`; each fetch below is still cached for 5 min
 export const dynamic = "force-dynamic";
 
+type NetworkStats = {
+  totalMiners: number | null;
+  totalTransactions: number | null;
+  totalApps: number | null;
+};
+
+// Last successful values, kept in server memory between requests
+let lastGood: NetworkStats = { totalMiners: null, totalTransactions: null, totalApps: null };
+
 export async function GET() {
   const [minersRes, signalsRes, appsRes] = await Promise.allSettled([
     fetch(`${LEADERBOARD_API_BASE_URL}/miner-dispatcher/integrations`, {
@@ -44,5 +53,13 @@ export async function GET() {
     totalApps = typeof data.total === "number" ? data.total : null;
   }
 
-  return NextResponse.json({ totalMiners, totalTransactions, totalApps });
+  // A failed upstream call must not blank a stat that was fine a moment ago: fall back to the last good value
+  const stats = {
+    totalMiners: totalMiners ?? lastGood.totalMiners,
+    totalTransactions: totalTransactions ?? lastGood.totalTransactions,
+    totalApps: totalApps ?? lastGood.totalApps,
+  };
+  lastGood = stats;
+
+  return NextResponse.json(stats);
 }
