@@ -19,9 +19,9 @@ export function Machina() {
   return (
     <Section>
       <SectionHeading
-        lede="Stocks and most tokens price a company or a project. Machina prices the intelligence commodity itself, rewarding the validators and evaluators who verify the network and continually improve how intelligence is measured."
+        lede="Paid intelligence is priced in USDC, while Miner settlement value is converted into MACHINA - linking intelligence consumption directly to MACHINA demand."
       >
-        Machina is the unit cost of graded intelligence.
+        MACHINA is the economic unit of intelligence.
       </SectionHeading>
 
       <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3">
