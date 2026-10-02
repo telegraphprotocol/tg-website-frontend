@@ -11,7 +11,7 @@ import {
 const STORAGE_KEY = "tg-redesign-theme";
 
 /** Pages that follow the light/dark toggle. Every other page stays dark. */
-export const THEMED_PATHS = ["/", "/whitepaper"];
+export const THEMED_PATHS = ["/", "/whitepaper", "/earn"];
 
 type Theme = "dark" | "light";
 

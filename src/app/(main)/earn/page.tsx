@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { EarnHero } from "@/components/landing/earn/hero";
-import { EarnUseCases } from "@/components/landing/earn/use-cases";
+import { EconomicFlow } from "@/components/landing/earn/economic-flow";
 import { WaysToEarn } from "@/components/landing/earn/ways-to-earn";
+import { ThemeScope } from "@/components/landing/redesign/theme-scope";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://telegraphprotocol.com";
@@ -9,11 +10,11 @@ const baseUrl =
 export const metadata: Metadata = {
   title: "Earn - Supply, Evaluate, Verify & Build on Telegraph",
   description:
-    "Earn on Telegraph, the network that turns intelligence into a graded commodity. Supply intelligence as a provider, build Evaluators, run a Validator, build with the network, or query through Alexandria - paid demand follows performance.",
+    "Earn on Telegraph, the network that turns intelligence into a graded commodity. Supply intelligence as a Miner, build Evaluators, run a Validator, or build with the network - paid demand follows performance.",
   openGraph: {
     title: "Earn on Telegraph - Supply, Evaluate, Verify & Build",
     description:
-      "Five ways to earn on Telegraph: supply intelligence, build Evaluators, query with Alexandria, build with the network, or run a Validator.",
+      "Four ways to earn on Telegraph: supply intelligence as a Miner, build Evaluators, run a Validator, or build with the network.",
     url: `${baseUrl}/earn`,
     type: "website",
     images: [
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Earn on Telegraph - Supply, Evaluate, Verify & Build",
     description:
-      "Five ways to earn on Telegraph: supply intelligence, build Evaluators, query with Alexandria, build with the network, or run a Validator.",
+      "Four ways to earn on Telegraph: supply intelligence as a Miner, build Evaluators, run a Validator, or build with the network.",
     images: [`${baseUrl}/telegraph-social-card.jpg`],
   },
   alternates: {
@@ -39,10 +40,10 @@ export const metadata: Metadata = {
 
 export default function EarnPage() {
   return (
-    <>
+    <ThemeScope>
       <EarnHero />
-      <EarnUseCases />
       <WaysToEarn />
-    </>
+      <EconomicFlow />
+    </ThemeScope>
   );
 }
