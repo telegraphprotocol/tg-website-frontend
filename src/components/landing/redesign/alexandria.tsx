@@ -7,9 +7,12 @@ export function Alexandria() {
   return (
     <Section>
       <SectionHeading
+        wide
         lede="Telegraph is the network underneath. Alexandria is the interface on top."
       >
-        Alexandria is how humans query the network.
+        Alexandria is how humans and machines
+        <br />
+        query the network.
       </SectionHeading>
 
       <Reveal delay={150} className="mt-14">

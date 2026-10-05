@@ -250,7 +250,9 @@ export function LiveDemo() {
   return (
     <Section>
       <SectionHeading lede="Each request resolves to an Intent, is served by the top-ranked provider for it, and is verified by validators. This is the network running live.">
-        Ask for intelligence. Get the top-ranked answer.
+        Ask a question.
+        <br />
+        Get the top-ranked answer.
       </SectionHeading>
       <DemoCard />
     </Section>

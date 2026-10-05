@@ -33,11 +33,13 @@ export function SectionHeading({
   children,
   lede,
   align = "left",
+  wide = false,
 }: {
   eyebrow?: string;
   children: ReactNode;
   lede?: ReactNode;
   align?: "left" | "center";
+  wide?: boolean;
 }) {
   return (
     <div className={align === "center" ? "text-center" : "text-left"}>
@@ -47,7 +49,7 @@ export function SectionHeading({
         </Reveal>
       ) : null}
       <Reveal>
-        <h2 className="m-0 max-w-[720px] text-balance text-[clamp(26px,3.4vw,44px)] font-normal leading-[1.15] tracking-[0.005em] text-[var(--tg-fg)]">
+        <h2 className={`m-0 ${wide ? "max-w-[900px]" : "max-w-[720px]"} text-balance text-[clamp(26px,3.4vw,44px)] font-normal leading-[1.15] tracking-[0.005em] text-[var(--tg-fg)]`}>
           {children}
         </h2>
       </Reveal>
