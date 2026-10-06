@@ -5,6 +5,8 @@ import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 const POLL_MS = 30_000;
 // Last good stats, so a returning visitor never sees "—" while the first request is in flight
 const CACHE_KEY = "tg_network_stats_v1";
+// Shown when neither a live nor a cached transaction count is available
+const FALLBACK_TRANSACTIONS = 136569;
 
 type Stats = {
   totalMiners: number | null;
@@ -84,7 +86,7 @@ export function HeroStats() {
   // Cached numbers are used until fresh ones arrive (the server render has none, so hydration sees null first)
   const cachedRaw = useSyncExternalStore(subscribeNever, readCachedRaw, () => null);
   const cached = useMemo(() => parseCache(cachedRaw), [cachedRaw]);
-  const transactions = stats.totalTransactions ?? cached?.totalTransactions ?? null;
+  const transactions = stats.totalTransactions ?? cached?.totalTransactions ?? FALLBACK_TRANSACTIONS;
 
   useEffect(() => {
     let cancelled = false;
