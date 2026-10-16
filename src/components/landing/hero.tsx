@@ -59,8 +59,12 @@ export function Hero() {
           <CtaButton
             href="https://hackathon.telegraphprotocol.com/"
             target="_blank"
-            variant="ghost"
+            variant="accent"
           >
+            <span
+              aria-hidden
+              className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#f05c2b]"
+            />
             Join Hackathon
           </CtaButton>
         </Reveal>

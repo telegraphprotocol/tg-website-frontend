@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CtaButton } from "../cta-button";
 import { HeroStats } from "./hero-stats";
 
 export function RedesignHero() {
@@ -26,6 +27,20 @@ export function RedesignHero() {
       </p>
 
       <HeroStats />
+
+      <div className="mt-10">
+        <CtaButton
+          href="https://hackathon.telegraphprotocol.com/"
+          target="_blank"
+          variant="themed"
+        >
+          <span
+            aria-hidden
+            className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500"
+          />
+          Join Hackathon · Win up to $15K
+        </CtaButton>
+      </div>
     </section>
   );
 }
