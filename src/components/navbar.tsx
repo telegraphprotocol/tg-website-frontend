@@ -27,7 +27,7 @@ const WHITEPAPER_URL = "/whitepaper";
 
 const tokenReportBtnMobileClass =
   "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-amber-500/80 bg-amber-500/10 px-2 py-[9px] text-[11px] font-semibold uppercase tracking-[0.04em] text-amber-400 no-underline transition-colors hover:border-amber-400 hover:bg-amber-500/15 hover:text-amber-300";
-const alexandriaBtnMobileClass =
+const anjomanBtnMobileClass =
   "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-blue-500/80 bg-blue-500/10 px-2 py-[9px] text-[11px] font-semibold uppercase tracking-[0.04em] text-blue-400 no-underline transition-colors hover:border-blue-400 hover:bg-blue-500/15 hover:text-blue-300";
 
 export function Navbar() {
@@ -144,13 +144,13 @@ export function Navbar() {
           </Link>
           */}
           <CtaButton
-            href="https://alexandria.telegraphprotocol.com"
+            href="https://anjoman.ai"
             target="_blank"
             arrow={false}
             className="h-10 border border-black/10 hover:!bg-neutral-300"
           >
             <Terminal className="h-4 w-4" strokeWidth={2.5} aria-hidden />
-            <span className="font-semibold">Alexandria</span>
+            <span className="font-semibold">Anjoman</span>
             <span className="rounded-sm border border-current/30 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] opacity-70">
               Beta
             </span>
@@ -289,14 +289,14 @@ export function Navbar() {
           </Link>
           */}
           <Link
-            href="https://alexandria.telegraphprotocol.com"
+            href="https://anjoman.ai"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Explore Alexandria (beta)"
-            className={alexandriaBtnMobileClass}
+            aria-label="Explore Anjoman (beta)"
+            className={anjomanBtnMobileClass}
           >
             <Terminal className="h-3.5 w-3.5 shrink-0" aria-hidden />
-            <span>Alexandria</span>
+            <span>Anjoman</span>
           </Link>
           <button
             type="button"
@@ -356,13 +356,13 @@ export function Navbar() {
           */}
 
           <Link
-            href="https://alexandria.telegraphprotocol.com"
+            href="https://anjoman.ai"
             target="_blank"
             onClick={close}
             className="inline-flex items-center gap-3 rounded-sm border border-black/10 bg-[#f2f2f2] px-4 py-3 text-[14px] font-semibold text-black no-underline transition-colors hover:bg-neutral-300"
           >
             <Terminal className="h-4 w-4" strokeWidth={2.5} aria-hidden />
-            <span>Alexandria</span>
+            <span>Anjoman</span>
             <span className="rounded-sm border border-black/30 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] opacity-70">
               Beta
             </span>

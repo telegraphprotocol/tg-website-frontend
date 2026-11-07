@@ -62,7 +62,7 @@ function MockHero({
         <div className="mb-10 flex flex-col items-center gap-3.5">
           <div className="flex flex-wrap justify-center gap-3.5">
             <CtaButton href="#" target="_self">
-              Explore Alexandria
+              Explore Anjoman
               <span className="ml-1 rounded-sm border border-current/30 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] opacity-70">
                 Beta
               </span>

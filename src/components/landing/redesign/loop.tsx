@@ -86,7 +86,7 @@ whoever is winning."
             Demand
           </text>
           <text x={200} y={232} textAnchor="middle" className="fill-[var(--tg-fg-dim)]" fontSize="10">
-            A human asks in Alexandria.
+            A human asks in Anjoman.
           </text>
           <text x={200} y={248} textAnchor="middle" className="fill-[var(--tg-fg-dim)]" fontSize="10">
             An app calls /ask.
@@ -139,7 +139,7 @@ whoever is winning."
             Demand
           </text>
           <text x={250} y={87} textAnchor="middle" className="fill-[var(--tg-fg-dim)]" fontSize="10">
-            A human asks in Alexandria.
+            A human asks in Anjoman.
           </text>
           <text x={250} y={103} textAnchor="middle" className="fill-[var(--tg-fg-dim)]" fontSize="10">
             An app calls /ask.

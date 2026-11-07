@@ -1,31 +1,31 @@
 import { Reveal } from "../fx/reveal";
 import { CtaButton } from "../cta-button";
-import { AlexandriaPreview } from "./alexandria-preview";
+import { AnjomanPreview } from "./anjoman-preview";
 import { Section, SectionHeading } from "./shared";
 
-export function Alexandria() {
+export function Anjoman() {
   return (
     <Section>
       <SectionHeading
         wide
-        lede="Telegraph is the network underneath. Alexandria is the interface on top."
+        lede="Telegraph is the network underneath. Anjoman is the interface on top."
       >
-        Alexandria is how humans and machines
+        Anjoman is how humans and machines
         <br />
         query the network.
       </SectionHeading>
 
       <Reveal delay={150} className="mt-14">
-        <AlexandriaPreview />
+        <AnjomanPreview />
       </Reveal>
 
       <Reveal delay={250} className="mt-10 text-center">
         <CtaButton
-          href="https://alexandria.telegraphprotocol.com"
+          href="https://anjoman.ai"
           target="_blank"
           className="h-10 border border-black/10 hover:!bg-neutral-300"
         >
-          Try Alexandria
+          Try Anjoman
         </CtaButton>
       </Reveal>
     </Section>

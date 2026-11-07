@@ -52,9 +52,9 @@ const SUPPLY_SIDE: Item[] = [
 const MORE: Item[] = [
   {
     label: "Query",
-    text: "Use Alexandria",
+    text: "Use Anjoman",
     who: "Consumers",
-    href: "https://alexandria.telegraphprotocol.com",
+    href: "https://anjoman.ai",
     icon: Search,
   },
   {

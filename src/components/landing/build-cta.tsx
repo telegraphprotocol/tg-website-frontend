@@ -27,11 +27,11 @@ export function BuildCta() {
         </Reveal>
         <Reveal delay={350} className="flex flex-wrap justify-center gap-3">
           <CtaButton
-            href="https://alexandria.telegraphprotocol.com"
+            href="https://anjoman.ai"
             target="_blank"
             arrow={true}
           >
-            Explore Alexandria
+            Explore Anjoman
             <span className="ml-1 rounded-sm border border-current/30 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] opacity-70">
               Beta
             </span>

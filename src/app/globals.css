@@ -629,3 +629,97 @@ html[data-tg-pre-theme] .tg-frame {
 .tg-glitch-hover:hover {
   animation: tg-glitch 220ms steps(2) 1;
 }
+
+/* ---------- Anjoman app preview: the app's own tokens (from anjoman/src/styles/tokens.css), dark by
+   default and light when the page is, so the preview matches the real app in either theme ---------- */
+.anj {
+  --anj-shell: #0e0f14;
+  --anj-panel: #15161d;
+  --anj-card: #1c1d27;
+  --anj-sunken: #111219;
+  --anj-ink: #eceef5;
+  --anj-ink-2: #c9cad6;
+  --anj-mute: #a1a2b4;
+  --anj-faint: #8a8b9f;
+  --anj-line-soft: rgb(255 255 255 / 0.07);
+  --anj-line: rgb(255 255 255 / 0.14);
+  --anj-gold: #d09a42;
+  --anj-gold-line: #c8923a;
+  --anj-gold-frame: rgb(200 146 58 / 0.66);
+  --anj-gold-frame-soft: rgb(200 146 58 / 0.4);
+  --anj-gold-glow: rgb(214 168 77 / 0.16);
+  --anj-vermilion: #e04822;
+  --anj-accent-text: #ff7d55;
+  --anj-lapis: #7d8fec;
+  --anj-teal: #4fb3a0;
+  --anj-plum: #b48ae6;
+  --anj-portal-earn: #2e2414;
+  --anj-portal-eval: #1e2236;
+  --anj-portal-validate: #162922;
+  --anj-portal-train: #251e31;
+  --anj-ring: rgb(255 255 255 / 0.08);
+  --anj-shadow-card: 0 0 0 1px var(--anj-ring), 0 1px 1px rgb(27 28 48 / 0.03),
+    0 2px 4px -1px rgb(27 28 48 / 0.03);
+  --anj-shadow-panel: 0 0 0 1px var(--anj-ring), 0 1px 2px rgb(27 28 48 / 0.03),
+    0 10px 30px -14px rgb(27 28 48 / 0.05);
+  --anj-shadow-pill: 0 0 0 1px var(--anj-ring), 0 1px 2px rgb(27 28 48 / 0.05),
+    0 2px 5px -2px rgb(27 28 48 / 0.03);
+  --anj-shadow-inset: inset 0 0 0 1px var(--anj-ring), inset 0 1px 2px rgb(27 28 48 / 0.05);
+  --anj-shadow-accent: inset 0 1px 0 rgb(255 255 255 / 0.22), 0 0 0 1px #b8441e,
+    0 1px 2px rgb(184 68 30 / 0.3);
+}
+[data-tg-theme="light"] .anj {
+  --anj-shell: #edeef1;
+  --anj-panel: #fcfcfd;
+  --anj-card: #ffffff;
+  --anj-sunken: #f4f4f7;
+  --anj-ink: #1b1c30;
+  --anj-ink-2: #3a3b52;
+  --anj-mute: #5d5e72;
+  --anj-faint: #6e6f84;
+  --anj-line-soft: rgb(27 28 48 / 0.08);
+  --anj-line: rgb(27 28 48 / 0.14);
+  --anj-gold: #a77229;
+  --anj-gold-line: #a77229;
+  --anj-gold-frame: rgb(167 114 41 / 0.72);
+  --anj-gold-frame-soft: rgb(167 114 41 / 0.46);
+  --anj-gold-glow: rgb(214 168 77 / 0.26);
+  --anj-vermilion: #d23f1d;
+  --anj-accent-text: #ba351a;
+  --anj-lapis: #3f55c9;
+  --anj-teal: #23806f;
+  --anj-plum: #8549c2;
+  --anj-portal-earn: #f7ead2;
+  --anj-portal-eval: #e9ecfa;
+  --anj-portal-validate: #e4f1ec;
+  --anj-portal-train: #f3eef9;
+  --anj-ring: rgb(27 28 48 / 0.06);
+}
+/* The wordmark is dark ink on transparent: it turns light in the dark theme */
+.anj-wordmark {
+  filter: invert(1);
+}
+[data-tg-theme="light"] .anj-wordmark {
+  filter: none;
+}
+@keyframes anj-twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.82);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+.anj-twinkle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: anj-twinkle 4.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .anj-twinkle {
+    animation: none;
+  }
+}

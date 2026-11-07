@@ -1,8 +1,8 @@
-// The canonical demo Intents, shared by the hero and the Alexandria preview. Illustrative data only.
+// The canonical demo Intents, shared by the hero and the Anjoman preview. Illustrative data only.
 
 export const RESOLVE_MS = 600;
 
-// Timings for the automatic demos (hero and Alexandria preview)
+// Timings for the automatic demos (hero and Anjoman preview)
 export const TYPE_MS = 22; // per character while the demo types its question
 export const PRESS_MS = 450; // pause between finishing the question and pressing Ask
 export const HOLD_MS = 4200; // how long each answer stays on screen before the next Intent

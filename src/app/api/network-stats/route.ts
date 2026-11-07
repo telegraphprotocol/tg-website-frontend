@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 const LEADERBOARD_API_BASE_URL = "https://devnode.telegraphprotocol.com";
 const DAEMON_API_BASE_URL = "https://devnode.telegraphprotocol.com/daemon";
-const ALEXANDRIA_API_BASE_URL = "https://alexandria.telegraphprotocol.com";
+const ANJOMAN_API_BASE_URL = "https://anjoman.ai";
 // Comfortably exceeds any real daemon retention window -- stand-in for "all time"
 // since there's no dedicated lifetime-count endpoint (same approach telegraph-explorer uses).
 const ALL_TIME_SINCE_HOURS = 24 * 365 * 5;
@@ -28,7 +28,7 @@ export async function GET() {
       `${DAEMON_API_BASE_URL}/api/questions?sort=recent&order=desc&since_hours=${ALL_TIME_SINCE_HOURS}&limit=1&offset=0`,
       { next: { revalidate: 300 } },
     ),
-    fetch(`${ALEXANDRIA_API_BASE_URL}/api/apps?page=1&limit=1`, {
+    fetch(`${ANJOMAN_API_BASE_URL}/api/apps?page=1&limit=1`, {
       next: { revalidate: 300 },
     }),
   ]);

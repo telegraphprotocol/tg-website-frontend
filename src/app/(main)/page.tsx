@@ -4,7 +4,7 @@ import { Rough } from "@/components/landing/redesign/rough";
 import { Network } from "@/components/landing/redesign/network";
 import { EvaluatorCompetition } from "@/components/landing/redesign/evaluator-competition";
 import { Lanes } from "@/components/landing/redesign/lanes";
-import { Alexandria } from "@/components/landing/redesign/alexandria";
+import { Anjoman } from "@/components/landing/redesign/anjoman";
 import { RedesignFlywheel } from "@/components/landing/redesign/flywheel";
 import { Machina } from "@/components/landing/redesign/machina";
 import { Trust } from "@/components/landing/redesign/trust";
@@ -25,7 +25,7 @@ export default function Home() {
         <Lanes />
         <EvaluatorCompetition />
         <RedesignFlywheel />
-        <Alexandria />
+        <Anjoman />
         <Machina />
         <Trust />
         <GetStarted />
