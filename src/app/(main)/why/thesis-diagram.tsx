@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const STEPS = [
   { n: "01", title: "More intelligence.", body: "Models, tools and services keep multiplying." },
@@ -12,11 +12,10 @@ const STEPS = [
   { n: "09", title: "Real demand closes the loop.", body: "Better-performing intelligence gets more opportunity." },
 ];
 
-const LINE = "bg-[var(--tg-fg-dim)]";
 const HEAD_DOWN =
-  "absolute border-x-[4px] border-t-[6px] border-x-transparent border-t-[var(--tg-fg-dim)]";
+  "absolute border-x-[3px] border-t-[5px] border-x-transparent border-t-[var(--tg-fg-faint)]";
 const HEAD_UP =
-  "absolute border-x-[4px] border-b-[6px] border-x-transparent border-b-[var(--tg-fg-dim)]";
+  "absolute border-x-[3px] border-b-[5px] border-x-transparent border-b-[var(--tg-fg-faint)]";
 
 // On wide containers the grid has 20 columns: top-row cells span 5, bottom-row cells span 4,
 // so the connectors below can be positioned by percentage from the cell centres.
@@ -25,10 +24,10 @@ function Cell({ step, arrow }: { step: (typeof STEPS)[number]; arrow: boolean })
   return (
     <div className={`relative flex @min-[760px]:px-3 ${span}`}>
       <div
-        className={`flex-1 rounded-sm border p-4 font-mono ${
+        className={`flex-1 rounded-md border p-4 font-mono ${
           step.key
             ? "border-[var(--tg-fg)] bg-[var(--tg-fg)] text-[var(--tg-bg)]"
-            : "border-[var(--tg-line)] bg-[var(--tg-bg)] text-[var(--tg-fg)]"
+            : "border-[var(--tg-line)] bg-[var(--tg-bg)] text-[var(--tg-fg)] shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
         }`}
       >
         <div className={`text-[11px] ${step.key ? "opacity-70" : "text-[var(--tg-fg-faint)]"}`}>
@@ -44,9 +43,9 @@ function Cell({ step, arrow }: { step: (typeof STEPS)[number]; arrow: boolean })
       {arrow ? (
         <span
           aria-hidden
-          className={`absolute right-0 top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-[var(--tg-line-strong)] bg-[var(--tg-surface)] text-[var(--tg-fg)] @min-[760px]:flex`}
+          className="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 translate-x-1/2 text-[var(--tg-fg-faint)] @min-[760px]:flex"
         >
-          <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.25} />
+          <ChevronRight className="h-6 w-6" strokeWidth={1} />
         </span>
       ) : null}
     </div>
@@ -56,7 +55,7 @@ function Cell({ step, arrow }: { step: (typeof STEPS)[number]; arrow: boolean })
 /** Recreation of the causal diagram from the original essay. */
 export function ThesisDiagram() {
   return (
-    <figure className="@container m-0 my-4 rounded-sm border border-[var(--tg-line)] bg-[var(--tg-surface)] p-5 font-mono @min-[760px]:p-8">
+    <figure className="@container m-0 my-4 rounded-md border border-[var(--tg-line)] bg-[var(--tg-surface)] p-5 font-mono @min-[760px]:p-8">
       <figcaption>
         <div className="text-[22px] font-bold leading-[1.15] text-[var(--tg-fg)] @min-[760px]:text-[30px]">
           Too much intelligence creates a new problem.
@@ -73,10 +72,9 @@ export function ThesisDiagram() {
         ))}
 
         {/* Step 04 -> 05: down, back across, down into 05 */}
-        <div aria-hidden className="relative hidden h-10 col-span-20 @min-[760px]:block">
-          <span className={`absolute right-[12.5%] top-0 h-1/2 w-px ${LINE}`} />
-          <span className={`absolute left-[10%] right-[12.5%] top-1/2 h-px ${LINE}`} />
-          <span className={`absolute left-[10%] top-1/2 bottom-[6px] w-px ${LINE}`} />
+        <div aria-hidden className="relative col-span-20 hidden h-10 @min-[760px]:block">
+          <span className="absolute left-[calc(10%+12px)] right-[12.5%] top-0 h-1/2 rounded-br-xl border-b border-r border-[var(--tg-fg-faint)]/60" />
+          <span className="absolute bottom-[4px] left-[10%] top-1/2 w-3 rounded-tl-xl border-l border-t border-[var(--tg-fg-faint)]/60" />
           <span className={`${HEAD_DOWN} bottom-0 left-[10%] -translate-x-1/2`} />
         </div>
 
@@ -85,20 +83,18 @@ export function ThesisDiagram() {
         ))}
 
         {/* Loop: 09 back to 05 */}
-        <div aria-hidden className="relative hidden h-14 col-span-20 @min-[760px]:block">
-          <span className={`absolute right-[10%] top-0 h-1/2 w-px ${LINE}`} />
-          <span className={`absolute left-[10%] right-[10%] top-1/2 h-px ${LINE}`} />
-          <span className={`absolute left-[10%] top-[6px] h-[calc(50%-6px)] w-px ${LINE}`} />
+        <div aria-hidden className="relative col-span-20 hidden h-10 @min-[760px]:block">
+          <span className="absolute inset-x-[10%] bottom-0 top-0 rounded-b-2xl border-x border-b border-[var(--tg-fg-faint)]/60" />
           <span className={`${HEAD_UP} left-[10%] top-0 -translate-x-1/2`} />
         </div>
       </div>
 
-      <p className="m-0 mt-5 text-center text-[12px] leading-[1.6] text-[var(--tg-fg-dim)] @min-[760px]:-mt-[38px] @min-[760px]:relative @min-[760px]:mx-auto @min-[760px]:w-fit @min-[760px]:bg-[var(--tg-surface)] @min-[760px]:px-3">
+      <p className="m-0 mt-5 text-center text-[12px] leading-[1.6] text-[var(--tg-fg-dim)] @min-[760px]:-mt-[10px] @min-[760px]:relative @min-[760px]:mx-auto @min-[760px]:w-fit @min-[760px]:bg-[var(--tg-surface)] @min-[760px]:px-3">
         better intelligence → more demand → stronger supply + better ways to
         judge it → better intelligence
       </p>
 
-      <div className="mt-8 rounded-sm border border-[var(--tg-line)] bg-[var(--tg-bg)] px-4 py-6 text-center">
+      <div className="mt-8 rounded-md border border-[var(--tg-line)] bg-[var(--tg-bg)] px-4 py-6 text-center">
         <div className="text-[clamp(28px,6cqw,48px)] font-bold leading-none tracking-wide text-[var(--tg-fg)]">
           TELEGRAPH
         </div>
