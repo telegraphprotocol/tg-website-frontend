@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Eyebrow, Section } from "@/components/landing/redesign/shared";
+import { Eyebrow } from "@/components/landing/redesign/shared";
 import { Reveal } from "@/components/landing/fx/reveal";
 import { ThesisDiagram } from "./thesis-diagram";
 import { Toc } from "./toc";
@@ -206,12 +206,13 @@ function Byline() {
 
 export default function WhyPage() {
   return (
-    <Section>
+    <section className="border-b border-[var(--tg-line)] px-4 py-20 md:px-6 md:py-28">
+      <div className="mx-auto max-w-[1280px]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="grid gap-16 lg:grid-cols-[minmax(0,1fr)_260px]">
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_240px]">
       <article>
         <header>
           <Reveal className="mb-4">
@@ -315,6 +316,7 @@ export default function WhyPage() {
 
       <Toc items={HEADINGS} />
       </div>
-    </Section>
+      </div>
+    </section>
   );
 }
