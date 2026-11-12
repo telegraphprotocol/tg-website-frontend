@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Reveal } from "../fx/reveal";
 import { ArrowDownLine, Section, SectionHeading } from "./shared";
 
@@ -134,6 +135,21 @@ export function Rough() {
             it can keep improving.
           </p>
         </div>
+        <Link
+          href="/why"
+          className="mt-8 block max-w-[780px] text-[14px] leading-[1.85] text-[var(--tg-fg-dim)] no-underline"
+        >
+          <span className="block text-[var(--tg-fg)]">
+            Who decides what the best intelligence is?
+          </span>
+          <span className="block text-[var(--tg-fg)]">
+            And who decides how it should be measured?
+          </span>
+          <span className="mt-2 block underline underline-offset-4 hover:text-[var(--tg-fg)]">
+            Read the thesis — When Intelligence Becomes Abundant, Quality
+            Becomes Scarce
+          </span>
+        </Link>
       </Reveal>
 
       <Reveal delay={250} className="mt-14">

@@ -7,6 +7,7 @@ import {
   Coins,
   FileBarChart,
   FileText,
+  HelpCircle,
   Menu,
   Moon,
   Newspaper,
@@ -157,6 +158,14 @@ export function Navbar() {
           </CtaButton>
 
           <GuideNavLink />
+
+          <Link
+            href="/why"
+            className={`inline-flex h-10 items-center gap-2 rounded-sm px-[18px] text-[14px] font-medium leading-none no-underline transition-colors ${chipTone}`}
+          >
+            <HelpCircle className="h-4 w-4 opacity-80" aria-hidden />
+            <span>Why?</span>
+          </Link>
 
           <div ref={moreRef} className="relative">
             <button
@@ -382,6 +391,15 @@ export function Navbar() {
           >
             <FileText className="h-4 w-4 opacity-80" aria-hidden />
             <span>Whitepaper</span>
+          </Link>
+
+          <Link
+            href="/why"
+            onClick={close}
+            className={`inline-flex items-center gap-3 rounded-sm px-4 py-3 text-[14px] font-medium no-underline transition-colors ${chipTone}`}
+          >
+            <HelpCircle className="h-4 w-4 opacity-80" aria-hidden />
+            <span>Why?</span>
           </Link>
 
           <Link
