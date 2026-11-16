@@ -1,4 +1,5 @@
 import { RedesignHero } from "@/components/landing/redesign/hero";
+import { Explainer } from "@/components/landing/redesign/explainer";
 import { LiveDemo } from "@/components/landing/redesign/live-demo";
 import { Rough } from "@/components/landing/redesign/rough";
 import { Network } from "@/components/landing/redesign/network";
@@ -19,6 +20,7 @@ export default function Home() {
       <StructuredData />
       <ThemeScope>
         <RedesignHero />
+        <Explainer />
         <LiveDemo />
         <Rough />
         <Network />
