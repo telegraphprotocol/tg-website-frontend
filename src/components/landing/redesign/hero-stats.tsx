@@ -8,7 +8,7 @@ const CACHE_KEY = "tg_network_stats_v1";
 // Shown when neither a live nor a cached transaction count is available
 const FALLBACK_TRANSACTIONS = 141221;
 // Shown when neither a live nor a cached miner count is available
-const FALLBACK_MINERS = 1918;
+const FALLBACK_MINERS = 2189;
 
 type Stats = {
   totalMiners: number | null;
@@ -92,7 +92,15 @@ export function HeroStats() {
     stats.totalTransactions ?? cached?.totalTransactions ?? 0,
     FALLBACK_TRANSACTIONS,
   );
-  const miners = stats.totalMiners ?? cached?.totalMiners ?? FALLBACK_MINERS;
+  const liveMiners =
+    stats.totalMiners !== null && stats.totalMiners > 0
+      ? stats.totalMiners
+      : null;
+  const cachedMiners =
+    typeof cached?.totalMiners === "number" && cached.totalMiners > 0
+      ? cached.totalMiners
+      : null;
+  const miners = liveMiners ?? cachedMiners ?? FALLBACK_MINERS;
 
   useEffect(() => {
     let cancelled = false;
@@ -104,8 +112,12 @@ export function HeroStats() {
         if (cancelled) return;
         // A null from the API means that upstream call failed: keep what is already shown
         setStats((prev) => {
+          const incomingMiners =
+            typeof data.totalMiners === "number" && data.totalMiners > 0
+              ? data.totalMiners
+              : null;
           const next = {
-            totalMiners: data.totalMiners ?? prev.totalMiners,
+            totalMiners: incomingMiners ?? prev.totalMiners,
             totalTransactions: data.totalTransactions ?? prev.totalTransactions,
             totalApps: data.totalApps ?? prev.totalApps,
           };
