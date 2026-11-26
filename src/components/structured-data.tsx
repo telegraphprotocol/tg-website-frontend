@@ -9,7 +9,7 @@ export function StructuredData() {
     url: baseUrl,
     logo: `${baseUrl}/t-logo.png`,
     description:
-      "Telegraph Protocol unlocks real AI on-chain, turn live signals into tradeable assets you can own and profit from.",
+      "The marketplace where the world's intelligence competes for every task. Ranked by performance. Driven by demand.",
     sameAs: ["https://x.com/Telegraphprotoc"],
     contactPoint: {
       "@type": "ContactPoint",
@@ -24,7 +24,7 @@ export function StructuredData() {
     name: "Telegraph Protocol",
     url: baseUrl,
     description:
-      "Turn live AI signals into tradeable assets you can own and profit from. Buy verified, time-stamped signals from the best AI models.",
+      "One integration gives agents, applications and enterprises access to an ever-evolving marketplace of specialist intelligence, continuously evaluated and ranked by task.",
     potentialAction: {
       "@type": "SearchAction",
       target: {

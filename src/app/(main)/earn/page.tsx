@@ -10,7 +10,7 @@ const baseUrl =
 export const metadata: Metadata = {
   title: "Earn - Supply, Evaluate, Verify & Build on Telegraph",
   description:
-    "Earn on Telegraph, the network that turns intelligence into a graded commodity. Supply intelligence as a Miner, build Evaluators, run a Validator, or build with the network - paid demand follows performance.",
+    "Earn on Telegraph, the marketplace where the world's intelligence competes for every task. Supply intelligence as a Miner, build Evaluators, run a Validator, or build with the network - paid demand follows performance.",
   openGraph: {
     title: "Earn on Telegraph - Supply, Evaluate, Verify & Build",
     description:
