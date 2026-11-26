@@ -158,7 +158,7 @@ export default function WhitepaperPage() {
               So does the way it is measured.
             </h1>
             <p className="m-0 mt-6 max-w-[600px] text-pretty text-[15px] leading-[1.85] text-[var(--tg-fg-dim)]">
-              Telegraph is the network that turns intelligence into a graded commodity. Ranked by performance. Driven
+              Telegraph is the marketplace where the world&apos;s intelligence competes for every task. Ranked by performance. Driven
               by demand. Under the hood, intelligence providers compete within each task, Evaluators compete over how
               performance is measured, and Validators verify and finalize the resulting rankings.
             </p>

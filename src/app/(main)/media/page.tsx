@@ -8,7 +8,7 @@ const baseUrl =
 export const metadata: Metadata = {
   title: "Media - Telegraph in the Press",
   description:
-    "Press coverage, interviews, and external commentary on Telegraph Protocol, the verified intelligence settlement layer for the machine economy.",
+    "Press coverage, interviews, and external commentary on Telegraph Protocol, the marketplace where the world's intelligence competes for every task.",
   openGraph: {
     title: "Media - Telegraph in the Press",
     description:
